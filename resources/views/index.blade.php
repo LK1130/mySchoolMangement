@@ -1,6 +1,4 @@
 @extends('app')
 
 
-@section('name')
-    
-@endsection
+dfsdf
