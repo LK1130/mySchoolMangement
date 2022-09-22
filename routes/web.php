@@ -36,6 +36,6 @@ Route::middleware([
 });
 
 
-Route::get('', function ($id) {
-    return View("");
-});
+// Route::get('', function () {
+//     return View("");
+// });
