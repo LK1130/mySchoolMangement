@@ -10,9 +10,265 @@ defineProps({
 </script>
 
 <template>
+
     <Head title="Welcome" />
 
-    <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
+    <div class="bg-neutral-900 text-white">
+        <nav class="bg-neutral-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+            <div class="container flex flex-wrap justify-between items-center mx-auto">
+                <a href="#" class="flex items-center">
+                    <img src="home/logo.png" class="mr-3 h-12 sm:h-12" alt="Ex;logo Logo" />
+                </a>
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+                <div class="hidden w-full md:block md:w-auto" id="navbar-default">
+                    <ul
+                        class="flex flex-col items-center p-4 mt-4 bg-neutral-900 rounded-lg md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium md:border-0 dark:border-gray-700">
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                                aria-current="page">Home</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                                aria-current="page">Services</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                                aria-current="page">About Us</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                                aria-current="page">Mini Projects</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                                aria-current="page">Contact Us</a>
+                        </li>
+                        <li>
+                            <button type="button"
+                                class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                                Explore
+                            </button>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <!--Main-->
+        <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center home">
+            <div class="left-col">
+                <div class="title-content">
+                    <p>PROGRAMMING is an ART...</p>
+                    <p>WE are ARTIST...</p>
+                </div>
+                <div class="content">
+                    <p>
+                        “You might not think that programmers are artists, but programming
+                        is an extremely creative profession. It’s logic-based creativity.”
+                    </p>
+                    <p>– John Romero</p>
+                </div>
+            </div>
+            <div class="right-col">
+                <img src="home/earth.png" alt="" />
+            </div>
+        </div>
+
+        <!-- Services -->
+        <div class="flex flex-wrap flex-col items-center services">
+            <h1>Services</h1>
+            <div class="flex flex-col md:flex-row services-content">
+                <div class="flex flex-wrap flex-col items-center">
+                    <img src="home/courses.png" alt="" />
+                    <p>Japanese & IT Professional Training Center (Online & In-Class)</p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        See Courses
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap flex-col items-center">
+                    <img src="home/services.png" alt="" />
+                    <p>Software Development & Services</p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        Our Services
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap flex-col items-center">
+                    <img src="home/courses.png" alt="" />
+                    <p>Japanese & IT Professional Training Center (Online & In-Class)</p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        See Courses
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Us -->
+        <div class="flex flex-wrap flex-col items-center aboutUs">
+            <h1>About Us</h1>
+            <div class="flex flex-col md:flex-row items-center aboutUs-content">
+                <img src="home/codeeditor.png" alt="" />
+                <img src="home/earthconnection.png" alt="" />
+            </div>
+        </div>
+
+        <!-- Mini Projects -->
+        <div class="flex flex-wrap flex-col items-center miniprojects">
+            <h1 class="title">Students Mini Projects</h1>
+            <div class="minititle">
+                <p>let's play</p>
+                <img src="home/downarrow.png" alt="" />
+            </div>
+            <div class="paths">
+                <div class="game1">
+                    <a href="#">
+                        <h1>Monopoli</h1>
+                        <p>Game</p>
+                    </a>
+                </div>
+                <div class="game2">
+                    <a href="#">
+                        <h1>Underwater</h1>
+                        <p>Animation</p>
+                    </a>
+                </div>
+                <div class="game3">
+                    <a href="#">
+                        <h1>Bingo</h1>
+                        <p>Game</p>
+                    </a>
+                </div>
+                <div class="game4">
+                    <a href="#">
+                        <h1>Shopping</h1>
+                        <p>Online Shop</p>
+                    </a>
+                </div>
+                <img src="home/path.png" alt="" />
+            </div>
+        </div>
+
+        <!-- Contact Us -->
+        <div class="flex flex-wrap flex-col items-center contactUs">
+            <h1>Contact Us</h1>
+            <div class="flex flex-row contactUs-content">
+                <div class="flex flex-col formBar">
+                    <div class="circle active">Name</div>
+                    <div class="circle">Email</div>
+                    <div class="circle">Phone</div>
+                    <div class="circle">Message</div>
+                </div>
+
+                <div class="form">
+                    <div class="mb-6">
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 h-20 p-2.5" />
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="p-6 sm:p-6 bg-blue-700 flex flex-wrap flex-col md:flex-row">
+            <div class="logo flex flex-col items-center">
+                <img src="home/logo.png" alt="" />
+                <h3>Ex;braiN Education</h3>
+            </div>
+            <div>
+                <ul class="flex flex-col items-center flex-col md:flex-col">
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">Mini Projects</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">Contact Us</a>
+                    </li>
+                    <li>
+                        <button type="button"
+                            class="text-black bg-white hover:bg-blue-800 font-lg rounded-lg text-sm px-8 py-2.5">
+                            Explore
+                        </button>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="flex flex-col items-center flex-col md:flex-col">
+                    <li>
+                        <h1>Address</h1>
+                    </li>
+                    <li>
+                        <p>
+                            Build No(15) Room (3B) MyayNiGoneZay Street, Sanchaung Township
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <ul class="flex flex-col flex-col md:flex-col">
+                    <li class="text-center">
+                        <h1>Social</h1>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/facebook.png" alt="" class="mr-2" />
+                            <p>FaceBook</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/youtube.png" alt="" class="mr-2" />
+                            <p>Software Development</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/youtube.png" alt="" class="mr-2" />
+                            <p>Japanese</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+
+    <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
             <Link v-if="$page.props.user" :href="route('dashboard')" class="text-sm text-gray-700 dark:text-gray-500 underline">Dashboard</Link>
 
@@ -175,5 +431,222 @@ defineProps({
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </template>
+
+<style>
+/* body {
+    background-color: #222;
+} */
+
+.home {
+    justify-content: space-around;
+}
+
+.home .left-col .title-content {
+    text-align: end;
+    font-size: 56px;
+}
+
+.home .left-col .content {
+    margin-top: 2em;
+    margin-left: 2em;
+    width: 600px;
+    text-align: center;
+}
+
+.home .right-col img {
+    width: 550px;
+}
+
+.services {
+    margin: 2em 0;
+}
+
+.services .services-content {
+    text-align: center;
+    margin: 5em;
+}
+
+.services .services-content div {
+    margin: 3em;
+    width: 250px;
+}
+
+.services .services-content div p {
+    margin: 1em 0;
+}
+
+.services .services-content div button {
+    margin: 1em;
+}
+
+.aboutUs .aboutUs-content {
+    margin: 5em;
+}
+
+.aboutUs .aboutUs-content img:first-child {
+    width: 700px;
+    height: auto;
+}
+
+.aboutUs .aboutUs-content img:nth-child(2) {
+    width: auto;
+    height: 350px;
+}
+
+.miniprojects .title {
+    margin-bottom: 5em;
+}
+
+.miniprojects .minititle {
+    padding: 2em;
+    margin: 2em;
+}
+
+.miniprojects .minititle img {
+    width: 150px;
+}
+
+.miniprojects .paths {
+    position: relative;
+    margin: 5em 0;
+}
+
+.miniprojects .paths img {
+    width: 800px;
+}
+
+.miniprojects .paths div {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniprojects .paths div.game1 {
+    bottom: 2em;
+    left: 2em;
+}
+
+.miniprojects .paths div.game1::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2535a1;
+}
+
+.miniprojects .paths div.game2 {
+    top: 4em;
+    left: 9em;
+}
+
+.miniprojects .paths div.game2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffc652;
+}
+
+.miniprojects .paths div.game3 {
+    bottom: 0em;
+    right: 13em;
+}
+
+.miniprojects .paths div.game3::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff6551;
+}
+
+.miniprojects .paths div.game4 {
+    top: 0.5em;
+    right: 1em;
+}
+
+.miniprojects .paths div.game4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff6551;
+}
+
+.contactUs {
+    margin: 5em 0;
+}
+
+.contactUs .contactUs-content {
+    margin: 5em 0;
+}
+
+.contactUs .contactUs-content .formBar {
+    width: 5px;
+    height: 400px;
+    margin: 0 8em;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+}
+
+.contactUs .contactUs-content .formBar .circle {
+    position: relative;
+    width: 120px;
+    height: 50px;
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactUs .contactUs-content .formBar .circle.active::before {
+    background-color: #2535a1;
+}
+
+.contactUs .contactUs-content .formBar .circle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+footer {
+    justify-content: space-between;
+}
+
+footer div ul {
+    width: 300px;
+}
+
+footer div ul li {
+    margin: 0.5em 0;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        align-items: center;
+    }
+}
+</style>
