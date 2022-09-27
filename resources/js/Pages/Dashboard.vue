@@ -1,13 +1,14 @@
 <script setup>
-import AppLayout from '@/Layouts/AppLayout.vue';
+
+import AppLogin from '@/Layouts/AppLogin.vue';
 import Welcome from '@/Components/Welcome.vue';
 </script>
 
 <template>
-    <AppLayout title="Dashboard">
+    <AppLogin title="Hello Hello">
         <template #header>
             <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                Dashboard
+                Hello
             </h2>
         </template>
 
@@ -18,5 +19,5 @@ import Welcome from '@/Components/Welcome.vue';
                 </div>
             </div>
         </div>
-    </AppLayout>
+    </AppLogin>
 </template>

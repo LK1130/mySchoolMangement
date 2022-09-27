@@ -1,5 +1,5 @@
 <script setup>
-import { Head, useForm } from '@inertiajs/inertia-vue3';
+import { Head,Link, useForm } from '@inertiajs/inertia-vue3';
 import AuthenticationCard from '@/Components/AuthenticationCard.vue';
 import AuthenticationCardLogo from '@/Components/AuthenticationCardLogo.vue';
 import InputError from '@/Components/InputError.vue';
@@ -8,6 +8,7 @@ import PrimaryButton from '@/Components/PrimaryButton.vue';
 import TextInput from '@/Components/TextInput.vue';
 
 defineProps({
+    backLogin : Boolean,
     status: String,
 });
 
@@ -24,13 +25,11 @@ const submit = () => {
     <Head title="Forgot Password" />
 
     <AuthenticationCard>
-        <template #logo>
+        <!-- <template #logo>
             <AuthenticationCardLogo />
-        </template>
+        </template> -->
 
-        <div class="mb-4 text-sm text-gray-600">
-            Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-        </div>
+        
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}
@@ -38,23 +37,52 @@ const submit = () => {
 
         <form @submit.prevent="submit">
             <div>
-                <InputLabel for="email" value="Email" />
+                <!-- <InputLabel for="email" value="Email" /> -->
                 <TextInput
                     id="email"
                     v-model="form.email"
                     type="email"
-                    class="mt-1 block w-full"
+                    class="mt-9 block lg:w-72 md:w-72 sm:w-8"
+                    placeholder="Email"
                     required
                     autofocus
                 />
                 <InputError class="mt-2" :message="form.errors.email" />
             </div>
 
-            <div class="flex items-center justify-end mt-4">
-                <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Email Password Reset Link
+            <div class="flex items-center justify-center mt-20">
+                <PrimaryButton class="w-full btn" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
+                    Send Verfication Code
                 </PrimaryButton>
             </div>
+
+            <div class="flex items-start justify-start mt-4">
+                <Link  href="/login" class="underline text-base text-gray-600 hover:text-gray-900  forgot">
+                    back
+                </Link>
+                
+            </div>
+           
         </form>
     </AuthenticationCard>
 </template>
+
+
+<style>
+
+    #email,#password{
+        border: 0.1px solid #2535A1;
+        box-shadow: 2px 2px 5px #000;
+        border-radius: 12px;
+    }
+    .btn{
+        background-color: #2535A1;
+        height: 2.6rem;
+        font-family: 'Poppins';
+        
+    }
+    .forgot{
+        color: #2535A1;
+    }
+  
+</style>

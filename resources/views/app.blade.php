@@ -8,7 +8,9 @@
 
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
-
+        
+        {{-- <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
+        <link rel="stylesheet" href="{{ asset('resources/css/login.css') }}">  --}}
         <!-- Scripts -->
         @routes
         @vite('resources/js/app.js')
