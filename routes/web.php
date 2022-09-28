@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomePageController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -27,6 +28,7 @@ Route::get('/',function(){
 });
     
 
+// Route::get('home',[HomePageController::class,'index']);
 
 Route::middleware([
     'auth:sanctum',
