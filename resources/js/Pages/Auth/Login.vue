@@ -91,21 +91,5 @@ const submit = () => {
 
 
 <style>
-    #email,#password{
-        border: 0.1px solid #2535A1;
-        box-shadow: 2px 2px 5px #000;
-        border-radius: 12px;
-    }
-
-    .btn{
-        background-color: #2535A1;
-        height: 2.6rem;
-        font-family: 'Poppins',sans-serif;
-        
-    }
-
-    .forgot{
-        color: #2535A1;
-    }
-
+@import "../../../css/login.css";
 </style>

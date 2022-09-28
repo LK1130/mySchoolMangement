@@ -1,0 +1,210 @@
+.home {
+    justify-content: space-around;
+}
+
+.home .left-col .title-content {
+    text-align: end;
+    font-size: 56px;
+}
+
+.home .left-col .content {
+    margin-top: 2em;
+    margin-left: 2em;
+    width: 600px;
+    text-align: center;
+}
+
+.home .right-col img {
+    width: 550px;
+}
+
+.services {
+    margin: 2em 0;
+}
+
+.services .services-content {
+    text-align: center;
+    margin: 5em;
+}
+
+.services .services-content div {
+    margin: 3em;
+    width: 250px;
+}
+
+.services .services-content div p {
+    margin: 1em 0;
+}
+
+.services .services-content div button {
+    margin: 1em;
+}
+
+.aboutUs .aboutUs-content {
+    margin: 5em;
+}
+
+.aboutUs .aboutUs-content img:first-child {
+    width: 700px;
+    height: auto;
+}
+
+.aboutUs .aboutUs-content img:nth-child(2) {
+    width: auto;
+    height: 350px;
+}
+
+.miniprojects .title {
+    margin-bottom: 5em;
+}
+
+.miniprojects .minititle {
+    padding: 2em;
+    margin: 2em;
+}
+
+.miniprojects .minititle img {
+    width: 150px;
+}
+
+.miniprojects .paths {
+    position: relative;
+    margin: 5em 0;
+}
+
+.miniprojects .paths img {
+    width: 800px;
+}
+
+.miniprojects .paths div {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.miniprojects .paths div.game1 {
+    bottom: 2em;
+    left: 2em;
+}
+
+.miniprojects .paths div.game1::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #2535a1;
+}
+
+.miniprojects .paths div.game2 {
+    top: 4em;
+    left: 9em;
+}
+
+.miniprojects .paths div.game2::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ffc652;
+}
+
+.miniprojects .paths div.game3 {
+    bottom: 0em;
+    right: 13em;
+}
+
+.miniprojects .paths div.game3::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 2em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff6551;
+}
+
+.miniprojects .paths div.game4 {
+    top: 0.5em;
+    right: 1em;
+}
+
+.miniprojects .paths div.game4::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 1em;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #ff6551;
+}
+
+.contactUs {
+    margin: 5em 0;
+}
+
+.contactUs .contactUs-content {
+    margin: 5em 0;
+}
+
+.contactUs .contactUs-content .formBar {
+    width: 5px;
+    height: 400px;
+    margin: 0 8em;
+    background-color: #d9d9d9;
+    border-radius: 5px;
+}
+
+.contactUs .contactUs-content .formBar .circle {
+    position: relative;
+    width: 120px;
+    height: 50px;
+    margin: 0.5em 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.contactUs .contactUs-content .formBar .circle.active::before {
+    background-color: #2535a1;
+}
+
+.contactUs .contactUs-content .formBar .circle::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #fff;
+}
+
+footer {
+    justify-content: space-between;
+}
+
+footer div ul {
+    width: 300px;
+}
+
+footer div ul li {
+    margin: 0.5em 0;
+}
+
+@media screen and (max-width: 768px) {
+    footer {
+        align-items: center;
+    }
+}
