@@ -10,17 +10,16 @@ body {
 
 #email,
 #password {
-    border: 0.1px solid #2535a1;
+    border: 0.1px solid var(--primaryBackground);
     box-shadow: 2px 2px 5px #000;
     border-radius: 12px;
 }
 
 .btn {
-    background-color: #2535a1;
+    background-color:var(--primaryBackground);
     height: 2.6rem;
-    font-family: "Poppins", sans-serif;
 }
 
 .forgot {
-    color: #2535a1;
+    color: var(--primaryBackground);
 }
