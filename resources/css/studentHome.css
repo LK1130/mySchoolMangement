@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.ion{
+    color: #2535A1 !important;
+    font-family: 'Poppins',sans-serif;
+    font-weight: bold;
+ 
+}
+.noti{
+    font-size:1.5rem;
+    color: #2535A1;
+}
+
+.profile{
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid black;
+    /* background: black; */
+}
+
+.btn{
+    background: #2535A1;
+    font-size: 1rem;
+    font-family: 'Poppins';
+}
+
+.video{
+    border:1px solid #2535A1;
+}

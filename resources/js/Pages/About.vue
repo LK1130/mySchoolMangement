@@ -1,3 +1,3 @@
 <template>
-    Coming Soon
+    hello
 </template>

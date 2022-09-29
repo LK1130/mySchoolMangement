@@ -31,7 +31,7 @@ Route::get('/',function(){
 Route::get('/homepage', [HomeController::class,"index"]);
     
 
-// Route::get('home',[HomePageController::class,'index']);
+Route::get('/homes',[HomePageController::class,'index']);
 
 Route::middleware([
     'auth:sanctum',

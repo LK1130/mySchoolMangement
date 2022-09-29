@@ -10,6 +10,6 @@ class HomePageController extends Controller
 
     public function index(){
 
-        return inertia('Main/About');
+        return inertia('About');
     }
 }
