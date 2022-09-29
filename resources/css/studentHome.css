@@ -4,30 +4,30 @@
 }
 
 .ion{
-    color: #2535A1 !important;
+    color:  var(--primaryBackground) !important;
     font-family: 'Poppins',sans-serif;
     font-weight: bold;
  
 }
 .noti{
     font-size:1.5rem;
-    color: #2535A1;
+    color: var(--primaryBackground);
 }
 
 .profile{
     width: 35px;
     height: 35px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid var(--blackTextColor);
     /* background: black; */
 }
 
 .btn{
-    background: #2535A1;
+    background: var(--primaryBackground);
     font-size: 1rem;
     font-family: 'Poppins';
 }
 
 .video{
-    border:1px solid #2535A1;
+    border:1px solid var(--primaryBackground);
 }

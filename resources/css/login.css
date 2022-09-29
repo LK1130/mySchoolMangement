@@ -8,6 +8,24 @@ body {
     background: black !important;
 }
 
+
+
+.blog{
+    background: var(--primaryBackground);
+}
+
+.login-box{
+     width: 400px;
+    height: 490px;
+}
+
+.school{
+    color: rgba(37, 53, 161, 1);
+    font-family: 'Poppins',sans-serif;
+}
+
+
+
 #email,
 #password {
     border: 0.1px solid var(--primaryBackground);
@@ -22,4 +40,20 @@ body {
 
 .forgot {
     color: var(--primaryBackground);
+}
+
+
+
+@media screen and (max-width: 768px){
+    .logos{
+        width: 35%;
+        height: 35%;
+    }
+    .login-box{
+        width: 270px;
+        height: 420px;
+    }
+    .school{
+        font-size: 2rem;
+    }
 }

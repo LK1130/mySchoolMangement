@@ -15,33 +15,8 @@
     </div>
 </template>
 
+
+
 <style>
-    .blog{
-        background: #2535A1;
-    }
-
-    .login-box{
-         width: 400px;
-        height: 490px;
-    }
-
-    .school{
-        color: rgba(37, 53, 161, 1);
-        font-family: 'Poppins',sans-serif;
-    }
-
-
-    @media screen and (max-width: 768px){
-        .logos{
-            width: 35%;
-            height: 35%;
-        }
-        .login-box{
-            width: 270px;
-            height: 420px;
-        }
-        .school{
-            font-size: 2rem;
-        }
-    }
+    @import "../../css/login.css";
 </style>
