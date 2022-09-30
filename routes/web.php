@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomePageController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\RecordController;
 use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -29,7 +30,7 @@ Route::get('/',function(){
 });
 
 Route::get('/homepage', [HomeController::class,"index"]);
-    
+Route::get('/recording',[RecordController::class,"index"]);
 
 Route::get('/homes',[HomePageController::class,'index']);
 

@@ -17,6 +17,15 @@ module.exports = {
                 
             },
         },
+        extend:{
+            colors : {
+                primaryBackground : '#2535a1',
+                secondaryBackground: '#ffc652',
+               tertiaryBackground: '#ff6551',
+               whiteTextColor :  '#fff',
+               blackTextColor : '#000'
+            }
+        }
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
