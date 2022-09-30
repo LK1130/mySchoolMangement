@@ -1,7 +1,7 @@
 <script setup>
 
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import NavLayout from '../Layouts/NavLayout.vue';
+import Header from '../Layouts/Header.vue';
 import SecondaryButtonVue from '../Components/SecondaryButton.vue';
 import Footer from '../Layouts/Footer.vue';
 import SecondaryBtn from '../Components/SecondaryBtn.vue';
@@ -15,9 +15,7 @@ import DateButton from '../Components/DateButton.vue';
 <template>
 
     <Head title="Exbrain" />
-    <NavLayout>
-
-    </NavLayout>
+    <Header/>
 
     <section>
         <div class="relative  w-full h-full bg-primaryBackground z-20 mx-auto">

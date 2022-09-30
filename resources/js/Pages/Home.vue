@@ -1,7 +1,7 @@
 <script setup>
 
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
-import NavLayout from '../Layouts/NavLayout.vue';
+import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 
 
@@ -10,7 +10,7 @@ import Footer from '../Layouts/Footer.vue';
 <template>
 
     <Head title="Exbrain" />
-    <NavLayout />
+    <Header />
 
     <div class=""></div>
 

@@ -1,14 +1,3 @@
-*{
-    margin: 0;
-    padding: 0;
-}
-
-.ion{
-    color:  var(--primaryBackground) !important;
-    font-family: 'Poppins',sans-serif;
-    font-weight: bold;
- 
-}
 .noti{
     font-size:1.5rem;
     color: var(--primaryBackground);
