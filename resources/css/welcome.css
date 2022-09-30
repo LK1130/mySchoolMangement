@@ -1,9 +1,8 @@
-* {
-    margin: 0;
-    box-sizing: border-box;
+body {
+    background-color: #222;
 }
 
-.home {
+/* .home {
     justify-content: space-around;
 }
 
@@ -212,4 +211,4 @@ footer div ul li {
     footer {
         align-items: center;
     }
-}
+} */
