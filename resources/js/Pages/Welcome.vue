@@ -13,9 +13,73 @@ defineProps({
 
     <Head title="Welcome" />
 
-    <div class="bg-neutral-900 text-white body">
-        <nav class="bg-neutral-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
-            <div class="container flex flex-wrap justify-between items-center mx-auto">
+    <!-- Navbar -->
+    <nav class="relative cotainer mx-auto px-6 py-4">
+        <!-- Flex Container -->
+        <div class="flex items-center justify-between">
+            <!-- Logo -->
+            <div class="pt-2">
+                <img src="home/logo.png" alt="Exbrain">
+            </div>
+
+            <!-- Menu List -->
+            <div class="hidden md:flex flex-row items-center">
+                <!-- Menu Items -->
+                <div class="flex space-x-10 mx-12">
+                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Home</a>
+                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Services</a>
+                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">About Us</a>
+                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Mini Project</a>
+                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Contact Us</a>
+                </div>
+                <!-- Button -->
+                <a href=""
+                    class="hidden md:block p-2 px-6 pt-2 text-white bg-primaryBackground rounded-lg baseline">Explore</a>
+            </div>
+
+            <!-- Humbargar Menu -->
+            <button data-collapse-toggle="navbar-default" type="button"
+                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                aria-controls="navbar-default" aria-expanded="false">
+                <span class="sr-only">Open main menu</span>
+                <svg class="w-10 h-10" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd"
+                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                        clip-rule="evenodd"></path>
+                </svg>
+            </button>
+
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section>
+        <!-- Flex Container -->
+        <div class=" flex flex-col-reverse items-center mx-auto md:flex-row w-full">
+            <!-- Left Item -->
+            <div class="flex flex-col space-y-10 w-3/5">
+                <h1 class="max-w-full text-5xl text-right text-whiteTextColor">Programming is an Art</h1>
+                <h1 class="max-w-full text-5xl text-right text-whiteTextColor">We are Artist</h1>
+                <div class="max-w-full right-0">
+                    <p class="text-center text-whiteTextColor">
+                        “You might not think that programmers are artists, but programming is an extremely creative
+                        profession. It’s logic-based creativity.”
+                        – John Romero
+                    </p>
+                </div>
+            </div>
+
+            <!-- Right Item -->
+            <div class="w-2/5">
+                <img src="home/earth.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- <div class="bg-neutral-900 text-white overflow-x-hidden"> -->
+    <!-- <nav class="bg-neutral-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
+            <div class="flex flex-wrap justify-between items-center mx-auto">
                 <a href="#" class="flex items-center">
                     <img src="home/logo.png" class="mr-3 h-12 sm:h-12" alt="Ex;logo Logo" />
                 </a>
@@ -67,13 +131,13 @@ defineProps({
                     </ul>
                 </div>
             </div>
-        </nav>
+        </nav> -->
 
-        <!--Main-->
-        <div class="container mx-auto flex flex-wrap flex-col md:flex-row items-center home">
+    <!--Main-->
+    <!-- <div class="flex flex-wrap  flex-col  md:flex-row items-center home">
             <div class="left-col">
-                <div class="title-content">
-                    <p>PROGRAMMING is an ART...</p>
+                <div class="">
+                    <p class="md:text-xl sm:text-sm">PROGRAMMING is an ART...</p>
                     <p>WE are ARTIST...</p>
                 </div>
                 <div class="content">
@@ -84,13 +148,13 @@ defineProps({
                     <p>– John Romero</p>
                 </div>
             </div>
-            <div class="right-col">
+            <div class="">
                 <img src="home/earth.png" alt="" />
             </div>
-        </div>
+        </div> -->
 
-        <!-- Services -->
-        <div class="flex flex-wrap flex-col items-center services">
+    <!-- Services -->
+    <!-- <div class="flex flex-wrap flex-col items-center services">
             <h1>Services</h1>
             <div class="flex flex-col md:flex-row services-content">
                 <div class="flex flex-wrap flex-col items-center">
@@ -120,19 +184,19 @@ defineProps({
                     </button>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- About Us -->
-        <div class="flex flex-wrap flex-col items-center aboutUs">
+    <!-- About Us -->
+    <!-- <div class="flex flex-wrap flex-col items-center aboutUs">
             <h1>About Us</h1>
             <div class="flex flex-col md:flex-row items-center aboutUs-content">
                 <img src="home/codeeditor.png" alt="" />
                 <img src="home/earthconnection.png" alt="" />
             </div>
-        </div>
+        </div> -->
 
-        <!-- Mini Projects -->
-        <div class="flex flex-wrap flex-col items-center miniprojects">
+    <!-- Mini Projects -->
+    <!-- <div class="flex flex-wrap flex-col items-center miniprojects">
             <h1 class="title">Students Mini Projects</h1>
             <div class="minititle">
                 <p>let's play</p>
@@ -165,10 +229,10 @@ defineProps({
                 </div>
                 <img src="home/path.png" alt="" />
             </div>
-        </div>
+        </div> -->
 
-        <!-- Contact Us -->
-        <div class="flex flex-wrap flex-col items-center contactUs">
+    <!-- Contact Us -->
+    <!-- <div class="flex flex-wrap flex-col items-center contactUs">
             <h1>Contact Us</h1>
             <div class="flex flex-row contactUs-content">
                 <div class="flex flex-col formBar">
@@ -195,10 +259,10 @@ defineProps({
                     </div>
                 </div>
             </div>
-        </div>
+        </div> -->
 
-        <!-- Footer -->
-        <footer class="p-6 sm:p-6 bg-blue-700 flex flex-wrap flex-col md:flex-row">
+    <!-- Footer -->
+    <!-- <footer class="p-6 sm:p-6 bg-blue-700 flex flex-wrap flex-col md:flex-row">
             <div class="logo flex flex-col items-center">
                 <img src="home/logo.png" alt="" />
                 <h3>Ex;braiN Education</h3>
@@ -265,8 +329,8 @@ defineProps({
                     </li>
                 </ul>
             </div>
-        </footer>
-    </div>
+        </footer> -->
+    <!-- </div> -->
 
     <!-- <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center sm:pt-0">
         <div v-if="canLogin" class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
