@@ -8,7 +8,7 @@
     </script>
     
     <template>
-        <button :type="type" class="bg-secondaryBackground w-12 h-9 rounded text-white">
+        <button :type="type" class="bg-secondaryBackground w-24 px-3  pr-3 rounded-full  text-white">
             <slot />
         </button>
     </template>

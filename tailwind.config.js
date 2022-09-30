@@ -25,7 +25,12 @@ module.exports = {
                whiteTextColor :  '#fff',
                blackTextColor : '#000'
             }
-        }
+            ,
+            fontSize: {
+                standard : '32px',
+                mobilestandard : '16px'
+            }
+        },
     },
 
     plugins: [require('@tailwindcss/forms'), require('@tailwindcss/typography')],
