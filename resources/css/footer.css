@@ -1,0 +1,13 @@
+.footer {
+    background-color: var(--primaryBackground);
+    color: var(--whiteTextColor);
+}
+
+.flink-fgp{
+   @apply font-semibold md:text-lg hover:opacity-70;
+    color: var(--secondaryBackground);
+}
+
+.flink-sgp{
+    @apply font-semibold md:text-lg hover:opacity-70
+}

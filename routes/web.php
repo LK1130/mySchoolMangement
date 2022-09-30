@@ -29,7 +29,7 @@ Route::get('/',function(){
     ]);
 });
 
-Route::get('/homepage', [HomeController::class,"index"]);
+// Route::get('/homepage', [HomeController::class,"index"]);
 Route::get('/recording',[RecordController::class,"index"]);
 
 Route::get('/homes',[HomePageController::class,'index']);
@@ -39,7 +39,7 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
+    Route::get('/homepage', function () {
+        return Inertia::render('Home');
     })->name('dashboard');
 });

@@ -1,4 +1,4 @@
-<script setup> 
+<script setup>
 
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import NavLayout from '../Layouts/NavLayout.vue';
@@ -9,10 +9,15 @@ import Footer from '../Layouts/Footer.vue';
 
 <template>
 
-    <Head title="Exbrain | Home" />
-    <NavLayout>
+    <Head title="Exbrain" />
+    <NavLayout />
 
-    </NavLayout>
-    
+    <div class=""></div>
+
+
+
+
+    <Footer/>
+
 </template> 
 
