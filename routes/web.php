@@ -29,7 +29,7 @@ Route::get('/',function(){
     ]);
 });
 
-// Route::get('/homepage', [HomeController::class,"index"]);
+Route::get('/homepage', [HomeController::class,"index"]);
 Route::get('/recording',[RecordController::class,"index"]);
 
 Route::get('/homes',[HomePageController::class,'index']);
