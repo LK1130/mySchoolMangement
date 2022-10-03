@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomePageController;
+
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
-use Illuminate\Contracts\View\View;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,7 +18,9 @@ use Inertia\Inertia;
 |
 */
 
-
+/**
+ * Start public Home Page
+ */
 Route::get('/',function(){
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
@@ -29,11 +30,7 @@ Route::get('/',function(){
     ]);
 });
 
-Route::get('/homepage', [HomeController::class,"index"]);
-Route::get('/recording',[RecordController::class,"index"]);
-
-Route::get('/homes',[HomePageController::class,'index']);
-
+// Auth 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
@@ -43,3 +40,14 @@ Route::middleware([
         return Inertia::render('Home');
     })->name('dashboard');
 });
+
+/**
+ * Need to login
+ */
+Route::middleware(['auth'])->group(function () {
+    //Home page
+    Route::get('/homepage', [HomeController::class, "index"]);
+    //Recording page
+    Route::get('/recording', [RecordController::class, "index"]);
+});
+

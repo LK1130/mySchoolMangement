@@ -100,7 +100,7 @@ import DateButton from '../Components/DateButton.vue';
 
         </div>
     </section>
-
+<Footer />
 
 </template> 
     

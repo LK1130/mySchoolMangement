@@ -67,14 +67,8 @@ let menuShow = ref(false);
       </ul>
     </div>
   </nav>
-
-
 </template>
-
-
 
 <style>
 @import "../../css/header.css";
 </style>
-
-
