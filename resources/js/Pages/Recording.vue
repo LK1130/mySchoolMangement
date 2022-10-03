@@ -6,6 +6,8 @@ import SecondaryButtonVue from '../Components/SecondaryButton.vue';
 import Footer from '../Layouts/Footer.vue';
 import SecondaryBtn from '../Components/SecondaryBtn.vue';
 import DateButton from '../Components/DateButton.vue';
+import Pagination from '../Components/Pagination.vue';
+
 
 
 
@@ -27,7 +29,7 @@ import DateButton from '../Components/DateButton.vue';
             </div>
 
 
-            <h3 class="absolute z-0 myschool">My School</h3>
+            <h3 class="absolute z-0 myschool ">My School</h3>
 
             <div class="container flex md:flex-row flex-col   justify-around  md:space-x-10  md:p-24 p-20 z-20">
                 <div class="video-container container  mx-auto z-20 md:mx-24 ">
@@ -62,16 +64,15 @@ import DateButton from '../Components/DateButton.vue';
 
     <section>
 
-        <div class="relative container h-96 mx-auto space-y-3">
+        <div class="relative container h-96 mx-auto space-y-5">
             <div class="flex  justify-center p-10 ">
                
                 <h3 class="text-standard font-bold title" >Recording Video Lists</h3>
             </div>
 
-            <div
-                class="relative  md:flex  md:flex-row sm:flex  sm:flex-col space-y-5  justify-around items-center mx-auto smallsize ">
+            <div class="relative  md:flex  md:flex-row sm:flex  sm:flex-col space-y-5  justify-around items-center mx-auto smallsize ">
                 <div class="hidden md:block mt-4">
-                    <span>30 <span>Videos</span> </span>
+                    <span class="font-bold">30 <span class="font-bold">Videos</span> </span>
                 </div>
 
 
@@ -97,10 +98,87 @@ import DateButton from '../Components/DateButton.vue';
 
 
             </div>
+           
+            <div class="relative container md:w-11/12 mx-auto py-4">
+                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
+                   <div class="flex ">
+                    <div class="img-block md:mx-10 sm:mx-4">
+                        <img src="img/video.png" class="thumbnail" alt="thumbnail">
+                    </div>
+                    <div class="md:mx-10 sm:mx-5">
+                        <p class="text-base font-bold font-family">Hiragana 1</p>
+                        <span class="text-xs font-light">2022/10/01</span>
+                    </div>
+                   </div>
+
+
+                   <div class="flex items-center">
+                    <DateButton class="h-8 px-5 pr-5 text-center">Watch</DateButton>
+                   </div>
+                </div>
+
+
+                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
+                   <div class="flex ">
+                    <div class="img-block md:mx-10 sm:mx-4">
+                        <img src="img/video.png" class="thumbnail" alt="thumbnail">
+                    </div>
+                    <div class="md:mx-10 sm:mx-5 ">
+                        <p class="text-base font-bold font-family">Hiragana 1</p>
+                        <span class="text-xs font-light">2022/10/01</span>
+                    </div>
+                   </div>
+
+
+                   <div class="flex items-center">
+                    <DateButton class="h-8 px-5 pr-5 text-center">Watch</DateButton>
+                   </div>
+                </div>
+
+                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
+                   <div class="flex ">
+                    <div class="img-block md:mx-10 sm:mx-4">
+                        <img src="img/video.png" class="thumbnail" alt="thumbnail">
+                    </div>
+                    <div class="md:mx-10 sm:mx-5">
+                        <p class="text-base font-bold font-family">Hiragana 1</p>
+                        <span class="text-xs font-light">2022/10/01</span>
+                    </div>
+                   </div>
+
+
+                   <div class="flex items-center">
+                    <DateButton class="h-8 px-5 pr-5 text-center">Watch</DateButton>
+                   </div>
+                </div>
+
+                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
+                   <div class="flex ">
+                    <div class="img-block md:mx-10 sm:mx-4">
+                        <img src="img/video.png" class="thumbnail" alt="thumbnail">
+                    </div>
+                    <div class="md:mx-10 sm:mx-5">
+                        <p class="text-base font-bold font-family">Hiragana 1</p>
+                        <span class="text-xs font-light">2022/10/01</span>
+                    </div>
+                   </div>
+
+
+                   <div class="flex items-center">
+                    <DateButton class="h-8 px-5 pr-5 text-center">Watch</DateButton>
+                   </div>
+                </div>
+            </div>
+
+
+            <div class="flex justify-center items-center py-3">
+                <Pagination>
+                    </Pagination>
+            </div>
 
         </div>
     </section>
-<Footer />
+            <Footer />
 
 </template> 
     

@@ -38,7 +38,7 @@ let menuShow = ref(false);
       </div>
     </div>
 
-    <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg md:hidden" v-if="menuShow">
+    <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg md:hidden z-40" v-if="menuShow">
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
           <a href="#" class="hlink-text" aria-current="page">Home</a>

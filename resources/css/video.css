@@ -15,7 +15,7 @@
 
 .myschool{
     font-size: 15rem;
-    left: 6%;
+    left: 5%;
     font-weight: 300;
     color: var(--whiteTextColor);
     opacity: 0.1;
@@ -32,6 +32,30 @@
  
 }
 
+.custombox{
+    margin-top: 3rem;
+    border-top: none;
+    border-left: 0.3px solid  rgba(0, 0, 0, 0.2);
+    border-right: 0.3px solid  rgba(0, 0, 0, 0.2);
+    border-bottom: 0.6px solid  rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 5px 2px -3px rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+
+.img-block{
+   width: 20%;
+   height: 20%;
+   
+}
+
+.thumbnail{
+    width: 100%;
+    border-radius: 1rem;   
+}
 
 @media screen and (max-width: 768px){
     .video-container .video{
@@ -62,6 +86,7 @@
     left: 7%;
     font-weight: 300;
     color: var(--whiteTextColor);
+    visibility: hidden;
     opacity: 0;
     font-family: 'Poppins';
     
@@ -75,5 +100,17 @@
         right: 68%;
     }
 
+
+    .img-block{
+        
+        width: 50% !important;
+        height: 50% !important;
+        margin-right: 0.5rem !important;
+    }
+
+    .thumbnail{
+        width: 65%;
+        border-radius: 10px;   
+    }
     
 }
