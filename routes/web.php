@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RecordController;
@@ -51,4 +52,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/recording', [RecordController::class, "index"]);
     // Blog page
     Route::get('/blog', [BlogListController::class, "index"]);
+    // Blog view
+    Route::get('/blogview', [BlogController::class, "index"]);
 });
