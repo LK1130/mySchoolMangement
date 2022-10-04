@@ -2,7 +2,9 @@
 
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\VideoListController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -49,5 +51,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/homepage', [HomeController::class, "index"]);
     //Recording page
     Route::get('/recording', [RecordController::class, "index"]);
+    //Video Page
+    Route::get('/video',[VideoListController::class,'index']);
+    //Inbox Page
+    Route::get('/inbox',[MessageController::class,'index']);
+
 });
 

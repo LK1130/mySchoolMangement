@@ -1,0 +1,124 @@
+input[type=checkbox] {
+	-moz-appearance:none;
+	-webkit-appearance:none;
+	-o-appearance:none;
+	outline: none;
+	content: none;	
+    border: red;
+}
+
+.inputs:focus,.input:active{
+    outline:none;
+    border:none;
+    
+}
+
+
+.custombox{
+    margin-top: 3rem;
+    border-top: none;
+    border-left: 0.3px solid  rgba(0, 0, 0, 0.2);
+    border-right: 0.3px solid  rgba(0, 0, 0, 0.2);
+    border-bottom: 0.6px solid  rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 5px 2px -3px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.custombox.info::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left : 0;
+    width: 10px;
+    height: 130px;
+    background: var(--primaryBackground);
+    
+}
+
+
+.custombox.message::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left : 0;
+    width: 10px;
+    height: 130px;
+    background: yellow;
+    
+}
+
+
+.custombox.alert::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left : 0;
+    width: 10px;
+    height: 130px;
+    background: red;
+    
+}
+
+.custombox{
+    overflow: hidden;
+}
+
+.days{
+    margin-right: 4rem;
+}
+
+.days-alert,.days-message{
+    margin-right: 3rem;
+}
+
+.result{
+    margin-left: 5rem;
+}
+.margins{
+    margin-right: 10.5rem;
+}
+
+@media screen and (max-width: 768px){
+    .custombox{
+      padding: 1rem;
+        align-items: center;
+    }
+    
+    .mail{
+        font-size: 2.5rem;
+    }
+    .marks{
+        display: flex;
+        font-size: 0.8rem;
+        margin-right: 1rem;
+    }
+
+    .result{
+        font-size: 0.6rem;
+        margin-left: 1.5rem;
+    }
+    .days{
+        font-size: 0.6rem;
+        margin-left: 0.3rem;
+    }
+   
+    .days-alert{
+        font-size: 0.6rem;
+        margin-left: 3rem;
+    }
+    .days-message{
+        font-size: 0.6rem;
+        margin-left: 4.2rem;
+    }
+
+    .mailbox{
+        margin-left: 1.5rem;
+    }
+
+    .custombtn{
+        width: 70px;
+        top: 35px;
+
+    }
+}
+

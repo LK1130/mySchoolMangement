@@ -1,0 +1,10 @@
+.video-bg{
+   
+    width: 100vw;
+    height: 100vh;
+    background: url("../../public/img/video.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    /* background-position:1; */
+    
+}
