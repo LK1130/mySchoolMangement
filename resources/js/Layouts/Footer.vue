@@ -1,5 +1,5 @@
 <template>
-    <div class="w-full h-70  footer absolute bottom-0 align-middle">
+    <div class="w-full h-72  footer  align-middle">
         <div class="opacity-5 w-full absolute hidden lg:block text-center text-9xl p-16 font-semibold">My School</div>
         <div class="p-6">
             <a href="#" class="flex items-center">
@@ -34,7 +34,7 @@
                 </div>
             </div>
         </div>
-        <div class="text-center mb-4 font-semibold opacity-70">Copyright @ exbrain</div>
+        <div class="text-center mt-4  font-semibold opacity-70">Copyright @ exbrain</div>
     </div>
 </template>
 
