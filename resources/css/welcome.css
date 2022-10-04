@@ -1,5 +1,5 @@
 body {
-    background-color: #222;
+    background-color: #000;
 }
 
 /* .home {
@@ -56,20 +56,7 @@ body {
 .aboutUs .aboutUs-content img:nth-child(2) {
     width: auto;
     height: 350px;
-}
-
-.miniprojects .title {
-    margin-bottom: 5em;
-}
-
-.miniprojects .minititle {
-    padding: 2em;
-    margin: 2em;
-}
-
-.miniprojects .minititle img {
-    width: 150px;
-}
+} */
 
 .miniprojects .paths {
     position: relative;
@@ -153,7 +140,7 @@ body {
     background-color: #ff6551;
 }
 
-.contactUs {
+/* .contactUs {
     margin: 5em 0;
 }
 

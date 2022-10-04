@@ -18,7 +18,7 @@ defineProps({
         <!-- Flex Container -->
         <div class="flex items-center justify-between">
             <!-- Logo -->
-            <div class="pt-2">
+            <div class="pt-2 w-12">
                 <img src="home/logo.png" alt="Exbrain">
             </div>
 
@@ -56,26 +56,120 @@ defineProps({
     <!-- Hero Section -->
     <section>
         <!-- Flex Container -->
-        <div class=" flex flex-col-reverse items-center mx-auto md:flex-row w-full">
+        <div class="container flex flex-col-reverse items-center ml-0 md:ml-12 md:flex-row w-full">
             <!-- Left Item -->
-            <div class="flex flex-col space-y-10 w-3/5">
-                <h1 class="max-w-full text-5xl text-right text-whiteTextColor">Programming is an Art</h1>
-                <h1 class="max-w-full text-5xl text-right text-whiteTextColor">We are Artist</h1>
-                <div class="max-w-full right-0">
-                    <p class="text-center text-whiteTextColor">
+            <div class="flex flex-col w-4/5 space-y-8 md:space-y-12 md:w-3/5">
+                <div class="space-y-6">
+                    <h1 class="text-3xl text-right text-whiteTextColor font-bold md:text-5xl">PROGRAMMING
+                        is an
+                        <span class="text-secondaryBackground">ART...</span>
+                    </h1>
+                    <h1 class="text-3xl text-right text-whiteTextColor font-bold md:text-5xl">WE are <span
+                            class="text-secondaryBackground">ARTIST...</span></h1>
+                </div>
+                <div class="text-center font-thin pl-0 md:pl-36">
+                    <p class="flex flex-col text-xs text-whiteTextColor md:text-sm">
                         “You might not think that programmers are artists, but programming is an extremely creative
                         profession. It’s logic-based creativity.”
-                        – John Romero
+                        <span>– John Romero</span>
                     </p>
                 </div>
             </div>
 
             <!-- Right Item -->
-            <div class="w-2/5">
+            <div class="w-3/6">
                 <img src="home/earth.png" alt="">
             </div>
         </div>
     </section>
+
+    <!-- Services -->
+    <section id="service" class="mt-12">
+        <div class="container flex flex-wrap flex-col items-center">
+            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12">Services</h1>
+            <div class="flex flex-col md:flex-row justify-around w-full mt-16">
+                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                    <img src="home/courses.png" alt="" />
+                    <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center <br />
+                        (Online & In-Class)
+                    </p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        See Courses
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                    <img src="home/services.png" alt="" />
+                    <p class="w-56 text-center text-whiteTextColor">Software Development & Services</p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        Our Services
+                    </button>
+                </div>
+
+                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                    <img src="home/courses.png" alt="" />
+                    <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center (Online &
+                        In-Class)</p>
+                    <button type="button"
+                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                        See Courses
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Us -->
+    <section id="aboutUs" class="mt-12">
+        <div class="container flex flex-wrap flex-col items-center">
+            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12">About Us</h1>
+            <div class="flex flex-col md:flex-row items-center mt-16">
+                <img src="home/codeeditor.png" alt="" class="w-3/5 pl-0 md:pl-16" />
+                <img src="home/earthconnection.png" alt="" class="w-64 md:w-96" />
+            </div>
+        </div>
+    </section>
+
+    <!-- Mini Projects -->
+    <section id="miniprojects" class="mt-12">
+        <div class="container flex flex-wrap flex-col items-center miniprojects text-white">
+            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-16">Students Mini Projects</h1>
+            <div class="mb-16">
+                <p class="text-xl">let's play</p>
+                <img src="home/downarrow.png" alt="" class="w-36" />
+            </div>
+            <div class="paths">
+                <div class="game1">
+                    <a href="#">
+                        <h1 class="font-bold">Monopoli</h1>
+                        <p class="font-thin">Game</p>
+                    </a>
+                </div>
+                <div class="game2">
+                    <a href="#">
+                        <h1 class="font-bold">Underwater</h1>
+                        <p class="font-thin">Animation</p>
+                    </a>
+                </div>
+                <div class="game3">
+                    <a href="#">
+                        <h1 class="font-bold">Bingo</h1>
+                        <p class="font-thin">Game</p>
+                    </a>
+                </div>
+                <div class="game4">
+                    <a href="#">
+                        <h1 class="font-bold">Shopping</h1>
+                        <p class="font-thin">Online Shop</p>
+                    </a>
+                </div>
+                <img src="home/path.png" alt="" />
+            </div>
+        </div>
+    </section>
+
 
     <!-- <div class="bg-neutral-900 text-white overflow-x-hidden"> -->
     <!-- <nav class="bg-neutral-900 border-gray-200 px-2 sm:px-4 py-2.5 rounded">
