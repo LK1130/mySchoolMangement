@@ -1,8 +1,10 @@
 <?php
 
-
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogListController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\VideoListController;
 use Illuminate\Foundation\Application;
@@ -23,7 +25,7 @@ use Inertia\Inertia;
 /**
  * Start public Home Page
  */
-Route::get('/',function(){
+Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
@@ -56,5 +58,10 @@ Route::middleware(['auth'])->group(function () {
     //Inbox Page
     Route::get('/inbox',[MessageController::class,'index']);
 
+    // Blog page
+    Route::get('/blog', [BlogListController::class, "index"]);
+    // Blog view
+    Route::get('/blogview', [BlogController::class, "index"]);
+    // Privacy Policy
+    Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
 });
-

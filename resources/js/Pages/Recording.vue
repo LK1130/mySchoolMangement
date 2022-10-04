@@ -37,9 +37,9 @@ const sorting = (value) => {
 
             <h3 class="absolute z-0 myschool ">My School</h3>
 
-            <div class="container flex md:flex-row flex-col   justify-around  md:space-x-10  md:p-24 p-20 z-20">
-                <div class="video-container container  mx-auto z-20 md:mx-24 ">
-                    <img src="img/video.png" alt="">
+            <div class=" flex md:flex-row flex-col   justify-around  md:space-x-10 p-5 pb-10 z-20">
+                <div class="video-container container  mx-auto z-20   ">
+                    <img src="img/video.png" alt="" class="mx-auto">
                 </div>
 
                 <div class="container sm:mt-3  mx-auto space-y-3 recs z-20">
