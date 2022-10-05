@@ -3,9 +3,20 @@
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 
-import "../profile";
 import InputLabel from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputLabel.vue';
 import Footer from '../Layouts/Footer.vue';
+import { ref } from 'vue'
+
+const imgSrc = ref("img/profile.png");
+
+const onFile = (e) => {
+    const files = e.target.files
+    if (!files.length) return
+
+    const reader = new FileReader()
+    reader.readAsDataURL(files[0])
+    reader.onload = () => (imgSrc.value = reader.result)
+}
 
 </script>
 
@@ -17,19 +28,20 @@ import Footer from '../Layouts/Footer.vue';
 
     <section>
         <div class="container mx-auto">
-        <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Profile</p>
+            <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Profile</p>
 
 
             <div class="container mx-auto">
                 <div class="container mx-auto flex flex-wrap justify-around md:space-x-10 space-x-0  mt-3  ">
                     <div class="box ">
-                        <div class="js--image-preview"></div>
-                        <div class="upload-options">
-
-                            <label>
-                                <input type="file" class="image-upload" accept="image/*" />
-                            </label>
+                        <div class="js--image-preview">
+                            <img class="w-72"  :src="imgSrc" alt="" srcset="">
                         </div>
+                        <label for="image">
+                        <div class="upload-options">
+                                <input type="file" id="image" class="image-upload" accept="image/*" @change="onFile" />
+                        </div>
+                        </label>
                     </div>
 
 
@@ -64,20 +76,22 @@ import Footer from '../Layouts/Footer.vue';
                                     placeholder="Phone" required="">
                             </div>
 
-                           
+
 
                             <div class="form-group md:w-9/12 mt-5">
-                               <textarea name="bio" id="bio" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  cols="30" rows="10"  placeholder="Bio"></textarea>
+                                <textarea name="bio" id="bio"
+                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    cols="30" rows="10" placeholder="Bio"></textarea>
                             </div>
-                           
+
                             <div class="flex justify-end items-center mt-14 mb-14 p-2">
                                 <button type="submit"
-                                class="text-white bg-cancelBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Cancel</button>
+                                    class="text-white bg-cancelBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 ">Cancel</button>
 
-                            
+
                                 <button type="submit"
-                                class="text-white md:mx-auto sm:mx-auto mx-auto bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
-                              
+                                    class="text-white md:mx-auto sm:mx-auto mx-auto bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Save</button>
+
                             </div>
                         </form>
 
@@ -88,7 +102,7 @@ import Footer from '../Layouts/Footer.vue';
         </div>
     </section>
 
-    <Footer/>
+    <Footer />
 </template>
 
 
