@@ -1,0 +1,15 @@
+.rank {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.card {
+    position: relative;
+}
+.card .backTitle {
+    position: absolute;
+    top: 0.2em;
+    left: 0;
+    opacity: 0.1;
+}
