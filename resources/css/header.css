@@ -2,7 +2,8 @@
     color:  var(--primaryBackground);
 }
 
-.hlink:hover a::before {
+.hlink:hover a::before,
+.hlink-text-normal:hover  div::before {
     content: ">";
 }
 

@@ -22,7 +22,7 @@ const sorting = (value) => {
     
 <template>
 
-    <Head title="Exbrain" />
+    <Head title="Recording Video" />
     <Header />
 
     <section>

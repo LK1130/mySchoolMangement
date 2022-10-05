@@ -8,7 +8,7 @@ import Header from '../Layouts/Header.vue';
 
 
 <template>
-       <Head title="Exbrain" />
+       <Head title="Video" />
 
        <Header />
 

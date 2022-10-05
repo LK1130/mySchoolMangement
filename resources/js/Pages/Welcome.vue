@@ -11,7 +11,7 @@ defineProps({
 
 <template>
 
-    <Head title="Welcome" />
+    <Head title="Home" />
 
     <!-- Navbar -->
     <nav class="relative cotainer mx-auto px-6 py-4">
@@ -86,7 +86,7 @@ defineProps({
     <!-- Services -->
     <section id="service" class="mt-12">
         <div class="container flex flex-wrap flex-col items-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12">Services</h1>
+            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12 pacifico">Services</h1>
             <div class="flex flex-col md:flex-row justify-around w-full mt-16">
                 <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
                     <img src="home/courses.png" alt="" />

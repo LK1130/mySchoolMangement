@@ -37,7 +37,9 @@ import Dropdown from '../Components/Dropdown.vue';
                         sit, amet consectetur adipisicing elit. Pariatur, odio!....
                     </div>
                     <div class="absolute w-full bottom-0 mb-3">
-                        <h2 class="absolute right-0 text-primaryBackground font-bold">Read More...</h2>
+                        <h2 class="absolute right-0 text-primaryBackground font-bold">
+                            <Link href="./blogview">Read More...</Link>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -58,7 +60,9 @@ import Dropdown from '../Components/Dropdown.vue';
                         sit, amet consectetur adipisicing elit. Pariatur, odio!....
                     </div>
                     <div class="absolute w-full bottom-0 mb-3">
-                        <h2 class="absolute right-0 text-primaryBackground font-bold">Read More...</h2>
+                        <h2 class="absolute right-0 text-primaryBackground font-bold">
+                            <Link href="./blogview">Read More...</Link>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -79,7 +83,9 @@ import Dropdown from '../Components/Dropdown.vue';
                         sit, amet consectetur adipisicing elit. Pariatur, odio!....
                     </div>
                     <div class="absolute w-full bottom-0 mb-3">
-                        <h2 class="absolute right-0 text-primaryBackground font-bold">Read More...</h2>
+                        <h2 class="absolute right-0 text-primaryBackground font-bold">
+                            <Link href="./blogview">Read More...</Link>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -100,7 +106,9 @@ import Dropdown from '../Components/Dropdown.vue';
                         sit, amet consectetur adipisicing elit. Pariatur, odio!....
                     </div>
                     <div class="absolute w-full bottom-0 mb-3">
-                        <h2 class="absolute right-0 text-primaryBackground font-bold">Read More...</h2>
+                        <h2 class="absolute right-0 text-primaryBackground font-bold">
+                            <Link href="./blogview">Read More...</Link>
+                        </h2>
                     </div>
                 </div>
             </div>
@@ -121,7 +129,9 @@ import Dropdown from '../Components/Dropdown.vue';
                         sit, amet consectetur adipisicing elit. Pariatur, odio!....
                     </div>
                     <div class="absolute w-full bottom-0 mb-3">
-                        <h2 class="absolute right-0 text-primaryBackground font-bold">Read More...</h2>
+                        <h2 class="absolute right-0 text-primaryBackground font-bold">
+                            <Link href="./blogview">Read More...</Link>
+                        </h2>
                     </div>
                 </div>
             </div>

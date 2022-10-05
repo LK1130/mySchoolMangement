@@ -12,7 +12,7 @@ import Footer from '../Layouts/Footer.vue';
 
 <template>
 
-    <Head title="Exbrain" />
+    <Head title="Profile" />
     <Header />
 
     <section>

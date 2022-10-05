@@ -9,7 +9,7 @@ import Footer from '../Layouts/Footer.vue';
 
 <template>
 
-    <Head title="Exbrain" />
+    <Head title="Home" />
     <Header />
 
     <section class="container p-4 md:p-12 overflow-x-hidden">

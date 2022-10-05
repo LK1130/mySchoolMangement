@@ -1,5 +1,9 @@
 body {
-    background-color: #000;
+    background-color: #000 !important;
+}
+
+.pacifico{
+    font-family: 'Pacifico';
 }
 
 /* .home {
