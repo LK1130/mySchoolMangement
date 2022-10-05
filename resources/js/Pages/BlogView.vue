@@ -16,16 +16,14 @@ import Dropdown from '../Components/Dropdown.vue';
     <Head title="BlogView" />
     <Header />
 
-    <section class=" p-12">
+    <section class="p-4 md:p-12">
         <div class="flex flex-row items-center justify-between">
-            <div class="flex flex-row items-center">
-                <h1 class="text-lg md:text-xl font-bold text-primaryBackground">BLOG</h1>
-                <h1 class="mx-5 text-xl md:text-4xl font-bold">How to use Vs Code?</h1>
-            </div>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">BLOG</h1>
             <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Next</h1>
         </div>
+        <h1 class="mt-5 text-xl md:text-4xl font-bold">How to use Vs Code?</h1>
 
-        <div class="p-0 md:p-8 mt-5">
+        <div class="pt-5 md:p-8">
             <div class="flex justify-center w-full">
                 <img src="img/blog-view.png" alt="" class="" />
             </div>
