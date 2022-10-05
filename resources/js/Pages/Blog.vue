@@ -16,12 +16,12 @@ import Dropdown from '../Components/Dropdown.vue';
     <Head title="Blog" />
     <Header />
 
-    <section class="container p-12 ">
+    <section class="p-12">
         <h1 class="text-xl font-bold text-primaryBackground mb-6">BLOG</h1>
 
-        <div class="pl-0 md:pl-12">
+        <div class="p-0">
             <div class="flex flex-col md:flex-row px-6 py-8 rounded-xl shadow-xl mb-12">
-                <div class="w-full md:w-1/3 mb-5 md:mb-0">
+                <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img src="img/blog-image.png" alt="">
                 </div>
                 <div class="relative w-full">
@@ -42,7 +42,7 @@ import Dropdown from '../Components/Dropdown.vue';
                 </div>
             </div>
             <div class="flex flex-col md:flex-row px-6 py-8 rounded-xl shadow-xl mb-12">
-                <div class="w-full md:w-1/3 mb-5 md:mb-0">
+                <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img src="img/blog-image.png" alt="">
                 </div>
                 <div class="relative w-full">
@@ -63,7 +63,7 @@ import Dropdown from '../Components/Dropdown.vue';
                 </div>
             </div>
             <div class="flex flex-col md:flex-row px-6 py-8 rounded-xl shadow-xl mb-12">
-                <div class="w-full md:w-1/3 mb-5 md:mb-0">
+                <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img src="img/blog-image.png" alt="">
                 </div>
                 <div class="relative w-full">
@@ -84,7 +84,7 @@ import Dropdown from '../Components/Dropdown.vue';
                 </div>
             </div>
             <div class="flex flex-col md:flex-row px-6 py-8 rounded-xl shadow-xl mb-12">
-                <div class="w-full md:w-1/3 mb-5 md:mb-0">
+                <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img src="img/blog-image.png" alt="">
                 </div>
                 <div class="relative w-full">
@@ -105,7 +105,7 @@ import Dropdown from '../Components/Dropdown.vue';
                 </div>
             </div>
             <div class="flex flex-col md:flex-row px-6 py-8 rounded-xl shadow-xl mb-12">
-                <div class="w-full md:w-1/3 mb-5 md:mb-0">
+                <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img src="img/blog-image.png" alt="">
                 </div>
                 <div class="relative w-full">
@@ -125,7 +125,6 @@ import Dropdown from '../Components/Dropdown.vue';
                     </div>
                 </div>
             </div>
-
         </div>
 
 
