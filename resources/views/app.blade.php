@@ -22,6 +22,8 @@
     <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+    <script src="{{ asset('js/profile.js') }}"></script>
    
     @routes
     @vite('resources/js/app.js')

@@ -22,6 +22,7 @@ module.exports = {
                 primaryBackground : '#2535a1',
                 secondaryBackground: '#ffc652',
                tertiaryBackground: '#ff6551',
+               cancelBackground : '#777777',
                whiteTextColor :  '#fff',
                blackTextColor : '#000'
             }

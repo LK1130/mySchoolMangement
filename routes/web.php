@@ -2,10 +2,13 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogListController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RecordController;
+use App\Http\Controllers\SettingController;
 use App\Http\Controllers\VideoListController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -64,4 +67,13 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/blogview', [BlogController::class, "index"]);
     // Privacy Policy
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
+
+    // Profile
+    Route::get('/profile',[ProfileController::class,'index']);
+
+    // Guide
+    Route::get('/guide',[GuideController::class,'index']);
+
+    //Setting
+    Route::get('/setting',[SettingController::class,'index']);
 });
