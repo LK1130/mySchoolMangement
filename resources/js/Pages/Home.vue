@@ -13,50 +13,54 @@ import Footer from '../Layouts/Footer.vue';
     <Header />
 
     <section class="container p-4 md:p-12 overflow-x-hidden">
+        <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
             <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Courses Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules &
                     Regulations</a></h1>
         </div>
 
+        <!-- Hero Section -->
         <div class="flex flex-col md:flex-row justify-between items-center py-4 w-full ">
-            <div
-                class=" flex flex-col rounded-xl bg-primaryBackground w-full space-y-14 text-white p-8 w-full mb-4 md:mb-0 card">
-                <div class="flex flex-row justify-between items-center z-10">
-                    <div class="flex flex-col space-y-3">
-                        <h1>Linn Ko Ko</h1>
-                        <p>N5 > Batch 18</p>
-                        <div class="flex flex-row">
-                            <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
-                            <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
-                            <div class="w-12 h-2 bg-white rounded-tr-md rounded-br-md"></div>
+            <div class="p-10 w-full">
+                <!-- Student's Card -->
+                <div
+                    class="flex flex-col rounded-xl bg-primaryBackground w-full space-y-14 text-white p-8 w-full mb-4 md:mb-0 overflow-hidden card">
+                    <div class="flex flex-row justify-between items-center z-10">
+                        <div class="flex flex-col space-y-3">
+                            <h1>Linn Ko Ko</h1>
+                            <p>N5 > Batch 18</p>
+                            <div class="flex flex-row">
+                                <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
+                                <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
+                                <div class="w-12 h-2 bg-white rounded-tr-md rounded-br-md"></div>
+                            </div>
+                        </div>
+                        <div class="relative flex flex-row items-center justify-center">
+                            <svg width="50" height="60" viewBox="0 0 114 130" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
+                                    fill="#FFC652" />
+                            </svg>
+                            <p class="text-3xl font-bold rank">10</p>
                         </div>
                     </div>
-                    <div class="relative flex flex-row items-center justify-center">
-                        <svg width="50" height="60" viewBox="0 0 114 130" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <path
-                                d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
-                                fill="#FFC652" />
-                        </svg>
-                        <p class="text-3xl font-bold rank">10</p>
+
+                    <div class="flex flex-row justify-between z-10">
+                        <div class="flex flex-col space-y-4">
+                            <p>Attendance > <span class="ml-3 text-lg font-bold text-secondaryBackground">80%</span></p>
+                            <p>Exam Mark > <span class="ml-3 text-lg font-bold text-secondaryBackground">60%</span></p>
+                        </div>
+                        <p>Status > <span class="ml-3 text-lg font-bold">Active</span></p>
                     </div>
+
+                    <p class="uppercase text-7xl md:text-9xl z-0 backTitle">Japanese</p>
                 </div>
-
-                <div class="flex flex-row justify-between z-10">
-                    <div class="flex flex-col space-y-4">
-                        <p>Attendance > <span class="ml-3 text-lg font-bold text-secondaryBackground">80%</span></p>
-                        <p>Exam Mark > <span class="ml-3 text-lg font-bold text-secondaryBackground">60%</span></p>
-                    </div>
-                    <p>Status > <span class="ml-3 text-lg font-bold">Active</span></p>
-                </div>
-
-
-                <p class="uppercase text-9xl z-0 backTitle">Japanese</p>
-
             </div>
 
-            <div class="flex flex-col w-full pl-0 md:pl-36">
+            <!-- Class Info -->
+            <div class="flex flex-col w-full px-10 md:pl-36">
                 <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Class info</h1>
 
                 <div class="relative">
@@ -122,6 +126,127 @@ import Footer from '../Layouts/Footer.vue';
             </div>
         </div>
     </section>
+
+    <!-- Rank Section -->
+    <div class="flex flex-col w-full bg-primaryBackground py-10 my-10">
+        <div class="flex flex-row justify-around w-full items-center">
+            <div class="flex flex-col items-center">
+                <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">80%</h1>
+                <p class="text-md md:text-xl text-white mt-5">Attendance</p>
+            </div>
+            <div class="flex flex-col items-center mb-32">
+                <div class="relative">
+                    <svg width="100" height="120" viewBox="0 0 114 130" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
+                            fill="#FFC652" />
+                    </svg>
+                    <p class="text-4xl text-white font-bold rank">10</p>
+                </div>
+                <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
+            </div>
+            <div class="flex flex-col items-center">
+                <h1 class="text-2xl md:text-4xl font-bold text-red-600">60%</h1>
+                <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between items-center px-10">
+            <!-- Rank Table -->
+            <div class="overflow-hidden relative rounded-xl">
+                <table class="w-full text-sm text-left p-5">
+                    <thead class="text-xs text-gray-700 uppercase bg-white">
+                        <tr>
+                            <th scope="col" class="py-3 px-6">
+                                Date
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Exam
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Mark
+                            </th>
+                            <th scope="col" class="py-3 px-6">
+                                Rank
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                Aug 11
+                            </th>
+                            <td class="py-4 px-6">
+                                Hiragana 1
+                            </td>
+                            <td class="py-4 px-6">
+                                5
+                            </td>
+                            <td class="py-4 px-6">
+                                9
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                Aug 15
+                            </th>
+                            <td class="py-4 px-6">
+                                Hiragana 2
+                            </td>
+                            <td class="py-4 px-6">
+                                10
+                            </td>
+                            <td class="py-4 px-6">
+                                1
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                Aug 20
+                            </th>
+                            <td class="py-4 px-6">
+                                Hiragana 1
+                            </td>
+                            <td class="py-4 px-6">
+                                5
+                            </td>
+                            <td class="py-4 px-6">
+                                9
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                Aug 25
+                            </th>
+                            <td class="py-4 px-6">
+                                Katakana 1
+                            </td>
+                            <td class="py-4 px-6">
+                                6
+                            </td>
+                            <td class="py-4 px-6">
+                                4
+                            </td>
+                        </tr>
+                        <tr class="bg-white">
+                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
+                                Sept 1
+                            </th>
+                            <td class="py-4 px-6">
+                                Katakana 2
+                            </td>
+                            <td class="py-4 px-6">
+                                5
+                            </td>
+                            <td class="py-4 px-6">
+                                8
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 
 
 
