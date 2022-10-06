@@ -35,7 +35,7 @@ const onFile = (e) => {
                 <div class="container mx-auto flex flex-wrap justify-around md:space-x-10 space-x-0  mt-3  ">
                     <div class="box ">
                         <div class="js--image-preview">
-                            <img class="w-72"  :src="imgSrc" alt="" srcset="">
+                            <img class="w-full "  :src="imgSrc" alt="" srcset="">
                         </div>
                         <label for="image">
                         <div class="upload-options">
