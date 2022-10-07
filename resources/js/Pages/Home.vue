@@ -1,9 +1,12 @@
 <script setup>
 
+
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 
+
+import Chart from 'chart.js/auto';
 
 </script>
 
@@ -151,99 +154,57 @@ import Footer from '../Layouts/Footer.vue';
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-between items-center px-10">
+        <div class="flex flex-col md:flex-row justify-around  px-10">
             <!-- Rank Table -->
-            <div class="overflow-hidden relative rounded-xl">
-                <table class="w-full text-sm text-left p-5">
-                    <thead class="text-xs text-gray-700 uppercase bg-white">
-                        <tr>
-                            <th scope="col" class="py-3 px-6">
-                                Date
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Exam
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Mark
-                            </th>
-                            <th scope="col" class="py-3 px-6">
-                                Rank
-                            </th>
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
+                <table class="text-sm text-left text-primaryBackground ">
+                    <thead>
+                        <tr class="text-black">
+                            <th class="py-4 pr-14">Date</th>
+                            <th class="py-4 px-10">Exam</th>
+                            <th class="py-4 px-6">Mark</th>
+                            <th class="py-4 px-6">Rank</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr class="bg-white">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                Aug 11
-                            </th>
-                            <td class="py-4 px-6">
-                                Hiragana 1
-                            </td>
-                            <td class="py-4 px-6">
-                                5
-                            </td>
-                            <td class="py-4 px-6">
-                                9
-                            </td>
+                        <tr>
+                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 11</td>
+                            <td class="py-3 px-10 font-bold">hiragana 1</td>
+                            <td class="py-3 px-6 text-red-500">5</td>
+                            <td class="py-3 px-6 text-black">9</td>
                         </tr>
-                        <tr class="bg-white">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                Aug 15
-                            </th>
-                            <td class="py-4 px-6">
-                                Hiragana 2
-                            </td>
-                            <td class="py-4 px-6">
-                                10
-                            </td>
-                            <td class="py-4 px-6">
-                                1
-                            </td>
+                        <tr>
+                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 15</td>
+                            <td class="py-3 px-10 font-bold">hiragana 2</td>
+                            <td class="py-3 px-6 text-green-500">10</td>
+                            <td class="py-3 px-6 text-black">1</td>
                         </tr>
-                        <tr class="bg-white">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                Aug 20
-                            </th>
-                            <td class="py-4 px-6">
-                                Hiragana 1
-                            </td>
-                            <td class="py-4 px-6">
-                                5
-                            </td>
-                            <td class="py-4 px-6">
-                                9
-                            </td>
+                        <tr>
+                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 20</td>
+                            <td class="py-3 px-10 font-bold">katakana 1</td>
+                            <td class="py-3 px-6 text-red-500">5</td>
+                            <td class="py-3 px-6 text-black">9</td>
                         </tr>
-                        <tr class="bg-white">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                Aug 25
-                            </th>
-                            <td class="py-4 px-6">
-                                Katakana 1
-                            </td>
-                            <td class="py-4 px-6">
-                                6
-                            </td>
-                            <td class="py-4 px-6">
-                                4
-                            </td>
+                        <tr>
+                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 25</td>
+                            <td class="py-3 px-10 font-bold">katakana 2</td>
+                            <td class="py-3 px-6 text-secondaryBackground">6</td>
+                            <td class="py-3 px-6 text-black">4</td>
                         </tr>
-                        <tr class="bg-white">
-                            <th scope="row" class="py-4 px-6 font-medium text-gray-900 whitespace-nowrap">
-                                Sept 1
-                            </th>
-                            <td class="py-4 px-6">
-                                Katakana 2
-                            </td>
-                            <td class="py-4 px-6">
-                                5
-                            </td>
-                            <td class="py-4 px-6">
-                                8
-                            </td>
+                        <tr>
+                            <td class="py-3 pr-14 font-light text-xs text-black">Sept 01</td>
+                            <td class="py-3 px-10 font-bold">Lesson 1</td>
+                            <td class="py-3 px-6 text-red-500">5</td>
+                            <td class="py-3 px-6 text-black">8</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- Rank Chart -->
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
+                <h1>Overall</h1>
+                <canvas id="myChart" width="400" height="400"></canvas>
             </div>
         </div>
     </div>
@@ -254,6 +215,54 @@ import Footer from '../Layouts/Footer.vue';
     <Footer />
 
 </template> 
+
+<script>
+
+
+export default {
+    name: 'hello world',
+    props: {
+        msg: String
+    },
+    mounted() {
+        const ctx = document.getElementById('myChart');
+        const myChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    }
+}
+</script>
 
 <style>
 @import "../../css/home.css";
