@@ -31,7 +31,7 @@ const series = ref([{
     <section class="container p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Courses Joined</h1>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Classes Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules &
                     Regulations</a></h1>
         </div>
