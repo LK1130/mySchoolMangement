@@ -1,14 +1,27 @@
 <script setup>
 
-
+import { ref } from 'vue'
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
+import Chart from '../Components/LineChart.vue';
 
+const chartOptions = ref({
+    chart: {
+        id: 'basic-bar'
+    },
+    xaxis: {
+        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+    }
+});
+const series = ref([{
+    name: 'series-1',
+    data: [30, 40, 45, 50, 49, 60, 70, 91]
+}]);
 
-// import Chart from 'chart.js/auto';
 
 </script>
+
 
 <template>
 
@@ -18,7 +31,7 @@ import Footer from '../Layouts/Footer.vue';
     <section class="container p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Courses Joined</h1>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Classes Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules &
                     Regulations</a></h1>
         </div>
@@ -204,65 +217,15 @@ import Footer from '../Layouts/Footer.vue';
             <!-- Rank Chart -->
             <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
                 <h1>Overall</h1>
-                <canvas id="myChart" width="400" height="400"></canvas>
+                <div>
+                    <Chart :options="chartOptions" :series="series" />
+                </div>
             </div>
         </div>
     </div>
-
-
-
-
     <Footer />
 
 </template> 
-
-<script>
-
-
-export default {
-    name: 'hello world',
-    props: {
-        msg: String
-    },
-    mounted() {
-        const ctx = document.getElementById('myChart');
-        const myChart = new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-                datasets: [{
-                    label: '# of Votes',
-                    data: [12, 19, 3, 5, 2, 3],
-                    backgroundColor: [
-                        'rgba(255, 99, 132, 0.2)',
-                        'rgba(54, 162, 235, 0.2)',
-                        'rgba(255, 206, 86, 0.2)',
-                        'rgba(75, 192, 192, 0.2)',
-                        'rgba(153, 102, 255, 0.2)',
-                        'rgba(255, 159, 64, 0.2)'
-                    ],
-                    borderColor: [
-                        'rgba(255, 99, 132, 1)',
-                        'rgba(54, 162, 235, 1)',
-                        'rgba(255, 206, 86, 1)',
-                        'rgba(75, 192, 192, 1)',
-                        'rgba(153, 102, 255, 1)',
-                        'rgba(255, 159, 64, 1)'
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    }
-}
-</script>
 
 <style>
 @import "../../css/home.css";
