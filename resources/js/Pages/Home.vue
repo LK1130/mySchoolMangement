@@ -6,7 +6,7 @@ import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 
 
-import Chart from 'chart.js/auto';
+// import Chart from 'chart.js/auto';
 
 </script>
 
