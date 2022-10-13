@@ -5,19 +5,72 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 import Chart from '../Components/LineChart.vue';
+import ChartV2 from '../Components/LineChartV2.vue'
 
 const chartOptions = ref({
     chart: {
         id: 'basic-bar'
     },
     xaxis: {
-        categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998]
+        categories: ["Aug 11", "Aug 15", "Aug 20", "Aug 25", "Aug 11", "Aug 15", "Aug 20", "Aug 25"]
     }
 });
-const series = ref([{
-    name: 'series-1',
-    data: [30, 40, 45, 50, 49, 60, 70, 91]
-}]);
+const series = ref([
+    {
+        name: 'series-1',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+    }
+]);
+
+const chartOptionsV2 = ref({
+    chart: {
+        id: 'basic-bar'
+    },
+    xaxis: {
+        categories: ["Aug 11", "Aug 15", "Aug 20", "Aug 25", "Aug 11", "Aug 15", "Aug 20", "Aug 25"]
+    }
+})
+
+const seriesV2 = ref([
+    {
+        name: 'Choo Pwint Chal',
+        data: [30, 40, 45, 50, 49, 60, 70, 91]
+    },
+    {
+        name: 'Thazin Aung',
+        data: [20, 60, 65, 70, 80, 90, 100, 120]
+    },
+    {
+        name: 'Hein Thant Aung',
+        data: [15, 40, 20, 10, 90, 65, 75, 100]
+    },
+    {
+        name: 'Zan Myint Moe',
+        data: [5, 10, 15, 20, 25, 30, 35, 40]
+    },
+    {
+        name: 'Phwe Phwe',
+        data: [0, 100, 80, 60, 40, 20, 10, 0]
+    },
+    {
+        name: 'Nyein Nyein',
+        data: [0, 20, 100, 30, 10, 120, 25, 90]
+    },
+    {
+        name: 'Su Nwe Win',
+        data: [35, 45, 80, 80, 100, 120, 80, 91]
+    },
+    {
+        name: 'Nyan Win Myo',
+        data: [100, 120, 50, 20, 30, 50, 90, 120]
+    }
+]);
+
+const stroke = ref([
+    {
+        curve: 'smooth'
+    }
+])
 
 
 </script>
@@ -167,7 +220,7 @@ const series = ref([{
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-around  px-10">
+        <div class="flex flex-col md:flex-row justify-around space-y-5 px-10">
             <!-- Rank Table -->
             <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
                 <table class="text-sm text-left text-primaryBackground ">
@@ -219,6 +272,54 @@ const series = ref([{
                 <h1>Overall</h1>
                 <div>
                     <Chart :options="chartOptions" :series="series" />
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="flex flex-col items-center w-full">
+        <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3">Class Exam Ranking & Mark</h1>
+
+        <div
+            class="flex flex-col-reverse md:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
+            <div class="pt-10">
+                <ChartV2 :options="chartOptionsV2" :series="seriesV2" :stroke="stroke" />
+            </div>
+
+            <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full md:w-72 space-y-4">
+                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                    <span
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">1</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">Choo Pwint Chal</h1>
+                    <p class="text-secondaryBackground">100%</p>
+                </div>
+
+                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                    <span
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">2</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">Thazin Aung</h1>
+                    <p class="text-secondaryBackground">95%</p>
+                </div>
+
+                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                    <span
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">3</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">Hein Thant Aung</h1>
+                    <p class="text-secondaryBackground">92%</p>
+                </div>
+
+                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                    <span
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">4</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">Zan Myint Moe</h1>
+                    <p class="text-secondaryBackground">90%</p>
+                </div>
+
+                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                    <span
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">5</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">Aye Nadi Kyaw</h1>
+                    <p class="text-secondaryBackground">89%</p>
                 </div>
             </div>
         </div>
