@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("p_title",128);
             $table->string("p_description", 1024);
-            $table->string("p_photo", 1024);
+            $table->string("p_photo", 128);
             $table->unsignedBigInteger("category_id");
             $table->integer("del_flg")->default(0);
             $table->integer("created_by");

@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("e_name",256);
             $table->dateTime("e_duedate")->nullable();
             $table->integer("full_mark")->default(0);
-            $table->integer("fail_marl")->default(0);
+            $table->integer("fail_mark")->default(0);
             $table->integer("del_flg")->default(0);
             $table->integer("created_by");
             $table->integer("updated_by")->nullable();

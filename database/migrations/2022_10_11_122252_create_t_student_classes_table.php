@@ -16,6 +16,10 @@ return new class extends Migration
         Schema::create('t_student_classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
+            $table->dateTime("start_join");
+            $table->integer("paid_fees")->default(0);
+            $table->integer("remain_fees")->default(0);
+            $table->integer("refund")->default(0);
             $table->integer("del_flg")->default(0);
             $table->integer("created_by");
             $table->integer("updated_by")->nullable();
