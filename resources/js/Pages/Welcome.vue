@@ -60,11 +60,11 @@ defineProps({
             <!-- Left Item -->
             <div class="flex flex-col w-4/5 space-y-8 md:space-y-12 md:w-3/5">
                 <div class="space-y-6">
-                    <h1 class="text-3xl text-right text-whiteTextColor font-bold md:text-5xl">PROGRAMMING
+                    <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">PROGRAMMING
                         is an
                         <span class="text-secondaryBackground">ART...</span>
                     </h1>
-                    <h1 class="text-3xl text-right text-whiteTextColor font-bold md:text-5xl">WE are <span
+                    <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">WE are <span
                             class="text-secondaryBackground">ARTIST...</span></h1>
                 </div>
                 <div class="text-center font-thin pl-0 md:pl-36">
@@ -169,6 +169,9 @@ defineProps({
             </div>
         </div>
     </section>
+
+    <!-- Contact Us -->
+
 
 
     <!-- <div class="bg-neutral-900 text-white overflow-x-hidden"> -->

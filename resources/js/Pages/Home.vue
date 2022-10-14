@@ -226,10 +226,10 @@ const stroke = ref([
                 <table class="text-sm text-left text-primaryBackground ">
                     <thead>
                         <tr class="text-black">
-                            <th class="py-4 pr-14">Date</th>
-                            <th class="py-4 px-10">Exam</th>
-                            <th class="py-4 px-6">Mark</th>
-                            <th class="py-4 px-6">Rank</th>
+                            <th class="py-4 pr-6 md:pr-14">Date</th>
+                            <th class="py-4 px-6 md:px-10">Exam</th>
+                            <th class="py-4 px-2 md:px-6">Mark</th>
+                            <th class="py-4 px-2 md:px-6">Rank</th>
                         </tr>
                     </thead>
                     <tbody>
