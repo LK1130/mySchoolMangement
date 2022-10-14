@@ -9,6 +9,9 @@ import ChartV2 from '../Components/LineChartV2.vue'
 
 const chartOptions = ref({
     chart: {
+        toolbar: {
+            show: false,
+        },
         id: 'basic-bar'
     },
     xaxis: {
@@ -24,6 +27,9 @@ const series = ref([
 
 const chartOptionsV2 = ref({
     chart: {
+        toolbar: {
+            show: false,
+        },
         id: 'basic-bar'
     },
     xaxis: {
@@ -210,12 +216,12 @@ const stroke = ref([
                             d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
                             fill="#FFC652" />
                     </svg>
-                    <p class="text-4xl text-white font-bold rank">10</p>
+                    <p class="text-5xl text-white font-bold rank">10</p>
                 </div>
                 <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
             </div>
             <div class="flex flex-col items-center">
-                <h1 class="text-2xl md:text-4xl font-bold text-red-600">60%</h1>
+                <h1 class="text-2xl md:text-4xl font-bold text-tertiaryBackground">60%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
             </div>
         </div>
@@ -291,35 +297,35 @@ const stroke = ref([
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">1</span>
                     <h1 class="w-32 flex font-bold whitespace-nowrap">Choo Pwint Chal</h1>
-                    <p class="text-secondaryBackground">100%</p>
+                    <p class="font-semibold text-secondaryBackground">100%</p>
                 </div>
 
                 <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">2</span>
                     <h1 class="w-32 flex font-bold whitespace-nowrap">Thazin Aung</h1>
-                    <p class="text-secondaryBackground">95%</p>
+                    <p class="font-semibold text-secondaryBackground">95%</p>
                 </div>
 
                 <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">3</span>
                     <h1 class="w-32 flex font-bold whitespace-nowrap">Hein Thant Aung</h1>
-                    <p class="text-secondaryBackground">92%</p>
+                    <p class="font-semibold text-secondaryBackground">92%</p>
                 </div>
 
                 <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">4</span>
                     <h1 class="w-32 flex font-bold whitespace-nowrap">Zan Myint Moe</h1>
-                    <p class="text-secondaryBackground">90%</p>
+                    <p class="font-semibold text-secondaryBackground">90%</p>
                 </div>
 
                 <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">5</span>
                     <h1 class="w-32 flex font-bold whitespace-nowrap">Aye Nadi Kyaw</h1>
-                    <p class="text-secondaryBackground">89%</p>
+                    <p class="font-semibold text-secondaryBackground">89%</p>
                 </div>
             </div>
         </div>
