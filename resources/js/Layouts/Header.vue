@@ -42,12 +42,12 @@ const logout = () => {
 
       <div class="flex w-1/9">
         <img src="/img/noti-pin.png" alt="" class="mr-2 hidden noti-profile-menu md:block">
-        <Link href="./profile"><img src="/img/user.png" alt="" class="ml-1 noti-profile-menu"></Link>
-        <img src="/img/menu.png" alt="" class="ml-3 noti-profile-menu block md:hidden" @click="menuShow = !menuShow">
+        <img src="/img/user.png" alt="" class="ml-1 noti-profile-menu" @click="menuShow = !menuShow">
+          
       </div>
     </div>
 
-    <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg md:hidden z-40" v-if="menuShow">
+    <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg  z-40" v-if="menuShow">
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
           <Link href="./homepage" class="hlink-text" aria-current="page">Home</Link>
