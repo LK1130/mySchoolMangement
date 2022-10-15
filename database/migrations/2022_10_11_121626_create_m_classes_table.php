@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string("c_description", 512);
             $table->string("c_start_date", 10);
             $table->string("c_end_date", 10);
-            $table->string("c_date", 7);
+            $table->string("c_day", 7);
             $table->string("c_start_time", 5);
-            $table->string("c_end_time", 128);
+            $table->string("c_end_time", 5);
             $table->integer("c_fees");
             $table->unsignedBigInteger("instructor_id");
-            $table->string("c_profile", 256);
+            $table->string("c_profile", 256)->nullable();;
             $table->unsignedBigInteger("category_id");
             $table->integer("del_flg")->default(0);
             $table->integer("created_by");

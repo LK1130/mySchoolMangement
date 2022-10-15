@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('m_exams', function (Blueprint $table) {
             $table->id();
             $table->string("e_name",256);
+            $table->unsignedBigInteger("category_id")->nullable();
             $table->dateTime("e_duedate")->nullable();
             $table->integer("full_mark")->default(0);
             $table->integer("fail_mark")->default(0);
@@ -23,6 +24,9 @@ return new class extends Migration
             $table->integer("created_by");
             $table->integer("updated_by")->nullable();
             $table->timestamps();
+            $table->foreign('category_id')->references('id')->on("m_categories")
+                ->onDelete('restrict')->onUpdate('cascade');
+
         });
     }
 

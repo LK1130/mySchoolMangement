@@ -7,9 +7,7 @@
     content: ">";
 }
 
-.btn{
-    background-color: var(--primaryBackground);
-}
+
 
 .border-color{
     border-color: var(--primaryBackground);
