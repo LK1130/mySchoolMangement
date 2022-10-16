@@ -1,67 +1,34 @@
-input[type=checkbox] {
-	-moz-appearance:none;
-	-webkit-appearance:none;
-	-o-appearance:none;
-	outline: none;
-	content: none;	
-    border: red;
-}
-
-.inputs:focus,.input:active{
-    outline:none;
-    border:none;
-    
-}
-
-
-.custombox{
-    margin-top: 3rem;
-    border-top: none;
-    border-left: 0.3px solid  rgba(0, 0, 0, 0.2);
-    border-right: 0.3px solid  rgba(0, 0, 0, 0.2);
-    border-bottom: 0.6px solid  rgba(0, 0, 0, 0.3);
-    box-shadow: 1px 5px 2px -3px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-}
-
-.custombox.info::before{
+.info::before{
     content: '';
     position: absolute;
     top: 0;
     left : 0;
     width: 10px;
     height: 130px;
-    background: var(--primaryBackground);
-    
+    background: var(--primaryBackground); 
 }
 
-
-.custombox.message::before{
+.message::before{
     content: '';
     position: absolute;
     top: 0;
     left : 0;
     width: 10px;
     height: 130px;
-    background: yellow;
-    
+    background: rgb(253, 224, 71);
 }
 
 
-.custombox.alert::before{
+.alert::before{
     content: '';
     position: absolute;
     top: 0;
     left : 0;
     width: 10px;
     height: 130px;
-    background: red;
-    
+    background: var(--tertiaryBackground);;
 }
 
-.custombox{
-    overflow: hidden;
-}
 
 .days{
     margin-right: 4rem;

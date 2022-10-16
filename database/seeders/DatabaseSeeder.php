@@ -14,6 +14,10 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        /**
+         * Master
+         */
+
         \App\Models\User::factory(57)->create();
         \App\Models\MCategory::factory(3)->create();
         $this->call(MRole::class);
@@ -27,5 +31,10 @@ class DatabaseSeeder extends Seeder
         \App\Models\MGuide::factory(5)->create();
         \App\Models\MGuideStep::factory(5)->create();
         $this->call(MVideo::class);
+        
+        /**
+         * Transaction
+         */
+        \App\Models\TMail::factory(100)->create();
     }
 }

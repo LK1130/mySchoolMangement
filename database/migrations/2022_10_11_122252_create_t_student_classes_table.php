@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('t_student_classes', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger("user_id");
+            $table->unsignedBigInteger("class_id");
             $table->dateTime("start_join");
             $table->integer("paid_fees")->default(0);
             $table->integer("remain_fees")->default(0);
@@ -25,6 +26,8 @@ return new class extends Migration
             $table->integer("updated_by")->nullable();
             $table->timestamps();
             $table->foreign('user_id')->references('id')->on("users")
+            ->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('class_id')->references('id')->on("m_classes")
             ->onDelete('restrict')->onUpdate('cascade');
         });
     }

@@ -8,7 +8,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 
         <div class="p-6 relative z-20">
             <Link href="./homepage" class="flex items-center">
-            <img src="img/white-logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
+            <img src="/img/white-logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
             <span class="ml-5 text-3xl font-extrabold">MySchool</span>
             </Link>
         </div>
@@ -40,13 +40,13 @@ import { Link } from '@inertiajs/inertia-vue3';
                     </div>
                 </div>
             </div>
-            <div class="flex-initial w-1/5 text-center md:border-l-2">
+            <div class="flex-initial w-1/5 text-center  md:border-l-2">
                 <div class="flex flex-col ">
                     <div class="m-1 font-semibold md:text-3xl">Social</div>
                     <div class="flex mt-3 items-center justify-around ">
-                        <div class="flex"><img src="img/social/facebook.png" alt="" class="md:w-8 w-6"></div>
-                        <div class="flex"><img src="img/social/youtube.png" alt="" class="md:w-8 w-6" /></div>
-                        <div class="flex"><img src="img/social/messanger.png" alt="" class="md:w-8 w-6" /></div>
+                        <div class="flex"><img src="/img/social/facebook.png" alt="" class="md:w-8 w-6"></div>
+                        <div class="flex"><img src="/img/social/youtube.png" alt="" class="md:w-8 w-6" /></div>
+                        <div class="flex"><img src="/img/social/messanger.png" alt="" class="md:w-8 w-6" /></div>
                     </div>
                 </div>
             </div>

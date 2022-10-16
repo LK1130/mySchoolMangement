@@ -7,6 +7,7 @@
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
     <link rel="icon" href="{{ url('img/white-logo.png') }}">
+    
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
@@ -21,6 +22,7 @@
     <!-- Ionic -->
     <script src="https://unpkg.com/flowbite@1.5.3/dist/datepicker.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.26.0/moment.min.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script src="{{ asset('js/profile.js') }}"></script>

@@ -17,8 +17,8 @@ return new class extends Migration
             $table->id();
             $table->string("m_title", 128);
             $table->string("m_description", 512);
-            $table->unsignedBigInteger("class_id")->nullValue();
-            $table->unsignedBigInteger("user_id")->nullValue();
+            $table->unsignedBigInteger("class_id")->nullable();
+            $table->unsignedBigInteger("user_id")->nullable();
             $table->integer("m_category");
             $table->integer("del_flg")->default(0);
             $table->integer("created_by");

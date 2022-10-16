@@ -17,7 +17,7 @@ const logout = () => {
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
         <Link href="./homepage" class="flex items-center">
-        <img src="img/logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
+        <img src="/img/logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
         </Link>
       </div>
 
@@ -41,7 +41,7 @@ const logout = () => {
       </div>
 
       <div class="flex w-1/9">
-        <div class="font-medium p-1 mx-3 text-base">{{ $page.props.user.name }}</div>
+        <div class="font-semibold p-1 mx-3 text-lg">{{ $page.props.user.name }}</div>
         <img src="/img/noti-pin.png" alt="" class="mr-2 hidden noti-profile-menu md:block">
         <img src="/img/user.png" alt="" class="ml-1 noti-profile-menu" @click="menuShow = !menuShow">
           

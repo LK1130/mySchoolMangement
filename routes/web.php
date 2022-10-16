@@ -61,9 +61,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/inbox',[MessageController::class,'index']);
 
     // Blog page
-    Route::get('/blog', [BlogListController::class, "index"]);
+    Route::get('/blog', [BlogController::class, "index"])->name("blog.index");
     // Blog view
-    Route::get('/blogview', [BlogController::class, "index"]);
+    Route::get('/blogview/{blog}', [BlogController::class, "show"])->name("blog.show");
     // Privacy Policy
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
 

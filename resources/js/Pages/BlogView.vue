@@ -3,11 +3,15 @@
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
-import SecondaryBtn from '../Components/SecondaryBtn.vue';
-import DateButton from '../Components/DateButton.vue';
-import Pagination from '../Components/Pagination.vue';
-import Dropdown from '../Components/Dropdown.vue';
+import moment from 'moment';
 
+
+
+const props = defineProps({
+    blog: {
+        type: Array
+    },
+});
 
 </script>
             
@@ -18,75 +22,21 @@ import Dropdown from '../Components/Dropdown.vue';
 
     <section class="p-4 md:p-12">
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">BLOG</h1>
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Next</h1>
+            <Link href="/blog" >
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">BLOGS</h1>
+            </Link>
         </div>
-        <h1 class="mt-5 text-xl md:text-4xl font-bold">How to use Vs Code?</h1>
 
-        <div class="pt-5 md:p-8">
-            <div class="flex justify-center w-full">
-                <img src="img/blog-view.png" alt="" class="" />
+        <div class="md:p-3 ">
+            <h1 class="my-5 md:mb-10 text-lg md:text-3xl font-bold">{{ blog.b_title }}</h1>
+            <div class="flex  w-full">
+                <img src="/img/blog-view.png" alt="" class="" />
             </div>
             <div class="flex flex-col space-y-2  my-8">
-                <p class="text-sm">2022/10/20 (Sun) 12:22</p>
-                <h1 class="text-xl md:text-4xl font-bold">Introduction to Web Development</h1>
+                <p class="text-base font-semibold opacity-80">{{ moment( blog.created_at).format("YYYY/MM/DD (ddd) hh:mm ")}} </p>
             </div>
             <div class="font-extralight space-y-6">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae labore, distinctio hic nam, neque
-                    praesentium dicta optio nihil rerum adipisci exercitationem at quaerat eum corporis minima
-                    laudantium, fugiat eligendi animi libero excepturi. Explicabo omnis aliquam praesentium optio?
-                    Velit, fugit. Blanditiis dolor placeat temporibus ex recusandae adipisci, aspernatur debitis hic
-                    voluptatibus et magnam corporis libero voluptatem nobis dolorum autem vel. Similique possimus
-                    aperiam eum dolores minima vel. Commodi, soluta placeat, explicabo vitae consequatur earum cum
-                    necessitatibus neque voluptatum, officiis unde accusantium sequi mollitia dignissimos rerum nisi
-                    officia voluptas? Temporibus impedit, velit maiores ipsum sed ipsa libero nam placeat suscipit sunt?
-                    Numquam.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae labore, distinctio hic nam, neque
-                    praesentium dicta optio nihil rerum adipisci exercitationem at quaerat eum corporis minima
-                    laudantium, fugiat eligendi animi libero excepturi. Explicabo omnis aliquam praesentium optio?
-                    Velit, fugit. Blanditiis dolor placeat temporibus ex recusandae adipisci, aspernatur debitis hic
-                    voluptatibus et magnam corporis libero voluptatem nobis dolorum autem vel. Similique possimus
-                    aperiam eum dolores minima vel. Commodi, soluta placeat, explicabo vitae consequatur earum cum
-                    necessitatibus neque voluptatum, officiis unde accusantium sequi mollitia dignissimos rerum nisi
-                    officia voluptas? Temporibus impedit, velit maiores ipsum sed ipsa libero nam placeat suscipit sunt?
-                    Numquam.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae labore, distinctio hic nam, neque
-                    praesentium dicta optio nihil rerum adipisci exercitationem at quaerat eum corporis minima
-                    laudantium, fugiat eligendi animi libero excepturi. Explicabo omnis aliquam praesentium optio?
-                    Velit, fugit. Blanditiis dolor placeat temporibus ex recusandae adipisci, aspernatur debitis hic
-                    voluptatibus et magnam corporis libero voluptatem nobis dolorum autem vel. Similique possimus
-                    aperiam eum dolores minima vel. Commodi, soluta placeat, explicabo vitae consequatur earum cum
-                    necessitatibus neque voluptatum, officiis unde accusantium sequi mollitia dignissimos rerum nisi
-                    officia voluptas? Temporibus impedit, velit maiores ipsum sed ipsa libero nam placeat suscipit sunt?
-                    Numquam.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae labore, distinctio hic nam, neque
-                    praesentium dicta optio nihil rerum adipisci exercitationem at quaerat eum corporis minima
-                    laudantium, fugiat eligendi animi libero excepturi. Explicabo omnis aliquam praesentium optio?
-                    Velit, fugit. Blanditiis dolor placeat temporibus ex recusandae adipisci, aspernatur debitis hic
-                    voluptatibus et magnam corporis libero voluptatem nobis dolorum autem vel. Similique possimus
-                    aperiam eum dolores minima vel. Commodi, soluta placeat, explicabo vitae consequatur earum cum
-                    necessitatibus neque voluptatum, officiis unde accusantium sequi mollitia dignissimos rerum nisi
-                    officia voluptas? Temporibus impedit, velit maiores ipsum sed ipsa libero nam placeat suscipit sunt?
-                    Numquam.
-                </p>
-                <p>
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quae labore, distinctio hic nam, neque
-                    praesentium dicta optio nihil rerum adipisci exercitationem at quaerat eum corporis minima
-                    laudantium, fugiat eligendi animi libero excepturi. Explicabo omnis aliquam praesentium optio?
-                    Velit, fugit. Blanditiis dolor placeat temporibus ex recusandae adipisci, aspernatur debitis hic
-                    voluptatibus et magnam corporis libero voluptatem nobis dolorum autem vel. Similique possimus
-                    aperiam eum dolores minima vel. Commodi, soluta placeat, explicabo vitae consequatur earum cum
-                    necessitatibus neque voluptatum, officiis unde accusantium sequi mollitia dignissimos rerum nisi
-                    officia voluptas? Temporibus impedit, velit maiores ipsum sed ipsa libero nam placeat suscipit sunt?
-                    Numquam.
-                </p>
+               <p class="font-medium text-lg opacity-70">{{ blog.b_description }}</p>
             </div>
         </div>
     </section>

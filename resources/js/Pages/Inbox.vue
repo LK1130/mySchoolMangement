@@ -5,6 +5,14 @@ import Header from '../Layouts/Header.vue';
 import SecondaryBtn from '../Components/SecondaryBtn.vue';
 import Pagination from '../Components/Pagination.vue';
 import Footer from '../Layouts/Footer.vue';
+import moment from 'moment';
+
+
+const props = defineProps({
+    messages: {
+        type: Object
+    },
+});
 
 </script>
 
@@ -19,30 +27,33 @@ import Footer from '../Layouts/Footer.vue';
             <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Inbox</p>
 
             <div class="space-x-3 mx-2">
-                <input type="checkbox" name="info" id="info" class=" bg-blue-600 inputs">
+                <input type="checkbox" name="info" id="info" class=" bg-blue-600" checked>
                 <label for="info">Information</label>
 
-                <input type="checkbox" name="alert" id="alert" class="bg-red-600 text-red-600 inputs">
+                <input type="checkbox" name="alert" id="alert" class="bg-red-600 text-red-600 " checked>
                 <label for="alert">Alert</label>
 
-                <input type="checkbox" name="message" id="message" class="bg-yellow-300 text-yellow-300 inputs">
+                <input type="checkbox" name="message" id="message" class="bg-yellow-300 text-yellow-300 " checked>
                 <label for="message">Message</label>
             </div>
 
-                <!-- Info -->
-            <div class="relative md:w-11/12 mx-auto py-1  px-5">
-                <div
-                    class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3  custombox info">
+            <!-- Info -->
+            <div class="relative md:w-11/12 mx-auto py-1  px-5" v-for="message in messages.data">
+                <div class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3 mt-10 
+                    shadow-lg rounded-lg overflow-hidden  " :class="{ 
+                                'info': (message.m_category == 1),
+                                'message': (message.m_category == 2),
+                                'alert': (message.m_category == 3)
+                    }">
                     <div class="flex justify-between items-center  md:mx-8 mailbox">
                         <ion-icon name="mail-open-outline" class="md:text-2xl mail"></ion-icon>
 
-                        <p class="md:text-base font-bold font-family result">Hiragana Day 1 Result</p>
+                        <p class="md:text-base font-bold font-family  mx-10">{{ message.m_title }}</p>
                     </div>
 
                     <div class="flex md:justify-between md:items-center sm:justify-center md:mr-10 checkmark">
-                        <p class="text-xs text-red-500 days">2022/10/01 <span>(Sunday)</span></p>
-
-                      <p class="sm:flex md:text-sm sm:text-sm  md:mx-8 font-bold marks ">  <span>5</span>/ <span>10</span></p>
+                        <p class="text-base font-semibold text-tertiaryBackground">{{ moment(
+                        message.created_at).format("YYYY/MM/DD (ddd)")}}</p>
                     </div>
 
 
@@ -51,119 +62,15 @@ import Footer from '../Layouts/Footer.vue';
                     New
                 </SecondaryBtn>
             </div>
-
-
-            <!-- Alert -->
-            <div class="relative md:w-11/12 mx-auto py-1  px-5">
-                <div
-                    class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3  custombox alert">
-                    <div class="flex justify-between items-center  md:mx-8 mailbox">
-                        <ion-icon name="mail-open-outline" class="md:text-2xl mail"></ion-icon>
-
-                        <p class="md:text-base font-bold font-family result">Warning for 3 times absent</p>
-                    </div>
-
-                    <div class="flex justify-between items-center md:mr-10 checkmark">
-                        <p class="text-xs text-red-500 days-alert">2022/10/01 <span>(Sunday)</span></p>
-
-                     
-                    </div>
-
-
-                </div>
-                <SecondaryBtn class="absolute top-12  right-0 custombtn">
-                    New
-                </SecondaryBtn>
-            </div>
-
-
-
-            <!-- Message -->
-            <div class="relative md:w-11/12 mx-auto py-1  px-5">
-                <div
-                    class="relative md:px-5 md:py-8  border-slate-400 drop-shadow-md flex justify-between items-center mx-3  custombox message">
-                    <div class="flex justify-between items-center  md:mx-8 mailbox">
-                        <ion-icon name="mail-open-outline" class="md:text-2xl mail"></ion-icon>
-
-                        <p class="md:text-base font-bold font-family result">Notice for class fee</p>
-                    </div>
-
-                    <div class="flex justify-between items-center md:mr-10 checkmark">
-                        <p class="text-xs text-red-500 days-message">2022/10/01 <span>(Sunday)</span></p>
-
-                        
-                    </div>
-
-
-                </div>
-                <SecondaryBtn class="absolute top-12  right-0 custombtn">
-                    New
-                </SecondaryBtn>
-            </div>
-
-
-                 <!-- Info -->
-                 <div class="relative md:w-11/12 mx-auto py-1  px-5">
-                <div
-                    class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3  custombox info">
-                    <div class="flex justify-between items-center  md:mx-8 mailbox">
-                        <ion-icon name="mail-open-outline" class="md:text-2xl mail"></ion-icon>
-
-                        <p class="md:text-base font-bold font-family result">Hiragana Day 1 Result</p>
-                    </div>
-
-                    <div class="flex md:justify-between md:items-center sm:justify-center md:mr-10 checkmark">
-                        <p class="text-xs text-red-500 days">2022/10/01 <span>(Sunday)</span></p>
-
-                      <p class="sm:flex md:text-sm sm:text-sm  md:mx-8 font-bold marks ">  <span>5</span>/ <span>10</span></p>
-                    </div>
-
-
-                </div>
-                <SecondaryBtn class="absolute top-12  right-0 custombtn">
-                    New
-                </SecondaryBtn>
-            </div>
-
-                 <!-- Info -->
-                 <div class="relative md:w-11/12 mx-auto py-1  px-5">
-                <div
-                    class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3  custombox info">
-                    <div class="flex justify-between items-center  md:mx-8 mailbox">
-                        <ion-icon name="mail-open-outline" class="md:text-2xl mail"></ion-icon>
-
-                        <p class="md:text-base font-bold font-family result">Hiragana Day 1 Result</p>
-                    </div>
-
-                    <div class="flex md:justify-between md:items-center sm:justify-center md:mr-10 checkmark">
-                        <p class="text-xs text-red-500 days">2022/10/01 <span>(Sunday)</span></p>
-
-                      <p class="sm:flex md:text-sm sm:text-sm  md:mx-8 font-bold marks ">  <span>5</span>/ <span>10</span></p>
-                    </div>
-
-
-                </div>
-                <SecondaryBtn class="absolute top-12  right-0 custombtn">
-                    New
-                </SecondaryBtn>
-            </div>
-
-
-            
-            
             <div class="flex justify-center items-center py-3 mt-3">
-                <Pagination>
-                    
+                <Pagination :links="messages.links">
                 </Pagination>
             </div>
 
         </div>
     </section>
-
-    <Footer/>
+    <Footer />
 </template>
-
-
 
 <style>
 @import "../../css/inbox.css";
