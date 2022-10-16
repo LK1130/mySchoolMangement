@@ -24,13 +24,13 @@ const logout = () => {
       <div class="flex w-3/9 hidden md:block w-52 md:w-64">
         <ul class="flex">
           <li class="flex md:w-16 lg:w-24 hlink">
-            <Link href="./homepage" class="hlink-text" aria-current="page">Home</Link>
+            <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24 hlink">
-            <Link href="./inbox" class="hlink-text" aria-current="page">Inbox</Link>
+            <Link href="/inbox" class="hlink-text" aria-current="page">Inbox</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24  hlink">
-            <Link href="./blog" class="hlink-text" aria-current="page">Blog</Link>
+            <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
           </li>
         </ul>
       </div>
