@@ -195,8 +195,8 @@ const sorting = (value) => {
             </div>
 
             <div class="flex justify-center items-center py-3">
-                <Pagination>
-                </Pagination>
+                <!-- <Pagination>
+                </Pagination> -->
             </div>
 
         </div>
