@@ -1,6 +1,7 @@
 <script setup>
 
-import { ref } from 'vue'
+
+import { Inertia } from '@inertiajs/inertia';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import SecondaryBtn from '../Components/SecondaryBtn.vue';
@@ -14,17 +15,13 @@ const props = defineProps({
     },
 });
 
-let filterMessages = ref([])
-let selectedItems = ref([1, 2, 3]);
+
 
 const filter = () => {
-     filterMessages = props.messages.data.filter(message => {
-        return selectedItems.value.includes(message.m_category);
-    });
-    console.log(filterMessages);
+    Inertia.get(route("inbox.index",1));
 }
 
-filter();
+
 
 
 
@@ -42,21 +39,21 @@ filter();
             <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Inbox</p>
 
             <div class="space-x-3 mx-2">
-                <input type="checkbox" name="info" id="info" v-model="selectedItems" value="1" v-on:change="filter"
+                <input type="checkbox" name="info" id="info"  v-on:change="filter"
                     class="p-2 rounded-md text-primaryBackground" checked>
                 <label for="info">Information</label>
 
-                <input type="checkbox" name="message" id="message" v-model="selectedItems" value="2"
-                    v-on:change="filter" class="p-2 rounded-md text-secondaryBackground" checked>
+                <input type="checkbox" name="message" id="message" v-on:change="filter" 
+                class="p-2 rounded-md text-secondaryBackground" checked>
                 <label for="message">Direct Message</label>
 
-                <input type="checkbox" name="alert" id="alert" v-model="selectedItems" value="3" v-on:change="filter"
+                <input type="checkbox" name="alert" id="alert"  v-on:change="filter"
                     class="p-2 rounded-md text-tertiaryBackground" checked>
                 <label for="alert">Alert</label>
             </div>
 
             <!-- Info -->
-            <div class="relative md:w-11/12 mx-auto py-1  px-5" v-for="message in filterMessages">
+            <div class="relative md:w-11/12 mx-auto py-1  px-5" v-for="message in messages.data">
                 <div class="relative md:px-5 md:py-8    border-slate-400 drop-shadow-md flex justify-between items-center mx-3 mt-10 
                     shadow-lg rounded-lg overflow-hidden  " :class="{ 
                                 'info': (message.m_category == 1),

@@ -27,7 +27,7 @@ const logout = () => {
             <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24 hlink">
-            <Link href="/inbox" class="hlink-text" aria-current="page">Inbox</Link>
+            <Link href="/inbox/all" class="hlink-text" aria-current="page">Inbox</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24  hlink">
             <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
