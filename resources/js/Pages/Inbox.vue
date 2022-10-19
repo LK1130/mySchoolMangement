@@ -23,20 +23,13 @@ let selectedItems = [];
 /**
  * Check for user choice
  */
-const checkboxs = () => {
-    if (props.checked[0] == '') {
-        selectedItems = ref([1, 2, 3]);
-    } else {
-        selectedItems = ref(props.checked);
-    }
-}
+const checkboxs = () => selectedItems = (props.checked[0] == '') ? ref([1, 2, 3]) : ref(props.checked);
+
 
 /**
  * filter for checkbox
  */
-const filter = () => {
-    Inertia.get(route("inbox.index", selectedItems.value.join(",")));
-}
+const filter = () => Inertia.get(route("inbox.index", selectedItems.value.join(",")));
 
 checkboxs();
 </script>
