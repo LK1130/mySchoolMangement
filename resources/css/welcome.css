@@ -1,4 +1,12 @@
-.home {
+body {
+    background-color: #000 !important;
+}
+
+.pacifico{
+    font-family: 'Pacifico';
+}
+
+/* .home {
     justify-content: space-around;
 }
 
@@ -52,20 +60,7 @@
 .aboutUs .aboutUs-content img:nth-child(2) {
     width: auto;
     height: 350px;
-}
-
-.miniprojects .title {
-    margin-bottom: 5em;
-}
-
-.miniprojects .minititle {
-    padding: 2em;
-    margin: 2em;
-}
-
-.miniprojects .minititle img {
-    width: 150px;
-}
+} */
 
 .miniprojects .paths {
     position: relative;
@@ -149,7 +144,7 @@
     background-color: #ff6551;
 }
 
-.contactUs {
+/* .contactUs {
     margin: 5em 0;
 }
 
@@ -207,4 +202,4 @@ footer div ul li {
     footer {
         align-items: center;
     }
-}
+} */

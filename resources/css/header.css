@@ -1,0 +1,31 @@
+.ion{
+    color:  var(--primaryBackground);
+}
+
+.hlink:hover a::before,
+.hlink-text-normal:hover  div::before {
+    content: ">";
+}
+
+
+
+.border-color{
+    border-color: var(--primaryBackground);
+}
+
+.hlink-text{
+    @apply ion font-semibold hover:opacity-90 uppercase  text-base;
+}
+
+.hlink-text-normal{
+    @apply ion font-semibold hover:opacity-90   text-base;
+}
+
+.noti-profile-menu{
+    @apply w-9 hover:opacity-90 ;
+}
+
+hr{
+    border-color:  var(--primaryBackground);
+    border-width: 1px;
+}

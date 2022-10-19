@@ -1,8 +1,15 @@
 <?php
 
-use App\Http\Controllers\HomePageController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\BlogListController;
+use App\Http\Controllers\GuideController;
 use App\Http\Controllers\HomeController;
-use Illuminate\Contracts\View\View;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\PrivacyPolicyController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RecordController;
+use App\Http\Controllers\SettingController;
+use App\Http\Controllers\VideoListController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -18,27 +25,54 @@ use Inertia\Inertia;
 |
 */
 
-
-Route::get('/',function(){
+/**
+ * Start public Home Page
+ */
+Route::get('/', function () {
     return Inertia::render('Welcome', [
         'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
 });
 
-Route::get('/homepage', [HomeController::class,"index"]);
-    
-
-// Route::get('home',[HomePageController::class,'index']);
-
+// Auth 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return Inertia::render('Dashboard');
-    })->name('dashboard');
+    Route::get('/homepage', function () {
+        return Inertia::render('Home');
+    })->name('home');
+});
+
+/**
+ * Need to login
+ */
+Route::middleware(['auth'])->group(function () {
+    //Home page
+    Route::get('/homepage', [HomeController::class, "index"]);
+    //Recording page
+    Route::get('/recording', [RecordController::class, "index"]);
+    //Video Page
+    Route::get('/video',[VideoListController::class,'index']);
+    //Inbox Page
+    Route::get('/inbox/{category?}',[MessageController::class,'index'])->name("inbox.index");;
+
+    // Blog page
+    Route::get('/blog', [BlogController::class, "index"])->name("blog.index");
+    // Blog view
+    Route::get('/blogview/{blog}', [BlogController::class, "show"])->name("blog.show");
+    // Privacy Policy
+    Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
+
+    // Profile
+    Route::get('/profile',[ProfileController::class,'index']);
+
+    // Guide
+    Route::get('/guide',[GuideController::class,'index']);
+
+    //Setting
+    Route::get('/setting',[SettingController::class,'index']);
 });

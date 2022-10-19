@@ -68,21 +68,8 @@ const submit = () => {
 </template>
 
 
-<style>
 
-    #email,#password{
-        border: 0.1px solid #2535A1;
-        box-shadow: 2px 2px 5px #000;
-        border-radius: 12px;
-    }
-    .btn{
-        background-color: #2535A1;
-        height: 2.6rem;
-        font-family: 'Poppins';
-        
-    }
-    .forgot{
-        color: #2535A1;
-    }
-  
-</style>
+<style>
+    @import "../../../css/login.css";
+ </style>
+    

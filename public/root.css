@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+:root {
+    /*
+    Background
+    */
+    --primaryBackground: #2535a1;
+    --secondaryBackground: #ffc652;
+    --tertiaryBackground: #ff6551;
+    /*
+    Text
+    */
+     --whiteTextColor :  #fff;
+     --blackTextColor : #000;
+}
+
+*{
+    font-family: "Poppins", sans-serif;
+}
+
