@@ -9,16 +9,16 @@ use Illuminate\Support\Facades\Auth;
 class MessageController extends Controller
 {
 
-    public function index($category)
+    public function index($category = "")
     {
+        $query = TMail::where("del_flg", 0);
 
-        $messages = TMail::when($category != "all", 
-        function ($query, $category) {
-            $query->where("m_category", $category);
-        })
-            ->where("del_flg", 0)
-            ->where('user_id', Auth::id())
-            ->paginate(10);
-        return inertia('Inbox', ['messages' => $messages]);
+        $query->when(!empty($category), function ($query) use ($category) {
+            $categoryArray = explode(',', $category);
+            return  $query->whereIn("m_category", $categoryArray);
+        });
+        $messages = $query->paginate(10);
+
+        return inertia('Inbox', ['messages' => $messages,"checked" =>  explode(',', $category)]);
     }
 }

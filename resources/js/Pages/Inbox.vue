@@ -1,6 +1,6 @@
 <script setup>
 
-
+import { ref } from 'vue';
 import { Inertia } from '@inertiajs/inertia';
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
@@ -13,19 +13,32 @@ const props = defineProps({
     messages: {
         type: Object
     },
+    checked: {
+        type: Array
+    }
 });
 
+let selectedItems = [];
 
-
-const filter = () => {
-    Inertia.get(route("inbox.index",1));
+/**
+ * Check for user choice
+ */
+const checkboxs = () => {
+    if (props.checked[0] == '') {
+        selectedItems = ref([1, 2, 3]);
+    } else {
+        selectedItems = ref(props.checked);
+    }
 }
 
+/**
+ * filter for checkbox
+ */
+const filter = () => {
+    Inertia.get(route("inbox.index", selectedItems.value.join(",")));
+}
 
-
-
-
-
+checkboxs();
 </script>
 
 <template>
@@ -39,16 +52,16 @@ const filter = () => {
             <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Inbox</p>
 
             <div class="space-x-3 mx-2">
-                <input type="checkbox" name="info" id="info"  v-on:change="filter"
-                    class="p-2 rounded-md text-primaryBackground" checked>
+                <input type="checkbox" name="info" id="info" v-on:change="filter" v-model="selectedItems" value="1"
+                    class="p-2 rounded-md text-primaryBackground">
                 <label for="info">Information</label>
 
-                <input type="checkbox" name="message" id="message" v-on:change="filter" 
-                class="p-2 rounded-md text-secondaryBackground" checked>
+                <input type="checkbox" name="message" id="message" v-on:change="filter" v-model="selectedItems"
+                    value="2" class="p-2 rounded-md text-secondaryBackground">
                 <label for="message">Direct Message</label>
 
-                <input type="checkbox" name="alert" id="alert"  v-on:change="filter"
-                    class="p-2 rounded-md text-tertiaryBackground" checked>
+                <input type="checkbox" name="alert" id="alert" v-on:change="filter" v-model="selectedItems" value="3"
+                    class="p-2 rounded-md text-tertiaryBackground">
                 <label for="alert">Alert</label>
             </div>
 
