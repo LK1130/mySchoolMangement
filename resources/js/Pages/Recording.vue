@@ -9,6 +9,7 @@ import Pagination from '../Components/Pagination.vue';
 import Dropdown from '../Components/Dropdown.vue';
 
 import { ref } from 'vue'
+import moment from 'moment';
 let sortMenu = ref(false);
 const sortText = ref("By Date");
 
@@ -18,20 +19,35 @@ const sorting = (value) => {
 }
 
 
+
+const props = defineProps({
+    videos :{
+        type : Object
+    },
+    count : {
+        type : Number
+    },
+    newvideo :{
+        type : Object
+    }
+   
+});
+
+
 </script>
     
 <template>
 
     <Head title="Recording Video" />
     <Header />
-
+   
     <section>
         <div class="relative  w-full h-full bg-primaryBackground z-20 mx-auto">
             <div class="flex items-center p-6 mx-3 space-x-1 text-whiteTextColor ">
-                <h1 class="text-xl font-bold ">N5</h1>
+                <h1 class="text-xl font-bold ">{{ newvideo.c_name.slice(8) }}</h1>
                 <ion-icon name="chevron-forward-outline" class="text-base font-bold"></ion-icon>
-                <p class="text-xl font-bold">Batch <span class="text-xl font-bold">18</span></p>
-                <span class="flex  text-xs m-2 p-1">(18:00 - 20:00)</span>
+                <p class="text-xl font-bold">{{ newvideo.c_name.slice(0,8) }} </p>
+                <span class="flex  text-xs m-2 p-1">( <span>{{ newvideo.c_start_time }}</span> - <span>{{ newvideo.c_end_time }}</span>)</span>
             </div>
 
 
@@ -39,26 +55,21 @@ const sorting = (value) => {
 
             <div class=" flex md:flex-row flex-col   justify-around  md:space-x-10 p-5 pb-10 z-20">
                 <div class="video-container container  mx-auto z-20   ">
-                    <img src="img/video.png" alt="" class="mx-auto">
+                    <a :href=newvideo.v_storage_link> <img src="img/video.png" alt="" class="mx-auto"></a>
                 </div>
 
                 <div class="container sm:mt-3  mx-auto space-y-3 recs z-20">
                     <div class="flex  space-x-5">
                         <div class="text-white">
-                            2022/09/30
+                            {{ moment(newvideo.v_date).format("YYYY/MM/DD") }}
                         </div>
                         <SecondaryBtn>
                             New
                         </SecondaryBtn>
 
                     </div>
-                    <p class="md:text-5xl sm:text-base text-white font-bold">Hiragana Day 1</p>
-                    <p class="md:text-sm opacity-60 text-white  mt-2">Lorem ipsum dolor, sit amet consectetur
-                        adipisicing elit. Eos minima voluptates voluptatum omnis ipsum veritatis ea, iure consectetur
-                        veniam! Cum quae animi assumenda illo ad unde, nostrum facere at porro! Lorem ipsum dolor sit
-                        amet consectetur adipisicing elit. Error animi ducimus voluptates! Vitae blanditiis ullam
-                        necessitatibus provident dolor non esse odit minus quod quidem. Suscipit dolorum ex assumenda
-                        qui esse.</p>
+                    <p class="md:text-5xl sm:text-base text-white font-bold">{{ newvideo.v_name }}</p>
+                    <p class="md:text-sm opacity-60 text-white  mt-2">{{ newvideo.v_description }}</p>
                 </div>
             </div>
         </div>
@@ -73,7 +84,7 @@ const sorting = (value) => {
             <div
                 class="relative  md:flex  md:flex-row sm:flex  sm:flex-col space-y-5  justify-around items-center mx-auto smallsize ">
                 <div class="hidden md:block mt-4">
-                    <span class="font-bold">30 <span class="font-bold">Videos</span> </span>
+                    <span class="font-bold">{{ count }}<span class="font-bold"> Videos</span> </span>
                 </div>
 
 
@@ -113,89 +124,35 @@ const sorting = (value) => {
                 </div>
 
                 <div class="md:hidden sm:block mt-4">
-                    <span>30 <span>Videos</span> </span>
+                    <span>{{ count }}<span>Videos</span> </span>
                 </div>
 
 
             </div>
 
-            <div class="relative container md:w-11/12 mx-auto py-4">
+            <div v-for="video in videos.data" class="relative container md:w-11/12 mx-auto py-4">
                 <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
                     <div class="flex ">
                         <div class="img-block md:mx-10 sm:mx-4">
                             <img src="img/video.png" class="thumbnail" alt="thumbnail">
                         </div>
                         <div class="md:mx-10 sm:mx-5">
-                            <p class="text-base font-bold font-family">Hiragana 1</p>
-                            <span class="text-xs font-light">2022/10/01</span>
+                            <p class="text-base font-bold font-family">{{ video.v_name }}</p>
+                            <span class="text-xs font-light">{{ moment(video.v_date).format("YYYY/MM/DD") }}</span>
                         </div>
                     </div>
 
 
                     <div class="flex items-center">
-                        <button class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg">Watch</button>
+                      <a :href=video.v_storage_link> <button    class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg">Watch</button></a>
                     </div>
                 </div>
 
 
-                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
-                    <div class="flex ">
-                        <div class="img-block md:mx-10 sm:mx-4">
-                            <img src="img/video.png" class="thumbnail" alt="thumbnail">
-                        </div>
-                        <div class="md:mx-10 sm:mx-5 ">
-                            <p class="text-base font-bold font-family">Hiragana 1</p>
-                            <span class="text-xs font-light">2022/10/01</span>
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center"> <button
-                            class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg ">Watch</button>
-
-                    </div>
-                </div>
-
-                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
-                    <div class="flex ">
-                        <div class="img-block md:mx-10 sm:mx-4">
-                            <img src="img/video.png" class="thumbnail" alt="thumbnail">
-                        </div>
-                        <div class="md:mx-10 sm:mx-5">
-                            <p class="text-base font-bold font-family">Hiragana 1</p>
-                            <span class="text-xs font-light">2022/10/01</span>
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center"><button
-                            class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg ">Watch</button>
-
-                    </div>
-                </div>
-
-                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
-                    <div class="flex ">
-                        <div class="img-block md:mx-10 sm:mx-4">
-                            <img src="img/video.png" class="thumbnail" alt="thumbnail">
-                        </div>
-                        <div class="md:mx-10 sm:mx-5">
-                            <p class="text-base font-bold font-family">Hiragana 1</p>
-                            <span class="text-xs font-light">2022/10/01</span>
-                        </div>
-                    </div>
-
-
-                    <div class="flex items-center">
-                        <button
-                            class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg ">Watch</button>
-
-                    </div>
-                </div>
             </div>
 
             <div class="flex justify-center items-center py-3">
-                <Pagination>
+                <Pagination :links="videos.links">
                 </Pagination>
             </div>
 

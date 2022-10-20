@@ -58,7 +58,7 @@ Route::middleware(['auth'])->group(function () {
     //Video Page
     Route::get('/video',[VideoListController::class,'index']);
     //Inbox Page
-    Route::get('/inbox',[MessageController::class,'index']);
+    Route::get('/inbox/{category?}',[MessageController::class,'index'])->name("inbox.index");;
 
     // Blog page
     Route::get('/blog', [BlogController::class, "index"])->name("blog.index");

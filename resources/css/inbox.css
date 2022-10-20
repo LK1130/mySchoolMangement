@@ -29,63 +29,16 @@
     background: var(--tertiaryBackground);;
 }
 
+.slideDown{
 
-.days{
-    margin-right: 4rem;
+    height: auto;
+    opacity: 1;
 }
 
-.days-alert,.days-message{
-    margin-right: 3rem;
-}
-
-.result{
-    margin-left: 5rem;
-}
-.margins{
-    margin-right: 10.5rem;
-}
-
-@media screen and (max-width: 768px){
-    .custombox{
-      padding: 1rem;
-        align-items: center;
-    }
+.slideUp{
+    height: 0;
+    opacity: 0;
     
-    .mail{
-        font-size: 2.5rem;
-    }
-    .marks{
-        display: flex;
-        font-size: 0.8rem;
-        margin-right: 1rem;
-    }
-
-    .result{
-        font-size: 0.6rem;
-        margin-left: 1.5rem;
-    }
-    .days{
-        font-size: 0.6rem;
-        margin-left: 0.3rem;
-    }
-   
-    .days-alert{
-        font-size: 0.6rem;
-        margin-left: 3rem;
-    }
-    .days-message{
-        font-size: 0.6rem;
-        margin-left: 4.2rem;
-    }
-
-    .mailbox{
-        margin-left: 1.5rem;
-    }
-
-    .custombtn{
-        width: 70px;
-        top: 35px;
-
-    }
 }
+
 
