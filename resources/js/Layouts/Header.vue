@@ -36,7 +36,8 @@ const logout = () => {
       </div>
 
       <div class="flex w-4/9 hidden lg:block">
-        <input type="text" class=" md:w-72 lg:w-80 h-10 border-color rounded-l-xl focus:ring-0" placeholder="Video Title">
+        <input type="text" class=" md:w-72 lg:w-80 h-10 border-color rounded-l-xl focus:ring-0"
+          placeholder="Video Title">
         <button class="bg-primaryBackground w-24 h-10 mt-1 text-white rounded-r-xl hover:opacity-90 ">Search</button>
       </div>
 
@@ -44,7 +45,7 @@ const logout = () => {
         <div class="font-semibold p-1 mx-3 text-lg">{{ $page.props.user.name }}</div>
         <img src="/img/noti-pin.png" alt="" class="mr-2 hidden noti-profile-menu md:block">
         <img src="/img/user.png" alt="" class="ml-1 noti-profile-menu" @click="menuShow = !menuShow">
-          
+
       </div>
     </div>
 
