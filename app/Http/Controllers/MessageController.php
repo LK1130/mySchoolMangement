@@ -9,7 +9,9 @@ class MessageController extends Controller
 {
     public function index($category = "")
     {
-        $query = TMail::where("del_flg", 0)->where('user_id', Auth::id());
+        $query = TMail::where("del_flg", 0)
+        ->where('user_id', Auth::id())
+        ->orderby("created_at","desc");
         $query->when(!empty($category), function ($query) use ($category) {
             return  $query->whereIn("m_category",  explode(',', $category));
         });
