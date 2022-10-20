@@ -47,12 +47,19 @@ console.log(props.guides);
                     </ul>
                 </div>
             </div>
+            <!-- Complex loop -->
             <!-- Blog 1 -->
             <div   v-for="items in allGuides"  class="container mx-auto p-8">
                 <div v-for="item in guides" id="blog1" class="md:w-full guideblog">
-                    <h1 v-if="items.g_title == item.g_title" class="text-standard font-bold md:mx-10 mx-auto mb-3">{{ item.id }} .{{ item.g_title }}</h1>
+                   <div v-if="item.step == 1  && items.g_title == item.g_title">
+                    <h1  class="text-standard font-bold md:mx-10 mx-auto mb-3">{{ item.id }} .{{ item.g_title }}</h1>
+                   </div>
 
-                    <div v-if="item.step == 1 && items.g_title == item.g_title" class="flex md:flex-row sm:flex-col  justify-between items-center md:w-full sm:w-full mx-auto  step">
+                   <div v-else>
+                    <!-- <h1  class="text-standard font-bold md:mx-10 mx-auto mb-3">{{ item.id }} .{{ item.g_title }}</h1> -->
+                   </div>
+
+                    <div v-if="item.step == 1  && items.g_title == item.g_title" class="flex md:flex-row sm:flex-col  justify-between items-center md:w-full sm:w-full mx-auto  step">
                         <div class="flex justify-center items-center md:w-full md:h-full sm:w-full sm:h-full md:mx-auto image-container">
                             <img src="img/blog-image.png" class="images"  alt="">
                         </div>
@@ -86,6 +93,43 @@ console.log(props.guides);
 
                        
                     </div>
+
+
+                    <div v-if="item.step == 3  && items.g_title == item.g_title" class="flex md:flex-row sm:flex-col  justify-between items-center md:w-full sm:w-full mx-auto  step">
+                        <div class="flex justify-center items-center md:w-full md:h-full sm:w-full sm:h-full md:mx-auto image-container">
+                            <img src="img/blog-image.png" class="images"  alt="">
+                        </div>
+
+                        <div v-if="item.step == 3 && items.g_title == item.g_title "  class="flex flex-col md:w-full md:mx-auto space-y-3">
+                            <SecondaryBtn class="bg-primaryBackground ">Step {{ item.step }}</SecondaryBtn>
+
+                            <h3 class="text-lg font-bold">{{ item.step_title }}</h3>
+
+                            <p class="text-base font-normal">{{ item.step_description }}</p>
+
+                        </div>
+                    </div>
+
+
+                    <div v-if="item.step == 4 && items.g_title == item.g_title" class="flex  justify-between md:w-full mt-6 mx-auto step2">
+                        
+                        <div class="flex flex-col md:w-full md:mx-auto md:mt-0 mt-3 space-y-3">
+                            <SecondaryBtn class="bg-primaryBackground">Step {{ item.step }}</SecondaryBtn>
+
+                            <h3 class="text-lg font-bold">{{ item.step_title }}</h3>
+
+                            <p class="text-base font-normal">{{ item.step_description }}</p>
+
+                        </div>
+                        
+                        <div  v-if="item.step == 4 && items.g_title == item.g_title" class="flex justify-center items-center md:w-full md:h-full md:mx-auto">
+                            <img src="img/blog-image.png" alt="">
+                        </div>
+
+                       
+                    </div>
+
+                    
 
 
                 </div>
