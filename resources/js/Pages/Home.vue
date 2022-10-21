@@ -87,7 +87,7 @@ const stroke = ref([
     <Head title="Home" />
     <Header />
 
-    <section class="container p-4 md:p-12 overflow-x-hidden">
+    <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
             <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Classes Joined</h1>
@@ -96,7 +96,7 @@ const stroke = ref([
         </div>
 
         <!-- Hero Section -->
-        <div class="flex flex-col md:flex-row justify-between items-center py-4 w-full ">
+        <div class="flex flex-col lg:flex-row justify-between items-center py-4 w-full ">
             <div class="p-10 w-full">
                 <!-- Student's Card -->
                 <div
@@ -194,11 +194,11 @@ const stroke = ref([
                 </div>
 
                 <div class="w-full flex justify-end">
-                    <Link  href="/recording">
+                    <Link href="/recording">
                     <button
                         class="w-32 text-white bg-red-600 hover:bg-red-800 focus:outline-none font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2">Rec
                         Video</button>
-                        </Link>
+                    </Link>
                 </div>
             </div>
         </div>
@@ -228,7 +228,7 @@ const stroke = ref([
             </div>
         </div>
 
-        <div class="flex flex-col md:flex-row justify-around space-y-5 px-10">
+        <div class="flex flex-col lg:flex-row justify-around items-center space-y-5 px-10">
             <!-- Rank Table -->
             <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
                 <table class="text-sm text-left text-primaryBackground ">
@@ -278,7 +278,7 @@ const stroke = ref([
             <!-- Rank Chart -->
             <div class="flex flex-col bg-white py-5 px-10 rounded-xl">
                 <h1>Overall</h1>
-                <div>
+                <div class="w-full">
                     <Chart :options="chartOptions" :series="series" />
                 </div>
             </div>
@@ -289,12 +289,12 @@ const stroke = ref([
         <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3">Class Exam Ranking & Mark</h1>
 
         <div
-            class="flex flex-col-reverse md:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
+            class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
             <div class="pt-10">
                 <ChartV2 :options="chartOptionsV2" :series="seriesV2" :stroke="stroke" />
             </div>
 
-            <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full md:w-72 space-y-4">
+            <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full lg:w-72 space-y-4">
                 <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
                         class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">1</span>

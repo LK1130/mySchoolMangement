@@ -1,5 +1,5 @@
 <template>
-    <apexcharts type="line" :options="chartOptions" :series="series" class="chart">
+    <apexcharts :options="chartOptions" :series="series" class="chart">
     </apexcharts>
 </template>
 
@@ -16,14 +16,12 @@ export default {
 
 <style>
 .chart {
-    width: 500px;
-    height: 350px;
+    width: 30em;
 }
 
 @media screen and (max-width: 765px) {
     .chart {
-        width: 400px;
-        height: 250px;
+        width: 22em;
     }
 }
 </style>
