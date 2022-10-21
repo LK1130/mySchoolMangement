@@ -242,34 +242,34 @@ const stroke = ref([
                     </thead>
                     <tbody>
                         <tr>
-                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 11</td>
-                            <td class="py-3 px-10 font-bold">hiragana 1</td>
-                            <td class="py-3 px-6 text-red-500">5</td>
-                            <td class="py-3 px-6 text-black">9</td>
+                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 11</td>
+                            <td class="py-3 px-6 md:px-10 font-bold">hiragana 1</td>
+                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
+                            <td class="py-3 px-2 md:px-6 text-black">9</td>
                         </tr>
                         <tr>
-                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 15</td>
-                            <td class="py-3 px-10 font-bold">hiragana 2</td>
-                            <td class="py-3 px-6 text-green-500">10</td>
-                            <td class="py-3 px-6 text-black">1</td>
+                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 15</td>
+                            <td class="py-3 px-6 md:px-10 font-bold">hiragana 2</td>
+                            <td class="py-3 px-2 md:px-6 text-green-500">10</td>
+                            <td class="py-3 px-2 md:px-6 text-black">1</td>
                         </tr>
                         <tr>
-                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 20</td>
-                            <td class="py-3 px-10 font-bold">katakana 1</td>
-                            <td class="py-3 px-6 text-red-500">5</td>
-                            <td class="py-3 px-6 text-black">9</td>
+                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 20</td>
+                            <td class="py-3 px-6 md:px-10 font-bold">katakana 1</td>
+                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
+                            <td class="py-3 px-2 md:px-6 text-black">9</td>
                         </tr>
                         <tr>
-                            <td class="py-3 pr-14 font-light text-xs text-black">Aug 25</td>
-                            <td class="py-3 px-10 font-bold">katakana 2</td>
-                            <td class="py-3 px-6 text-secondaryBackground">6</td>
-                            <td class="py-3 px-6 text-black">4</td>
+                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 25</td>
+                            <td class="py-3 px-6 md:px-10 font-bold">katakana 2</td>
+                            <td class="py-3 px-2 md:px-6 text-secondaryBackground">6</td>
+                            <td class="py-3 px-2 md:px-6 text-black">4</td>
                         </tr>
                         <tr>
-                            <td class="py-3 pr-14 font-light text-xs text-black">Sept 01</td>
-                            <td class="py-3 px-10 font-bold">Lesson 1</td>
-                            <td class="py-3 px-6 text-red-500">5</td>
-                            <td class="py-3 px-6 text-black">8</td>
+                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Sept 01</td>
+                            <td class="py-3 px-6 md:px-10 font-bold">Lesson 1</td>
+                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
+                            <td class="py-3 px-2 md:px-6 text-black">8</td>
                         </tr>
                     </tbody>
                 </table>

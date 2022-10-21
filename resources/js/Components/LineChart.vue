@@ -21,7 +21,7 @@ export default {
 
 @media screen and (max-width: 765px) {
     .chart {
-        width: 22em;
+        width: 18em;
     }
 }
 </style>
