@@ -53,8 +53,7 @@ const props = defineProps({
 
     <Footer />
 </template> 
-                
-               
+ 
 <style>
 @import "../../css/privacyPolicy.css";
 </style>

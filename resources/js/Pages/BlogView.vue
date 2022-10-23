@@ -22,7 +22,7 @@ const props = defineProps({
 
     <section class="p-4 md:p-12">
         <div class="flex flex-row items-center justify-between">
-            <Link href="/blog" >
+            <Link href="/blog">
             <h1 class="text-lg md:text-xl font-bold text-primaryBackground">BLOGS</h1>
             </Link>
         </div>
@@ -33,10 +33,12 @@ const props = defineProps({
                 <img src="/img/blog-view.png" alt="" class="" />
             </div>
             <div class="flex flex-col space-y-2  my-8">
-                <p class="text-base font-semibold opacity-80">{{ moment( blog.created_at).format("YYYY/MM/DD (ddd) hh:mm ")}} </p>
+                <p class="text-base font-semibold opacity-80">
+                    {{ moment( blog.created_at).format("YYYY/MM/DD (ddd)hh:mm")}}
+                </p>
             </div>
             <div class="font-extralight space-y-6">
-               <p class="font-medium text-lg opacity-70">{{ blog.b_description }}</p>
+                <p class="font-medium text-lg opacity-70">{{ blog.b_description }}</p>
             </div>
         </div>
     </section>
@@ -45,7 +47,7 @@ const props = defineProps({
     <Footer />
 </template> 
             
-           
+        
 <style>
 @import "../../css/blogview.css";
 </style>
