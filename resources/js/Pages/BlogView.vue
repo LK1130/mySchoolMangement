@@ -30,11 +30,11 @@ const props = defineProps({
         <div class="md:p-3 ">
             <h1 class="my-5 md:mb-10 text-lg md:text-3xl font-bold">{{ blog.b_title }}</h1>
             <div class="flex  w-full">
-                <img src="/img/blog-view.png" alt="" class="" />
+                <img :src="blog.b_photo" alt="" class="" />
             </div>
             <div class="flex flex-col space-y-2  my-8">
                 <p class="text-base font-semibold opacity-80">
-                    {{ moment( blog.created_at).format("YYYY/MM/DD (ddd)hh:mm")}}
+                    {{ moment(blog.created_at).format("YYYY/MM/DD (ddd)hh:mm") }}
                 </p>
             </div>
             <div class="font-extralight space-y-6">
