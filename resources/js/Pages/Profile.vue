@@ -18,6 +18,16 @@ const onFile = (e) => {
     reader.onload = () => (imgSrc.value = reader.result)
 }
 
+const props = defineProps({
+    user : {
+        type : Object
+    }
+})
+    // console.log(props.user[0].nickname);
+
+    // let nickname = '';
+    // const checkname = () => nickname = (props.user[0].nickname = '') ? ref(nickname == '')
+    // if(props.user[0].nickname == "null"
 </script>
 
 
@@ -25,7 +35,7 @@ const onFile = (e) => {
 
     <Head title="Profile" />
     <Header />
-
+    <!-- <div>{{ user[0].name }}</div> -->
     <section>
         <div class="container mx-auto">
             <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Profile</p>
@@ -51,29 +61,39 @@ const onFile = (e) => {
 
                             <div class="form-group md:w-9/12 sm:w-full mt-3">
                                 <input type="text" id="name"
-                                    class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Name" required="">
+                                    class="bg-gray-50 border border-gray-300 font-bold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Name" required="" :class="{
+                                        'font-bold': user[0].name
+                                    }" :value=user[0].name>
                             </div>
                             <div class="form-group mt-5 flex ">
                                 <input type="text" id="nickname"
-                                    class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-6/12 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Nickname" required="">
+                                 class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-6/12 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    placeholder="Nickname" required="" :class="{
+                                        'font-bold': user[0].nickname
+                                    }" :value=user[0].nickname>
                                 <input type="number" id="age"
                                     class="bg-gray-50 border border-gray-300 text-gray-900  md:mx-20  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Age" required="">
+                                    placeholder="Age" required="" :class="{
+                                        'font-bold': user[0].age
+                                    }" :value=user[0].age>
                             </div>
 
                             <div class="form-group md:w-9/12 sm:w-full mt-5">
                                 <input type="text" id="address"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Address" required="">
+                                    placeholder="Address" :class="{
+                                        'font-bold': user[0].address
+                                    }" required="" :value=user[0].address>
                             </div>
 
 
                             <div class="form-group  md:w-9/12 mt-5">
                                 <input type="text" id="phone"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                                    placeholder="Phone" required="">
+                                    placeholder="Phone" required="" :class="{
+                                        'font-bold': user[0].phone
+                                    }" :value=user[0].phone>
                             </div>
 
 
@@ -81,7 +101,9 @@ const onFile = (e) => {
                             <div class="form-group md:w-9/12 mt-5">
                                 <textarea name="bio" id="bio"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-                                    cols="30" rows="10" placeholder="Bio"></textarea>
+                                    cols="30" rows="10" placeholder="Bio" :class="{
+                                        'font-bold': user[0].bio
+                                    }" :value=user[0].bio></textarea>
                             </div>
 
                             <div class="flex justify-end items-center mt-14 mb-14 p-2">

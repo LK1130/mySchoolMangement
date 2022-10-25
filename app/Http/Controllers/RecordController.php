@@ -7,6 +7,7 @@ use Carbon\Carbon;
 use DateTime;
 use DateTimeZone;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class RecordController extends Controller
@@ -16,16 +17,15 @@ class RecordController extends Controller
     public function index()
     {
 
+        $video = new MVideo();
+        $videos  = $video->verified_class(Auth::id());
 
-        $videos =   MVideo::where('del_flg', 0)->paginate(5);
-        $count = MVideo::where('del_flg', 0)->count();
+        $count = $video->validVideoCount(Auth::id());
 
         $date = new DateTime("now", new DateTimeZone('Asia/Yangon'));
         $today = $date->format('Y-m-d h:m:s');
-        $newVideo  = DB::table('m_videos')
-            ->join('m_classes', 'm_videos.class_id', '=', 'm_classes.id')
-            ->where('m_videos.v_date', '>=', $today)
-            ->first();
+
+        $newVideo = $video->today_video(Auth::id(), $today);
 
 
 
