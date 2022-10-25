@@ -31,6 +31,7 @@ const props = defineProps({
             <h1 class="my-5 md:mb-10 text-lg md:text-3xl font-bold">{{ blog.b_title }}</h1>
             <div class="flex  w-full">
                 <img :src="blog.b_photo" alt="" class="" />
+                
             </div>
             <div class="flex flex-col space-y-2  my-8">
                 <p class="text-base font-semibold opacity-80">

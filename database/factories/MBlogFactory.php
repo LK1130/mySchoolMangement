@@ -19,7 +19,7 @@ class MBlogFactory extends Factory
         return [
             "b_title" => $this->faker->text(50),
             "b_description" => $this->faker->paragraph(10),
-            "b_photo" => "blog-view.png",
+            "b_photo" => "/img/blog-view.png",
             "created_by" => 1,
         ];
     }

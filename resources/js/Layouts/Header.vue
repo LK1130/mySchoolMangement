@@ -16,7 +16,7 @@ const logout = () => {
   <nav class="w-full bg-white border-b-2 px-6 py-5">
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
-        <Link href="./homepage" class="flex items-center">
+        <Link href="/homepage" class="flex items-center">
         <img src="/img/logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
         </Link>
       </div>
@@ -52,13 +52,13 @@ const logout = () => {
     <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg  z-40" v-if="menuShow">
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
-          <Link href="./homepage" class="hlink-text" aria-current="page">Home</Link>
+          <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
         </li>
         <li class="flex  md:w-16 lg:w-24 hlink my-1">
-          <Link href="./inbox" class="hlink-text" aria-current="page">Inbox</Link>
+          <Link href="/inbox" class="hlink-text" aria-current="page">Inbox</Link>
         </li>
         <li class="flex  md:w-16 lg:w-24  hlink my-1">
-          <Link href="./blog" class="hlink-text" aria-current="page">Blog</Link>
+          <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
         </li>
       </ul>
       <div class="w-32 mx-auto ion">
@@ -66,12 +66,12 @@ const logout = () => {
       </div>
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
-          <Link href="./profile" class="hlink-text-normal" aria-current="page">
+          <Link href="/profile" class="hlink-text-normal" aria-current="page">
           Profile
           </Link>
         </li>
         <li class="flex  md:w-16 lg:w-24 hlink my-1">
-          <Link href="./setting" class="hlink-text-normal" aria-current="page">
+          <Link href="/setting" class="hlink-text-normal" aria-current="page">
           Setting
           </Link>
         </li>
