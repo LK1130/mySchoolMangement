@@ -23,6 +23,7 @@
     "dependencies": {
         "apexcharts": "^3.36.0",
         "moment": "^2.29.4",
+        "swiper": "^8.4.4",
         "vue-apexcharts": "^1.6.2",
         "vue3-apexcharts": "^1.4.1"
     }
