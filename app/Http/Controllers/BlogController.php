@@ -14,7 +14,8 @@ class BlogController extends Controller
     {
         $blogs = MBlog::where("del_flg", 0)
         ->paginate(5);
-        return inertia('Blog', ['blogs' => $blogs]);
+        return inertia
+        ('Blog', ['blogs' => $blogs]);
         
     }
 

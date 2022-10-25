@@ -15,7 +15,7 @@ class MGuide extends Model
 
          $guides  =  DB::table('m_guides')
             
-            ->Join('m_guide_steps','m_guides.id','=','m_guide_steps.guide_id')
+            ->join('m_guide_steps','m_guides.id','=','m_guide_steps.guide_id')
             ->select('m_guides.id','m_guides.g_title','m_guide_steps.step','m_guide_steps.step_title','m_guide_steps.step_description','m_guide_steps.del_flg')
             ->where('m_guides.del_flg',0)
             ->orderBy('m_guides.id')
