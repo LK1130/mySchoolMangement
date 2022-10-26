@@ -57,9 +57,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/recording', [RecordController::class, "index"])->name("record.search");
 
     //Video Page
-    Route::get('/video',[VideoListController::class,'index']);
+    Route::get('/video/{id?}',[VideoListController::class,'index'])->name("video.index");
     //Inbox Page
-    Route::get('/inbox/{category?}',[MessageController::class,'index'])->name("inbox.index");;
+    Route::get('/inbox/{category?}',[MessageController::class,'index'])->name("inbox.index");
 
     // Blog page
     Route::get('/blog', [BlogController::class, "index"])->name("blog.index");

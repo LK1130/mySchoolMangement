@@ -56,7 +56,7 @@ const props = defineProps({
 
             <div class=" flex md:flex-row flex-col   justify-around  md:space-x-10 p-5 pb-10 z-20">
                 <div class="video-container container  mx-auto z-20   ">
-                    <a :href=newvideo.v_storage_link> <img src="img/video.png" alt="" class="mx-auto"></a>
+                    <a :href="route('video.index',newvideo.id)"> <img src="img/video.png" alt="" class="mx-auto"></a>
                 </div>
 
                 <div class="container sm:mt-3  mx-auto space-y-3 recs z-20">
@@ -143,9 +143,9 @@ const props = defineProps({
                         </div>
                     </div>
 
-
+                 
                     <div class="flex items-center">
-                      <a :href=video.v_storage_link> <button    class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg">Watch</button></a>
+                      <a  :href="route('video.index',video.id)" > <button    class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg">Watch</button></a>
                     </div>
                 </div>
 

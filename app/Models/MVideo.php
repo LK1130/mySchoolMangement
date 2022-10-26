@@ -50,12 +50,47 @@ class MVideo extends Model
         ->join('t_student_classes','m_videos.class_id','=','t_student_classes.class_id')
         ->join('m_classes', 't_student_classes.class_id', '=', 'm_classes.id')
         ->join('users','t_student_classes.user_id','=','users.id')
+        ->select('m_videos.id','m_videos.v_name','m_videos.v_description','m_videos.v_date','m_classes.c_name','m_classes.c_start_time','m_classes.c_end_time')
         ->where('m_videos.v_date', '>=', $today)
         ->where('users.id',$id)
         ->orderBy('m_videos.v_date')
         ->first();
 
-    
+        
         return $newVideo;
+    }
+
+
+    public function  watchVideoById($id,$userid){
+
+
+        $query = DB::table('m_videos')
+        ->join('t_student_classes','m_videos.class_id','=','t_student_classes.class_id')
+        ->join('users','t_student_classes.user_id','=','users.id')
+        ->select('m_videos.id','m_videos.v_name','m_videos.v_description','m_videos.v_storage_link','m_videos.v_date')
+        ->where('m_videos.id',$id)
+        ->where('users.id',$userid)
+        ->first();
+
+         
+        
+        return $query;
+
+    }
+
+    public function nextVideo($id,$userid){
+
+
+        $query = DB::table('m_videos')
+        ->join('t_student_classes','m_videos.class_id','=','t_student_classes.class_id')
+        ->join('users','t_student_classes.user_id','=','users.id')
+        ->join('m_classes', 't_student_classes.class_id', '=', 'm_classes.id')  
+        ->select('m_videos.id','m_videos.v_name','m_videos.v_description','m_videos.v_storage_link','m_videos.v_date','m_classes.c_start_time')
+        ->where('m_videos.id','!=',$id)
+        ->where('users.id',$userid)
+        ->orderBy('m_videos.id')
+        ->get();
+        // dd($query);
+        return $query;
     }
 }
