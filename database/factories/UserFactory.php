@@ -81,9 +81,9 @@ class UserFactory extends Factory
             "Phoo Ei Khaing",
             "Kyi Phyu Oo",
             "Moe Myat Mon",
-            "May Thazin"
+            "May Thazin",
         ];
-       
+
 
         return [
             'name' => $this->faker->unique()->randomElement($names),
@@ -116,14 +116,14 @@ class UserFactory extends Factory
      */
     public function withPersonalTeam()
     {
-        if (! Features::hasTeamFeatures()) {
+        if (!Features::hasTeamFeatures()) {
             return $this->state([]);
         }
 
         return $this->has(
             Team::factory()
                 ->state(function (array $attributes, User $user) {
-                    return ['name' => $user->name.'\'s Team', 'user_id' => $user->id, 'personal_team' => true];
+                    return ['name' => $user->name . '\'s Team', 'user_id' => $user->id, 'personal_team' => true];
                 }),
             'ownedTeams'
         );

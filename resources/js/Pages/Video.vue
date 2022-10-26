@@ -27,7 +27,7 @@ const props = defineProps({
     <Head title="Video" />
     <Header />
     <!-- Video Show -->
-    <section>
+    <section class="overflow-x-hidden">
         <div class="w-full bg-black">
             <img src="../../../public/img/video.png" class="w-2/3 m-auto" alt="">
         </div>
@@ -84,6 +84,46 @@ const props = defineProps({
                         <div class=" mx-5 my-3 opacity-50 text-sm font font-medium ">
                             02:00:00
                         </div>
+                        <ul class=" md:w-30 w-full flex justify-between md:items-center md:mx-10 md:mt-5 mt-3">
+                            <li class="md:w-16 text-white md:text-standard text-base">
+                                <ion-icon name="newspaper-outline"></ion-icon>
+                            </li>
+                            <li class="md:w-24  text-white md:text-base md:font-bold text-sm ">Lecture 1</li>
+                            <li class="md:w-20 text-white md:text-standard text-base">
+                                <ion-icon name="cloud-download-outline"></ion-icon>
+                            </li>
+                        </ul>
+
+                        <ul class=" md:w-30 w-full flex justify-between md:items-center md:mx-10 md:mt-5 mt-3">
+                            <li class="md:w-16 text-white md:text-standard text-base">
+                                <ion-icon name="newspaper-outline"></ion-icon>
+                            </li>
+                            <li class="md:w-24  text-white md:text-base md:font-bold text-sm">Lecture 2</li>
+                            <li class="md:w-20 text-white md:text-standard text-base">
+                                <ion-icon name="cloud-download-outline"></ion-icon>
+                            </li>
+                        </ul>
+
+
+                        <ul class=" md:w-30 w-full flex justify-between md:items-center md:mx-10 md:mt-5 mt-3">
+                            <li class="md:w-16 text-white md:text-standard text-base">
+                                <ion-icon name="newspaper-outline"></ion-icon>
+                            </li>
+                            <li class="md:w-24  text-white md:text-base md:font-bold text-sm">Lecture 3</li>
+                            <li class="md:w-20 text-white md:text-standard text-base">
+                                <ion-icon name="cloud-download-outline"></ion-icon>
+                            </li>
+                        </ul>
+
+                        <ul class=" md:w-30 w-full flex justify-between md:items-center md:mx-10 md:mt-5 mt-3 mb-5">
+                            <li class="md:w-16 text-white md:text-standard text-base">
+                                <ion-icon name="newspaper-outline"></ion-icon>
+                            </li>
+                            <li class="md:w-24  text-white md:text-base md:font-bold text-sm">Lecture 4</li>
+                            <li class="md:w-20 text-white md:text-standard text-base">
+                                <ion-icon name="cloud-download-outline"></ion-icon>
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </div>
@@ -95,6 +135,7 @@ const props = defineProps({
 
         </div>
     </section>
+
     <Footer />
 </template>
 <style>

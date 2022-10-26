@@ -16,12 +16,18 @@ export default {
 
 <style>
 .chart {
-    width: 30em;
+    width: 27em;
+}
+
+@media screen and (max-width: 400px) {
+    .chart {
+        width: 14em;
+    }
 }
 
 @media screen and (max-width: 765px) {
     .chart {
-        width: 18em;
+        width: 19em;
     }
 }
 </style>
