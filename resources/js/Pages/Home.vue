@@ -83,7 +83,11 @@ const stroke = ref([
     }
 ])
 
-
+const joinedClass = defineProps({
+    classes: {
+        type: Object
+    }
+})
 
 
 </script>
@@ -97,7 +101,7 @@ const stroke = ref([
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">3 Classes Joined</h1>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">{{ classes.length }} Classes Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules & Regulations</a></h1>
         </div>
 
@@ -107,8 +111,8 @@ const stroke = ref([
         <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" >
-                <swiper-slide v-for="n in 3" :key="n" :virtual-index="n" >
+                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2">
+                <swiper-slide v-for="n in 3" :key="n" :virtual-index="n">
                     <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
@@ -142,7 +146,8 @@ const stroke = ref([
                                             class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
                                     </p>
                                 </div>
-                                <p class="text-sm md:text-base">Status > <span class="ml-3 text-sm font-bold">Active</span></p>
+                                <p class="text-sm md:text-base">Status > <span
+                                        class="ml-3 text-sm font-bold">Active</span></p>
                             </div>
                         </div>
                     </div>
@@ -219,13 +224,13 @@ const stroke = ref([
     </section>
 
     <!-- Rank Section -->
-    <div class="flex flex-col w-full bg-primaryBackground py-14 my-10">
+    <div class="flex flex-col w-full bg-primaryBackground py-10 my-5 h-full">
         <div class="flex flex-row justify-around w-full items-center">
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center w-48">
                 <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">80%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Attendance</p>
             </div>
-            <div class="flex flex-col items-center mb-32">
+            <div class="flex flex-col items-center mb-32 w-48">
                 <div class="relative">
                     <svg width="100" height="120" viewBox="0 0 114 130" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path
@@ -236,64 +241,96 @@ const stroke = ref([
                 </div>
                 <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
             </div>
-            <div class="flex flex-col items-center">
+            <div class="flex flex-col items-center w-48">
                 <h1 class="text-2xl md:text-4xl font-bold text-tertiaryBackground">60%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
             </div>
         </div>
 
-        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5 my-28 xl:my-0 h-96">
+        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5">
             <!-- Rank Table -->
-            <div class="flex flex-col bg-white py-5 px-10 rounded-xl h-full">
-                <table class="text-sm text-left text-primaryBackground ">
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl  w-2/3 xl:w-2/5 h-96">
+                <table class="text-sm text-left text-primaryBackground mb-4 w-full">
                     <thead>
                         <tr class="text-black">
-                            <th class="py-4 pr-6 md:pr-14">Date</th>
-                            <th class="py-4 px-6 md:px-10">Exam</th>
-                            <th class="py-4 px-2 md:px-6">Mark</th>
-                            <th class="py-4 px-2 md:px-6">Rank</th>
+                            <th class="w-24 text-left">Date</th>
+                            <th class="w-48 text-left">Exam</th>
+                            <th class="w-24 text-left">Mark</th>
+                            <th class="w-24 text-left">Rank</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr>
-                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 11</td>
-                            <td class="py-3 px-6 md:px-10 font-bold">hiragana 1</td>
-                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
-                            <td class="py-3 px-2 md:px-6 text-black">9</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 15</td>
-                            <td class="py-3 px-6 md:px-10 font-bold">hiragana 2</td>
-                            <td class="py-3 px-2 md:px-6 text-green-500">10</td>
-                            <td class="py-3 px-2 md:px-6 text-black">1</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 20</td>
-                            <td class="py-3 px-6 md:px-10 font-bold">katakana 1</td>
-                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
-                            <td class="py-3 px-2 md:px-6 text-black">9</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Aug 25</td>
-                            <td class="py-3 px-6 md:px-10 font-bold">katakana 2</td>
-                            <td class="py-3 px-2 md:px-6 text-secondaryBackground">6</td>
-                            <td class="py-3 px-2 md:px-6 text-black">4</td>
-                        </tr>
-                        <tr>
-                            <td class="py-3 pr-6 md:pr-14 font-light text-xs text-black">Sept 01</td>
-                            <td class="py-3 px-6 md:px-10 font-bold">Lesson 1</td>
-                            <td class="py-3 px-2 md:px-6 text-red-500">5</td>
-                            <td class="py-3 px-2 md:px-6 text-black">8</td>
-                        </tr>
-                    </tbody>
                 </table>
+                <div class="overflow-y-auto rankTable">
+                    <table class="text-sm text-left text-primaryBackground w-full">
+                        <tbody>
+                            <tr>
+                                <td class="py-3 w-24 text-left font-light text-xs text-black">Aug 11</td>
+                                <td class="py-3 w-48 text-left font-bold">hiragana 1</td>
+                                <td class="py-3 w-24 text-left text-red-500">5</td>
+                                <td class="py-3 w-24 text-left text-black">9</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Aug 15</td>
+                                <td class="py-3  font-bold">hiragana 2</td>
+                                <td class="py-3  text-green-500">10</td>
+                                <td class="py-3  text-black">1</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Aug 20</td>
+                                <td class="py-3  font-bold">katakana 1</td>
+                                <td class="py-3  text-red-500">5</td>
+                                <td class="py-3  text-black">9</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
+                                <td class="py-3  font-bold">katakana 2</td>
+                                <td class="py-3  text-secondaryBackground">6</td>
+                                <td class="py-3  text-black">4</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
+                                <td class="py-3  font-bold">Lesson 1</td>
+                                <td class="py-3  text-red-500">5</td>
+                                <td class="py-3  text-black">8</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
+                                <td class="py-3  font-bold">katakana 2</td>
+                                <td class="py-3  text-secondaryBackground">6</td>
+                                <td class="py-3  text-black">4</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
+                                <td class="py-3  font-bold">Lesson 1</td>
+                                <td class="py-3  text-red-500">5</td>
+                                <td class="py-3 text-black">8</td>
+                            </tr>
+
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
+                                <td class="py-3  font-bold">katakana 2</td>
+                                <td class="py-3  text-secondaryBackground">6</td>
+                                <td class="py-3  text-black">4</td>
+                            </tr>
+                            <tr>
+                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
+                                <td class="py-3  font-bold">Lesson 1</td>
+                                <td class="py-3  text-red-500">5</td>
+                                <td class="py-3 text-black">8</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
             </div>
 
             <!-- Rank Chart -->
-            <div class="flex flex-col bg-white py-5 px-10 rounded-xl h-full">
-                <h1>Overall</h1>
-                <div class="">
-                    <Chart :options="chartOptions" :series="series" class="chart" />
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl  w-2/3  xl:w-2/5 h-auto xl:h-96">
+                <div class="w-full">
+                    <h1>Overall</h1>
+                    <div class="w-full">
+                        <Chart :options="chartOptions" :series="series" />
+                    </div>
                 </div>
             </div>
         </div>

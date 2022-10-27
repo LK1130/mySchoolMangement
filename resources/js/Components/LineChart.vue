@@ -1,6 +1,6 @@
 <template>
-    <apexcharts :type="type" :options="chartOptions" :series="series" :class="class">
-    </apexcharts>
+    <apexcharts :type="type" :options="chartOptions" :series="series" :class="class"></apexcharts>
+
 </template>
 
 <script>
@@ -33,12 +33,9 @@ export default {
     .chart {
         width: 19em;
     }
-    
+
     .chartV2 {
         width: 25em;
     }
 }
-
-
-
 </style>
