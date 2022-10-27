@@ -6,6 +6,7 @@ import Header from '../Layouts/Header.vue';
 import InputLabel from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputLabel.vue';
 import Footer from '../Layouts/Footer.vue';
 import { ref } from 'vue'
+import { Inertia } from '@inertiajs/inertia';
 
 const imgSrc = ref("img/profile.png");
 
@@ -23,11 +24,24 @@ const props = defineProps({
         type : Object
     }
 })
-    // console.log(props.user[0].nickname);
 
-    // let nickname = '';
-    // const checkname = () => nickname = (props.user[0].nickname = '') ? ref(nickname == '')
-    // if(props.user[0].nickname == "null"
+
+const form = useForm({
+    _method : "POST",
+    name: props.user[0].name,
+    nickname: props.user[0].nickname,
+    age: props.user[0].age,
+    address: props.user[0].address,
+    phone : props.user[0].phone,
+    bio : props.user[0].bio,
+    
+});
+
+
+const submit = () => {
+   
+    // form.post(route('profile.update',$p ))
+};
 </script>
 
 
@@ -57,53 +71,53 @@ const props = defineProps({
 
                     <div class="md:w-6/12 sm:w-full form-container mx-auto">
 
-                        <form>
+                        <form @submit.prevent="submit">
 
                             <div class="form-group md:w-9/12 sm:w-full mt-3">
-                                <input type="text" id="name"
+                                <input type="text" id="name" v-model="form.name"
                                     class="bg-gray-50 border border-gray-300 font-bold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Name" required="" :class="{
                                         'font-bold': user[0].name
-                                    }" :value=user[0].name>
+                                    }">
                             </div>
                             <div class="form-group mt-5 flex ">
-                                <input type="text" id="nickname"
+                                <input type="text" id="nickname" v-model="form.nickname"
                                  class="bg-gray-50 border border-gray-300  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-6/12 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Nickname" required="" :class="{
                                         'font-bold': user[0].nickname
-                                    }" :value=user[0].nickname>
-                                <input type="number" id="age"
+                                    }" >
+                                <input type="number" id="age" v-model='form.age'
                                     class="bg-gray-50 border border-gray-300 text-gray-900  md:mx-20  text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Age" required="" :class="{
                                         'font-bold': user[0].age
-                                    }" :value=user[0].age>
+                                    }">
                             </div>
 
                             <div class="form-group md:w-9/12 sm:w-full mt-5">
-                                <input type="text" id="address"
+                                <input type="text" id="address" v-model="form.address"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Address" :class="{
                                         'font-bold': user[0].address
-                                    }" required="" :value=user[0].address>
+                                    }" required="" >
                             </div>
 
 
                             <div class="form-group  md:w-9/12 mt-5">
-                                <input type="text" id="phone"
+                                <input type="text" id="phone" v-model="form.phone"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Phone" required="" :class="{
                                         'font-bold': user[0].phone
-                                    }" :value=user[0].phone>
+                                    }" >
                             </div>
 
 
 
                             <div class="form-group md:w-9/12 mt-5">
-                                <textarea name="bio" id="bio"
+                                <textarea name="bio" id="bio" v-model="form.bio"
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
                                     cols="30" rows="10" placeholder="Bio" :class="{
                                         'font-bold': user[0].bio
-                                    }" :value=user[0].bio></textarea>
+                                    }" ></textarea>
                             </div>
 
                             <div class="flex justify-end items-center mt-14 mb-14 p-2">

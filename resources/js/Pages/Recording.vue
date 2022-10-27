@@ -92,7 +92,7 @@ const props = defineProps({
                 <div class="flex">
                     <input type="text" id="search-navbar"
                         class="block   md:w-96 md:h-8  text-gray-900  rounded-l-lg border border-gray-300 sm:text-sm  video"
-                        placeholder="Video Title">
+                        placeholder="Video Title"  v-model="search">
                     <button class="btn md:w-20 md:h-8  text-white rounded-r-lg searches">Search</button>
                 </div>
 

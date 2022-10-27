@@ -69,7 +69,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
 
     // Profile
-    Route::get('/profile',[ProfileController::class,'index']);
+    Route::get('/profile',[ProfileController::class,'index'])->name('profile.update');
+    Route::post('/updateProfile',[ProfileController::class,'update'])->name("profile.update");
 
     // Guide
     Route::get('/guide',[GuideController::class,'index']);

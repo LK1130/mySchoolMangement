@@ -21,4 +21,11 @@ class ProfileController extends Controller
             'user' => $query
         ]);
     }
+
+
+    public function update($request){
+
+
+            dd($request);
+    }
 }
