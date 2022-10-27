@@ -104,12 +104,12 @@ const stroke = ref([
         <Swiper />
 
         <!-- Hero Section -->
-        <div class="flex flex-col lg:flex-row justify-between items-center py-4 w-full ">
+        <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
                 :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" >
                 <swiper-slide v-for="n in 3" :key="n" :virtual-index="n" >
-                    <div class="p-10 md:w-4/6  mx-auto">
+                    <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                             <div class="flex flex-row justify-between items-center z-10">
@@ -149,7 +149,7 @@ const stroke = ref([
                 </swiper-slide>
             </swiper>
             <!-- Class Info -->
-            <div class="flex flex-col md:pl-10 lg:w-11/12  md:w-1/2 w-auto ">
+            <div class="flex flex-col md:pl-10 lg:w-9/12 xl:w-8/12 md:w-1/3 w-auto ">
                 <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Class info</h1>
 
                 <div class="relative">
