@@ -19,7 +19,7 @@ class MVideo extends Seeder
         $videoNames = [
             [
                 "v_name" => "Hiragana Day1",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/0qvG4cpdxAE",
@@ -28,7 +28,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Hiragana Day2",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/GY6KOh2pF78",
@@ -37,7 +37,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Katakana Day3",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/jRFrvOJeYQk",
@@ -46,7 +46,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Katakana Day4",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/KvEHv8z4aTY",
@@ -55,7 +55,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "第1課",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/Z06Kb882IeQ",
@@ -64,7 +64,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "第2課",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/wMQCc8o3KG0",
@@ -73,7 +73,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "第3課",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/oow3_OIKZIw",
@@ -82,7 +82,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "第4課",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/wccQ8RFoUBE",
@@ -91,7 +91,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "第5課",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  1,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/hb_oVa75IUc",
@@ -100,7 +100,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Web Developer Day1",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  4,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/XYn4wowkgKo",
@@ -109,7 +109,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Web Developer Day2",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  4,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/LqomlPip2XM",
@@ -118,7 +118,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Web Developer Day3",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  4,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/fbAuSQd1E-w",
@@ -127,7 +127,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Web Developer Day4",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  4,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/ko-sOhi0PFA",
@@ -136,7 +136,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "Web Developer Day5",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  4,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/wUa7utmA9XA",
@@ -145,7 +145,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "JAVA SE Developer Day1",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  5,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/Hy2zjuG5nwY",
@@ -154,7 +154,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "JAVA SE Developer Day2",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  5,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/PAxu5M2zNnE",
@@ -163,7 +163,7 @@ class MVideo extends Seeder
             ],
             [
                 "v_name" => "JAVA SE Developer Day3",
-                "v_description" =>  $faker->text(200),
+                "v_description" =>  $faker->realtext(512),
                 "class_id" =>  5,
                 "v_date" =>  $faker->dateTimeBetween("now","+3 weeks"),
                 "v_storage_link" =>  "https://youtu.be/1WeuJ3IMKjo",

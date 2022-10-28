@@ -1,38 +1,74 @@
 <script setup>
 
-import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
+import { Head } from '@inertiajs/inertia-vue3';
+import { Inertia } from '@inertiajs/inertia';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
-import SecondaryBtn from '../Components/SecondaryBtn.vue';
-import DateButton from '../Components/DateButton.vue';
 import Pagination from '../Components/Pagination.vue';
-import Dropdown from '../Components/Dropdown.vue';
-
 import { ref } from 'vue'
 import moment from 'moment';
-let sortMenu = ref(false);
-const sortText = ref("By Date");
-
-const sorting = (value) => {
-    sortText.value = (value == 1) ? "By Date" : "By Date Desc";
-    console.log(sortText);
-}
-
-
+import axios from 'axios';
 
 const props = defineProps({
-    videos :{
-        type : Object
+    videos: {
+        type: Object
     },
-    count : {
-        type : Number
+    count: {
+        type: Number
     },
-    newvideo :{
-        type : Object
+    newvideo: {
+        type: Object
     }
-   
 });
 
+/**
+ * sorting menu
+ */
+let sortMenu = ref(false);
+let search = ref("");
+const sortText = ref("Date Asc ");
+const sorting = (value) => {
+    sortText.value = (value == 1) ? "Date Asc " : "Date Desc";
+    sortMenu.value = !sortMenu;
+}
+
+/**
+ * Slice Text for description
+ */
+const filter = (text, length, clamp) => {
+    clamp = clamp || '...';
+    var node = document.createElement('div');
+    node.innerHTML = text;
+    var content = node.textContent;
+    return content.length > length ? content.slice(0, length) + clamp : content;
+};
+
+const searchVideo = () => {
+    axios.post(route('record.search'), {
+        videoName: search.value
+    })
+        .then(function (response) {
+            let resData = response.data;
+            console.log(resData);
+            props.videos.data = resData.data;
+            props.videos.links = resData.links;
+            props.videos.current_page = resData.current_page;
+            props.videos.first_page_url = resData.first_page_url;
+            props.videos.from = resData.from;
+            props.videos.last_page = resData.last_page;
+            props.videos.last_page_url = resData.last_page_url;
+            props.videos.next_page_url = resData.next_page_url;
+            props.videos.path = resData.path;
+            props.videos.per_page = resData.per_page;
+            props.videos.prev_page_url = resData.prev_page_url;
+            props.videos.to = resData.to;
+            props.videos.total = resData.total;
+
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
+}
 
 
 </script>
@@ -41,115 +77,89 @@ const props = defineProps({
 
     <Head title="Recording Video" />
     <Header />
-   
+    <!-- Hero Section-->
     <section>
-        <div class="relative  w-full h-full bg-primaryBackground z-20 mx-auto">
-            <div class="flex items-center p-6 mx-3 space-x-1 text-whiteTextColor ">
-                <h1 class="text-xl font-bold ">{{ newvideo.c_name.slice(8) }}</h1>
-                <ion-icon name="chevron-forward-outline" class="text-base font-bold"></ion-icon>
-                <p class="text-xl font-bold">{{ newvideo.c_name.slice(0,8) }} </p>
-                <span class="flex  text-xs m-2 p-1">( <span>{{ newvideo.c_start_time }}</span> - <span>{{ newvideo.c_end_time }}</span>)</span>
+        <div class="flex w-full h-auto overflow-hidden bg-primaryBackground md:flex-row flex-col pt-5 md:px-10 px-7">
+            <div class="flex-1 ">
+                <span class="text-xl font-semibold text-white">{{ newvideo.c_name }} > </span>
+                <span class="text-sm font-medium text-white"> ({{ newvideo.c_start_time }} - {{ newvideo.c_end_time }})
+                </span>
+                <div class="md:my-10 my-5 md:ml-10 md:mr-10  ">
+                    <a :href="route('video.index', newvideo.id)"> <img src="img/video.png" alt=""
+                            class="mx-auto md:w-12/12 lg:w-8/12 w-full rounded-3xl "></a>
+                </div>
             </div>
-
-
-            <h3 class="absolute z-0 myschool ">My School</h3>
-
-            <div class=" flex md:flex-row flex-col   justify-around  md:space-x-10 p-5 pb-10 z-20">
-                <div class="video-container container  mx-auto z-20   ">
-                    <a :href="route('video.index',newvideo.id)"> <img src="img/video.png" alt="" class="mx-auto"></a>
-                </div>
-
-                <div class="container sm:mt-3  mx-auto space-y-3 recs z-20">
-                    <div class="flex  space-x-5">
-                        <div class="text-white">
-                            {{ moment(newvideo.v_date).format("YYYY/MM/DD") }}
-                        </div>
-                        <SecondaryBtn>
-                            New
-                        </SecondaryBtn>
-
-                    </div>
-                    <p class="md:text-5xl sm:text-base text-white font-bold">{{ newvideo.v_name }}</p>
-                    <p class="md:text-sm opacity-60 text-white  mt-2">{{ newvideo.v_description }}</p>
-                </div>
+            <div class="flex-1 md:my-16 my-5 ">
+                <span class="px-3 py-0.5 mr-2 text-white text-sm font-semibold rounded-lg bg-tertiaryBackground">{{
+                        moment(newvideo.v_date).format("YYYY/MM/DD")
+                }}</span>
+                <span
+                    class="px-5 py-0.5 ml-2 text-white text-sm font-semibold rounded-lg bg-secondaryBackground">New</span>
+                <div class="py-4 text-white font-semibold text-3xl">{{ newvideo.v_name }}</div>
+                <div class="text-white text-sm font-semibold opacity-70"> {{ filter(newvideo.v_description, 500, "...")
+                }}</div>
             </div>
         </div>
     </section>
 
+    <!-- Recroding Video Lists-->
     <section>
-        <div class="relative container h-auto mx-auto space-y-5">
-            <div class="flex  justify-center p-10 ">
-                <h3 class="text-standard font-bold title">Recording Video Lists</h3>
-            </div>
-
-            <div
-                class="relative  md:flex  md:flex-row sm:flex  sm:flex-col space-y-5  justify-around items-center mx-auto smallsize ">
-                <div class="hidden md:block mt-4">
-                    <span class="font-bold">{{ count }}<span class="font-bold"> Videos</span> </span>
+        <div class="relative  h-auto mx-auto">
+            <div class="text-center font-medium text-3xl md:text-4xl py-10">Recording Video Lists</div>
+            <div class="relative  flex  flex-row  justify-around items-center px-1 md:px-5 mb-8">
+                <div class="font-bold hidden md:block">{{ count }}<span class="font-bold"> Videos</span> </div>
+                <div class="flex w-2/3 md:w-2/4 ">
+                    <input type="text"
+                        class="block  md:w-full md:h-10 w-80  text-gray-900  rounded-l-lg  border-blue-800 sm:text-sm"
+                        placeholder="Video Title" v-model="search">
+                    <button class="btn  md:h-10 w-28 text-sm md:text-base  text-white rounded-r-lg
+                        bg-primaryBackground" @click="searchVideo()">Search</button>
                 </div>
-
-
-                <div class="flex">
-                    <input type="text" id="search-navbar"
-                        class="block   md:w-96 md:h-8  text-gray-900  rounded-l-lg border border-gray-300 sm:text-sm  video"
-                        placeholder="Video Title"  v-model="search">
-                    <button class="btn md:w-20 md:h-8  text-white rounded-r-lg searches">Search</button>
-                </div>
-
-                <div class="relative inline-block text-left">
-                    <div>
-                        <button type="button"
-                            class="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
-                            id="menu-button" aria-expanded="true" aria-haspopup="true" @click="sortMenu = !sortMenu">
-                            {{ sortText }}
-                            <!-- Heroicon name: mini/chevron-down -->
-                            <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                fill="currentColor" aria-hidden="true">
-                                <path fill-rule="evenodd"
-                                    d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                        </button>
-                    </div>
-
+                <div>
+                    <button type="button"
+                        class="inline-flex md:w-full w-28 h-10 justify-center rounded-md border border-gray-300 bg-white
+                        px-1 md:px-4 py-2 text-xs  md:text-sm font-medium text-gray-700 shadow-sm
+                        hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100"
+                        id="menu-button" aria-expanded="true" aria-haspopup="true" @click="sortMenu = !sortMenu">
+                        {{ sortText }}
+                        <svg class="-mr-1 ml-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                            fill="currentColor" aria-hidden="true">
+                            <path fill-rule="evenodd"
+                                d="M5.23 7.21a.75.75 0 011.06.02L10 11.168l3.71-3.938a.75.75 0 111.08 1.04l-4.25 4.5a.75.75 0 01-1.08 0l-4.25-4.5a.75.75 0 01.02-1.06z"
+                                clip-rule="evenodd" />
+                        </svg>
+                    </button>
                     <div v-if="sortMenu"
                         class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-1" role="none">
                             <button class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                id="menu-item-0" @click="sorting(1)">By Date </button>
+                                id="menu-item-0" @click="sorting(1)">Date Asc </button>
                             <button href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                id="menu-item-1" @click="sorting(2)">By Date Desc </button>
+                                id="menu-item-1" @click="sorting(2)">Date Desc </button>
                         </div>
                     </div>
                 </div>
-
-                <div class="md:hidden sm:block mt-4">
-                    <span>{{ count }}<span>Videos</span> </span>
-                </div>
-
-
             </div>
-
-            <div v-for="video in videos.data" class="relative container md:w-11/12 mx-auto py-4">
-                <div class=" px-7 py-5  border-slate-400 drop-shadow-md flex justify-between  mx-3  custombox">
+            <!-- Video Lists -->
+            <div v-for="video in videos.data"
+                class="relative container md:w-11/12 mx-auto w-96 my-4 shadow-md md:shadow-lg rounded-xl">
+                <div class="border-slate-400 drop-shadow-md flex justify-between py-3">
                     <div class="flex ">
-                        <div class="img-block md:mx-10 sm:mx-4">
-                            <img src="img/video.png" class="thumbnail" alt="thumbnail">
+                        <div class="md:mr-5 md:ml-10 mr-3 ml-3 flex  items-center">
+                            <img src="img/video.png" class="thumbnail md:w-28 w-20 rounded-lg" alt="thumbnail">
                         </div>
-                        <div class="md:mx-10 sm:mx-5">
-                            <p class="text-base font-bold font-family">{{ video.v_name }}</p>
-                            <span class="text-xs font-light">{{ moment(video.v_date).format("YYYY/MM/DD") }}</span>
+                        <div class="ml-5 py-3">
+                            <p class="text-base font-medium font-family">{{ video.v_name }}</p>
+                            <span class="text-xs font-medium opacity-50">{{ moment(video.v_date).format("YYYY/MM/DD")
+                            }}</span>
                         </div>
                     </div>
-
-                 
-                    <div class="flex items-center">
-                      <a  :href="route('video.index',video.id)" > <button    class="watch w-24 p-1 rounded-lg text-white font-medium shadow-lg">Watch</button></a>
+                    <div class="flex md:mx-10 mx-3  items-center">
+                        <a :href="route('video.index', video.id)"> <button
+                                class="md:w-24 w-20 p-1 text-sm md:text-base rounded-lg bg-tertiaryBackground text-white font-medium shadow-lg">Watch</button></a>
                     </div>
                 </div>
-
-
             </div>
 
             <div class="flex justify-center items-center py-3">

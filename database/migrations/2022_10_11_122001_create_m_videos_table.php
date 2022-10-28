@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('m_videos', function (Blueprint $table) {
             $table->id();
             $table->string("v_name",128);
-            $table->string("v_description", 256);
+            $table->string("v_description", 512);
             $table->unsignedBigInteger("class_id");
             $table->dateTime("v_date");
             $table->string("v_storage_link",256);

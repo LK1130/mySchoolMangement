@@ -13,7 +13,9 @@ use Illuminate\Support\Facades\DB;
 class RecordController extends Controller
 {
 
-
+    /**
+     * Initial State
+     */
     public function index()
     {
 
@@ -27,8 +29,16 @@ class RecordController extends Controller
 
         $newVideo = $video->today_video(Auth::id(), $today);
 
-
-
         return inertia('Recording', ['videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
+    }
+
+
+    public function search(Request $request)
+    {
+        $video = new MVideo();
+        $videos  = $video->verified_class(Auth::id(),$request->videoName);
+        
+       return response()
+       ->json($videos);
     }
 }

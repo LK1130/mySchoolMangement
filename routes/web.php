@@ -54,7 +54,8 @@ Route::middleware(['auth'])->group(function () {
     //Home page
     Route::get('/homepage', [HomeController::class, "index"]);
     //Recording page
-    Route::get('/recording', [RecordController::class, "index"])->name("record.search");
+    Route::get('/recording', [RecordController::class, "index"])->name("record.index");
+    Route::post('/recording', [RecordController::class, "search"])->name("record.search");
 
     //Video Page
     Route::get('/video/{id?}',[VideoListController::class,'index'])->name("video.index");
