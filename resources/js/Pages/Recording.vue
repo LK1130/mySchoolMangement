@@ -26,12 +26,41 @@ const props = defineProps({
  */
 let sortMenu = ref(false);
 let search = ref("");
+let sort = ref("");
 const sortText = ref("Date Asc ");
 const sorting = (value) => {
     sortText.value = (value == 1) ? "Date Asc " : "Date Desc";
+
     sortMenu.value = !sortMenu;
+    
+    sortConditin(sortText);
+    
+    axios.post(route('record.search'),{
+        videoName : search.value,
+        videoSort : sort.value
+    }).then(function(response){
+        let resData = response.data;
+            console.log(resData);
+            props.videos.data = resData.data;
+            props.videos.links = resData.links;
+    }).catch(function(error){
+        console.log(error);
+    });
 }
 
+    console.log(sortText);
+
+const sortConditin = (sortText) => {
+  
+    if(sortText.value == "Date Desc"){
+         sort.value = "DESC";
+        
+    }else{
+        sort.value = "ASC";
+      
+    }
+    return sort.value;
+}
 /**
  * Slice Text for description
  */
@@ -44,12 +73,17 @@ const filter = (text, length, clamp) => {
 };
 
 const searchVideo = () => {
+
+    sortConditin(sortText);
+   
     axios.post(route('record.search'), {
-        videoName: search.value
+        
+        videoName: search.value,
+        videoSort : sort.value
     })
         .then(function (response) {
             let resData = response.data;
-            console.log(resData);
+          
             props.videos.data = resData.data;
             props.videos.links = resData.links;
             props.videos.current_page = resData.current_page;
@@ -134,7 +168,7 @@ const searchVideo = () => {
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                         <div class="py-1" role="none">
                             <button class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
-                                id="menu-item-0" @click="sorting(1)">Date Asc </button>
+                                id="menu-item-0" @click="sorting(1)" >Date Asc </button>
                             <button href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                 id="menu-item-1" @click="sorting(2)">Date Desc </button>
                         </div>
@@ -173,8 +207,5 @@ const searchVideo = () => {
 
 </template> 
     
-   
-<style>
-@import "../../css/recording.css";
-</style>
+  
     

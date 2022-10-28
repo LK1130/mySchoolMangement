@@ -56,6 +56,7 @@ Route::middleware(['auth'])->group(function () {
     //Recording page
     Route::get('/recording', [RecordController::class, "index"])->name("record.index");
     Route::post('/recording', [RecordController::class, "search"])->name("record.search");
+    
 
     //Video Page
     Route::get('/video/{id?}',[VideoListController::class,'index'])->name("video.index");
@@ -70,8 +71,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
 
     // Profile
-    Route::get('/profile',[ProfileController::class,'index'])->name('profile.update');
-    Route::post('/updateProfile',[ProfileController::class,'update'])->name("profile.update");
+    Route::get('/profile',[ProfileController::class,'index'])->name("profile.index");
+    Route::post('/profile',[ProfileController::class,'update'])->name("profile.update");
 
     // Guide
     Route::get('/guide',[GuideController::class,'index']);

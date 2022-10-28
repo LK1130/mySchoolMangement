@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 
 class ProfileController extends Controller
 {
@@ -23,9 +24,19 @@ class ProfileController extends Controller
     }
 
 
-    public function update($request){
+    public function update(Request $request){
 
 
-            dd($request);
+        $user  = User::find(Auth::id());
+
+        $user->name = $request->name;
+        $user->nickname = $request->nickname;
+        $user->age = $request->age;
+        $user->address = $request->address;
+        $user->phone = $request->phone;
+        $user->bio = $request->bio;
+        $user->save();
+
+        return Redirect::route('profile.index');
     }
 }

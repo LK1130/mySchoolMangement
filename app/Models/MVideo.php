@@ -12,19 +12,42 @@ class MVideo extends Model
     use HasFactory;
 
 
-    public function verified_class($id, $vName = "")
+    public function verified_class($id, $vName = "",$vSort = "")
     {
+      
         $query =  DB::table('m_videos')
             ->join('t_student_classes', 'm_videos.class_id', '=', 't_student_classes.class_id')
             ->join('users', 't_student_classes.user_id', '=', 'users.id')
             ->select('m_videos.id', 'm_videos.v_name', 'm_videos.v_description', 'm_videos.v_date', 'm_videos.v_storage_link', 'm_videos.v_storage_location')
             ->where('m_videos.del_flg', 0)
             ->where('users.id', $id);
-        $query->when($vName != "", function ($query) use ($vName) {
-            return $query->where("m_videos.v_name", "like", "%" . $vName . "%");
-        });
+
+      if($vSort == "DESC"){
+        $query->when($vSort == "DESC",function($query) use ($vSort,$vName){
+            return $query->where("m_videos.v_name", "like", "%" . $vName . "%")->orderBy('m_videos.v_date','DESC');
+    });
+      }else{
+        $query->when($vSort == "ASC",function($query) use ($vSort,$vName){
+            return $query->where("m_videos.v_name", "like", "%" . $vName . "%")->orderBy('m_videos.v_date','ASC');
+      });
+    }   
+   
+            // $query->when($vName != "", function ($query) use ($vName,$vSort) {
+            //     if($vSort =="DESC"){
+            //         return $query->when()
+                
+            //         ->orderBy('m_videos.v_date','DESC');
+            //     }else{
+            //         return $query->where("m_videos.v_name", "like", "%" . $vName . "%")
+            //         ->orderBy('m_videos.v_date');
+            //     }
+            
+            // });
+       
+      
         $videos =  $query->paginate(5);
 
+        
         return $videos;
     }
 

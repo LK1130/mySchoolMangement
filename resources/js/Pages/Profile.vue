@@ -40,7 +40,7 @@ const form = useForm({
 
 const submit = () => {
    
-    // form.post(route('profile.update',$p ))
+    form.post(route('profile.update',form));
 };
 </script>
 

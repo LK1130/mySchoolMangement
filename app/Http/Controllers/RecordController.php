@@ -9,6 +9,7 @@ use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Inertia\Inertia;
 
 class RecordController extends Controller
 {
@@ -29,14 +30,16 @@ class RecordController extends Controller
 
         $newVideo = $video->today_video(Auth::id(), $today);
 
-        return inertia('Recording', ['videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
+        return Inertia::render('Recording', ['videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
     }
 
 
     public function search(Request $request)
     {
         $video = new MVideo();
-        $videos  = $video->verified_class(Auth::id(),$request->videoName);
+       
+        // dd($request->videoSort);
+        $videos  = $video->verified_class(Auth::id(),$request->videoName,$request->videoSort);
         
        return response()
        ->json($videos);
