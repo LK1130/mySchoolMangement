@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TStudentAttendance extends Model
 {
     use HasFactory;
+
+    public function attendance()
+    {
+    }
 }
