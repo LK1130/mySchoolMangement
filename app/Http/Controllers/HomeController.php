@@ -14,6 +14,7 @@ class HomeController extends Controller
     {
         $class = new TStudentClass();
         $exam   = new TStudentExam();
+        
         $examRank = $exam->showRankTable();
         $totalClass = $class->totalClass(Auth::id());
         return inertia("Home", ['classes' => $totalClass,'examRank' => $examRank]);

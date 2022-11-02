@@ -270,58 +270,14 @@ const joinedClass = defineProps({
                             <tr v-for="item in examRank">
                                 <td class="py-3 w-24 text-left font-light text-xs text-black">{{ moment(item.date_submitted).format('ll').slice(0,6)  }}</td>
                                 <td class="py-3 w-48 text-left font-bold">{{ item.e_name }}</td>
-                                <td class="py-3 w-24 text-left text-red-500">{{ item.mark }}</td>
+                               
+                        
+                                <td v-if="item.mark <= item.fail_mark" class="py-3 w-24 text-left text-red-500">{{ item.mark }}</td>
+                                <td v-else-if="item.mark < item.full_mark && item.mark > item.fail_mark" class="py-3  text-secondaryBackground">{{ item.mark }}</td>
+                                <td v-else class="py-3 text-green-500">{{ item.mark }}</td>
                                 <td class="py-3 w-24 text-left text-black">9</td>
                             </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Aug 15</td>
-                                <td class="py-3  font-bold">hiragana 2</td>
-                                <td class="py-3  text-green-500">10</td>
-                                <td class="py-3  text-black">1</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Aug 20</td>
-                                <td class="py-3  font-bold">katakana 1</td>
-                                <td class="py-3  text-red-500">5</td>
-                                <td class="py-3  text-black">9</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
-                                <td class="py-3  font-bold">katakana 2</td>
-                                <td class="py-3  text-secondaryBackground">6</td>
-                                <td class="py-3  text-black">4</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
-                                <td class="py-3  font-bold">Lesson 1</td>
-                                <td class="py-3  text-red-500">5</td>
-                                <td class="py-3  text-black">8</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
-                                <td class="py-3  font-bold">katakana 2</td>
-                                <td class="py-3  text-secondaryBackground">6</td>
-                                <td class="py-3  text-black">4</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
-                                <td class="py-3  font-bold">Lesson 1</td>
-                                <td class="py-3  text-red-500">5</td>
-                                <td class="py-3 text-black">8</td>
-                            </tr>
-
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Aug 25</td>
-                                <td class="py-3  font-bold">katakana 2</td>
-                                <td class="py-3  text-secondaryBackground">6</td>
-                                <td class="py-3  text-black">4</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3  font-light text-xs text-black">Sept 01</td>
-                                <td class="py-3  font-bold">Lesson 1</td>
-                                <td class="py-3  text-red-500">5</td>
-                                <td class="py-3 text-black">8</td>
-                            </tr>
+                            
                         </tbody>
                     </table>
 
