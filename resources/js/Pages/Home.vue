@@ -7,6 +7,7 @@ import Footer from '../Layouts/Footer.vue';
 import Chart from '../Components/LineChart.vue';
 import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
+import moment from 'moment';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -87,6 +88,9 @@ let count = ref(0);
 const joinedClass = defineProps({
     classes: {
         type: Object
+    },
+    examRank :{
+        type : Object
     }
 })
 count = joinedClass.classes.length;
@@ -263,10 +267,10 @@ count = joinedClass.classes.length;
                 <div class="overflow-y-auto rankTable">
                     <table class="text-sm text-left text-primaryBackground w-full">
                         <tbody>
-                            <tr>
-                                <td class="py-3 w-24 text-left font-light text-xs text-black">Aug 11</td>
-                                <td class="py-3 w-48 text-left font-bold">hiragana 1</td>
-                                <td class="py-3 w-24 text-left text-red-500">5</td>
+                            <tr v-for="item in examRank">
+                                <td class="py-3 w-24 text-left font-light text-xs text-black">{{ moment(item.date_submitted).format('ll').slice(0,6)  }}</td>
+                                <td class="py-3 w-48 text-left font-bold">{{ item.e_name }}</td>
+                                <td class="py-3 w-24 text-left text-red-500">{{ item.mark }}</td>
                                 <td class="py-3 w-24 text-left text-black">9</td>
                             </tr>
                             <tr>
