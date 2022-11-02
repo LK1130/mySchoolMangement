@@ -13,6 +13,37 @@ import moment from 'moment';
 import 'swiper/css';
 import 'swiper/css/bundle';
 
+
+let examName = []; // exam name list for only user progress chart
+let examMark = []; // exam name list for only user progress chart
+let count = ref(0); // count for classes join
+let percentage = 0;
+
+const props = defineProps({
+    classes: {
+        type: Object
+    },
+    examRanks: {
+        type: Object
+    },
+    rank_mark: {
+        type: Object
+    }
+})
+
+//get class join count
+count = props.classes.length;
+//get exam mark percentage
+percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / count * 10);
+
+// loop for chart data
+for (const key in props.examRanks) {
+    //get eName only user progress chart
+    examName.push(props.examRanks[key].e_name);
+    //get mark only user progress chart
+    examMark.push(props.examRanks[key].mark);
+}
+
 const chartOptions = ref({
     chart: {
         toolbar: {
@@ -20,14 +51,41 @@ const chartOptions = ref({
         },
         id: 'basic-bar'
     },
+    grid: {
+        borderColor: '#e7e7e7',
+        row: {
+            colors: ['#f3f3f3', 'transparent'],
+            opacity: 0.5
+        },
+    },
+    title: {
+        text: 'Over All',
+        align: 'left'
+    },
+    stroke: {
+        curve: 'smooth'
+    },
+    dataLabels: {
+        enabled: true,
+    },
     xaxis: {
-        categories: ["Aug 11", "Aug 15", "Aug 20", "Aug 25", "Aug 11", "Aug 15", "Aug 20", "Aug 25"]
-    }
+        categories: examName,
+        title: {
+            text: 'Exam'
+        },
+    },
+    yaxis: {
+        title: {
+            text: 'Mark'
+        },
+        min: 0,
+        max: 10
+    },
 });
 const series = ref([
     {
         name: 'series-1',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
+        data: examMark
     }
 ]);
 
@@ -78,22 +136,9 @@ const seriesV2 = ref([
     }
 ]);
 
-const stroke = ref([
-    {
-        curve: 'smooth'
-    }
-])
-let count = ref(0);
 
-const joinedClass = defineProps({
-    classes: {
-        type: Object
-    },
-    examRank :{
-        type : Object
-    }
-})
-count = joinedClass.classes.length;
+
+
 </script>
 
 
@@ -241,12 +286,17 @@ count = joinedClass.classes.length;
                             d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
                             fill="#FFC652" />
                     </svg>
-                    <p class="text-5xl text-white font-bold rank">10</p>
+                    <p class="text-5xl text-white font-bold rank">{{ Object.values(props.rank_mark)[0].rank }}</p>
                 </div>
                 <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
             </div>
             <div class="flex flex-col items-center w-48">
-                <h1 class="text-2xl md:text-4xl font-bold text-tertiaryBackground">60%</h1>
+                <h1 class="text-2xl md:text-4xl font-bold" :class="{
+                    'text-green-500': (percentage == 100),
+                    'text-red-500': (percentage <= 50),
+                    'text-yellow-500': (percentage > 50 && percentage < 100),
+                }">
+                    {{ percentage }}%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
             </div>
         </div>
@@ -267,30 +317,28 @@ count = joinedClass.classes.length;
                 <div class="overflow-y-auto rankTable">
                     <table class="text-sm text-left text-primaryBackground w-full">
                         <tbody>
-                            <tr v-for="item in examRank">
-                                <td class="py-3 w-24 text-left font-light text-xs text-black">{{ moment(item.date_submitted).format('ll').slice(0,6)  }}</td>
-                                <td class="py-3 w-48 text-left font-bold">{{ item.e_name }}</td>
-                               
-                        
-                                <td v-if="item.mark <= item.fail_mark" class="py-3 w-24 text-left text-red-500">{{ item.mark }}</td>
-                                <td v-else-if="item.mark < item.full_mark && item.mark > item.fail_mark" class="py-3  text-secondaryBackground">{{ item.mark }}</td>
-                                <td v-else class="py-3 text-green-500">{{ item.mark }}</td>
-                                <td class="py-3 w-24 text-left text-black">9</td>
+                            <tr v-for="examRank in examRanks">
+                                <td class="py-3 w-24 text-left font-light text-xs text-black">{{
+                                        moment(examRank.date_submitted).format('MMM D')
+                                }}</td>
+                                <td class="py-3 w-48 text-left font-bold">{{ examRank.e_name }}</td>
+                                <td class="py-3 w-24" :class="{
+                                    'text-green-500': (examRank.mark == 10),
+                                    'text-red-500': (examRank.mark <= 5),
+                                    'text-yellow-500': (examRank.mark > 5 && examRank.mark < 10),
+                                }">{{ examRank.mark }}</td>
+                                <td class="py-3 w-24 text-left text-black">{{ examRank.rank }}</td>
                             </tr>
-                            
                         </tbody>
                     </table>
-
                 </div>
             </div>
 
             <!-- Rank Chart -->
-            <div class="flex flex-col bg-white py-5 px-10 rounded-xl  w-2/3  xl:w-2/5 h-auto xl:h-96">
+            <div class="flex flex-col bg-white p-5 rounded-xl  w-2/3  xl:w-2/5 h-auto xl:h-96">
+
                 <div class="w-full">
-                    <h1>Overall</h1>
-                    <div class="w-full">
-                        <Chart :options="chartOptions" :series="series" />
-                    </div>
+                    <Chart :options="chartOptions" :series="series" />
                 </div>
             </div>
         </div>
