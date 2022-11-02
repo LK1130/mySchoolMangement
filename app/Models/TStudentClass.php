@@ -18,6 +18,5 @@ class TStudentClass extends Model
 
         return $query;
         // dd($query);
-
     }
 }
