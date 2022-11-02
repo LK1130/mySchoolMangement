@@ -17,5 +17,7 @@ class TStudentClass extends Model
             ->get();
 
         return $query;
+        // dd($query);
+
     }
 }

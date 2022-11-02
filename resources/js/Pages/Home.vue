@@ -82,14 +82,14 @@ const stroke = ref([
         curve: 'smooth'
     }
 ])
+let count = ref(0);
 
 const joinedClass = defineProps({
     classes: {
         type: Object
     }
 })
-
-
+count = joinedClass.classes.length;
 </script>
 
 
@@ -101,7 +101,7 @@ const joinedClass = defineProps({
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">{{ classes.length }} Classes Joined</h1>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground">{{ count }} Classes Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules & Regulations</a></h1>
         </div>
 
@@ -112,7 +112,7 @@ const joinedClass = defineProps({
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
                 :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2">
-                <swiper-slide v-for="n in 3" :key="n" :virtual-index="n">
+                <swiper-slide v-for="n in count" :key="n" :virtual-index="n">
                     <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
