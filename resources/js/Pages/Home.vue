@@ -16,9 +16,13 @@ import 'swiper/css/bundle';
 
 let examName = []; // exam name list for only user progress chart
 let examMark = []; // exam name list for only user progress chart
+
 let count = ref(0); // count for classes join
+let examCount = ref(0); // count for exams
 let percentage = 0;
 
+let allRank ={}; // all ranking object
+let allRankPercentage = []; // rall ranking with percentage
 const props = defineProps({
     classes: {
         type: Object
@@ -28,14 +32,29 @@ const props = defineProps({
     },
     rank_mark: {
         type: Object
+    },
+    all_ranks:{
+        type : Object
     }
 })
 
 //get class join count
-count = props.classes.length;
-//get exam mark percentage
-percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / count * 10);
+count = props.classes.length
+examCount =Object.values(props.examRanks).length;
 
+//get exam mark percentage
+percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / examCount * 10);
+// get all user exam mark percentage
+ for (let index = 0; index < props.all_ranks.length; index++) {
+      allRank = {
+        name : props.all_ranks[index].name,
+        percent : Math.floor(Object.values(props.all_ranks)[index].sumMark / examCount * 10)
+      }    
+     
+    allRankPercentage.push(allRank);
+ }
+
+ 
 // loop for chart data
 for (const key in props.examRanks) {
     //get eName only user progress chart
@@ -43,6 +62,7 @@ for (const key in props.examRanks) {
     //get mark only user progress chart
     examMark.push(props.examRanks[key].mark);
 }
+
 
 const chartOptions = ref({
     chart: {
@@ -97,14 +117,15 @@ const chartOptionsV2 = ref({
         id: 'basic-bar'
     },
     xaxis: {
-        categories: ["Aug 11", "Aug 15", "Aug 20", "Aug 25", "Aug 11", "Aug 15", "Aug 20", "Aug 25"]
+        categories: examName
     }
 })
 
 const seriesV2 = ref([
-    {
+ 
+ {
         name: 'Choo Pwint Chal',
-        data: [30, 40, 45, 50, 49, 60, 70, 91]
+        data: examMark
     },
     {
         name: 'Thazin Aung',
@@ -286,7 +307,7 @@ const seriesV2 = ref([
                             d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
                             fill="#FFC652" />
                     </svg>
-                    <p class="text-5xl text-white font-bold rank">{{ Object.values(props.rank_mark)[0].rank }}</p>
+                    <p class="text-5xl text-white font-bold rank">{{ Object.values(props.examRanks)[0].rank }}</p>
                 </div>
                 <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
             </div>
@@ -354,40 +375,15 @@ const seriesV2 = ref([
             </div>
 
             <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full lg:w-72 space-y-4">
-                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+               
+                <div v-for="(item,index) in allRankPercentage" class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                     <span
-                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">1</span>
-                    <h1 class="w-32 flex font-bold whitespace-nowrap">Choo Pwint Chal</h1>
-                    <p class="font-semibold text-secondaryBackground">100%</p>
+                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">{{ ++index}}</span>
+                    <h1 class="w-32 flex font-bold whitespace-nowrap">{{ item.name }}</h1>
+                    <p class="font-semibold text-secondaryBackground">{{ item.percent }}%</p>
                 </div>
 
-                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
-                    <span
-                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">2</span>
-                    <h1 class="w-32 flex font-bold whitespace-nowrap">Thazin Aung</h1>
-                    <p class="font-semibold text-secondaryBackground">95%</p>
-                </div>
-
-                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
-                    <span
-                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">3</span>
-                    <h1 class="w-32 flex font-bold whitespace-nowrap">Hein Thant Aung</h1>
-                    <p class="font-semibold text-secondaryBackground">92%</p>
-                </div>
-
-                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
-                    <span
-                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">4</span>
-                    <h1 class="w-32 flex font-bold whitespace-nowrap">Zan Myint Moe</h1>
-                    <p class="font-semibold text-secondaryBackground">90%</p>
-                </div>
-
-                <div class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
-                    <span
-                        class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">5</span>
-                    <h1 class="w-32 flex font-bold whitespace-nowrap">Aye Nadi Kyaw</h1>
-                    <p class="font-semibold text-secondaryBackground">89%</p>
-                </div>
+               
             </div>
         </div>
     </div>
