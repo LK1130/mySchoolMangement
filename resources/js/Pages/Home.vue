@@ -301,10 +301,10 @@ const seriesV2 = ref([
             </div>
         </div>
 
-        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5">
+        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5 p-5">
             <!-- Rank Table -->
-            <div class="flex flex-col bg-white py-5 px-10 rounded-xl  w-2/3 xl:w-2/5 h-96">
-                <table class="text-sm text-left text-primaryBackground mb-4 w-full">
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl xl:w-2/5 h-96">
+                <table class="text-sm text-left text-primaryBackground mb-4 ">
                     <thead>
                         <tr class="text-black">
                             <th class="w-24 text-left">Date</th>
@@ -335,11 +335,11 @@ const seriesV2 = ref([
             </div>
 
             <!-- Rank Chart -->
-            <div class="flex flex-col bg-white p-5 rounded-xl  w-2/3  xl:w-2/5 h-auto xl:h-96">
+            <div class="flex flex-col bg-white p-5 rounded-xl xl:w-2/5 h-96">
 
-                <div class="w-full">
-                    <Chart :options="chartOptions" :series="series" />
-                </div>
+
+                <Chart :options="chartOptions" :series="series" class="chart h-full" />
+
             </div>
         </div>
     </div>
