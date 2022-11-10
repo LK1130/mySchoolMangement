@@ -29,7 +29,7 @@ class RecordController extends Controller
         $today = $date->format('Y-m-d h:m:s');
 
         $newVideo = $video->today_video(Auth::id(), $today);
-
+        
         return Inertia::render('Recording', ['videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
     }
 

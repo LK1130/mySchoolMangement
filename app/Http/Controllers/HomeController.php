@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TStudentAttendance;
 use App\Models\TStudentClass;
 use App\Models\TStudentExam;
 use App\Models\User;
@@ -14,8 +15,14 @@ class HomeController extends Controller
     {
         $class = new TStudentClass();
         $exam   = new TStudentExam();
+        $attendances = new TStudentAttendance();
+
         $allUserRank = [];
 
+
+        //get attendance 
+        $attendance  = $attendances->getAttendance();
+        
         //get Exam list
         $examList = $exam->getExamList();
         //loop for each examid 
@@ -29,27 +36,28 @@ class HomeController extends Controller
         $examRank = array_filter($allUserRank, function ($rank) {
             return ($rank->id == Auth::id());
         });
-        
 
+    // dd($examRank);
         //get all user rank
         $userRanks = $exam->getUserRank();
-     
+
         //filter for get only current login user id
         $userRank = array_filter($userRanks, function ($ranking) {
             return ($ranking->id == Auth::id());
         });
 
-      
+
 
         $totalClass = $class->totalClass(Auth::id());
 
 
         return inertia("Home", [
-         'classes' => $totalClass,
-         'examRanks' => $examRank,
-         'rank_mark' => $userRank,
-         'all_ranks' => $userRanks
+            'classes' => $totalClass,
+            'attendance' => $attendance,
+            'examRanks' => $examRank,
+            'rank_mark' => $userRank,
+            'all_ranks' => $userRanks
 
-      ]);
+        ]);
     }
 }

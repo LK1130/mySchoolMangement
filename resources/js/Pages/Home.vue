@@ -35,6 +35,9 @@ const props = defineProps({
     },
     all_ranks:{
         type : Object
+    },
+    attendance : {
+        type : Object
     }
 })
 
@@ -63,6 +66,7 @@ for (const key in props.examRanks) {
     examMark.push(props.examRanks[key].mark);
 }
 
+console.log(app.querySelector('.swiper-button-next'));
 
 const chartOptions = ref({
     chart: {
@@ -157,7 +161,7 @@ const seriesV2 = ref([
     }
 ]);
 
-
+console.log(Swiper.props.effect);
 
 
 </script>
@@ -182,14 +186,16 @@ const seriesV2 = ref([
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
                 :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2">
-                <swiper-slide v-for="n in count" :key="n" :virtual-index="n">
+                <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
+                  
                     <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
+                        
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                             <div class="flex flex-row justify-between items-center z-10">
                                 <div class="flex flex-col space-y-3">
                                     <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
-                                    <p class="font-bold text-lg">N5 > Batch 18</p>
+                                    <p class="font-bold text-lg">{{ props.attendance[n-1].c_name }}</p>
                                     <div class="flex flex-row">
                                         <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
                                         <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
@@ -210,7 +216,7 @@ const seriesV2 = ref([
                             <div class="flex flex-row justify-between ">
                                 <div class="flex flex-col space-y-4 ">
                                     <p class="text-sm md:text-base">Attendance > <span
-                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">80%</span>
+                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[n-1].attend * 100 }}%</span>
                                     </p>
                                     <p class="text-sm md:text-base">Exam Mark > <span
                                             class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
