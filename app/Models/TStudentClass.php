@@ -14,6 +14,7 @@ class TStudentClass extends Model
     {
         $query = DB::table('t_student_classes')
             ->where('t_student_classes.user_id', $id)
+            ->orderBy('t_student_classes.class_id')
             ->get();
 
         return $query;
