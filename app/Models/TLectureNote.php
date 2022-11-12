@@ -13,13 +13,9 @@ class TLectureNote extends Model
 
     public function lectureById($id){
                
-       $query = DB::table('t_lecture_notes')
+       return DB::table('t_lecture_notes')
         ->where('t_lecture_notes.video_id',$id)
         ->where('t_lecture_notes.del_flg',0)
         ->get();
-
-      
-        return $query;
-
     }
 }

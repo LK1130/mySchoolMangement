@@ -17,7 +17,7 @@ const logout = () => {
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
         <Link href="/homepage" class="flex items-center">
-        <img src="/img/logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
+        <img src="/img/exbrain.png" class="h-9 " alt="Exbrain Logo">
         </Link>
       </div>
 

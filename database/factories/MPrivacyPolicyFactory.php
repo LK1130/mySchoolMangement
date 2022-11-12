@@ -18,7 +18,7 @@ class MPrivacyPolicyFactory extends Factory
     {
         return [
             "p_title" => $this->faker->text(50),
-            "p_description" => $this->faker->paragraph(10),
+            "p_description" => $this->faker->paragraph(1024),
             "p_photo" => "blog-view.png",
             "category_id" => $this->faker->randomElement([1, 2, 3]),
             "created_by" => 1,

@@ -8,8 +8,8 @@ import { Link } from '@inertiajs/inertia-vue3';
 
         <div class="p-6 relative z-20">
             <Link href="./homepage" class="flex items-center">
-            <img src="/img/white-logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
-            <span class="ml-5 text-3xl font-extrabold">MySchool</span>
+            <img src="/img/white-exbrain.png" class="h-9 sm:h-9" alt="Exbrain Logo">
+            <span class="ml-5 text-3xl font-extrabold">Ex;braiN</span>
             </Link>
         </div>
 
@@ -43,10 +43,9 @@ import { Link } from '@inertiajs/inertia-vue3';
             <div class="flex-initial w-1/5 text-center  md:border-l-2 ">
                 <div class="flex flex-col  md:ml-10">
                     <div class="m-1 font-semibold md:text-3xl">Social</div>
-                    <div class="flex md:flex-row flex-col mt-2 md:mt-5 mx-5  items-center justify-around ">
-                        <div class="flex"><img src="/img/social/facebook.png" alt="" class="my-1 md:w-10 w-5"></div>
-                        <div class="flex"><img src="/img/social/youtube.png" alt="" class="my-1 md:w-10 w-5" /></div>
-                        <div class="flex"><img src="/img/social/messanger.png" alt="" class="my-1 md:w-10 w-5" /></div>
+                    <div class="flex md:flex-row flex-col mt-2 md:mt-5 mx-5  items-center justify-between ">
+                        <div class="flex cursor-pointer"><img src="/img/social/facebook.png" alt="" class="my-1 md:w-10 w-5"></div>
+                        <div class="flex cursor-pointer"><img src="/img/social/youtube.png" alt="" class="my-1 md:w-10 w-5" /></div>
                     </div>
                 </div>
             </div>

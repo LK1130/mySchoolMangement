@@ -188,7 +188,7 @@ console.log(Swiper.props.effect);
                 :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2">
                 <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
                   
-                    <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
+                    <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">

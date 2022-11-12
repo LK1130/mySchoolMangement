@@ -84,7 +84,7 @@ class MVideo extends Model
         $query = DB::table('m_videos')
             ->join('t_student_classes', 'm_videos.class_id', '=', 't_student_classes.class_id')
             ->join('users', 't_student_classes.user_id', '=', 'users.id')
-            ->select('m_videos.id', 'm_videos.v_name', 'm_videos.v_description', 'm_videos.v_storage_link', 'm_videos.v_date')
+            ->select('m_videos.id', 'm_videos.v_name', 'm_videos.v_description', 'm_videos.v_storage_link', 'm_videos.v_date', 'm_videos.v_storage_location')
             ->where('m_videos.id', $id)
             ->where('users.id', $userid)
             ->first();
@@ -99,6 +99,7 @@ class MVideo extends Model
             ->join('m_classes', 't_student_classes.class_id', '=', 'm_classes.id')
             ->select('m_videos.id', 'm_videos.v_name', 'm_videos.v_description', 'm_videos.v_storage_link', 'm_videos.v_date', 'm_classes.c_start_time')
             ->where('m_videos.id', '!=', $id)
+            ->where('m_videos.id', '>', $id)
             ->where('users.id', $userid)
             ->orderBy('m_videos.id')
             ->get();

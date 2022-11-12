@@ -20,6 +20,7 @@ const props = defineProps({
 
 });
 
+
 </script>
 
 <template>
@@ -30,7 +31,13 @@ const props = defineProps({
     <section class="overflow-x-hidden">
         <section class="overflow-x-hidden">
             <div class="w-full bg-black">
-                <img src="../../../public/img/video.png" class="w-2/3 m-auto" alt="">
+                <div v-if="video.v_storage_location == 'gdrive'">
+                    <iframe class="w-full aspect-video "
+                        :src="video.v_storage_link" 
+                        allowfullscreen></iframe>
+                </div>
+                <div v-else-if="video.v_storage_location == 'youtube'"></div>
+                <div v-else-if="video.v_storage_location == 'vimeo'"></div>
             </div>
         </section>
 
@@ -46,9 +53,8 @@ const props = defineProps({
                     </div>
 
                     <div class="w-2/3 md:w-6/12 md:mx-auto  md:mt-0 mt-10 md:mb-10 mx-auto">
-
                         <div class="md:flex md:justify-center ">
-                            <p class="md:text-xl text-base text-white font-bold ">Source Download</p>
+                            <p class="md:text-xl text-lg text-center text-white font-bold ">Resource</p>
                         </div>
                         <ul v-for="item in lecture"
                             class=" md:w-30 w-full flex justify-between md:items-center md:mx-10 md:mt-5 mt-3">
@@ -72,8 +78,9 @@ const props = defineProps({
             </div>
         </section>
         <section>
-            <div class="font-semibold md:text-3xl text-xl text-center mt-10">Next Video</div>
-            <div class="p-8 mb-20 flex flex-nowrap overflow-x-auto  gap-10 scrollableVideoList">
+            <div  class="font-medium md:text-3xl text-lg text-center mt-10" v-if="next.length == 0">This is Last Video</div>
+            <div v-else class="font-semibold md:text-3xl text-xl text-center mt-10">Next Video</div>
+            <div class="p-8 mb-20 flex flex-nowrap overflow-x-auto   gap-10 scrollableVideoList">
                 <div v-for="item in next" class="w-80 flex-col  border-2  rounded-2xl shadow-xl">
 
                     <a :href="route('video.index', item.id)"> <img src="../../../public/img/video.png" alt=""
