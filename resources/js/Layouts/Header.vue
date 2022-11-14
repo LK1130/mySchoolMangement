@@ -13,11 +13,11 @@ const logout = () => {
 </script>
 
 <template>
-  <nav class="w-full bg-white border-b-2 px-6 py-5">
+  <nav class="w-full bg-white border-b-2 px-10 md:px-24 py-5">
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
         <Link href="/homepage" class="flex items-center">
-        <img src="/img/logo.png" class="h-9 sm:h-9" alt="Exbrain Logo">
+        <img src="/img/exbrain.png" class="h-9 " alt="Exbrain Logo">
         </Link>
       </div>
 
@@ -26,24 +26,29 @@ const logout = () => {
           <li class="flex md:w-16 lg:w-24 hlink">
             <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
           </li>
-          <li class="flex  md:w-16 lg:w-24 hlink">
-            <Link href="/inbox/" class="hlink-text" aria-current="page">Inbox</Link>
-          </li>
           <li class="flex  md:w-16 lg:w-24  hlink">
             <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
+          </li>
+          <li class="flex  md:w-16 lg:w-24  hlink ">
+            <Link href="/recording" class="hlink-text" aria-current="page">Video</Link>
           </li>
         </ul>
       </div>
 
-      <div class="flex w-4/9 hidden lg:block">
+      <!-- <div class="flex w-4/9 hidden lg:block">
         <input type="text" class=" md:w-72 lg:w-80 h-10 border-color rounded-l-xl focus:ring-0"
-          placeholder="Video Title">
-        <button class="bg-primaryBackground w-24 h-10 mt-1 text-white rounded-r-xl hover:opacity-90 ">Search</button>
-      </div>
+          placeholder="Video Title" v-model="search">
+        <button class="bg-primaryBackground w-24 h-10 mt-1 text-white rounded-r-xl hover:opacity-90 "
+          @click="searchVideo()">Search</button>
+      </div> -->
 
       <div class="flex w-1/9">
         <div class="font-semibold p-1 mx-3 text-lg">{{ $page.props.user.name }}</div>
-        <img src="/img/noti-pin.png" alt="" class="mr-2 hidden noti-profile-menu md:block">
+        <Link href="/inbox" aria-current="page">
+        <ion-icon name="mail-open" class="text-primaryBackground  mx-3  hidden noti-profile-menu md:block text-4xl">
+        </ion-icon>
+        </Link>
+
         <img src="/img/user.png" alt="" class="ml-1 noti-profile-menu" @click="menuShow = !menuShow">
 
       </div>
@@ -54,11 +59,11 @@ const logout = () => {
         <li class="flex md:w-16 lg:w-24 hlink my-1">
           <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
         </li>
-        <li class="flex  md:w-16 lg:w-24 hlink my-1">
-          <Link href="/inbox" class="hlink-text" aria-current="page">Inbox</Link>
-        </li>
         <li class="flex  md:w-16 lg:w-24  hlink my-1">
           <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
+        </li>
+        <li class="flex  md:w-16 lg:w-24  hlink my-1">
+          <Link href="/video" class="hlink-text" aria-current="page">Video</Link>
         </li>
       </ul>
       <div class="w-32 mx-auto ion">

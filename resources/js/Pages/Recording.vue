@@ -109,7 +109,7 @@ const searchVideo = () => {
     
 <template>
 
-    <Head title="Recording Video" />
+    <Head title="Rec Video" />
     <Header />
     <!-- Hero Section-->
     <section>
@@ -119,7 +119,8 @@ const searchVideo = () => {
                 <span class="text-sm font-medium text-white"> ({{ newvideo.c_start_time }} - {{ newvideo.c_end_time }})
                 </span>
                 <div class="md:my-10 my-5 md:ml-10 md:mr-10  ">
-                    <a :href="route('video.index', newvideo.id)"> <img src="img/video.png" alt=""
+                    <a :href="route('video.index', newvideo.id)">
+                         <img src="img/video.png" alt=""
                             class="mx-auto md:w-12/12 lg:w-8/12 w-full rounded-3xl "></a>
                 </div>
             </div>

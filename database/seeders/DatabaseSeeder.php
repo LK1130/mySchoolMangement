@@ -18,23 +18,23 @@ class DatabaseSeeder extends Seeder
          * Master
          */
 
-        \App\Models\User::factory(57)->create();
-        \App\Models\MCategory::factory(3)->create();
-        $this->call(MRole::class);
-        $this->call(MInstructor::class);
-        $this->call(MClass::class);
-        \App\Models\MExam::factory(30)->create();
-        $this->call(MSitemasterMySchool::class);
-        $this->call(MSitemasterPublic::class);
-        \App\Models\MBlog::factory(20)->create();
-        \App\Models\MPrivacyPolicy::factory(20)->create();
-        \App\Models\MGuide::factory(5)->create();
-        \App\Models\MGuideStep::factory(5)->create();
-        $this->call(MVideo::class);
+        // \App\Models\User::factory(57)->create();
+        // \App\Models\MCategory::factory(3)->create();
+        // $this->call(MRole::class);
+        // $this->call(MInstructor::class);
+        // $this->call(MClass::class);
+        // \App\Models\MExam::factory(30)->create();
+        // $this->call(MSitemasterMySchool::class);
+        // $this->call(MSitemasterPublic::class);
+        // \App\Models\MBlog::factory(20)->create();
+         \App\Models\MPrivacyPolicy::factory(5)->create();
+        // \App\Models\MGuide::factory(5)->create();
+        // \App\Models\MGuideStep::factory(5)->create();
+         $this->call(MVideo::class);
         
         /**
          * Transaction
          */
-        \App\Models\TMail::factory(100)->create();
+        // \App\Models\TMail::factory(100)->create();
     }
 }

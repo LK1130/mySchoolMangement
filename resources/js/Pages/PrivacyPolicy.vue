@@ -15,6 +15,8 @@ const props = defineProps({
     }
 })
 
+console.log(props.privacy_policys);
+
 </script>
                 
 <template>
@@ -22,13 +24,13 @@ const props = defineProps({
     <Head title="Privacy Policy" />
     <Header />
 
-    <section class=" p-12">
-        <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Privacy Policy</h1>
+    <section class="p-5 md:p-12">
+        <h1 class="text-lg md:text-xl font-semibold text-primaryBackground">Privacy Policy</h1>
 
-        <div class="flex flex-col p-2 md:p-5" v-for="privacy_policy in privacy_policys" :key="privacy_policy.id">
-            <div class="flex flex-row items-center justify-between">
-                <h1 class="text-xl md:text-3xl font-bold">{{ privacy_policy.p_title }}</h1>
-                <p class="text-sm md:text-base font-bold text-primaryBackground">Updated Date :{{
+        <div class="flex flex-col p-2 md:p-5" v-for="privacy_policy in privacy_policys.data" >
+            <div class="flex flex-col md:flex-row md:items-center justify-between">
+                <h1 class="text-xl md:text-3xl font-semibold">{{ privacy_policy.p_title }}</h1>
+                <p class="text-sm md:text-base font-semibold text-primaryBackground">Updated:{{
                 moment(privacy_policy.updated_at).format("YYYY/MM/DD") }}</p>
             </div>
 
@@ -37,7 +39,7 @@ const props = defineProps({
                     {{ privacy_policy.p_description }}
                 </p>
                 <div class="w-full flex justify-center">
-                    <div class="bg-black w-96 h-0.5"></div>
+                    <div class="bg-black opacity-40 w-96 h-0.5"></div>
                 </div>
             </div>
         </div>
@@ -47,7 +49,7 @@ const props = defineProps({
     </section>
 
     <div class="flex justify-center items-center mb-10">
-        <Pagination>
+        <Pagination :links="privacy_policys.links">
         </Pagination>
     </div>
 

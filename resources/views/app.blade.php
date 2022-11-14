@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title inertia>{{ config('app.name', 'Laravel') }}</title>
-    <link rel="icon" href="{{ url('img/white-logo.png') }}">
+    <link rel="icon" href="{{ url('img/white-exbrain.png') }}">
     
 
     <!-- Fonts -->

@@ -161,7 +161,10 @@ const seriesV2 = ref([
     }
 ]);
 
-console.log(Swiper);
+const onSlideChange = (event) => {
+    console.log('slide change', event.activeIndex);
+    console.log('Class ID',props.classes[event.activeIndex].class_id)
+};
 
 
 </script>
@@ -185,17 +188,17 @@ console.log(Swiper);
         <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                :pagination="{ clickable: true, dynamicBullets: true }" grab-cursor class="w-1/2">
-                <swiper-slide  v-for="n in count" :key="n" :virtual-index="n" >
+                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" @slideChange="onSlideChange($event)">
+                <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
                   
-                    <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
+                    <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                             <div class="flex flex-row justify-between items-center z-10">
                                 <div class="flex flex-col space-y-3">
                                     <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
-                                    <p class="font-bold text-lg">{{ props.attendance[n-1].c_name }}</p>
+                                    <p class="font-bold text-lg">{{ props.attendance[0].c_name }}</p>
                                     <div class="flex flex-row">
                                         <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
                                         <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
@@ -216,7 +219,7 @@ console.log(Swiper);
                             <div class="flex flex-row justify-between ">
                                 <div class="flex flex-col space-y-4 ">
                                     <p class="text-sm md:text-base">Attendance > <span
-                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[n-1].attend * 100 }}%</span>
+                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[0].attend * 100 }}%</span>
                                     </p>
                                     <p class="text-sm md:text-base">Exam Mark > <span
                                             class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
@@ -328,10 +331,10 @@ console.log(Swiper);
             </div>
         </div>
 
-        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5">
+        <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5 p-5">
             <!-- Rank Table -->
-            <div class="flex flex-col bg-white py-5 px-10 rounded-xl  w-2/3 xl:w-2/5 h-96">
-                <table class="text-sm text-left text-primaryBackground mb-4 w-full">
+            <div class="flex flex-col bg-white py-5 px-10 rounded-xl xl:w-2/5 h-96">
+                <table class="text-sm text-left text-primaryBackground mb-4 ">
                     <thead>
                         <tr class="text-black">
                             <th class="w-24 text-left">Date</th>
@@ -362,11 +365,11 @@ console.log(Swiper);
             </div>
 
             <!-- Rank Chart -->
-            <div class="flex flex-col bg-white p-5 rounded-xl  w-2/3  xl:w-2/5 h-auto xl:h-96">
+            <div class="flex flex-col bg-white p-5 rounded-xl xl:w-2/5 h-96">
 
-                <div class="w-full">
-                    <Chart :options="chartOptions" :series="series" />
-                </div>
+
+                <Chart :options="chartOptions" :series="series" class="chart h-full" />
+
             </div>
         </div>
     </div>
