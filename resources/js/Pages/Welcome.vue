@@ -13,162 +13,301 @@ defineProps({
 
     <Head title="Home" />
 
-    <!-- Navbar -->
-    <nav class="relative cotainer mx-auto px-6 py-4">
-        <!-- Flex Container -->
-        <div class="flex items-center justify-between">
-            <!-- Logo -->
-            <div class="pt-2 w-12">
-                <img src="home/logo.png" alt="Exbrain">
-            </div>
-
-            <!-- Menu List -->
-            <div class="hidden md:flex flex-row items-center">
-                <!-- Menu Items -->
-                <div class="flex space-x-10 mx-12">
-                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Home</a>
-                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Services</a>
-                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">About Us</a>
-                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Mini Project</a>
-                    <a href="" class="text-whiteTextColor hover:text-primaryBackground">Contact Us</a>
+    <div class="container w-full overflow-x-hidden">
+        <!-- Navbar -->
+        <nav class="relative cotainer mx-auto px-6 py-4">
+            <!-- Flex Container -->
+            <div class="flex items-center justify-between">
+                <!-- Logo -->
+                <div class="pt-2 w-12">
+                    <img src="home/logo.png" alt="Exbrain">
                 </div>
-                <!-- Button -->
-                <a href=""
-                    class="hidden md:block p-2 px-6 pt-2 text-white bg-primaryBackground rounded-lg baseline">Explore</a>
+
+                <!-- Menu List -->
+                <div class="hidden md:flex flex-row items-center">
+                    <!-- Menu Items -->
+                    <div class="flex space-x-10 mx-12">
+                        <a href="" class="text-whiteTextColor hover:text-primaryBackground">Home</a>
+                        <a href="" class="text-whiteTextColor hover:text-primaryBackground">Services</a>
+                        <a href="" class="text-whiteTextColor hover:text-primaryBackground">About Us</a>
+                        <a href="" class="text-whiteTextColor hover:text-primaryBackground">Mini Project</a>
+                        <a href="" class="text-whiteTextColor hover:text-primaryBackground">Contact Us</a>
+                    </div>
+                    <!-- Button -->
+                    <a href=""
+                        class="hidden md:block p-2 px-6 pt-2 text-white bg-primaryBackground rounded-lg baseline">Explore</a>
+                </div>
+
+                <!-- Humbargar Menu -->
+                <button data-collapse-toggle="navbar-default" type="button"
+                    class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+                    aria-controls="navbar-default" aria-expanded="false">
+                    <span class="sr-only">Open main menu</span>
+                    <svg class="w-10 h-10" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path fill-rule="evenodd"
+                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                            clip-rule="evenodd"></path>
+                    </svg>
+                </button>
+
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <section>
+            <!-- Flex Container -->
+            <div class="container flex flex-col-reverse items-center ml-0 md:ml-12 md:flex-row w-full p-4">
+                <!-- Left Item -->
+                <div class="flex flex-col w-4/5 space-y-8 md:space-y-12 md:w-3/5">
+                    <div class="space-y-6">
+                        <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">PROGRAMMING
+                            is an
+                            <span class="text-secondaryBackground">ART...</span>
+                        </h1>
+                        <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">WE are <span
+                                class="text-secondaryBackground">ARTIST...</span></h1>
+                    </div>
+                    <div class="text-center font-thin pl-0 md:pl-36">
+                        <p class="flex flex-col text-xs text-whiteTextColor md:text-sm">
+                            “You might not think that programmers are artists, but programming is an extremely creative
+                            profession. It’s logic-based creativity.”
+                            <span>– John Romero</span>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right Item -->
+                <div class="w-3/6">
+                    <img src="home/earth.png" alt="">
+                </div>
+            </div>
+        </section>
+
+        <!-- Services -->
+        <section id="service" class="mt-12">
+            <div class="container flex flex-wrap flex-col items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12 pacifico">Services</h1>
+                <div class="flex flex-col md:flex-row justify-around w-full mt-16">
+                    <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                        <img src="home/courses.png" alt="" />
+                        <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center
+                            <br />
+                            (Online & In-Class)
+                        </p>
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            See Courses
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                        <img src="home/services.png" alt="" />
+                        <p class="w-56 text-center text-whiteTextColor">Software Development & Services</p>
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            Our Services
+                        </button>
+                    </div>
+
+                    <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
+                        <img src="home/courses.png" alt="" />
+                        <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center
+                            (Online &
+                            In-Class)</p>
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            See Courses
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Us -->
+        <section id="aboutUs" class="mt-12">
+            <div class="container flex flex-wrap flex-col items-center">
+                <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12 pacifico">About Us</h1>
+                <div class="flex flex-col xl:flex-row items-center mt-16">
+                    <img src="home/codeeditor.png" alt="" class="w-3/5 pl-0 md:pl-16" />
+                    <img src="home/earthconnection.png" alt="" class="w-64 md:w-96" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Mini Projects -->
+        <section id="miniprojects" class="mt-12">
+            <div class="container flex flex-wrap flex-col items-center miniprojects text-white">
+                <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-16 pacifico">Students Mini <span
+                        class="text-secondaryBackground pacifico">Projects</span></h1>
+                <div class="mb-16 w-84 xl:w-96 items-center">
+                    <p class="text-xl w-full text-left pacifico">let's play</p>
+                    <div class="flex w-full flex-col items-center mt-4">
+                        <img src="home/downarrow.png" alt="" class="w-36" />
+                    </div>
+                </div>
+                <div class="paths">
+                    <div class="game1">
+                        <a href="#">
+                            <h1 class="font-bold">Monopoli</h1>
+                            <p class="font-thin">Game</p>
+                        </a>
+                    </div>
+                    <div class="game2">
+                        <a href="#">
+                            <h1 class="font-bold">Underwater</h1>
+                            <p class="font-thin">Animation</p>
+                        </a>
+                    </div>
+                    <div class="game3">
+                        <a href="#">
+                            <h1 class="font-bold">Bingo</h1>
+                            <p class="font-thin">Game</p>
+                        </a>
+                    </div>
+                    <div class="game4">
+                        <a href="#">
+                            <h1 class="font-bold">Shopping</h1>
+                            <p class="font-thin">Online Shop</p>
+                        </a>
+                    </div>
+                    <img src="home/path.png" alt="" />
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Us -->
+        <div class="flex flex-wrap flex-col items-center contactUs">
+            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor pacifico">Contact Us</h1>
+            <div class="flex flex-row contactUs-content firstForm">
+                <div class="flex flex-col formBar">
+                    <div class="circle active text-whiteTextColor pacifico">Name</div>
+                    <div class="circle text-whiteTextColor pacifico">Email</div>
+                    <div class="circle text-whiteTextColor pacifico">Phone</div>
+                    <div class="circle text-whiteTextColor pacifico">Message</div>
+                </div>
+
+                <div class="form">
+                    <div class="mb-6">
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 h-20 p-2.5" />
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            Send
+                        </button>
+                    </div>
+                </div>
             </div>
 
-            <!-- Humbargar Menu -->
-            <button data-collapse-toggle="navbar-default" type="button"
-                class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
-                aria-controls="navbar-default" aria-expanded="false">
-                <span class="sr-only">Open main menu</span>
-                <svg class="w-10 h-10" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
-                    xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd"
-                        d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
-                        clip-rule="evenodd"></path>
-                </svg>
-            </button>
-
+            <div class="flex flex-row contactUs-content secondaryForm">
+                <div class="form">
+                    <div class="mb-6">
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5"
+                            placeholder="Name" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5"
+                            placeholder="Email" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 p-2.5"
+                            placeholder="Phone" />
+                        <input type="text" id="base-input"
+                            class="bg-white mb-8 border border-gray-300 text-gray-900 text-sm rounded-lg block w-80 h-20 p-2.5"
+                            placeholder="Message" />
+                        <button type="button"
+                            class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
+                            Send
+                        </button>
+                    </div>
+                </div>
+            </div>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section>
-        <!-- Flex Container -->
-        <div class="container flex flex-col-reverse items-center ml-0 md:ml-12 md:flex-row w-full">
-            <!-- Left Item -->
-            <div class="flex flex-col w-4/5 space-y-8 md:space-y-12 md:w-3/5">
-                <div class="space-y-6">
-                    <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">PROGRAMMING
-                        is an
-                        <span class="text-secondaryBackground">ART...</span>
-                    </h1>
-                    <h1 class="text-2xl text-right text-whiteTextColor font-bold md:text-5xl">WE are <span
-                            class="text-secondaryBackground">ARTIST...</span></h1>
-                </div>
-                <div class="text-center font-thin pl-0 md:pl-36">
-                    <p class="flex flex-col text-xs text-whiteTextColor md:text-sm">
-                        “You might not think that programmers are artists, but programming is an extremely creative
-                        profession. It’s logic-based creativity.”
-                        <span>– John Romero</span>
-                    </p>
-                </div>
+
+
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="p-6 sm:p-6 w-full bg-blue-700 flex flex-col flex-wrap md:flex-row justify-around">
+        <div class="flex justify-center flex-col xl:flex-row">
+            <div class="logo flex flex-col items-center ">
+                <img src="home/logo.png" alt="" />
+                <h3>Ex;braiN Education</h3>
             </div>
-
-            <!-- Right Item -->
-            <div class="w-3/6">
-                <img src="home/earth.png" alt="">
-            </div>
-        </div>
-    </section>
-
-    <!-- Services -->
-    <section id="service" class="mt-12">
-        <div class="container flex flex-wrap flex-col items-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12 pacifico">Services</h1>
-            <div class="flex flex-col md:flex-row justify-around w-full mt-16">
-                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
-                    <img src="home/courses.png" alt="" />
-                    <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center <br />
-                        (Online & In-Class)
-                    </p>
-                    <button type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
-                        See Courses
-                    </button>
-                </div>
-
-                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
-                    <img src="home/services.png" alt="" />
-                    <p class="w-56 text-center text-whiteTextColor">Software Development & Services</p>
-                    <button type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
-                        Our Services
-                    </button>
-                </div>
-
-                <div class="flex flex-wrap flex-col items-center space-y-6 mb-12">
-                    <img src="home/courses.png" alt="" />
-                    <p class="w-56 text-center text-whiteTextColor">Japanese & IT Professional Training Center (Online &
-                        In-Class)</p>
-                    <button type="button"
-                        class="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-8 py-2.5">
-                        See Courses
-                    </button>
-                </div>
+            <div class="">
+                <ul class="flex flex-col items-center flex-col md:flex-col">
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">About Us</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">Mini Projects</a>
+                    </li>
+                    <li>
+                        <a href="#"
+                            class="block py-2 pr-4 pl-3 text-white rounded md:bg-transparent md:p-0 dark:text-white"
+                            aria-current="page">Contact Us</a>
+                    </li>
+                    <li>
+                        <button type="button"
+                            class="text-black bg-white hover:bg-blue-800 font-lg rounded-lg text-sm px-8 py-2.5">
+                            Explore
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
-
-    <!-- About Us -->
-    <section id="aboutUs" class="mt-12">
-        <div class="container flex flex-wrap flex-col items-center">
-            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-12">About Us</h1>
-            <div class="flex flex-col md:flex-row items-center mt-16">
-                <img src="home/codeeditor.png" alt="" class="w-3/5 pl-0 md:pl-16" />
-                <img src="home/earthconnection.png" alt="" class="w-64 md:w-96" />
+        <div class="flex justify-center flex-col xl:flex-row">
+            <div class="">
+                <ul class="flex flex-col items-center flex-col md:flex-col">
+                    <li>
+                        <h1>Address</h1>
+                    </li>
+                    <li>
+                        <p>
+                            Build No(15) Room (3B) MyayNiGoneZay Street, Sanchaung Township
+                        </p>
+                    </li>
+                </ul>
+            </div>
+            <div class="">
+                <ul class="flex flex-col flex-col md:flex-col">
+                    <li class="text-center">
+                        <h1>Social</h1>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/facebook.png" alt="" class="mr-2" />
+                            <p>FaceBook</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/youtube.png" alt="" class="mr-2" />
+                            <p>Software Development</p>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="flex flex-row items-center">
+                            <img src="home/youtube.png" alt="" class="mr-2" />
+                            <p>Japanese</p>
+                        </a>
+                    </li>
+                </ul>
             </div>
         </div>
-    </section>
+    </footer>
 
-    <!-- Mini Projects -->
-    <section id="miniprojects" class="mt-12">
-        <div class="container flex flex-wrap flex-col items-center miniprojects text-white">
-            <h1 class="text-2xl md:text-3xl font-bold text-whiteTextColor mb-16">Students Mini Projects</h1>
-            <div class="mb-16">
-                <p class="text-xl">let's play</p>
-                <img src="home/downarrow.png" alt="" class="w-36" />
-            </div>
-            <div class="paths">
-                <div class="game1">
-                    <a href="#">
-                        <h1 class="font-bold">Monopoli</h1>
-                        <p class="font-thin">Game</p>
-                    </a>
-                </div>
-                <div class="game2">
-                    <a href="#">
-                        <h1 class="font-bold">Underwater</h1>
-                        <p class="font-thin">Animation</p>
-                    </a>
-                </div>
-                <div class="game3">
-                    <a href="#">
-                        <h1 class="font-bold">Bingo</h1>
-                        <p class="font-thin">Game</p>
-                    </a>
-                </div>
-                <div class="game4">
-                    <a href="#">
-                        <h1 class="font-bold">Shopping</h1>
-                        <p class="font-thin">Online Shop</p>
-                    </a>
-                </div>
-                <img src="home/path.png" alt="" />
-            </div>
-        </div>
-    </section>
 
     <!-- Contact Us -->
 
