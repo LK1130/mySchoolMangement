@@ -70,6 +70,11 @@ body {
 .miniprojects .paths img {
     width: 800px;
 }
+@media screen and (max-width: 768px) {
+    .miniprojects .paths img {
+        width: 550px;
+    }
+}
 
 .miniprojects .paths div {
     position: absolute;
@@ -78,6 +83,12 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+@media screen and (max-width: 768px) {
+    .miniprojects .paths div {
+        width: 120px;
+        height: 120px;
+    }
 }
 
 .miniprojects .paths div.game1 {
@@ -144,7 +155,49 @@ body {
     background-color: #ff6551;
 }
 
-/* .contactUs {
+@media screen and (max-width: 768px) {
+    .miniprojects .paths div.game1 {
+        bottom: 1em;
+        left: 1em;
+    }
+    
+    .miniprojects .paths div.game1::before {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .miniprojects .paths div.game2 {
+        top: 2em;
+        left: 3em;
+    }
+    
+    .miniprojects .paths div.game2::before {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .miniprojects .paths div.game3 {
+        bottom: 0em;
+        right: 5em;
+    }
+    
+    .miniprojects .paths div.game3::before {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .miniprojects .paths div.game4 {
+        top: 0em;
+    }
+    
+    .miniprojects .paths div.game4::before {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+
+.contactUs {
     margin: 5em 0;
 }
 
@@ -186,8 +239,25 @@ body {
     background-color: #fff;
 }
 
+.secondaryForm{
+    display: none;
+}
+
+@media screen and (max-width: 768px) {
+    .firstForm{
+        display: none;
+    }
+    .secondaryForm{
+        display: block;
+    }
+    .secondaryForm input{
+        width: 300px;
+    }
+}
+
+
 footer {
-    justify-content: space-between;
+    width: 100%;
 }
 
 footer div ul {
@@ -202,4 +272,4 @@ footer div ul li {
     footer {
         align-items: center;
     }
-} */
+} 
