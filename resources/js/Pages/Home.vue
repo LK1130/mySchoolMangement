@@ -161,7 +161,7 @@ const seriesV2 = ref([
     }
 ]);
 
-console.log(Swiper.props.effect);
+console.log(Swiper);
 
 
 </script>
@@ -185,8 +185,8 @@ console.log(Swiper.props.effect);
         <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2">
-                <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
+                :pagination="{ clickable: true, dynamicBullets: true }" grab-cursor class="w-1/2">
+                <swiper-slide  v-for="n in count" :key="n" :virtual-index="n" >
                   
                     <div class="p-10 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         
