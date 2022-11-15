@@ -124,7 +124,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <div class="w-full md:w-1/2 lg:w-2/5 absolute md:relative opacity-40  p-20 md:opacity-60 earth">
                     <img src="/home/mars.png" alt="" class="mx-auto ">
                 </div>
-                <div class="w-full md:w-1/2   rounded-lg shadow-inner shadow-slate-700 p-6 md:p-9 bg-slate-800">
+                <div class="w-full md:w-1/2 contactUs  rounded-lg shadow-inner shadow-slate-700 p-6 md:p-9 bg-slate-800">
                     <form class="">
                         <div class="relative z-0 mb-6 w-full group">
                             <input type="text"
