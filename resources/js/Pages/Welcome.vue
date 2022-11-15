@@ -76,7 +76,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                     <button class="w-32 bg-primaryBackground h-9 
                 rounded-lg font-semibold my-5">See Courses</button>
                 </div>
-                <img src="/home/service_bulb.png" alt="" class="hidden md:block absolute w-32 md:w-80  z-0">
+                <img src="/home/service_bulb.png" alt="" class="hidden md:block absolute w-32 md:w-80  z-0 service_img">
                 <div class="text-center mx-2 relative" cover="select">
                     <ion-icon name="desktop-outline" class="mx-auto text-5xl md:text-6xl text-white py-3"></ion-icon>
                     <p class="z-10">Software Development</p>
