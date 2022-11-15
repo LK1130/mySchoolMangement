@@ -121,7 +121,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <img src="/home/underline.png" alt="" class="w-20 md:w-44 md:my-1 mx-auto ">
             </div>
             <div class=" w-full flex items-center justify-center px-5 relative overflow-hidden py-10 md:px-4 md:py-20">
-                <div class="w-full md:w-1/2 lg:w-1/3 absolute md:relative opacity-50  p-20 md:opacity-70 earth">
+                <div class="w-full md:w-1/2 lg:w-2/5 absolute md:relative opacity-40  p-20 md:opacity-60 earth">
                     <img src="/home/mars.png" alt="" class="mx-auto ">
                 </div>
                 <div class="w-full md:w-1/2   rounded-lg shadow-inner shadow-slate-700 p-6 md:p-9 bg-slate-800">
