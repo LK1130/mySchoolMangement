@@ -41,6 +41,7 @@ const props = defineProps({
     }
 })
 
+
 //get class join count
 count = props.classes.length
 examCount =Object.values(props.examRanks).length;
@@ -66,7 +67,7 @@ for (const key in props.examRanks) {
     examMark.push(props.examRanks[key].mark);
 }
 
-console.log(app.querySelector('.swiper-button-next'));
+
 
 const chartOptions = ref({
     chart: {
@@ -181,7 +182,7 @@ const onSlideChange = (event) => {
             <h1 class="text-lg md:text-xl font-bold text-primaryBackground">{{ count }} Classes Joined</h1>
             <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules & Regulations</a></h1>
         </div>
-
+       
         <Swiper />
 
         <!-- Hero Section -->
@@ -198,7 +199,7 @@ const onSlideChange = (event) => {
                             <div class="flex flex-row justify-between items-center z-10">
                                 <div class="flex flex-col space-y-3">
                                     <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
-                                    <p class="font-bold text-lg">{{ props.attendance[0].c_name }}</p>
+                                    <p class="font-bold text-lg">{{ props.attendance[n-1].c_name }}</p>
                                     <div class="flex flex-row">
                                         <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
                                         <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
@@ -218,8 +219,9 @@ const onSlideChange = (event) => {
 
                             <div class="flex flex-row justify-between ">
                                 <div class="flex flex-col space-y-4 ">
+                                   
                                     <p class="text-sm md:text-base">Attendance > <span
-                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[0].attend * 100 }}%</span>
+                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[n-1].attend * 100 }}%</span>
                                     </p>
                                     <p class="text-sm md:text-base">Exam Mark > <span
                                             class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
@@ -235,7 +237,7 @@ const onSlideChange = (event) => {
             <!-- Class Info -->
             <div class="flex flex-col md:pl-10 lg:w-9/12 xl:w-8/12 md:w-1/3 w-auto ">
                 <h1 class="text-lg md:text-xl font-bold text-primaryBackground">Class info</h1>
-
+               
                 <div class="relative">
                     <table class="w-full text-sm text-left text-primaryBackground">
                         <tbody>
@@ -244,7 +246,8 @@ const onSlideChange = (event) => {
                                     Start Date
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    2022/09/10 (Sun)
+                                    
+                                    {{ props.classes[0].c_start_date }} ({{ moment(props.classes[0].c_start_date).format('dddd')}})
                                 </td>
                             </tr>
                             <tr>
@@ -252,7 +255,7 @@ const onSlideChange = (event) => {
                                     Join Date
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    2022/09/10 (Sun)
+                                 {{ moment(props.classes[0].start_join).format('YYYY/MM/DD') }} ({{ moment(props.classes[0].start_join).format('dddd') }})
                                 </td>
                             </tr>
                             <tr>
@@ -268,7 +271,7 @@ const onSlideChange = (event) => {
                                     End Date
                                 </td>
                                 <td class="py-2 px-6 font-bold text-red-600">
-                                    2022/11/10 (Sun)
+                                    {{ moment(props.classes[0].end_date).format('YYYY/MM/DD') }} ({{ moment(props.classes[0].end_date).format('dddd') }})
                                 </td>
                             </tr>
                             <tr>
@@ -284,7 +287,7 @@ const onSlideChange = (event) => {
                                     Time
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    18:00 - 20:00
+                                   {{ props.classes[0].c_start_time }} - {{ props.classes[0].c_end_time }}
                                 </td>
                             </tr>
                         </tbody>
