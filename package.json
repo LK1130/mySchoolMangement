@@ -21,6 +21,7 @@
         "vue": "^3.2.31"
     },
     "dependencies": {
+        "aos": "^2.3.4",
         "apexcharts": "^3.36.0",
         "moment": "^2.29.4",
         "swiper": "^8.4.4",
