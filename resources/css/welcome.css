@@ -48,7 +48,17 @@ header a[href]:hover::after {
     font-family: "Pacifico";
 }
 
-/**Start**/
+.v-enter-active,
+.v-leave-active {
+  transition: opacity  1s linear;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+/**Star**/
 .full-wh {
     position: absolute;
     top: 0px;
@@ -1002,10 +1012,10 @@ header a[href]:hover::after {
         1471px 934px white, 1763px 792px white, 973px 1957px white,
         987px 68px white, 593px 1282px white, 1900px 607px white,
         407px 1659px white, 587px 17px white, 632px 158px white;
-    -webkit-animation: animStar 600s linear infinite;
-    -moz-animation: animStar 600s linear infinite;
-    -ms-animation: animStar 600s linear infinite;
-    animation: animStar 600s linear infinite;
+    -webkit-animation: animStar 40s linear infinite;
+    -moz-animation: animStar 40s linear infinite;
+    -ms-animation: animStar 40s linear infinite;
+    animation: animStar 40s linear infinite;
 }
 
 #stars4:after {
@@ -1246,10 +1256,10 @@ header a[href]:hover::after {
 
 @keyframes animStar {
     from {
-        transform: translateY(0px);
+        transform: translateX(-100px);
     }
     to {
-        transform: translateY(-2000px);
+        transform: translateX(500px);
     }
 }
 

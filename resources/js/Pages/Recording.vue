@@ -142,7 +142,7 @@ const searchVideo = () => {
         <div class="relative  h-auto mx-auto">
             <div class="text-center font-medium text-3xl md:text-4xl py-10">Recording Video Lists</div>
             <div class="relative  flex  flex-row  justify-around items-center px-1 md:px-5 mb-8">
-                <div class="font-bold hidden md:block">{{ count }}<span class="font-bold"> Videos</span> </div>
+                <div class="font-bold hidden md:block">Total: <span class="font-bold text-xl text-tertiaryBackground">{{ count }} </span> Videos</div>
                 <div class="flex w-2/3 md:w-2/4 ">
                     <input type="text"
                         class="block  md:w-full md:h-10 w-80  text-gray-900  rounded-l-lg  border-blue-800 sm:text-sm"
@@ -177,22 +177,20 @@ const searchVideo = () => {
                 </div>
             </div>
             <!-- Video Lists -->
-            <div v-for="video in videos.data"
-                class="relative container md:w-11/12 mx-auto w-96 my-4 shadow-md md:shadow-lg rounded-xl">
-                <div class="border-slate-400 drop-shadow-md flex justify-between py-3">
-                    <div class="flex ">
-                        <div class="md:mr-5 md:ml-10 mr-3 ml-3 flex  items-center">
-                            <img src="img/video.png" class="thumbnail md:w-28 w-20 rounded-lg" alt="thumbnail">
+            <div
+                class="relative  w-full flex  flex-wrap justify-center ">
+                <div class="border-slate-400 drop-shadow-md w-44 m-2 md:w-56 md:m-5    shadow-md md:shadow-lg rounded-xl "  v-for="video in videos.data">
+                    <div class="flex flex-col  text-center">
+                        <a :href="route('video.index', video.id)">
+                        <div class=" flex  items-center">
+                            <img src="img/video.png" class=" w-full rounded-t-lg" alt="thumbnail">
                         </div>
-                        <div class="ml-5 py-3">
+                        <div class="py-3">
                             <p class="text-base font-medium font-family">{{ video.v_name }}</p>
                             <span class="text-xs font-medium opacity-50">{{ moment(video.v_date).format("YYYY/MM/DD")
                             }}</span>
                         </div>
-                    </div>
-                    <div class="flex md:mx-10 mx-3  items-center">
-                        <a :href="route('video.index', video.id)"> <button
-                                class="md:w-24 w-20 p-1 text-sm md:text-base rounded-lg bg-tertiaryBackground text-white font-medium shadow-lg">Watch</button></a>
+                        </a>
                     </div>
                 </div>
             </div>

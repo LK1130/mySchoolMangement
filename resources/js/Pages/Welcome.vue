@@ -1,20 +1,62 @@
 <script setup>
 import { Link } from '@inertiajs/inertia-vue3';
+import { ref } from 'vue';
+import { reactive } from 'vue'
+import { Inertia } from '@inertiajs/inertia';
+
+let show = ref(false);
+let inputField = ref();
+let success = ref("");
+
+
+const props = defineProps({
+    errors: {
+        type: Object
+    },
+});
+
+/**
+ * form 
+ */
+const form = reactive({
+    username: null,
+    email: null,
+    message: null,
+})
+
+/**
+ * get data from input box
+ */
+
+const send = () => {
+    Inertia.post("/contact", form, {
+        onError: (data) => {
+            console.log(data);
+            inputField.value.focus();
+        },
+        onSuccess: (data) => {
+            form.username = "";
+            form.email = "";
+            form.message = "";
+            success.value = "We Received Your Message!"
+        },
+    })
+}
+
 </script>
 
 <template>
 
     <Head title="Home" />
-<div class="bg-animation">
-    <div id="stars"></div>
-    <div id="stars2"></div>
-    <div id="stars3"></div>
-    <div id="stars4"></div>
-</div>
+    <div class="bg-animation">
+        <div id="stars"></div>
+        <div id="stars2"></div>
+        <div id="stars3"></div>
+        <div id="stars4"></div>
+    </div>
     <div class="w-full bg-black h-auto text-white transition-all duration-1000 ">
         <!--Header-->
         <header class="flex items-center px-5 py-5 md:px-16 md:py-7 ">
-
             <div class=" lg:w-3/6 md:w-1/6 w-1/2 relative ">
                 <img src="/home/logo.png" alt="" class="w-14 md:w-16 ">
             </div>
@@ -38,17 +80,38 @@ import { Link } from '@inertiajs/inertia-vue3';
 
                 <!-- <button class="w-28 bg-primaryBackground h-9 
                 rounded-lg font-semibold hidden md:block">Explore</button> -->
-                <ion-icon name="menu-outline" class="md:hidden text-4xl"></ion-icon>
+                <ion-icon name="menu-outline" class="md:hidden text-4xl z-10" @click="show = !show"></ion-icon>
             </div>
-
         </header>
+        <!--Mobile-->
+        <Transition>
+            <div class="w-full flex flex-col align-start px-8 font-bold leading-10 md:hidden text-base" v-if="show">
+                <Link href="" class="z-10">
+                Home
+                </Link>
+                <Link href="" class="z-10">
+                Services
+                </Link>
+                <Link href="" class="z-10">
+                About Us
+                </Link>
+                <Link href="" class="z-10">
+                Mini Project
+                </Link>
+                <Link href="" class="z-10">
+                Contact Us
+                </Link>
+            </div>
+        </Transition>
+
+
         <!--Home-->
         <div class="w-full flex items-center py-10 md:px-16 md:py-8 px-5  ">
             <div class="md:w-1/2 z-10 md:marker:text-end">
-                <p class="text-2xl md:text-3xl lg:text-5xl font-extrabold  py-3 ">
-                    PROGRAMMING is an <span class="text-secondaryBackground">ART...</span></p>
-                <p class="text-2xl md:text-3xl lg:text-5xl font-extrabold md:py-3">
-                    WE are <span class="text-secondaryBackground">ARTIST...</span></p>
+                <p class="text-2xl  md:text-3xl lg:text-5xl font-extrabold  py-3 ">
+                    PROGRAMMING is an <span class="text-secondaryBackground">ART.</span></p>
+                <p class="text-2xl  md:text-3xl lg:text-5xl font-extrabold md:py-3">
+                    WE are <span class="text-secondaryBackground">ARTIST.</span></p>
                 <p class="py-8 text-center text-sm md:text-base opacity-80">“You might not think that programmers are
                     artists, but programming is an extremely creative profession. It’s logic-based
                     creativity.” <br>
@@ -121,18 +184,17 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <img src="/home/underline.png" alt="" class="w-20 md:w-44 md:my-1 mx-auto ">
             </div>
             <div class=" w-full flex items-center justify-center px-5 relative overflow-hidden py-10 md:px-4 md:py-20">
-                <div class="w-full md:w-1/2 lg:w-2/5 absolute md:relative opacity-40  p-20 md:opacity-60 earth">
+                <div class="w-full md:w-1/2 lg:w-2/5 md:block hidden opacity-40  p-20 md:opacity-60 earth">
                     <img src="/home/mars.png" alt="" class="mx-auto ">
                 </div>
-                <div class="w-full md:w-1/2 contactUs  rounded-lg shadow-inner shadow-slate-700 p-6 md:p-9 bg-slate-800">
-                    <form class="">
+                <div
+                    class="w-full md:w-1/2 contactUs   rounded-lg shadow-inner shadow-slate-700 p-6 md:p-9 bg-slate-800">
+                    <form class="" @submit.prevent="send">
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="text"
-                                class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent
+                            <input type="text" v-model="form.username" ref="inputField" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent
                                  border-0 border-b-2 border-gray-300 appearance-none dark:text-white
                                   dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none 
-                                  focus:ring-0 focus:border-blue-600 peer"
-                                placeholder=" " required />
+                                  focus:ring-0 focus:border-blue-600 peer" placeholder=" " required />
                             <label for="floating_password" class="peer-focus:font-medium absolute text-sm
                                  text-gray-500 dark:text-gray-400 duration-300
                                   transform -translate-y-6 scale-75 top-3 -z-10 
@@ -140,9 +202,10 @@ import { Link } from '@inertiajs/inertia-vue3';
                                    peer-focus:dark:text--primaryBackground peer-placeholder-shown:scale-100
                                     peer-placeholder-shown:translate-y-0 peer-focus:scale-75
                                      peer-focus:-translate-y-6">Name</label>
+                            <div v-if="errors.username" class="text-red-500">{{ errors.username }}</div>
                         </div>
                         <div class="relative z-0 mb-6 w-full group">
-                            <input type="email"
+                            <input type="email" v-model="form.email"
                                 class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                                 placeholder=" " required />
                             <label for="floating_email"
@@ -151,21 +214,24 @@ import { Link } from '@inertiajs/inertia-vue3';
                                  peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100
                                  peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Email
                                 address</label>
+                            <div v-if="errors.email" class="text-red-500">{{ errors.email }}</div>
                         </div>
                         <label for="message"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-400">Your message</label>
-                        <textarea id="message" rows="4"
-                            class="block p-2.5 w-full text-sm text-white  focus:ring-slate-800 focus:border-b-blue-500 
-                            border-b-2  bg-transparent border-0"
-                            placeholder="Hello, Ex;braiN..."></textarea>
+                        <textarea id="message" rows="4" v-model="form.message" class="block p-2.5 w-full text-sm text-white  focus:ring-slate-800 focus:border-b-blue-500 
+                            border-b-2  bg-transparent border-0" placeholder="Hello, Ex;braiN..."></textarea>
+                        <div v-if="errors.message" class="text-red-500">{{ errors.message }}</div>
 
                         <button type="submit" class="text-white mt-8 rounded-lg shadow-md shadow-indigo-500/50
                          bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none
                               font-medium float-right text-base w-full px-5 py-2.5  ">Send</button>
+                       
                     </form>
+                 
                 </div>
 
             </div>
+               <p class="text-green-500 text-center m-5 text-lg font-bold">{{ success }}</p>
         </div>
 
         <!--Footer-->
@@ -179,7 +245,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                 <div class="p-6 relative">
                     <Link href="./homepage" class="flex items-center">
                     <img src="/img/white-exbrain.png" class="w-14 " alt="Exbrain Logo">
-                    <span class="ml-5 text-xl md:text-2xl font-extrabold">Ex;braiN Education</span>
+                    <span class="ml-5 text-xl md:text-2xl font-extrabold">Ex;braiN</span>
                     </Link>
                 </div>
 
@@ -200,7 +266,7 @@ import { Link } from '@inertiajs/inertia-vue3';
                     <div class="w-2/4 text-start   md:border-l-2 ">
                         <div class="flex flex-col">
                             <div class="font-semibold text-center md:text-3xl">Address</div>
-                            <div class="mt-3 text-center text-sm  md:text-base">No(1,200) 5B Yadanar Street Sourth
+                            <div class="mt-3 text-center text-sm  md:text-base">No(1,200) 6B Yadanar Street Sourth
                                 Dagon.</div>
                             <div class="text-sm text-center mt-1 font-semibold text-secondaryBackground">09-403559701
                             </div>

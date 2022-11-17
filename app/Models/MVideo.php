@@ -45,7 +45,7 @@ class MVideo extends Model
             // });
        
       
-        $videos =  $query->paginate(5);
+        $videos =  $query->paginate(10);
 
         
         return $videos;

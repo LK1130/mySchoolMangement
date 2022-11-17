@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PublicHomeController;
 use App\Http\Controllers\RecordController;
 use App\Http\Controllers\SettingController;
 use App\Http\Controllers\VideoListController;
@@ -46,6 +47,10 @@ Route::middleware([
         return Inertia::render('Home');
     })->name('home');
 });
+
+
+//Public Home page
+Route::post("/contact",[PublicHomeController::class,"index"]);
 
 /**
  * Need to login
