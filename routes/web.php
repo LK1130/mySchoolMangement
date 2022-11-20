@@ -84,4 +84,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Setting
     Route::get('/setting',[SettingController::class,'index']);
+    
+    Route::get('language/{language}', function ($language) {
+        Session()->put('locale', $language);
+
+        return redirect()->back();
+    })->name('language');
 });
