@@ -12,6 +12,7 @@ import moment from 'moment';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/bundle';
+import axios from 'axios';
 
 
 let examName = []; // exam name list for only user progress chart
@@ -42,6 +43,7 @@ const props = defineProps({
 })
 
 
+console.log(props.classes)
 //get class join count
 count = props.classes.length
 examCount =Object.values(props.examRanks).length;
@@ -164,10 +166,23 @@ const seriesV2 = ref([
 
 const onSlideChange = (event) => {
     console.log('slide change', event.activeIndex);
-    console.log('Class ID',props.classes[event.activeIndex].class_id)
+    console.log('Class ID',props.classes[event.activeIndex].class_id);
+
+    axios.post(route("home.change"),{
+        classid : props.classes[event.activeIndex].class_id,
+        
+    }).then(function(response){
+        const data = response;
+        console.log(response);
+       
+    })
+    .catch(function(err){
+        console.log(err);
+    });
 };
 
 
+console.log(Swiper);
 </script>
 
 
@@ -245,7 +260,7 @@ const onSlideChange = (event) => {
                                 <td scope="row" class="py-2 whitespace-nowrap">
                                     Start Date
                                 </td>
-                                <td class="py-2 px-6 font-bold">
+                                <td class="py-2 px-6 font-bold"  >
                                     
                                     {{ props.classes[0].c_start_date }} ({{ moment(props.classes[0].c_start_date).format('dddd')}})
                                 </td>
@@ -263,7 +278,7 @@ const onSlideChange = (event) => {
                                     Period
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    3 Months
+                                    {{ (moment(props.classes[0].end_date).format('MM') - moment(props.classes[0].c_start_date).format('MM'))+1}}  months
                                 </td>
                             </tr>
                             <tr>

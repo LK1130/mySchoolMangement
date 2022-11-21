@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MClass;
 use App\Models\TStudentAttendance;
 use App\Models\TStudentClass;
 use App\Models\TStudentExam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Js;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class HomeController extends Controller
 {
@@ -37,7 +40,7 @@ class HomeController extends Controller
             return ($rank->id == Auth::id());
         });
 
-    // dd($examRank);
+        
         //get all user rank
         $userRanks = $exam->getUserRank();
 
@@ -59,5 +62,16 @@ class HomeController extends Controller
             'all_ranks' => $userRanks
 
         ]);
+    }
+
+
+    public function changeClass(Request $request){
+
+       
+            $classes = new MClass();
+               $class   =  $classes->classById($request->classid);
+    
+
+        return $class;
     }
 }

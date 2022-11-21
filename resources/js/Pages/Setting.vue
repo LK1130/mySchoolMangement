@@ -26,7 +26,7 @@ import Footer from '../Layouts/Footer.vue';
                         Language
                     </li>
                     <li class="flex w-full  my-1">
-                        <input type="radio" name="language" id="language" class="rounded-full  mr-1 mx-1 md:mr-3  mt-1" checked>
+                        <input type="radio" name="language" id="language"  class="rounded-full  mr-1 mx-1 md:mr-3  mt-1" checked>
                         <label for="language">English</label>
                     </li>
                     <li class="flex  w-full  my-1">
