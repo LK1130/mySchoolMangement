@@ -50,12 +50,12 @@ const submit = () => {
     <Header />
     <!-- <div>{{ user[0].name }}</div> -->
     <section>
-        <div class="container mx-auto">
-            <p class="text-primaryBackground font-semibold p-2 text-lg uppercase">Profile</p>
+        <div class=" mx-auto p-4 md:p-12">
+            <p class="text-primaryBackground font-semibold text-lg uppercase">Profile</p>
 
 
             <div class="container mx-auto">
-                <div class="container mx-auto flex flex-wrap justify-around md:space-x-10 space-x-0  mt-3  ">
+                <div class="flex flex-wrap justify-around md:space-x-10 space-x-0  mt-3  ">
                     <div class="box ">
                         <div class="js--image-preview">
                             <img class="w-full "  :src="imgSrc" alt="" srcset="">
@@ -68,7 +68,7 @@ const submit = () => {
                     </div>
 
 
-                    <div class="md:w-6/12 sm:w-full form-container mx-auto">
+                    <div class="md:w-6/12 w-full form-container mx-auto">
 
                         <form @submit.prevent="submit">
 

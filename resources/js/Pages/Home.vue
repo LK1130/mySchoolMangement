@@ -181,7 +181,7 @@ const seriesV2 = ref([
 
     <Head title="Home" />
     <Header />
-
+    <div  :class="{dark: isDark}" class="bg-slate-800">
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
@@ -408,6 +408,7 @@ const seriesV2 = ref([
             </div>
         </div>
     </div>
+</div>
     <Footer />
 
 </template> 
