@@ -23,4 +23,12 @@ class TStudentClass extends Model
         return $query;
         // dd($query);
     }
+
+    public function totalStudents($id){
+
+      
+        $query = DB::select("SELECT count(t_student_classes.id) as counts FROM `t_student_classes` WHERE t_student_classes.class_id IN ($id) GROUP BY class_id;");
+        
+        return $query;
+    }
 }

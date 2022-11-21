@@ -16,14 +16,17 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $class = new TStudentClass();
+        $classes = new TStudentClass();
         $exam   = new TStudentExam();
         $attendances = new TStudentAttendance();
 
         $allUserRank = [];
+        $allClass = [];
 
-
-        //get attendance 
+        
+        // get students 
+             
+        //get attendance  
         $attendance  = $attendances->getAttendance();
         
         //get Exam list
@@ -51,15 +54,22 @@ class HomeController extends Controller
 
 
 
-        $totalClass = $class->totalClass(Auth::id());
+        $totalClass = $classes->totalClass(Auth::id());
 
-
+       foreach($totalClass  as $class){
+          array_push($allClass,$class->id);
+       }
+         
+       $classid =  join(',',$allClass);
+       
+      $eachClass =   $classes->totalStudents($classid);
         return inertia("Home", [
             'classes' => $totalClass,
             'attendance' => $attendance,
             'examRanks' => $examRank,
             'rank_mark' => $userRank,
-            'all_ranks' => $userRanks
+            'all_ranks' => $userRanks,
+            'one_class' => $eachClass
 
         ]);
     }

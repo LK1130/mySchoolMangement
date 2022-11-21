@@ -58,7 +58,7 @@ const submit = () => {
 
             <div class="block mt-5 ">
                 <PrimaryButton
-                    class="w-full bg-whiteTextColor md:text-whiteTextColor md:bg-primaryBackground rounded-lg shadow-lg text-primaryBackground  "
+                    class="w-80 md:w-64 bg-whiteTextColor md:text-whiteTextColor md:bg-primaryBackground rounded-lg shadow-lg text-primaryBackground  "
                     :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
                     Login
                 </PrimaryButton>

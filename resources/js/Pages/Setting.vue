@@ -22,7 +22,7 @@ import Footer from '../Layouts/Footer.vue';
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2">
 
 
-                    <li class="flex w-full hlink font-bold my-1">
+                    <li class="flex w-full hlinks font-bold my-1">
                         Language
                     </li>
                     <li class="flex w-full  my-1">
@@ -44,7 +44,7 @@ import Footer from '../Layouts/Footer.vue';
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2">
 
 
-                    <li class="flex w-full hlink font-bold my-1">
+                    <li class="flex w-full hlinks font-bold my-1">
                         Mode
                     </li>
                     <li class="flex w-full  my-1">
