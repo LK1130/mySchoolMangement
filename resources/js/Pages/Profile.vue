@@ -3,10 +3,9 @@
 import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 
-import InputLabel from '../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputLabel.vue';
 import Footer from '../Layouts/Footer.vue';
 import { ref } from 'vue'
-import { Inertia } from '@inertiajs/inertia';
+
 
 const imgSrc = ref("img/profile.png");
 
