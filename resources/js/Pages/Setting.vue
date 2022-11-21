@@ -13,9 +13,9 @@ import Footer from '../Layouts/Footer.vue';
     <Head title="Setting" />
     <Header />
 
-    <section>
-        <div class="container mx-auto h-screen p-3">
-            <p class="text-primaryBackground font-semibold p-2 text-lg uppercase ">Setting</p>
+    <section class=" p-4 md:p-12">
+        <div class="container mx-auto h-screen">
+            <p class="text-primaryBackground font-semibold text-lg uppercase ">Setting</p>
 
             <div class="container mx-auto flex md:flex-col">
 
