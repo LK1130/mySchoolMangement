@@ -51,6 +51,14 @@ const onFile = (e) => {
     reader.onload = () => (imgSrc.value = reader.result);
     form.image = files[0];
     form.imgName = files[0].name;
+
+    var myImg = document.querySelector("#profileImage");
+    var currWidth = myImg.width;
+    var currHeight = myImg.height;
+    alert("Current width=" + currWidth + ", " + "Original height=" + currHeight);
+
+
+
     // console.log(imgName);
     // imgSrc.value.image = files[0].name;
     // console.log(imgSrc.image);
@@ -86,7 +94,7 @@ const submit = (e) => {
                     >
                         <div class="box">
                             <div class="js--image-preview">
-                                <img
+                                <img id="profileImage"
                                     class="object-scale-down max-w-sm inline-block"
                                     :src="imgSrc"
                                     alt=""
