@@ -1,6 +1,6 @@
 
 
-.hlink::before{
+.hlinks::before{
     content: '>';
 }
 

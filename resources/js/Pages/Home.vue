@@ -9,14 +9,19 @@ import { Navigation, Pagination } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/vue';
 import moment from 'moment';
 
+
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/bundle';
+import axios from 'axios';
+
+
 
 
 let examName = []; // exam name list for only user progress chart
 let examMark = []; // exam name list for only user progress chart
 
+let  activeIndex = ref(0);
 let count = ref(0); // count for classes join
 let examCount = ref(0); // count for exams
 let percentage = 0;
@@ -38,12 +43,17 @@ const props = defineProps({
     },
     attendance : {
         type : Object
+    },
+    one_class :{
+        type : Object
     }
+   
 })
+  
 
 
 //get class join count
-count = props.classes.length
+count = props.classes.length;
 examCount =Object.values(props.examRanks).length;
 
 //get exam mark percentage
@@ -162,10 +172,6 @@ const seriesV2 = ref([
     }
 ]);
 
-const onSlideChange = (event) => {
-    console.log('slide change', event.activeIndex);
-    console.log('Class ID',props.classes[event.activeIndex].class_id)
-};
 
 
 </script>
@@ -175,7 +181,7 @@ const onSlideChange = (event) => {
 
     <Head title="Home" />
     <Header />
-
+    <div  :class="{dark: isDark}" class="bg-slate-800">
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
@@ -189,8 +195,8 @@ const onSlideChange = (event) => {
         <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
             <!-- Student's Card -->
             <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" @slideChange="onSlideChange($event)">
-                <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
+                :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" @slideChange="(event) => {  activeIndex = event.activeIndex}">
+                <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n"  :virtual-index="n">
                   
                     <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
                         
@@ -242,20 +248,22 @@ const onSlideChange = (event) => {
                     <table class="w-full text-sm text-left text-primaryBackground">
                         <tbody>
                             <tr>
+                               
                                 <td scope="row" class="py-2 whitespace-nowrap">
                                     Start Date
                                 </td>
-                                <td class="py-2 px-6 font-bold">
-                                    
-                                    {{ props.classes[0].c_start_date }} ({{ moment(props.classes[0].c_start_date).format('dddd')}})
-                                </td>
+                                
+                                <td class="py-2 px-6 font-bold"    >
+                                 
+                                    {{ moment(props.classes[activeIndex].c_start_date).format('YYYY/MM/DD')}} ({{ moment(props.classes[activeIndex].c_start_date).format('dddd') }})
+                                    </td>
                             </tr>
                             <tr>
                                 <td scope="row" class="py-2 whitespace-nowrap">
                                     Join Date
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                 {{ moment(props.classes[0].start_join).format('YYYY/MM/DD') }} ({{ moment(props.classes[0].start_join).format('dddd') }})
+                                 {{ moment(props.classes[activeIndex].start_join).format('YYYY/MM/DD') }} ({{ moment(props.classes[activeIndex].start_join).format('dddd') }})
                                 </td>
                             </tr>
                             <tr>
@@ -263,7 +271,7 @@ const onSlideChange = (event) => {
                                     Period
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    3 Months
+                                    {{ (moment(props.classes[activeIndex].end_date).format('MM') - moment(props.classes[activeIndex].c_start_date).format('MM'))+1}}  months
                                 </td>
                             </tr>
                             <tr>
@@ -271,7 +279,7 @@ const onSlideChange = (event) => {
                                     End Date
                                 </td>
                                 <td class="py-2 px-6 font-bold text-red-600">
-                                    {{ moment(props.classes[0].end_date).format('YYYY/MM/DD') }} ({{ moment(props.classes[0].end_date).format('dddd') }})
+                                    {{ moment(props.classes[activeIndex].end_date).format('YYYY/MM/DD') }} ({{ moment(props.classes[activeIndex].end_date).format('dddd') }})
                                 </td>
                             </tr>
                             <tr>
@@ -279,7 +287,8 @@ const onSlideChange = (event) => {
                                     Class in Person
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                    25
+                                    
+                                    {{ props.one_class[activeIndex].counts }}
                                 </td>
                             </tr>
                             <tr>
@@ -287,7 +296,7 @@ const onSlideChange = (event) => {
                                     Time
                                 </td>
                                 <td class="py-2 px-6 font-bold">
-                                   {{ props.classes[0].c_start_time }} - {{ props.classes[0].c_end_time }}
+                                   {{ props.classes[activeIndex].c_start_time }} - {{ props.classes[activeIndex].c_end_time }}
                                 </td>
                             </tr>
                         </tbody>
@@ -399,6 +408,7 @@ const onSlideChange = (event) => {
             </div>
         </div>
     </div>
+</div>
     <Footer />
 
 </template> 

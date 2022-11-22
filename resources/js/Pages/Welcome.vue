@@ -62,19 +62,19 @@ const send = () => {
             </div>
             <div class="lg:w-3/6 md:w-5/6 w-1/2 flex md:justify-between justify-end items-center 
              text-base ">
-                <Link href="" class="header">
+                <Link href="#home" class="header">
                 Home
                 </Link>
-                <Link href="" class="header">
+                <Link href="#services" class="header">
                 Services
                 </Link>
-                <Link href="" class="header">
+                <Link href="#aboutus" class="header">
                 About Us
                 </Link>
                 <Link href="" class="header">
                 Mini Project
                 </Link>
-                <Link href="" class="header">
+                <Link href="#contactus" class="header">
                 Contact Us
                 </Link>
 
@@ -86,19 +86,19 @@ const send = () => {
         <!--Mobile-->
         <Transition>
             <div class="w-full flex flex-col align-start px-8 font-bold leading-10 md:hidden text-base" v-if="show">
-                <Link href="" class="z-10">
+                <Link href="#home" class="z-10">
                 Home
                 </Link>
-                <Link href="" class="z-10">
+                <Link href="#services" class="z-10">
                 Services
                 </Link>
-                <Link href="" class="z-10">
+                <Link href="#aboutus" class="z-10">
                 About Us
                 </Link>
                 <Link href="" class="z-10">
                 Mini Project
                 </Link>
-                <Link href="" class="z-10">
+                <Link href="#contactus" class="z-10">
                 Contact Us
                 </Link>
             </div>
@@ -106,7 +106,7 @@ const send = () => {
 
 
         <!--Home-->
-        <div class="w-full flex items-center py-10 md:px-16 md:py-8 px-5  ">
+        <div class="w-full flex items-center py-10 md:px-16 md:py-8 px-5  " id="home">
             <div class="md:w-1/2 z-10 md:marker:text-end">
                 <p class="text-2xl  md:text-3xl lg:text-5xl font-extrabold  py-3 ">
                     PROGRAMMING is an <span class="text-secondaryBackground">ART.</span></p>
@@ -123,7 +123,7 @@ const send = () => {
 
         </div>
         <!--Service-->
-        <div class="w-full py-5 md:px-4 md:py-44">
+        <div class="w-full py-5 md:px-4 md:py-44" id="services">
             <div class="text-center">
                 <p class=" text-2xl md:text-4xl lg:text-5xl relative" font="pacifico">Services</p>
                 <img src="/home/underline.png" alt="" class="w-20 md:w-44 md:my-1 mx-auto">
@@ -162,7 +162,7 @@ const send = () => {
         </div>
 
         <!--About Us-->
-        <div class="w-full py-5 md:px-4 md:py-0">
+        <div class="w-full py-5 md:px-4 md:py-0" id="aboutus">
             <div class="text-center">
                 <p class=" text-2xl md:text-4xl lg:text-5xl" font="pacifico">About Us</p>
                 <img src="/home/underline.png" alt="" class="w-20 md:w-44 md:my-1 mx-auto">
@@ -178,7 +178,7 @@ const send = () => {
         </div>
 
         <!--Contact Us-->
-        <div class="w-full  md:px-8 md:pb-10">
+        <div class="w-full  md:px-8 md:pb-10" id="contactus">
             <div class="text-center">
                 <p class=" text-2xl md:text-4xl lg:text-5xl" font="pacifico">Contact Us</p>
                 <img src="/home/underline.png" alt="" class="w-20 md:w-44 md:my-1 mx-auto ">
@@ -225,13 +225,13 @@ const send = () => {
                         <button type="submit" class="text-white mt-8 rounded-lg shadow-md shadow-indigo-500/50
                          bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none
                               font-medium float-right text-base w-full px-5 py-2.5  ">Send</button>
-                       
+
                     </form>
-                 
+
                 </div>
 
             </div>
-               <p class="text-green-500 text-center m-5 text-lg font-bold">{{ success }}</p>
+            <p class="text-green-500 text-center m-5 text-lg font-bold">{{ success }}</p>
         </div>
 
         <!--Footer-->

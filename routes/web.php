@@ -58,10 +58,10 @@ Route::post("/contact", [PublicHomeController::class, "index"]);
 Route::middleware(['auth'])->group(function () {
     //Home page
     Route::get('/homepage', [HomeController::class, "index"]);
+    Route::post('/homepage', [HomeController::class, "changeClass"])->name("home.change");
     //Recording page
     Route::get('/recording', [RecordController::class, "index"])->name("record.index");
     Route::post('/recording', [RecordController::class, "search"])->name("record.search");
-
 
     //Video Page
     Route::get('/video/{id?}', [VideoListController::class, 'index'])->name("video.index");
@@ -86,4 +86,10 @@ Route::middleware(['auth'])->group(function () {
 
     //Setting
     Route::get('/setting', [SettingController::class, 'index']);
+
+    Route::get('language/{language}', function ($language) {
+        Session()->put('locale', $language);
+
+        return redirect()->back();
+    })->name('language');
 });

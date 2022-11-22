@@ -2,25 +2,31 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MClass;
 use App\Models\TStudentAttendance;
 use App\Models\TStudentClass;
 use App\Models\TStudentExam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Js;
+use PhpParser\Node\Expr\Cast\Object_;
 
 class HomeController extends Controller
 {
     public function index()
     {
-        $class = new TStudentClass();
+        $classes = new TStudentClass();
         $exam   = new TStudentExam();
         $attendances = new TStudentAttendance();
 
         $allUserRank = [];
+        $allClass = [];
 
-
-        //get attendance 
+        
+        // get students 
+             
+        //get attendance  
         $attendance  = $attendances->getAttendance();
         
         //get Exam list
@@ -37,7 +43,7 @@ class HomeController extends Controller
             return ($rank->id == Auth::id());
         });
 
-    // dd($examRank);
+        
         //get all user rank
         $userRanks = $exam->getUserRank();
 
@@ -48,16 +54,34 @@ class HomeController extends Controller
 
 
 
-        $totalClass = $class->totalClass(Auth::id());
+        $totalClass = $classes->totalClass(Auth::id());
 
-
+       foreach($totalClass  as $class){
+          array_push($allClass,$class->id);
+       }
+         
+       $classid =  join(',',$allClass);
+       
+      $eachClass =   $classes->totalStudents($classid);
         return inertia("Home", [
             'classes' => $totalClass,
             'attendance' => $attendance,
             'examRanks' => $examRank,
             'rank_mark' => $userRank,
-            'all_ranks' => $userRanks
+            'all_ranks' => $userRanks,
+            'one_class' => $eachClass
 
         ]);
+    }
+
+
+    public function changeClass(Request $request){
+
+       
+            $classes = new MClass();
+               $class   =  $classes->classById($request->classid);
+    
+
+        return $class;
     }
 }
