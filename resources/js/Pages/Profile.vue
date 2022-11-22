@@ -39,25 +39,51 @@ const form = useForm({
     image: props.user[0].profile_photo_path,
     imgName: props.user[0].profile_photo_path, // image: imgSrc.value,
 });
-const imgSrc = ref("/storage/" + form.imgName);
+
+var imgSrc = ref("/storage/" + form.imgName);
+if (form.imgName === null) {
+    imgSrc = ref("/img/error/avatars-000437232558-yuo0mv-t500x500.jpg");
+}
 
 const onFile = (e) => {
+    // var myImg = document.querySelector("#profileImage");
+    // var currWidth = myImg.width;
+    // var currHeight = myImg.height;
+    // alert(
+    //     "Current width=" + currWidth + ", " + "Original height=" + currHeight
+    // );
+    console.log(form.image);
     var files = e.target.files;
 
     if (!files.length) return;
 
     const reader = new FileReader();
     reader.readAsDataURL(files[0]);
-    reader.onload = () => (imgSrc.value = reader.result);
+    var img = new Image();
+
+    reader.onload = () => {
+        img.src = reader.result;
+        img.onload = function () {
+            if (
+                this.width > 420 &&
+                this.width < 1280 &&
+                this.height > 420 &&
+                this.height < 820
+            ) {
+                imgSrc.value = reader.result;
+            } else {
+                alert("Invalid");
+            }
+            // if (this.height > 420 && this.height < 820) {
+            //     alert(this.height);
+            // } else {
+            //     alert("Invalid");
+            // }
+        };
+        // && 420 <= this.height <= 820
+    };
     form.image = files[0];
     form.imgName = files[0].name;
-
-    var myImg = document.querySelector("#profileImage");
-    var currWidth = myImg.width;
-    var currHeight = myImg.height;
-    alert("Current width=" + currWidth + ", " + "Original height=" + currHeight);
-
-
 
     // console.log(imgName);
     // imgSrc.value.image = files[0].name;
@@ -94,7 +120,8 @@ const submit = (e) => {
                     >
                         <div class="box">
                             <div class="js--image-preview">
-                                <img id="profileImage"
+                                <img
+                                    id="profileImage"
                                     class="object-scale-down max-w-sm inline-block"
                                     :src="imgSrc"
                                     alt=""
@@ -107,7 +134,7 @@ const submit = (e) => {
                                         type="file"
                                         id="image"
                                         class="image-upload"
-                                        accept="image/*"
+                                        accept=".jpg,.jpeg"
                                         @change="onFile($event)"
                                     />
                                 </div>
