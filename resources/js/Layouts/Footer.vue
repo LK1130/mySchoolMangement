@@ -3,7 +3,7 @@ import { Link } from '@inertiajs/inertia-vue3';
 </script>
 
 <template>
-    <div class="relative bottom-0  w-full md:h-72 h-64  footer  align-middle ">
+    <div class="relative bottom-0  w-full md:h-72 h-64  footer  align-middle dark:bg-darkPrimaryBackground">
                 <div class="opacity-5 z-10 top-0 w-full absolute hidden lg:block text-center text-9xl p-16 font-semibold">My School</div>
 
         <div class="p-6 relative z-20">

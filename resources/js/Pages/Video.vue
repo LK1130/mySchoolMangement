@@ -43,7 +43,7 @@ const props = defineProps({
 
         <section class="bg-primaryBackground ">
             <div class="container py-4 mx-auto">
-                <p class="md:text-4xl  text-lg text-white font-bold md:mt-10 px-3  md:px-0">{{ video.v_name }}</p>
+                <p class="md:text-4xl  text-lg text-white font-bold md:mt-10 px-3 md:px-0">{{ video.v_name }}</p>
 
                 <div class="md:flex md:flex-row justify-around md:mt-4 mt-2 px-3 md:px-0 ">
                     <div class="container flex justify-center mx-auto space-y-3">
@@ -79,9 +79,9 @@ const props = defineProps({
         </section>
         <section>
             <div  class="font-medium md:text-3xl text-lg text-center mt-10" v-if="next.length == 0">This is Last Video</div>
-            <div v-else class="font-semibold md:text-3xl text-xl text-center mt-10">Next Video</div>
+            <div v-else class="font-semibold md:text-3xl text-xl text-center mt-10 dark:text-white">Next Video</div>
             <div class="p-8 mb-20 flex flex-nowrap overflow-x-auto   gap-10 scrollableVideoList">
-                <div v-for="item in next" class="w-80 flex-col  border-2  rounded-2xl shadow-xl">
+                <div v-for="item in next" class="w-80 flex-col  border-2 dark:bg-white rounded-2xl shadow-xl">
 
                     <a :href="route('video.index', item.id)"> <img src="../../../public/img/video.png" alt=""
                             class="rounded-t-xl"></a>

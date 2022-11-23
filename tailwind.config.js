@@ -10,6 +10,8 @@ module.exports = {
         './resources/js/**/*.vue',
     ],
 
+    darkMode: 'class',
+
     theme: {
         extend: {
             fontFamily: {
@@ -24,7 +26,10 @@ module.exports = {
                tertiaryBackground: '#ff6551',
                cancelBackground : '#777777',
                whiteTextColor :  '#fff',
-               blackTextColor : '#000'
+               blackTextColor : '#000',
+               darkBgBackground: '#111827',
+               darkPrimaryBackground: '#1e293b',
+               darkSecondaryBackground: '#374151'
             }
             ,
             fontSize: {

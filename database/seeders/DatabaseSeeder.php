@@ -35,6 +35,6 @@ class DatabaseSeeder extends Seeder
         /**
          * Transaction
          */
-         \App\Models\TMail::factory(100)->create();
+        //  \App\Models\TMail::factory(100)->create();
     }
 }

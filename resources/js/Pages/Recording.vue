@@ -113,7 +113,7 @@ const searchVideo = () => {
     <Header />
     <!-- Hero Section-->
     <section>
-        <div class="flex w-full h-auto overflow-hidden bg-primaryBackground md:flex-row flex-col pt-5 md:px-10 px-7">
+        <div class="flex w-full h-auto overflow-hidden bg-primaryBackground dark:bg-darkSecondaryBackground md:flex-row flex-col pt-5 md:px-10 px-7">
             <div class="flex-1 ">
                 <span class="text-xl font-semibold text-white">{{ newvideo.c_name }} > </span>
                 <span class="text-sm font-medium text-white"> ({{ newvideo.c_start_time }} - {{ newvideo.c_end_time }})
@@ -140,9 +140,9 @@ const searchVideo = () => {
     <!-- Recroding Video Lists-->
     <section>
         <div class="relative  h-auto mx-auto">
-            <div class="text-center font-medium text-3xl md:text-4xl py-10">Recording Video Lists</div>
+            <div class="text-center font-medium text-3xl md:text-4xl py-10 dark:text-white">Recording Video Lists</div>
             <div class="relative  flex  flex-row  justify-around items-center px-1 md:px-5 mb-8">
-                <div class="font-bold hidden md:block">Total: <span class="font-bold text-xl text-tertiaryBackground">{{ count }} </span> Videos</div>
+                <div class="font-bold hidden md:block dark:text-white">Total: <span class="font-bold text-xl text-tertiaryBackground">{{ count }} </span> Videos</div>
                 <div class="flex w-2/3 md:w-2/4 ">
                     <input type="text"
                         class="block  md:w-full md:h-10 w-80  text-gray-900  rounded-l-lg  border-blue-800 sm:text-sm"
@@ -179,7 +179,7 @@ const searchVideo = () => {
             <!-- Video Lists -->
             <div
                 class="relative  w-full flex  flex-wrap justify-center ">
-                <div class="border-slate-400 drop-shadow-md w-44 m-2 md:w-56 md:m-5    shadow-md md:shadow-lg rounded-xl "  v-for="video in videos.data">
+                <div class="border-slate-400 drop-shadow-md w-44 m-2 md:w-56 md:m-5 dark:bg-darkSecondaryBackground   shadow-md md:shadow-lg rounded-xl "  v-for="video in videos.data">
                     <div class="flex flex-col  text-center">
                         <a :href="route('video.index', video.id)">
                         <div class=" flex  items-center">

@@ -20,10 +20,7 @@ isDark.value = localStorage.getItem('darkMode');
 </script>
 
 <template>
-  <nav class="w-full border-b-2 px-10 md:px-24 py-5" :class="{
-    'bg-white' : (isDark.value == false),
-    'bg-slate-900' : (isDark.value == true)
-  }">
+  <nav class="w-full px-10 md:px-24 py-5 dark:bg-darkPrimaryBackground">
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
         <Link href="/homepage" class="flex items-center">
@@ -34,13 +31,13 @@ isDark.value = localStorage.getItem('darkMode');
       <div class="flex w-3/9 hidden md:block w-52 md:w-64">
         <ul class="flex">
           <li class="flex md:w-16 lg:w-24 hlink">
-            <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
+            <Link href="/homepage" class="hlink-text dark:text-white" aria-current="page">Home</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24  hlink">
-            <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
+            <Link href="/blog" class="hlink-text dark:text-white" aria-current="page">Blog</Link>
           </li>
           <li class="flex  md:w-16 lg:w-24  hlink ">
-            <Link href="/recording" class="hlink-text" aria-current="page">Video</Link>
+            <Link href="/recording" class="hlink-text dark:text-white" aria-current="page">Video</Link>
           </li>
         </ul>
       </div>
@@ -53,9 +50,9 @@ isDark.value = localStorage.getItem('darkMode');
       </div> -->
 
       <div class="flex w-1/9">
-        <div class="font-semibold p-1 mx-3 text-lg">{{ $page.props.user.name }}</div>
+        <div class="font-semibold p-1 mx-3 text-lg dark:text-white">{{ $page.props.user.name }}</div>
         <Link href="/inbox" aria-current="page">
-        <ion-icon name="mail-open" class="text-primaryBackground  mx-3  hidden noti-profile-menu md:block text-4xl">
+        <ion-icon name="mail-open" class="text-primaryBackground dark:text-white mx-3  hidden noti-profile-menu md:block text-4xl">
         </ion-icon>
         </Link>
 

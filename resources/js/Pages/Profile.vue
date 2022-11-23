@@ -106,9 +106,9 @@ const submit = (e) => {
     <Header />
     <!-- <div>{{ user[0].name }}</div> -->
     <section>
-        <div class="container mx-auto">
+        <div class="p-4 md:p-12 mx-auto">
             <p
-                class="text-primaryBackground font-semibold p-2 text-lg uppercase"
+                class="text-primaryBackground font-semibold text-lg uppercase dark:text-white"
             >
                 Profile
             </p>
