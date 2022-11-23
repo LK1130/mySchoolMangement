@@ -24,6 +24,20 @@ class TStudentClass extends Model
         // dd($query);
     }
 
+
+    public function getClassId($id){
+
+        $query = DB::table('t_student_classes')
+        ->select('m_classes.id')
+        ->join('m_classes','t_student_classes.class_id','=','m_classes.id')
+        ->where('t_student_classes.user_id', $id)
+        ->orderBy('t_student_classes.class_id')
+        ->get();
+
+     
+        
+    return $query;
+    }
     public function totalStudents($id){
 
       

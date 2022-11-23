@@ -20,10 +20,7 @@ isDark.value = localStorage.getItem('darkMode');
 </script>
 
 <template>
-  <nav class="w-full border-b-2 px-10 md:px-24 py-5" :class="{
-    'bg-white' : (isDark.value == false),
-    'bg-slate-900' : (isDark.value == true)
-  }">
+  <nav class="w-full border-b-2 px-10 md:px-24 py-5" >
     <div class="flex flex-wrap justify-between items-center">
       <div class="flex w-1/9">
         <Link href="/homepage" class="flex items-center">

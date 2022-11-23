@@ -46,6 +46,15 @@ const props = defineProps({
     },
     one_class :{
         type : Object
+    },
+    exam_percent : {
+        type : Object
+    },
+    overall_rank : {
+        type : Object
+    },
+    class_rank :{
+        type :  Array
     }
    
 })
@@ -181,7 +190,7 @@ const seriesV2 = ref([
 
     <Head title="Home" />
     <Header />
-    <div  :class="{dark: isDark}" class="bg-slate-800">
+    <div >
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
         <div class="flex flex-row items-center justify-between">
@@ -199,13 +208,14 @@ const seriesV2 = ref([
                 <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n"  :virtual-index="n">
                   
                     <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
-                        
+                            
                         <div
                             class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                             <div class="flex flex-row justify-between items-center z-10">
+                                
                                 <div class="flex flex-col space-y-3">
                                     <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
-                                    <p class="font-bold text-lg">{{ props.attendance[n-1].c_name }}</p>
+                                    <p class="font-bold text-lg">{{ props.classes[n-1].c_name }}</p>
                                     <div class="flex flex-row">
                                         <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md"></div>
                                         <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
@@ -219,7 +229,9 @@ const seriesV2 = ref([
                                             d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
                                             fill="#FFC652" />
                                     </svg>
-                                    <p class="text-3xl font-bold rank">10</p>
+                                    
+                                   
+                                    <p class="text-3xl font-bold rank">{{ Object.values(props.overall_rank).length == 0 ? 0 : Object.values(props.overall_rank)[n-1].ranks}}</p>
                                 </div>
                             </div>
 
@@ -227,10 +239,10 @@ const seriesV2 = ref([
                                 <div class="flex flex-col space-y-4 ">
                                    
                                     <p class="text-sm md:text-base">Attendance > <span
-                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance[n-1].attend * 100 }}%</span>
+                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.attendance.length == 0 ?  0  : props.attendance[n-1].attend * 100}}%</span>
                                     </p>
                                     <p class="text-sm md:text-base">Exam Mark > <span
-                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
+                                            class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.exam_percent.length == 0 ? 0 : Math.floor(props.exam_percent[n-1].exam)}}%</span>
                                     </p>
                                 </div>
                                 <p class="text-sm md:text-base">Status > <span
@@ -318,7 +330,7 @@ const seriesV2 = ref([
     <div class="flex flex-col w-full bg-primaryBackground py-10 my-5 h-full">
         <div class="flex flex-row justify-around w-full items-center">
             <div class="flex flex-col items-center w-48">
-                <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">80%</h1>
+                <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ props.attendance.length == 0 ?  0  : props.attendance[activeIndex].attend * 100}}%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Attendance</p>
             </div>
             <div class="flex flex-col items-center mb-32 w-48">
@@ -328,17 +340,19 @@ const seriesV2 = ref([
                             d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
                             fill="#FFC652" />
                     </svg>
-                    <p class="text-5xl text-white font-bold rank">{{ Object.values(props.examRanks)[0].rank }}</p>
+                    
+                   
+                    <p class="text-5xl text-white font-bold rank">{{Object.values(props.overall_rank)[activeIndex].ranks  }}</p>
                 </div>
                 <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
             </div>
             <div class="flex flex-col items-center w-48">
                 <h1 class="text-2xl md:text-4xl font-bold" :class="{
-                    'text-green-500': (percentage == 100),
-                    'text-red-500': (percentage <= 50),
-                    'text-yellow-500': (percentage > 50 && percentage < 100),
+                    'text-green-500': ( props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam == 100),
+                    'text-red-500': (props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam <= 50),
+                    'text-yellow-500': (props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam > 50 && props.exam_percent[activeIndex].exam < 100),
                 }">
-                    {{ percentage }}%</h1>
+                    {{ props.exam_percent.length == 0 ? 0 : Math.floor(props.exam_percent[activeIndex].exam) }}%</h1>
                 <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
             </div>
         </div>
@@ -359,10 +373,12 @@ const seriesV2 = ref([
                 <div class="overflow-y-auto rankTable">
                     <table class="text-sm text-left text-primaryBackground w-full">
                         <tbody>
-                            <tr v-for="examRank in examRanks">
-                                <td class="py-3 w-24 text-left font-light text-xs text-black">{{
-                                        moment(examRank.date_submitted).format('MMM D')
-                                }}</td>
+                            
+                            <tr v-for="examRank in class_rank[activeIndex]">
+                               
+                                <td class="py-3 w-24 text-left font-light text-xs text-black">  
+                                      {{  moment(examRank.date_submitted).format('MMM D') }}   
+                                  </td>
                                 <td class="py-3 w-48 text-left font-bold">{{ examRank.e_name }}</td>
                                 <td class="py-3 w-24" :class="{
                                     'text-green-500': (examRank.mark == 10),
