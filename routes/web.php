@@ -50,7 +50,7 @@ Route::middleware([
 
 
 //Public Home page
-Route::post("/contact",[PublicHomeController::class,"index"]);
+Route::post("/contact", [PublicHomeController::class, "index"]);
 
 /**
  * Need to login
@@ -58,16 +58,15 @@ Route::post("/contact",[PublicHomeController::class,"index"]);
 Route::middleware(['auth'])->group(function () {
     //Home page
     Route::get('/homepage', [HomeController::class, "index"]);
-    Route::post('/homepage',[HomeController::class,"changeClass"])->name("home.change");  
+    Route::post('/homepage', [HomeController::class, "changeClass"])->name("home.change");
     //Recording page
     Route::get('/recording', [RecordController::class, "index"])->name("record.index");
     Route::post('/recording', [RecordController::class, "search"])->name("record.search");
-  
 
     //Video Page
-    Route::get('/video/{id?}',[VideoListController::class,'index'])->name("video.index");
+    Route::get('/video/{id?}', [VideoListController::class, 'index'])->name("video.index");
     //Inbox Page
-    Route::get('/inbox/{category?}',[MessageController::class,'index'])->name("inbox.index");
+    Route::get('/inbox/{category?}', [MessageController::class, 'index'])->name("inbox.index");
 
     // Blog page
     Route::get('/blog', [BlogController::class, "index"])->name("blog.index");
@@ -77,15 +76,17 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
 
     // Profile
-    Route::get('/profile',[ProfileController::class,'index'])->name("profile.index");
-    Route::post('/profile',[ProfileController::class,'update'])->name("profile.update");
+    Route::get('/profile', [ProfileController::class, 'index'])->name("profile.index");
+    Route::post('/profile', [ProfileController::class, 'update'])->name("profile.update");
+    Route::post('/saveImg',  [ProfileController::class, 'saveImg'])->name("profile.saveImg");
+    // Route::get('posts', fn ($request) => [ProfileController::class, 'saveImg'])->name('profile.saveImg');
 
     // Guide
-    Route::get('/guide',[GuideController::class,'index']);
+    Route::get('/guide', [GuideController::class, 'index']);
 
     //Setting
-    Route::get('/setting',[SettingController::class,'index']);
-    
+    Route::get('/setting', [SettingController::class, 'index']);
+
     Route::get('language/{language}', function ($language) {
         Session()->put('locale', $language);
 
