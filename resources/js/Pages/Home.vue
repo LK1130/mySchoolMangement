@@ -44,10 +44,6 @@ const props = defineProps({
     attendance: {
         type: Object
     },
-<<<<<<< HEAD
-    one_class: {
-        type: Object
-=======
     one_class :{
         type : Object
     },
@@ -59,10 +55,9 @@ const props = defineProps({
     },
     class_rank :{
         type :  Array
->>>>>>> c42f20ebb58ac86df7bbb76292a2a99c7b2fdf7f
     }
 
-})
+});
 
 
 
@@ -195,66 +190,6 @@ const seriesV2 = ref([
 
     <Head title="Home" />
     <Header />
-<<<<<<< HEAD
-        <section class=" p-4 md:p-12 overflow-x-hidden ">
-            <!-- Title Bar -->
-            <div class="flex flex-row items-center justify-between">
-                <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-white">{{ count }} Classes Joined</h1>
-                <h1 class="text-sm md:text-lg text-primaryBackground dark:text-white underline"><a href="#">Rules & Regulations</a>
-                </h1>
-            </div>
-
-            <Swiper />
-
-            <!-- Hero Section -->
-            <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
-                <!-- Student's Card -->
-                <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                    :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2"
-                    @slideChange="(event) => { activeIndex = event.activeIndex }">
-                    <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
-
-                        <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
-
-                            <div
-                                class="flex  flex-col rounded-xl bg-primaryBackground dark:bg-darkPrimaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
-                                <div class="flex flex-row justify-between items-center z-10">
-                                    <div class="flex flex-col space-y-3">
-                                        <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
-                                        <p class="font-bold text-lg">{{ props.attendance[n - 1].c_name }}</p>
-                                        <div class="flex flex-row">
-                                            <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md">
-                                            </div>
-                                            <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
-                                            <div class="w-12 h-2 bg-white rounded-tr-md rounded-br-md"></div>
-                                        </div>
-                                    </div>
-                                    <div class="relative flex flex-row items-center justify-center">
-                                        <svg width="50" height="60" viewBox="0 0 114 130" fill="none"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M33.21 4.55C42.0257 2.15313 51.3938 0 57 0C62.6063 0 71.9744 2.15313 80.79 4.55C89.8088 6.9875 98.9007 9.87187 104.247 11.6187C106.482 12.3569 108.464 13.7107 109.964 15.5244C111.465 17.3382 112.423 19.5385 112.729 21.8725C117.572 58.2481 106.335 85.2069 92.7013 103.041C86.9199 110.67 80.0262 117.389 72.2507 122.972C69.562 124.904 66.7133 126.603 63.7357 128.05C61.4607 129.122 59.015 130 57 130C54.985 130 52.5475 129.122 50.2644 128.05C47.2867 126.603 44.438 124.904 41.7494 122.972C33.974 117.389 27.0804 110.67 21.2988 103.041C7.66504 85.2069 -3.57183 58.2481 1.27067 21.8725C1.57688 19.5385 2.53527 17.3382 4.03574 15.5244C5.53622 13.7107 7.51791 12.3569 9.75317 11.6187C17.5141 9.07407 25.3353 6.71714 33.21 4.55Z"
-                                                fill="#FFC652" />
-                                        </svg>
-                                        <p class="text-3xl font-bold rank">10</p>
-                                    </div>
-                                </div>
-
-                                <div class="flex flex-row justify-between ">
-                                    <div class="flex flex-col space-y-4 ">
-
-                                        <p class="text-sm md:text-base">Attendance > <span
-                                                class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
-                                                        props.attendance[n - 1].attend * 100
-                                                }}%</span>
-                                        </p>
-                                        <p class="text-sm md:text-base">Exam Mark > <span
-                                                class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">60%</span>
-                                        </p>
-                                    </div>
-                                    <p class="text-sm md:text-base">Status > <span
-                                            class="ml-3 text-sm font-bold">Active</span></p>
-=======
     <div >
     <section class=" p-4 md:p-12 overflow-x-hidden">
         <!-- Title Bar -->
@@ -309,10 +244,10 @@ const seriesV2 = ref([
                                     <p class="text-sm md:text-base">Exam Mark > <span
                                             class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{ props.exam_percent.length == 0 ? 0 : Math.floor(props.exam_percent[n-1].exam)}}%</span>
                                     </p>
->>>>>>> c42f20ebb58ac86df7bbb76292a2a99c7b2fdf7f
                                 </div>
                             </div>
                         </div>
+                    </div>
                     </swiper-slide>
                 </swiper>
                 <!-- Class Info -->
@@ -474,35 +409,6 @@ const seriesV2 = ref([
             </div>
         </div>
 
-<<<<<<< HEAD
-        <div class="flex flex-col items-center w-full">
-            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3 dark:text-white">Class Exam Ranking & Mark</h1>
-
-            <div
-                class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10 dark:bg-darkPrimaryBackground">
-                <div class="pt-10">
-                    <Chart :type="line" :options="chartOptionsV2" :series="seriesV2" :stroke="stroke" class="chartV2" />
-                </div>
-
-                <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full lg:w-72 space-y-4">
-
-                    <div v-for="(item, index) in allRankPercentage"
-                        class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
-                        <span
-                            class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">{{
-                                    ++index
-                            }}</span>
-                        <h1 class="w-32 flex font-bold whitespace-nowrap">{{ item.name }}</h1>
-                        <p class="font-semibold text-secondaryBackground">{{ item.percent }}%</p>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-
-   
-=======
     <!-- Rank Section -->
     <div class="flex flex-col w-full bg-primaryBackground py-10 my-5 h-full">
         <div class="flex flex-row justify-around w-full items-center">
@@ -602,7 +508,6 @@ const seriesV2 = ref([
         </div>
     </div>
 </div>
->>>>>>> c42f20ebb58ac86df7bbb76292a2a99c7b2fdf7f
     <Footer />
 
 </template> 
