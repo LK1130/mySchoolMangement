@@ -52,7 +52,7 @@ const props = defineProps({
         type: Array,
     },
 });
-console.log(Object.values(props.overall_rank)[0].ranks);
+
 //get class join count
 count = props.classes.length;
 examCount = Object.values(props.examRanks).length;
@@ -264,7 +264,11 @@ const seriesV2 = ref([
                                             {{
                                                 Object.values(
                                                     props.overall_rank
-                                                )
+                                                ).length == 0
+                                                    ? 0
+                                                    : Object.values(
+                                                          props.overall_rank
+                                                      )[n - 1].ranks
                                             }}
                                         </p>
                                     </div>
