@@ -1,43 +1,28 @@
 <script setup>
 import { Head, Link, useForm } from "@inertiajs/inertia-vue3";
 import Header from "../Layouts/Header.vue";
+import { Inertia } from "@inertiajs/inertia";
 
 import InputLabel from "../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputLabel.vue";
 import Footer from "../Layouts/Footer.vue";
 import { ref } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import axios from "axios";
 
-{
-    /* <img src="{{ asset(.'/images/'.$article->image) }}" alt="" title=""> */
-}
-
-// var imgSrc = ref(
-//     "storage\app\ProfilePhoto\8f9zTBco90qWGo7UbbB7a4dKUXv1iCxnIWZkZ9NN.png"
-// );
-// defineProps({
-//     classdata: Object,
-// });
 const props = defineProps({
-    user: {
+    users: {
         type: Object,
     },
 });
 
-// const newProfile = useForm({
-//     _method: "POST",
-//     image: files,
-// });
 const form = useForm({
     _method: "POST",
-    name: props.user[0].name,
-    nickname: props.user[0].nickname,
-    age: props.user[0].age,
-    address: props.user[0].address,
-    phone: props.user[0].phone,
-    bio: props.user[0].bio,
-    image: props.user[0].profile_photo_path,
-    imgName: props.user[0].profile_photo_path, // image: imgSrc.value,
+    name: props.users[0].name,
+    nickname: props.users[0].nickname,
+    age: props.users[0].age,
+    address: props.users[0].address,
+    phone: props.users[0].phone,
+    bio: props.users[0].bio,
+    image: props.users[0].profile_photo_path,
+    imgName: props.users[0].profile_photo_path, // image: imgSrc.value,
 });
 
 var imgSrc = ref("/storage/" + form.imgName);
@@ -45,14 +30,9 @@ if (form.imgName === null) {
     imgSrc = ref("/img/error/avatars-000437232558-yuo0mv-t500x500.jpg");
 }
 
+var hasError = ref(true);
+
 const onFile = (e) => {
-    // var myImg = document.querySelector("#profileImage");
-    // var currWidth = myImg.width;
-    // var currHeight = myImg.height;
-    // alert(
-    //     "Current width=" + currWidth + ", " + "Original height=" + currHeight
-    // );
-    console.log(form.image);
     var files = e.target.files;
 
     if (!files.length) return;
@@ -71,40 +51,28 @@ const onFile = (e) => {
                 this.height < 820
             ) {
                 imgSrc.value = reader.result;
+                hasError.value = true;
             } else {
-                alert("Invalid");
+                hasError.value = false;
+                setTimeout(function () {
+                    hasError.value = true;
+                }, 4000);
             }
-            // if (this.height > 420 && this.height < 820) {
-            //     alert(this.height);
-            // } else {
-            //     alert("Invalid");
-            // }
         };
-        // && 420 <= this.height <= 820
     };
     form.image = files[0];
     form.imgName = files[0].name;
-
-    // console.log(imgName);
-    // imgSrc.value.image = files[0].name;
-    // console.log(imgSrc.image);
 };
 
 const submit = (e) => {
     form.post(route("profile.update", form));
-    // console.log(files[0]);
-    // form.post(route("profile.saveImg", 1));
 };
-
-// const submit = () => {
-//     console.log("ASdf");
-// };
 </script>
 
 <template>
     <Head title="Profile" />
     <Header />
-    <!-- <div>{{ user[0].name }}</div> -->
+
     <section>
         <div class="p-4 md:p-12 mx-auto">
             <p
@@ -139,6 +107,15 @@ const submit = (e) => {
                                     />
                                 </div>
                             </label>
+                            <p
+                                class="text-center font-bold text-ellipsis bg-red-500 rounded-md mt-4 p-3 errorMessage"
+                                v-bind:class="{
+                                    invisible: hasError,
+                                }"
+                            >
+                                Please, Select an Image with SMALLER WIDTH and
+                                HEIGHT
+                            </p>
                         </div>
 
                         <div class="md:w-6/12 sm:w-full form-container mx-auto">
@@ -151,7 +128,7 @@ const submit = (e) => {
                                     placeholder="Name"
                                     required=""
                                     :class="{
-                                        'font-bold': user[0].name,
+                                        'font-bold': users[0].name,
                                     }"
                                 />
                             </div>
@@ -164,7 +141,7 @@ const submit = (e) => {
                                     placeholder="Nickname"
                                     required=""
                                     :class="{
-                                        'font-bold': user[0].nickname,
+                                        'font-bold': users[0].nickname,
                                     }"
                                 />
                                 <input
@@ -175,7 +152,7 @@ const submit = (e) => {
                                     placeholder="Age"
                                     required=""
                                     :class="{
-                                        'font-bold': user[0].age,
+                                        'font-bold': users[0].age,
                                     }"
                                 />
                             </div>
@@ -188,7 +165,7 @@ const submit = (e) => {
                                     class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                     placeholder="Address"
                                     :class="{
-                                        'font-bold': user[0].address,
+                                        'font-bold': users[0].address,
                                     }"
                                     required=""
                                 />
@@ -203,7 +180,7 @@ const submit = (e) => {
                                     placeholder="Phone"
                                     required=""
                                     :class="{
-                                        'font-bold': user[0].phone,
+                                        'font-bold': users[0].phone,
                                     }"
                                 />
                             </div>
@@ -218,7 +195,7 @@ const submit = (e) => {
                                     rows="10"
                                     placeholder="Bio"
                                     :class="{
-                                        'font-bold': user[0].bio,
+                                        'font-bold': users[0].bio,
                                     }"
                                 ></textarea>
                             </div>

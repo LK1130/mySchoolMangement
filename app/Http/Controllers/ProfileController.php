@@ -22,7 +22,7 @@ class ProfileController extends Controller
             ->get();
 
         return inertia('Profile', [
-            'user' => $query
+            'users' => $query
         ]);
     }
 

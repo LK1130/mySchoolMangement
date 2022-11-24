@@ -13,6 +13,22 @@
 .imagePhoto {
     border-color: var(--primaryBackground);
 }
+.errorMessage {
+    width: 25vw;
+    margin: auto;
+    position: relative;
+    animation: error 6s ease-in-out;
+    top: 10px;
+}
+@keyframes error {
+    0% {
+        top: -100px;
+    }
+
+    100% {
+        top: 10px;
+    }
+}
 .js--image-preview {
 }
 .upload-options {
