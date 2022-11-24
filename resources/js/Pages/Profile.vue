@@ -5,29 +5,13 @@ import Header from "../Layouts/Header.vue";
 import InputLabel from "../../../vendor/laravel/jetstream/stubs/inertia/resources/js/Components/InputLabel.vue";
 import Footer from "../Layouts/Footer.vue";
 import { ref } from "vue";
-import { Inertia } from "@inertiajs/inertia";
-import axios from "axios";
 
-{
-    /* <img src="{{ asset(.'/images/'.$article->image) }}" alt="" title=""> */
-}
-
-// var imgSrc = ref(
-//     "storage\app\ProfilePhoto\8f9zTBco90qWGo7UbbB7a4dKUXv1iCxnIWZkZ9NN.png"
-// );
-// defineProps({
-//     classdata: Object,
-// });
 const props = defineProps({
     user: {
         type: Object,
     },
 });
 
-// const newProfile = useForm({
-//     _method: "POST",
-//     image: files,
-// });
 const form = useForm({
     _method: "POST",
     name: props.user[0].name,
@@ -44,14 +28,9 @@ var imgSrc = ref("/storage/" + form.imgName);
 if (form.imgName === null) {
     imgSrc = ref("/img/error/avatars-000437232558-yuo0mv-t500x500.jpg");
 }
+var hasError = ref(true);
 
 const onFile = (e) => {
-    // var myImg = document.querySelector("#profileImage");
-    // var currWidth = myImg.width;
-    // var currHeight = myImg.height;
-    // alert(
-    //     "Current width=" + currWidth + ", " + "Original height=" + currHeight
-    // );
     console.log(form.image);
     var files = e.target.files;
 
@@ -71,8 +50,14 @@ const onFile = (e) => {
                 this.height < 820
             ) {
                 imgSrc.value = reader.result;
+                hasError.value = true;
             } else {
-                alert("Invalid");
+                hasError.value = false;
+                setTimeout(function () {
+                    hasError.value = true;
+                    errorAnimation = "";
+                }, 4000);
+                console.log(hasError);
             }
             // if (this.height > 420 && this.height < 820) {
             //     alert(this.height);
@@ -139,6 +124,15 @@ const submit = (e) => {
                                     />
                                 </div>
                             </label>
+                            <p
+                                class="text-center font-bold text-ellipsis bg-red-500 rounded-md mt-4 p-3 errorMessage"
+                                v-bind:class="{
+                                    invisible: hasError,
+                                }"
+                            >
+                                Please, Select an Image with SMALLER WIDTH and
+                                HEIGHT
+                            </p>
                         </div>
 
                         <div class="md:w-6/12 sm:w-full form-container mx-auto">
