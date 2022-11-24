@@ -57,7 +57,7 @@ const props = defineProps({
         type: Array
     }
 
-})
+});
 
 
 
@@ -233,7 +233,8 @@ const seriesV2 = ref([
                                         </svg>
 
 
-                                        <p class="text-3xl font-bold rank">{{ Object.values(props.overall_rank).length == 0 ? 0 : Object.values(props.overall_rank)[n - 1].ranks
+                                        <p class="text-3xl font-bold rank">{{ Object.values(props.overall_rank).length
+                                                == 0 ? 0 : Object.values(props.overall_rank)[n - 1].ranks
                                         }}</p>
                                     </div>
                                 </div>
