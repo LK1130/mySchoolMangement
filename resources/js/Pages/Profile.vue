@@ -72,6 +72,7 @@ const onFile = (e) => {
             ) {
                 imgSrc.value = reader.result;
             } else {
+                // <CAlert color="danger">Invalid Photo</CAlert>;
                 alert("Invalid");
             }
             // if (this.height > 420 && this.height < 820) {
@@ -118,18 +119,18 @@ const submit = (e) => {
                     <div
                         class="container mx-auto flex flex-wrap justify-around md:space-x-10 space-x-0 mt-3"
                     >
-                        <div class="box">
+                        <div class="box rounded-2xl">
                             <div class="js--image-preview">
                                 <img
                                     id="profileImage"
-                                    class="object-scale-down max-w-sm inline-block"
+                                    class="object-scale-down max-w-sm inline-block border-solid rounded-tr-2xl rounded-tl-2xl border-2 profileImage"
                                     :src="imgSrc"
                                     alt=""
                                     srcset=""
                                 />
                             </div>
                             <label for="image">
-                                <div class="upload-options h-80">
+                                <div class="upload-options h-10">
                                     <input
                                         type="file"
                                         id="image"

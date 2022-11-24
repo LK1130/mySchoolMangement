@@ -32,21 +32,21 @@ class HomeController extends Controller
         // get final chart reuslt
         $chartRankResult = [];
 
-       $id  = $classes->getClassId(Auth::id());
-    //    dd($id);
+        $id  = $classes->getClassId(Auth::id());
+        //    dd($id);
         $specificClassRank = [];
         $oneClassRank = [];
-        
+
         $oneClassEachExamRank = [];
         // get students 
-             
+
         //get attendance  
         $attendance  = $attendances->getAttendance(Auth::id());
         $examPercent = $exam->getExamRankPercent(Auth::id());
-      
+
         //get Exam list
         $examList = $exam->getExamList();
-            // dd($examList);
+        // dd($examList);
         //get Class List
         $totalClass = $classes->totalClass(Auth::id());
 
@@ -55,68 +55,65 @@ class HomeController extends Controller
         foreach ($examList as  $examid) {
             //collect all data to array
 
-           
-            $allUserRank = array_merge($allUserRank, $exam->showRankTable($examid));
 
-            
-          
+            $allUserRank = array_merge($allUserRank, $exam->showRankTable($examid));
         }
 
         // dd($allUserRank);
 
         //loop for each classid rank
-        foreach($totalClass as $classid) {
+        foreach ($totalClass as $classid) {
 
-           
-            $oneClassEachExamRank = array_merge($oneClassEachExamRank,$exam->getExamlistByClassID($classid->class_id));
-            $oneClassRank = array_merge($oneClassRank,$exam->getUserRankById($classid->class_id));
+
+            $oneClassEachExamRank = array_merge($oneClassEachExamRank, $exam->getExamlistByClassID($classid->class_id));
+            $oneClassRank = array_merge($oneClassRank, $exam->getUserRankById($classid->class_id));
         }
-      
-      
-        
 
 
-       
+
+
+
+
         //filter for get only current login user id
         $examRank = array_filter($allUserRank, function ($rank) {
             return ($rank->id == Auth::id());
         });
 
-         //filter for get only current login user id
-         $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
-            
+        //filter for get only current login user id
+        $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
+
             return ($rank->uid == Auth::id());
         });
-   
-       
+
+
         $newArray = array_values($eachExamRank);
-        
 
-        for ($i=0; $i < count($newArray); $i++) { 
-               if(!in_array($newArray[$i]->cid,$allClassID)){
-                array_push($allClassID,$newArray[$i]->cid);
-               }
+
+        for ($i = 0; $i < count($newArray); $i++) {
+            if (!in_array($newArray[$i]->cid, $allClassID)) {
+                array_push($allClassID, $newArray[$i]->cid);
+            }
         }
 
-        for ($i=0; $i <count($allClassID) ; $i++) { 
-             $temp = [];
-             for ($j=0; $j < count($newArray) ; $j++) { 
-                if($allClassID[$i] == $newArray[$j]->cid){
-                    array_push($temp,$newArray[$j]);
+        for ($i = 0; $i < count($allClassID); $i++) {
+            $temp = [];
+            for ($j = 0; $j < count($newArray); $j++) {
+                if ($allClassID[$i] == $newArray[$j]->cid) {
+                    array_push($temp, $newArray[$j]);
                 }
-             }
+            }
 
-                array_push($oneExamCallRank,$temp);
+            array_push($oneExamCallRank, $temp);
         }
 
-       
 
-       
 
-        
 
-     
-       
+
+
+
+
+
         //get all user rank
         $userRanks = $exam->getUserRank();
 
@@ -128,22 +125,22 @@ class HomeController extends Controller
         // dd($userRank);
 
         //filter for get overall rank only current login user id
-        $overallRank = array_filter($oneClassRank,function($ranking) {
+        $overallRank = array_filter($oneClassRank, function ($ranking) {
             return ($ranking->id == Auth::id());
         });
 
-       
-      
 
-      
 
-       foreach($totalClass  as $class){
-          array_push($allClass,$class->id);
-       }
-         
-       $classid =  join(',',$allClass);
-       
-      $eachClass =   $classes->totalStudents($classid);
+
+
+
+        foreach ($totalClass  as $class) {
+            array_push($allClass, $class->id);
+        }
+
+        $classid =  join(',', $allClass);
+
+        $eachClass =   $classes->totalStudents($classid);
         return inertia("Home", [
             'classes' => $totalClass,
             'attendance' => $attendance,
@@ -159,12 +156,13 @@ class HomeController extends Controller
     }
 
 
-    public function changeClass(Request $request){
+    public function changeClass(Request $request)
+    {
 
-       
-            $classes = new MClass();
-               $class   =  $classes->classById($request->classid);
-    
+
+        $classes = new MClass();
+        $class   =  $classes->classById($request->classid);
+
 
         return $class;
     }
