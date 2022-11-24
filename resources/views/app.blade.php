@@ -35,7 +35,7 @@
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased bg-white dark:bg-slate-900">
+<body class="font-sans antialiased bg-white dark:bg-slate-900 ease-linear duration-500">
     @inertia
 </body>
 

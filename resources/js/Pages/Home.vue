@@ -194,8 +194,7 @@ const seriesV2 = ref([
         <section class=" p-4 md:p-12 overflow-x-hidden">
             <!-- Title Bar -->
             <div class="flex flex-row items-center justify-between">
-                <h1 class="text-lg md:text-xl font-bold text-primaryBackground">{{ count }} Classes Joined</h1>
-                <h1 class="text-sm md:text-lg text-primaryBackground underline"><a href="#">Rules & Regulations</a></h1>
+                <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-whiteTextColor">{{ count }} Classes Joined</h1>
             </div>
 
             <Swiper />
@@ -211,7 +210,7 @@ const seriesV2 = ref([
                         <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
 
                             <div
-                                class="flex  flex-col rounded-xl bg-primaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
+                                class="flex  flex-col rounded-xl bg-primaryBackground dark:bg-darkPrimaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                                 <div class="flex flex-row justify-between items-center z-10">
 
                                     <div class="flex flex-col space-y-3">
@@ -346,7 +345,7 @@ const seriesV2 = ref([
         </section>
 
         <!-- Rank Section -->
-        <div class="flex flex-col w-full bg-primaryBackground py-10 my-5 h-full">
+        <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-10 my-5 h-full">
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
                     <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ props.attendance.length == 0
@@ -383,10 +382,10 @@ const seriesV2 = ref([
 
             <div class="flex flex-col xl:flex-row justify-around items-center xl:space-y-0 space-y-5 p-5">
                 <!-- Rank Table -->
-                <div class="flex flex-col bg-white py-5 px-10 rounded-xl xl:w-2/5 h-96">
+                <div class="flex flex-col bg-white dark:bg-darkBgBackground py-5 px-10 rounded-xl xl:w-2/5 h-96">
                     <table class="text-sm text-left text-primaryBackground mb-4 ">
                         <thead>
-                            <tr class="text-black">
+                            <tr class="text-black dark:text-whiteTextColor">
                                 <th class="w-24 text-left">Date</th>
                                 <th class="w-48 text-left">Exam</th>
                                 <th class="w-24 text-left">Mark</th>
@@ -400,7 +399,7 @@ const seriesV2 = ref([
 
                                 <tr v-for="examRank in class_rank[activeIndex]">
 
-                                    <td class="py-3 w-24 text-left font-light text-xs text-black">
+                                    <td class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
                                         {{ moment(examRank.date_submitted).format('MMM D') }}
                                     </td>
                                     <td class="py-3 w-48 text-left font-bold">{{ examRank.e_name }}</td>
@@ -409,7 +408,7 @@ const seriesV2 = ref([
                                         'text-red-500': (examRank.mark <= 5),
                                         'text-yellow-500': (examRank.mark > 5 && examRank.mark < 10),
                                     }">{{ examRank.mark }}</td>
-                                    <td class="py-3 w-24 text-left text-black">{{ examRank.rank }}</td>
+                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ examRank.rank }}</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -417,7 +416,7 @@ const seriesV2 = ref([
                 </div>
 
                 <!-- Rank Chart -->
-                <div class="flex flex-col bg-white p-5 rounded-xl xl:w-2/5 h-96">
+                <div class="flex flex-col bg-white  dark:bg-darkBgBackground p-5 rounded-xl xl:w-2/5 h-96">
 
 
                     <Chart :options="chartOptions" :series="series" class="chart h-full" />
@@ -427,7 +426,7 @@ const seriesV2 = ref([
         </div>
 
         <div class="flex flex-col items-center w-full">
-            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3">Class Exam Ranking & Mark</h1>
+            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor">Class Exam Ranking & Mark</h1>
 
             <div
                 class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
