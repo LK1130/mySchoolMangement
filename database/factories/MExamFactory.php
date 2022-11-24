@@ -25,6 +25,7 @@ class MExamFactory extends Factory
         };
         return [
             "e_name" => $this->faker->unique()->randomElement($examNames),
+            "class_id" => $this->faker->randomElement([1, 2, 3,4,5]),
             "category_id" => $this->faker->randomElement([1, 2, 3]),
             "full_mark" => 10,
             "fail_mark" => 5,

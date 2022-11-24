@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string("e_name",256);
             $table->unsignedBigInteger("category_id")->nullable();
+            $table->unsignedBigInteger("class_id")->nullable();
             $table->dateTime("e_duedate")->nullable();
             $table->integer("full_mark")->default(0);
             $table->integer("fail_mark")->default(0);
@@ -26,6 +27,8 @@ return new class extends Migration
             $table->timestamps();
             $table->foreign('category_id')->references('id')->on("m_categories")
                 ->onDelete('restrict')->onUpdate('cascade');
+            $table->foreign('class_id')->references('id')->on("m_classes")
+            ->onDelete('restrict')->onUpdate('cascade');
 
         });
     }
