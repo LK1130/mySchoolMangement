@@ -16,13 +16,13 @@ import { Link } from '@inertiajs/inertia-vue3';
         <div class="relative z-20 flex flex-wrap px-8 md:px-20 ">
             <div class="flex-1 ">
                 <div class="flex flex-col">
-                    <div class="mb-4 flink-fgp">
+                    <div class="mb-4 flink-fgp dark:text-secondaryBackground">
                         <Link href="/homepage">Home</Link>
                     </div>
-                    <div class="mb-4 flink-fgp">
+                    <div class="mb-4 flink-fgp dark:text-secondaryBackground">
                         <Link href="/homepage">About Us</Link>
                     </div>
-                    <div class="mb-4 flink-fgp">
+                    <div class="mb-4 flink-fgp dark:text-secondaryBackground">
                         <Link href="/homepage">Contact Us</Link>
                     </div>
                 </div>

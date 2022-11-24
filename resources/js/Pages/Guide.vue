@@ -26,14 +26,14 @@ console.log(props.guides);
    
     
     <section>
-        <div  class="container mx-auto">
+        <div  class="p-4 md:p-12 mx-auto">
             <div class="flex ">
-                <p class="text-primaryBackground font-semibold p-2 text-lg uppercase underline">Guide</p>
+                <p class="text-primaryBackground dark:text-whiteTextColor font-semibold text-lg uppercase underline">Guide</p>
                 <div     class="flex w-full">
-                    <ul v-for="item in allGuides" :key="item.id" class="flex  w-full  md:pl-24 pl-1 py-2">
+                    <ul v-for="item in allGuides" :key="item.id" class="flex  w-full  md:pl-24 pl-1 py-2 ">
                         
-                        <li   class="flex w-full hlink underline my-1">
-                            <a   href="#blog1" class="hlink-text guide " aria-current="page">{{ item.g_title }}</a>
+                        <li   class="flex w-full hlink underline my-1 ">
+                            <a   href="#blog1" class="hlink-text guide dark:text-cancelBackground" aria-current="page">{{ item.g_title }}</a>
                         </li>
                         <!-- <li class="flex w-full hlink underline my-1">
                             <a href="#blog1" class="hlink-text guide " aria-current="page">How to Login To Our System</a>
@@ -52,7 +52,7 @@ console.log(props.guides);
             <div   v-for="items in allGuides"  class="container mx-auto p-8">
                 <div v-for="item in guides" id="blog1" class="md:w-full guideblog">
                    <div v-if="item.step == 1  && items.g_title == item.g_title">
-                    <h1  class="text-standard font-bold md:mx-10 mx-auto mb-3">{{ item.id }} .{{ item.g_title }}</h1>
+                    <h1  class="text-standard font-bold md:mx-10 mx-auto mb-3 dark:text-whiteTextColor">{{ item.id }} .{{ item.g_title }}</h1>
                    </div>
 
                    <div v-else>
@@ -67,9 +67,9 @@ console.log(props.guides);
                         <div v-if="item.step == 1 && items.g_title == item.g_title "  class="flex flex-col md:w-full md:mx-auto space-y-3">
                             <SecondaryBtn class="bg-primaryBackground ">Step {{ item.step }}</SecondaryBtn>
 
-                            <h3 class="text-lg font-bold">{{ item.step_title }}</h3>
+                            <h3 class="text-lg font-bold dark:text-cancelBackground">{{ item.step_title }}</h3>
 
-                            <p class="text-base font-normal">{{ item.step_description }}</p>
+                            <p class="text-base font-normal dark:text-cancelBackground">{{ item.step_description }}</p>
 
                         </div>
                     </div>
@@ -81,9 +81,9 @@ console.log(props.guides);
                         <div class="flex flex-col md:w-full md:mx-auto md:mt-0 mt-3 space-y-3">
                             <SecondaryBtn class="bg-primaryBackground">Step {{ item.step }}</SecondaryBtn>
 
-                            <h3 class="text-lg font-bold">{{ item.step_title }}</h3>
+                            <h3 class="text-lg font-bold dark:text-cancelBackground">{{ item.step_title }}</h3>
 
-                            <p class="text-base font-normal">{{ item.step_description }}</p>
+                            <p class="text-base font-normal dark:text-cancelBackground">{{ item.step_description }}</p>
 
                         </div>
                         

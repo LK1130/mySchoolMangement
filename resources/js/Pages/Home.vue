@@ -402,7 +402,7 @@ const seriesV2 = ref([
                                     <td class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
                                         {{ moment(examRank.date_submitted).format('MMM D') }}
                                     </td>
-                                    <td class="py-3 w-48 text-left font-bold">{{ examRank.e_name }}</td>
+                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{ examRank.e_name }}</td>
                                     <td class="py-3 w-24" :class="{
                                         'text-green-500': (examRank.mark == 10),
                                         'text-red-500': (examRank.mark <= 5),

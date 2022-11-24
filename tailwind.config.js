@@ -24,12 +24,12 @@ module.exports = {
                 primaryBackground : '#2535a1',
                 secondaryBackground: '#ffc652',
                tertiaryBackground: '#ff6551',
-               cancelBackground : '#777777',
+               cancelBackground : '#7f7f7f',
                whiteTextColor :  '#fff',
                blackTextColor : '#000',
                darkBgBackground: '#111827',
                darkPrimaryBackground: '#1e293b',
-               darkSecondaryBackground: '#374151'
+               darkSecondaryBackground: '#374151',
             }
             ,
             fontSize: {

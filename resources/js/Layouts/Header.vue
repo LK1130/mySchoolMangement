@@ -52,7 +52,8 @@ isDark.value = localStorage.getItem('darkMode');
       <div class="flex w-1/9">
         <div class="font-semibold p-1 mx-3 text-lg dark:text-white">{{ $page.props.user.name }}</div>
         <Link href="/inbox" aria-current="page">
-        <ion-icon name="mail-open" class="text-primaryBackground dark:text-white mx-3  hidden noti-profile-menu md:block text-4xl">
+        <ion-icon name="mail-open"
+          class="text-primaryBackground dark:text-white mx-3  hidden noti-profile-menu md:block text-4xl">
         </ion-icon>
         </Link>
 
@@ -61,35 +62,36 @@ isDark.value = localStorage.getItem('darkMode');
       </div>
     </div>
 
-    <div class="absolute bg-white drop-shadow-lg right-3 top-24 w-44  rounded-lg  z-40" v-if="menuShow">
+    <div class="absolute bg-white dark:bg-darkPrimaryBackground drop-shadow-lg right-3 top-24 w-44  rounded-lg  z-40"
+      v-if="menuShow">
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
-          <Link href="/homepage" class="hlink-text" aria-current="page">Home</Link>
+          <Link href="/homepage" class="hlink-text dark:text-whiteTextColor" aria-current="page">Home</Link>
         </li>
         <li class="flex  md:w-16 lg:w-24  hlink my-1">
-          <Link href="/blog" class="hlink-text" aria-current="page">Blog</Link>
+          <Link href="/blog" class="hlink-text dark:text-whiteTextColor" aria-current="page">Blog</Link>
         </li>
         <li class="flex  md:w-16 lg:w-24  hlink my-1">
-          <Link href="/video" class="hlink-text" aria-current="page">Video</Link>
+          <Link href="/video" class="hlink-text dark:text-whiteTextColor" aria-current="page">Video</Link>
         </li>
       </ul>
-      <div class="w-32 mx-auto ion">
-        <hr>
+      <div class="w-32 mx-auto ion ">
+        <hr class="dark:border-secondaryBackground">
       </div>
       <ul class="flex flex-col items-start pl-8 py-3">
         <li class="flex md:w-16 lg:w-24 hlink my-1">
-          <Link href="/profile" class="hlink-text-normal" aria-current="page">
+          <Link href="/profile" class="hlink-text-normal dark:text-whiteTextColor" aria-current="page">
           Profile
           </Link>
         </li>
         <li class="flex  md:w-16 lg:w-24 hlink my-1">
-          <Link href="/setting" class="hlink-text-normal" aria-current="page">
+          <Link href="/setting" class="hlink-text-normal dark:text-whiteTextColor" aria-current="page">
           Setting
           </Link>
         </li>
         <li class="flex  md:w-16 lg:w-24  hlink my-1">
           <form @submit.prevent="logout">
-            <DropdownLink as="normal" class="hlink-text-normal">
+            <DropdownLink as="normal" class="hlink-text-normal   dark:text-whiteTextColor">
               <div class="cursor-pointer">Logout</div>
             </DropdownLink>
           </form>

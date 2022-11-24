@@ -148,7 +148,7 @@ const searchVideo = () => {
                         class="block  md:w-full md:h-10 w-80  text-gray-900  rounded-l-lg  border-blue-800 sm:text-sm"
                         placeholder="Video Title" v-model="search">
                     <button class="btn  md:h-10 w-28 text-sm md:text-base  text-white rounded-r-lg
-                        bg-primaryBackground" @click="searchVideo()">Search</button>
+                        bg-primaryBackground dark:bg-darkSecondaryBackground" @click="searchVideo()">Search</button>
                 </div>
                 <div>
                     <button type="button"
@@ -165,12 +165,12 @@ const searchVideo = () => {
                         </svg>
                     </button>
                     <div v-if="sortMenu"
-                        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                        class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white dark:bg-darkPrimaryBackground shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
                         role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
-                        <div class="py-1" role="none">
-                            <button class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                        <div class="py-1 dark:bg-darkPrimaryBackground rounded-xl" role="none">
+                            <button class="text-gray-700 dark:text-whiteTextColor block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                 id="menu-item-0" @click="sorting(1)" >Date Asc </button>
-                            <button href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
+                            <button href="#" class="text-gray-700 dark:text-whiteTextColor block px-4 py-2 text-sm" role="menuitem" tabindex="-1"
                                 id="menu-item-1" @click="sorting(2)">Date Desc </button>
                         </div>
                     </div>
@@ -179,7 +179,7 @@ const searchVideo = () => {
             <!-- Video Lists -->
             <div
                 class="relative  w-full flex  flex-wrap justify-center ">
-                <div class="border-slate-400 drop-shadow-md w-44 m-2 md:w-56 md:m-5 dark:bg-darkSecondaryBackground   shadow-md md:shadow-lg rounded-xl "  v-for="video in videos.data">
+                <div class="border-slate-400 drop-shadow-md w-44 m-2 md:w-56 md:m-5 dark:bg-darkSecondaryBackground  dark:text-whiteTextColor shadow-md md:shadow-lg rounded-xl "  v-for="video in videos.data">
                     <div class="flex flex-col  text-center">
                         <a :href="route('video.index', video.id)">
                         <div class=" flex  items-center">
