@@ -118,11 +118,11 @@ const submit = (e) => {
                     <div
                         class="container mx-auto flex flex-wrap justify-around md:space-x-10 space-x-0 mt-3"
                     >
-                        <div class="box">
+                        <div class="box rounded-2xl">
                             <div class="js--image-preview">
                                 <img
                                     id="profileImage"
-                                    class="object-scale-down max-w-sm inline-block"
+                                    class="object-scale-down max-w-sm inline-block rounded-tr-2xl rounded-tl-2xl border-2 border-solid imagePhoto"
                                     :src="imgSrc"
                                     alt=""
                                     srcset=""
