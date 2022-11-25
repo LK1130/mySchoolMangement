@@ -11,15 +11,15 @@ let dark = false;
 let light = false;
 
 if (darkMode){
-    console.log(darkMode);
+    // console.log(darkMode);
     dark = true;
     light = false;
-    console.log(1);
+    // console.log(1);
 }else{
-    console.log(darkMode);
+    // console.log(darkMode);
     light = true;
     dark = false;
-    console.log(2)
+    // console.log(2)
 }
 
 function darkOn() {
@@ -50,7 +50,7 @@ function lightOn() {
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2 dark:text-white">
 
 
-                    <li class="flex w-full hlinks font-bold my-1">
+                    <li class="flex w-full font-bold my-1">
                         Language
                     </li>
                     <li class="flex w-full  my-1">
@@ -73,7 +73,7 @@ function lightOn() {
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2 dark:text-white">
 
 
-                    <li class="flex w-full hlinks font-bold my-1">
+                    <li class="flex w-full font-bold my-1">
                         Mode
                     </li>
                     <li class="flex w-full  my-1">

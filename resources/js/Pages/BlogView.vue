@@ -23,12 +23,12 @@ const props = defineProps({
     <section class="p-4 md:p-12">
         <div class="flex flex-row items-center justify-between">
             <Link href="/blog">
-            <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-white">BLOGS</h1>
+            <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-whiteTextColor">BLOGS</h1>
             </Link>
         </div>
 
         <div class="md:p-3 ">
-            <h1 class="my-5 md:mb-10 text-lg md:text-3xl font-bold dark:text-white">{{ blog.b_title }}</h1>
+            <h1 class="my-5 md:mb-10 text-lg md:text-3xl font-bold dark:text-whiteTextColor">{{ blog.b_title }}</h1>
             <div class="flex  w-full">
                 <img :src="blog.b_photo" alt="" class="" />
                 
@@ -39,7 +39,7 @@ const props = defineProps({
                 </p>
             </div>
             <div class="font-extralight space-y-6">
-                <p class="font-medium text-lg opacity-70 dark:text-white">{{ blog.b_description }}</p>
+                <p class="font-medium text-lg opacity-70 dark:text-whiteTextColor">{{ blog.b_description }}</p>
             </div>
         </div>
     </section>
