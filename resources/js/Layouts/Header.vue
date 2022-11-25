@@ -11,14 +11,20 @@ const logout = () => {
     Inertia.post(route("logout"));
 };
 
-const isDark = ref();
-isDark.value = localStorage.getItem("darkMode");
+const darkMode = stringToBoolean(localStorage.getItem("darkMode"));
+
+let dark = false;
+
+if (darkMode){
+    dark = true;
+}else{
+    dark = false;
+}
 
 // var imgSrc = ref("/storage/" + $page.props.user.profile_photo_path);
 // if ($page.props.user.profile_photo_path === null) {
 //     imgSrc = ref("/img/error/avatars-000437232558-yuo0mv-t500x500.jpg");
 // }
-// console.log(isDark.value);
 //console.log($page.props.user.profile_photo_path);
 </script>
 <template>
@@ -26,7 +32,10 @@ isDark.value = localStorage.getItem("darkMode");
         <div class="flex flex-wrap justify-between items-center">
             <div class="flex w-1/9">
                 <Link href="/homepage" class="flex items-center">
-                <img src="/img/exbrain.png" class="h-9" alt="Exbrain Logo" />
+                <img :src="
+                    dark
+                        ? '/home/logo.png'
+                        : '/img/exbrain.png'" alt="Exbrain Logo" class="h-9"/>
                 </Link>
             </div>
 
@@ -82,7 +91,7 @@ isDark.value = localStorage.getItem("darkMode");
                 </li>
             </ul>
             <div class="w-32 mx-auto ion ">
-                <hr class="dark:border-secondaryBackground">
+                <hr class="dark:border-darkSecondaryBackground">
             </div>
             <ul class="flex flex-col items-start pl-8 py-3">
                 <li class="flex md:w-16 lg:w-24 hlink my-1">

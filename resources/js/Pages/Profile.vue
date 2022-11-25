@@ -76,7 +76,7 @@ const submit = (e) => {
     <section>
         <div class="p-4 md:p-12 mx-auto">
             <p
-                class="text-primaryBackground font-semibold text-lg uppercase dark:text-white"
+                class="text-primaryBackground font-semibold text-lg uppercase dark:text-whiteTextColor"
             >
                 Profile
             </p>
@@ -97,7 +97,7 @@ const submit = (e) => {
                                 />
                             </div>
                             <label for="image">
-                                <div class="upload-options h-80">
+                                <div class="upload-options bg-primaryBackground dark:bg-darkSecondaryBackground h-80">
                                     <input
                                         type="file"
                                         id="image"
@@ -124,7 +124,7 @@ const submit = (e) => {
                                     type="text"
                                     id="name"
                                     v-model="form.name"
-                                    class="bg-gray-50 border border-gray-300 font-bold text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border-primaryBackground font-bold text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     placeholder="Name"
                                     required=""
                                     :class="{
@@ -137,7 +137,7 @@ const submit = (e) => {
                                     type="text"
                                     id="nickname"
                                     v-model="form.nickname"
-                                    class="bg-gray-50 border border-gray-300 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block md:w-6/12 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-primaryBackground font-bold text-sm rounded-lg block md:w-6/12 sm:w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     placeholder="Nickname"
                                     required=""
                                     :class="{
@@ -148,7 +148,7 @@ const submit = (e) => {
                                     type="number"
                                     id="age"
                                     v-model="form.age"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 md:mx-20 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-primaryBackground text-gray-900 md:mx-20 font-bold text-sm rounded-lg block w-20 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     placeholder="Age"
                                     required=""
                                     :class="{
@@ -162,7 +162,7 @@ const submit = (e) => {
                                     type="text"
                                     id="address"
                                     v-model="form.address"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-primaryBackground text-gray-900 font-bold text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     placeholder="Address"
                                     :class="{
                                         'font-bold': users[0].address,
@@ -176,7 +176,7 @@ const submit = (e) => {
                                     type="text"
                                     id="phone"
                                     v-model="form.phone"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                                    class="bg-gray-50 border border-primaryBackground text-gray-900 font-bold text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     placeholder="Phone"
                                     required=""
                                     :class="{
@@ -190,7 +190,7 @@ const submit = (e) => {
                                     name="bio"
                                     id="bio"
                                     v-model="form.bio"
-                                    class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                                    class="bg-gray-50 border border-primaryBackground text-gray-900 font-bold text-sm rounded-lg block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-whiteTextColor"
                                     cols="30"
                                     rows="10"
                                     placeholder="Bio"
@@ -205,14 +205,14 @@ const submit = (e) => {
                             >
                                 <button
                                     type="submit"
-                                    class="text-white bg-cancelBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700"
+                                    class="text-white bg-cancelBackground hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-darkPrimaryBackground dark:hover:bg-darkSecondaryBackground"
                                 >
                                     Cancel
                                 </button>
 
                                 <button
                                     type="submit"
-                                    class="text-white md:mx-auto sm:mx-auto mx-auto bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                                    class="text-white md:mx-auto sm:mx-auto mx-auto bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-darkPrimaryBackground dark:hover:bg-darkSecondaryBackground"
                                 >
                                     Save
                                 </button>
