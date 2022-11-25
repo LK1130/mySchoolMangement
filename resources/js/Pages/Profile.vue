@@ -102,7 +102,7 @@ const submit = (e) => {
                                         type="file"
                                         id="image"
                                         class="image-upload"
-                                        accept=".jpg,.jpeg"
+                                        accept="image/*"
                                         @change="onFile($event)"
                                     />
                                 </div>

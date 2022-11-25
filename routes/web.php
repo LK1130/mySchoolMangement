@@ -37,16 +37,22 @@ Route::get('/', function () {
     ]);
 });
 
+//OTP
+Route::get("/otp", function(){
+    return inertia(("OTP"));
+});
+
+Route::post("/otp", [HomeController::class, "changePassword"])->name('home')->name("otp");
+
 // Auth 
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
     'verified',
 ])->group(function () {
-    Route::get('/homepage', function () {
-        return Inertia::render('Home');
-    })->name('home');
+    Route::get('/homepage', [HomeController::class, "index"])->name('home');
 });
+
 
 
 //Public Home page

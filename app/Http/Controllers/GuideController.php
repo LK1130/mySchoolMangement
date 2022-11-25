@@ -9,17 +9,10 @@ class GuideController extends Controller
 {
     
     public function index(){
-        
-
         $guides = new MGuide();
         $guide = $guides->guideStep();
         
-           $allGuides = MGuide::where("del_flg", 0)
-           ->get();
-      
-        // guide title 
-       
-        return inertia('Guide', ['allGuides' => $allGuides, 'guides' => $guide]);
+        return inertia('Guide', ['guides' => $guide]);
      
     }
 }
