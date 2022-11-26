@@ -47,7 +47,7 @@ const collapse = (id) => {
 
     <section class="p-4 md:p-12 overflow-x-hidden">
         <div class="container mx-auto">
-            <div class="text-primaryBackground font-semibold mb-5 text-lg dark:text-whiteTextColor">INBOX</div>
+            <div class="text-xl font-bold text-primaryBackground dark:text-whiteTextColor">Inbox</div>
 
             <div class="space-x-3 m-5 text-center md:text-start mb-10 dark:text-whiteTextColor">
                 <input type="checkbox" name="info" id="info" v-on:change="filter" v-model="selectedItems" value="1"

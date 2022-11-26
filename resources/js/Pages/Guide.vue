@@ -28,7 +28,7 @@ console.log(props.guides);
     <section>
         <div  class="p-4 md:p-12 mx-auto">
             <div class="flex ">
-                <p class="text-primaryBackground dark:text-whiteTextColor font-semibold text-lg uppercase underline">Guide</p>
+                <p class="text-primaryBackground dark:text-whiteTextColor text-xl font-bold">Guide</p>
                 <div     class="flex w-full">
                     <ul v-for="item in allGuides" :key="item.id" class="flex  w-full  md:pl-24 pl-1 py-2 ">
                         

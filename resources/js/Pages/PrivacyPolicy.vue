@@ -25,7 +25,7 @@ console.log(props.privacy_policys);
     <Header />
 
     <section class="p-5 md:p-12">
-        <h1 class="text-lg md:text-xl font-semibold text-primaryBackground dark:text-whiteTextColor">Privacy Policy</h1>
+        <h1 class="text-xl font-bold text-primaryBackground dark:text-whiteTextColor">Privacy Policy</h1>
 
         <div class="flex flex-col p-2 md:p-5" v-for="privacy_policy in privacy_policys.data" >
             <div class="flex flex-col md:flex-row md:items-center justify-between">
@@ -39,7 +39,7 @@ console.log(props.privacy_policys);
                     {{ privacy_policy.p_description }}
                 </p>
                 <div class="w-full flex justify-center">
-                    <div class="bg-black opacity-40 w-96 h-0.5"></div>
+                    <div class="dark:bg-white bg-black opacity-40 w-96 h-0.5"></div>
                 </div>
             </div>
         </div>

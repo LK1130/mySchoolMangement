@@ -14,7 +14,7 @@
 }
 
 .hlink-text{
-    @apply ion font-semibold hover:opacity-90 uppercase  text-base;
+    @apply ion font-semibold hover:opacity-90  text-base;
 }
 
 .hlink-text-normal{

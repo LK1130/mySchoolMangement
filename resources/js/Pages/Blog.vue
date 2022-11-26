@@ -22,7 +22,7 @@ const props = defineProps({
     <Header />
 
     <section class="p-12">
-        <h1 class="text-xl font-bold text-primaryBackground dark:text-white mb-6">BLOG</h1>
+        <h1 class="text-xl font-bold text-primaryBackground dark:text-white mb-6">Blog</h1>
 
         <div class="p-0">
             <div class="flex flex-col md:flex-row px-6 py-10 rounded-xl shadow-xl mb-12 dark:bg-darkSecondaryBackground" v-for="blog in blogs.data"

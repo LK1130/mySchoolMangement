@@ -35,7 +35,7 @@ if (darkMode){
                 <img :src="
                     dark
                         ? '/home/logo.png'
-                        : '/img/exbrain.png'" alt="Exbrain Logo" class="h-9"/>
+                        : '/img/exbrain.png'" alt="Exbrain Logo" class="h-10" />
                 </Link>
             </div>
 

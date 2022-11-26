@@ -194,7 +194,7 @@ const seriesV2 = ref([
         <section class=" p-4 md:p-12 overflow-x-hidden">
             <!-- Title Bar -->
             <div class="flex flex-row items-center justify-between">
-                <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-whiteTextColor">{{ count }} Classes Joined</h1>
+                <h1 class="text-xl font-bold text-primaryBackground dark:text-whiteTextColor">{{ count }} Classes Joined</h1>
             </div>
 
             <Swiper />
