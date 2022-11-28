@@ -60,7 +60,9 @@ class TStudentExam extends Model
      */
 
      public function getExamRankPercent($id){
-        return DB::select("SELECT (SUM(t_student_exams.mark)/SUM(m_exams.full_mark)) *100 AS exam,m_classes.id FROM `t_student_exams` 
+     
+     
+     return DB::select("SELECT (SUM(t_student_exams.mark)/SUM(m_exams.full_mark)) *100 AS exam,m_classes.id FROM `t_student_exams` 
         JOIN `m_exams` ON t_student_exams.exam_id = `m_exams`.id
         JOIN `m_classes` ON `m_exams`.`class_id` =  `m_classes`.id
         WHERE t_student_exams.user_id = $id
@@ -99,7 +101,7 @@ class TStudentExam extends Model
   JOIN `users` ON `t_student_exams`.`user_id` = `users`.id
   JOIN `m_classes` ON `m_exams`.`class_id` = `m_classes`.`id`
   WHERE `m_classes`.`id`= $id
-  ORDER BY `t_student_exams`.`mark` DESC");
+  ORDER BY   m_exams.id");
       
     }
     /**
@@ -129,11 +131,8 @@ class TStudentExam extends Model
      
         return DB::select(
             "SELECT
-            users.id,
-            users.name,
-            SUM(t_student_exams.mark) sumMark,
-       		m_exams.e_name,
-            m_classes.c_name,
+            m_classes.id,
+            users.id as uuid,
          
             Rank() OVER(ORDER BY   SUM(t_student_exams.mark) DESC ) ranks
         FROM

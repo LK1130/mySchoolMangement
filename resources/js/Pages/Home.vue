@@ -14,13 +14,22 @@ import moment from 'moment';
 import 'swiper/css';
 import 'swiper/css/bundle';
 import axios from 'axios';
+import { prop } from 'dom7';
 
 
+
+/// student join class id
+let allId = [];
+// active exam id
+let activeExamClassId = [];
 
 
 let examName = []; // exam name list for only user progress chart
 let examMark = []; // exam name list for only user progress chart
 
+let examPercentage = [];  //exam percentage for one class
+let currentOverall = []; //current overall score
+let oneClasExamRank = []; // one classExam Rank
 let activeIndex = ref(0);
 let count = ref(0); // count for classes join
 let examCount = ref(0); // count for exams
@@ -59,7 +68,71 @@ const props = defineProps({
 
 });
 
+for (let index = 0; index < props.classes.length; index++) {
+    allId.push(props.classes[index].id);
 
+}
+
+for (let index = 0; index < props.exam_percent.length; index++) {
+    activeExamClassId.push(props.exam_percent[index].id);
+
+    examPercentage.push(props.exam_percent[index]);
+    console.log();
+    currentOverall.push(Object.values(props.overall_rank)[index]);
+    oneClasExamRank.push(props.class_rank[index]);
+}
+
+console.log(oneClasExamRank);
+
+
+// push extra array room in exam perctange
+//main function
+
+for (let index = 0; index < allId.length; index++) {
+    if (allId.length != activeExamClassId.length) {
+        if (allId[index] != activeExamClassId[index] && !activeExamClassId.includes(allId[index])) {
+            activeExamClassId.push(allId[index]);
+            activeExamClassId.sort();
+            let exam_percent = {
+                exam: 0,
+                id: allId[index]
+
+            }
+
+            let overall_ranks = {
+                id: allId[index],
+                ranks: 0
+
+            }
+
+            let one_class_exams = {
+                0: {
+                    cid: allId[index]
+                }
+            }
+
+
+
+            let handler1 = {};
+            let handler2 = {};
+            let handler3 = {};
+            const proxy1 = new Proxy(exam_percent, handler1);
+            const proxy2 = new Proxy(overall_ranks, handler2);
+            const proxy3 = new Proxy(one_class_exams, handler3);
+            examPercentage.push(proxy1);
+            currentOverall.push(proxy2);
+            oneClasExamRank.push(proxy3);
+
+
+
+        }
+    }
+
+}
+
+examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
+currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
+oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
 
 //get class join count
 count = props.classes.length;
@@ -181,7 +254,15 @@ const seriesV2 = ref([
     }
 ]);
 
+console.log(props.exam_percent);
 
+console.log(props.attendance);
+const sideChange = (event) => {
+    activeIndex = event.activeIndex;
+}
+
+
+console.log(oneClasExamRank[1][1][0]);
 
 </script>
 
@@ -194,18 +275,23 @@ const seriesV2 = ref([
         <section class=" p-4 md:p-12 overflow-x-hidden">
             <!-- Title Bar -->
             <div class="flex flex-row items-center justify-between">
-                <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-whiteTextColor">{{ count }} Classes Joined</h1>
+                <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-whiteTextColor">{{ count }}
+                    Classes Joined</h1>
             </div>
 
+
             <Swiper />
+
+
 
             <!-- Hero Section -->
             <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
                 <!-- Student's Card -->
                 <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
                     :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2"
-                    @slideChange="(event) => { activeIndex = event.activeIndex }">
-                    <swiper-slide :id="attendance.class_id" v-for="n in count" :key="n" :virtual-index="n">
+                    @slideChange="(event) => activeIndex = event.activeIndex">
+                    <swiper-slide v-for="n in count" :key="n" :virtual-index="n">
+
 
                         <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
 
@@ -232,9 +318,11 @@ const seriesV2 = ref([
                                         </svg>
 
 
-                                        <p class="text-3xl font-bold rank">{{ Object.values(props.overall_rank).length
-                                                == 0 ? 0 : Object.values(props.overall_rank)[n - 1].ranks
-                                        }}</p>
+                                        <p class="text-3xl font-bold rank">
+                                            {{ currentOverall.length
+                                                    == 0 ? 0 : currentOverall[activeIndex][1].ranks
+                                            }}
+                                        </p>
                                     </div>
                                 </div>
 
@@ -243,15 +331,21 @@ const seriesV2 = ref([
 
                                         <p class="text-sm md:text-base">Attendance > <span
                                                 class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
-                                                        props.attendance.length == 0 ? 0 : props.attendance[n - 1].attend *
-                                                            100
+                                                        props.attendance.length == 0 ? 0 :
+                                                            Math.floor(props.attendance[activeIndex].attend *
+                                                                100)
                                                 }}%</span>
                                         </p>
+
+
                                         <p class="text-sm md:text-base">Exam Mark > <span
-                                                class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
-                                                        props.exam_percent.length == 0 ? 0 :
-                                                            Math.floor(props.exam_percent[n - 1].exam)
-                                                }}%</span>
+                                                class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">
+                                                {{
+                                                        examPercentage.length == 0 ? 0 :
+                                                            Math.floor(examPercentage[activeIndex][1].exam)
+                                                }}
+                                                %
+                                            </span>
                                         </p>
                                     </div>
                                 </div>
@@ -349,7 +443,8 @@ const seriesV2 = ref([
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
                     <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ props.attendance.length == 0
-                            ? 0 : props.attendance[activeIndex].attend * 100
+                            || props.attendance == undefined
+                            ? 0 : Math.floor(props.attendance[activeIndex].attend * 100)
                     }}%</h1>
                     <p class="text-md md:text-xl text-white mt-5">Attendance</p>
                 </div>
@@ -364,17 +459,22 @@ const seriesV2 = ref([
 
 
                         <p class="text-5xl text-white font-bold rank">
-                            {{ Object.values(props.overall_rank)[activeIndex].ranks }}</p>
+                            {{ currentOverall.length
+                                    == 0 ? 0 : currentOverall[activeIndex][1].ranks
+                            }}
+                        </p>
                     </div>
                     <p class="text-lg md:text-2xl text-white mt-5">Current Rank</p>
                 </div>
                 <div class="flex flex-col items-center w-48">
                     <h1 class="text-2xl md:text-4xl font-bold" :class="{
-                        'text-green-500': (props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam == 100),
-                        'text-red-500': (props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam <= 50),
-                        'text-yellow-500': (props.exam_percent.length == 0 ? 0 : props.exam_percent[activeIndex].exam > 50 && props.exam_percent[activeIndex].exam < 100),
+                        'text-green-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam == 100),
+                        'text-red-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam <= 50),
+                        'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && props.exam_percent[activeIndex].exam < 100),
                     }">
-                        {{ props.exam_percent.length == 0 ? 0 : Math.floor(props.exam_percent[activeIndex].exam) }}%
+                        {{ examPercentage.length == 0 ? 0 :
+                                Math.floor(examPercentage[activeIndex][1].exam)
+                        }}%
                     </h1>
                     <p class="text-md md:text-xl text-white mt-5">Daily Exam Mark</p>
                 </div>
@@ -395,21 +495,57 @@ const seriesV2 = ref([
                     </table>
                     <div class="overflow-y-auto rankTable">
                         <table class="text-sm text-left text-primaryBackground w-full">
-                            <tbody>
+                            <tbody v-if="oneClasExamRank[activeIndex][1].length > 1">
 
-                                <tr v-for="examRank in class_rank[activeIndex]">
+                                <tr v-for="result in oneClasExamRank[activeIndex][1]">
 
-                                    <td class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
-                                        {{ moment(examRank.date_submitted).format('MMM D') }}
+                                    <td
+                                        class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
+                                        {{ moment(result.date_submitted).format('MMM D') }}
                                     </td>
-                                    <td class="py-3 w-48 text-left font-bold">{{ examRank.e_name }}</td>
+                                    <td class="py-3 w-48 text-left font-bold">{{ result.e_name }}</td>
                                     <td class="py-3 w-24" :class="{
-                                        'text-green-500': (examRank.mark == 10),
-                                        'text-red-500': (examRank.mark <= 5),
-                                        'text-yellow-500': (examRank.mark > 5 && examRank.mark < 10),
-                                    }">{{ examRank.mark }}</td>
-                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ examRank.rank }}</td>
+                                        'text-green-500': (result.mark == 10),
+                                        'text-red-500': (result.mark <= 5),
+                                        'text-yellow-500': (result.mark > 5 && result.mark < 10),
+                                    }">{{ result.mark }}</td>
+
+                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ result.rank
+                                    }}</td>
+
                                 </tr>
+                            </tbody>
+
+
+                            <tbody v-else-if="oneClasExamRank[activeIndex][1].length == 1">
+
+                                <tr v-for="result in oneClasExamRank[activeIndex][1]">
+
+                                    <td
+                                        class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
+                                        {{ moment(result.date_submitted).format('MMM D') }}
+                                    </td>
+                                    <td class="py-3 w-48 text-left font-bold">{{ result.e_name }}</td>
+                                    <td class="py-3 w-24" :class="{
+                                        'text-green-500': (result.mark == 10),
+                                        'text-red-500': (result.mark <= 5),
+                                        'text-yellow-500': (result.mark > 5 && result.mark < 10),
+                                    }">{{ result.mark }}</td>
+
+                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ result.rank
+                                    }}</td>
+                                </tr>
+
+                            </tbody>
+
+
+                            <tbody v-else>
+
+                                <tr>
+
+                                    No Exam Result Yet!!
+                                </tr>
+
                             </tbody>
                         </table>
                     </div>
@@ -426,7 +562,8 @@ const seriesV2 = ref([
         </div>
 
         <div class="flex flex-col items-center w-full">
-            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor">Class Exam Ranking & Mark</h1>
+            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor">Class Exam Ranking &
+                Mark</h1>
 
             <div
                 class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">

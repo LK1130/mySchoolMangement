@@ -61,9 +61,11 @@ const props = defineProps({
                             <li class="md:w-16 text-white md:text-standard text-base">
                                 <ion-icon name="newspaper-outline"></ion-icon>
                             </li>
+
+                          
                             <li class="md:w-24  text-white md:text-base md:font-bold text-sm ">{{ item.l_name }}</li>
-                            <li class="md:w-20 text-white md:text-standard text-base">
-                                <ion-icon name="cloud-download-outline"></ion-icon>
+                            <li class="md:w-20 text-white md:text-standard text-base cursor-pointer">
+                               <a :href=item.l_storage_link> <ion-icon name="cloud-download-outline"></ion-icon></a>
                             </li>
                         </ul>
 
