@@ -9,6 +9,11 @@ use App\Models\TStudentExam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Js;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -16,8 +21,15 @@ use PhpParser\Node\Expr\FuncCall;
 
 class HomeController extends Controller
 {
+   
+   
     public function index()
     {
+        
+            if ($this->OTPorHomePage()) {
+            return redirect('otp');
+        } else {
+             
         $classes = new TStudentClass();
         $exam   = new TStudentExam();
         $attendances = new TStudentAttendance();
@@ -62,14 +74,11 @@ class HomeController extends Controller
         foreach ($examList as  $examid) {
             //collect all data to array
 
-           
-            $allUserRank = array_merge($allUserRank, $exam->showRankTable($examid));
 
-            
-          
-        }
+                $allUserRank = array_merge($allUserRank, $exam->showRankTable($examid));
+            }
 
-        // dd($allUserRank);
+            // dd($allUserRank);
 
       
 
@@ -122,56 +131,49 @@ class HomeController extends Controller
   
 
 
-       
-        //filter for get only current login user id
-        $examRank = array_filter($allUserRank, function ($rank) {
-            return ($rank->id == Auth::id());
-        });
+    
 
-         //filter for get only current login user id
-         $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
-            
-            return ($rank->uid == Auth::id());
-        });
-   
-        // dd($eachExamRank);
-       
-        $newArray = array_values($eachExamRank);
-        
 
-        for ($i=0; $i < count($newArray); $i++) { 
-               if(!in_array($newArray[$i]->cid,$allClassID)){
-                array_push($allClassID,$newArray[$i]->cid);
-               }
-        }
 
-        for ($i=0; $i <count($allClassID) ; $i++) { 
-             $temp = [];
-             for ($j=0; $j < count($newArray) ; $j++) { 
-                if($allClassID[$i] == $newArray[$j]->cid){
-                    array_push($temp,$newArray[$j]);
+            //filter for get only current login user id
+            $examRank = array_filter($allUserRank, function ($rank) {
+                return ($rank->id == Auth::id());
+            });
+
+            //filter for get only current login user id
+            $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
+
+                return ($rank->uid == Auth::id());
+            });
+
+
+            $newArray = array_values($eachExamRank);
+
+
+            for ($i = 0; $i < count($newArray); $i++) {
+                if (!in_array($newArray[$i]->cid, $allClassID)) {
+                    array_push($allClassID, $newArray[$i]->cid);
                 }
-             }
+            }
 
-                array_push($oneExamCallRank,$temp);
-        }
+            for ($i = 0; $i < count($allClassID); $i++) {
+                $temp = [];
+                for ($j = 0; $j < count($newArray); $j++) {
+                    if ($allClassID[$i] == $newArray[$j]->cid) {
+                        array_push($temp, $newArray[$j]);
+                    }
+                }
+
+                array_push($oneExamCallRank, $temp);
+            }
 
      
 
         // dd($oneExamCallRank);
         
 
-     
-       
-        //get all user rank
-        $userRanks = $exam->getUserRank();
 
-        //filter for get only current login user id
-        $userRank = array_filter($userRanks, function ($ranking) {
-            return ($ranking->id == Auth::id());
-        });
 
-        // dd($userRank);
 
         //filter for get overall rank only current login user id
         $overallRank = array_filter($oneClassRank,function($ranking) {
@@ -181,7 +183,8 @@ class HomeController extends Controller
        
   
 
-      
+            //get all user rank
+            $userRanks = $exam->getUserRank();
 
        foreach($totalClass  as $class){
           array_push($allClass,$class->id);
@@ -195,26 +198,58 @@ class HomeController extends Controller
             'classes' => $totalClass,
             'attendance' => $attendance,
             'examRanks' => $examRank,
-            'rank_mark' => $userRank,
             'all_ranks' => $userRanks,
             'one_class' => $eachClass,
             'exam_percent' =>  $examPercent,
             'overall_rank' => $overallRank,
             'class_rank'  => $oneExamCallRank
 
-        ]);
-    }
-
-
-    public function changeClass(Request $request){
-
+          
+            ]);
        
-            $classes = new MClass();
-               $class   =  $classes->classById($request->classid);
+        }
+        }
     
+
+
+    public function changeClass(Request $request)
+    {
+
+
+        $classes = new MClass();
+        $class   =  $classes->classById($request->classid);
+
 
         return $class;
     }
+
+
+    public function OTPorHomePage()
+    {
+        $reset =  User::where("del_flg", 0)
+            ->where("id", Auth::id())
+            ->pluck("reset")
+            ->first();
+        return $reset;
+    }
+
+    public function changePassword(Request $request)
+    {
+        //check password 
+        $request->validate([
+            "password" => "required|confirmed|min:8|max:255"
+        ]);
+        //set new password
+        DB::table('users')
+        ->where("id",Auth::id())
+        ->update([
+            "password" => Hash::make($request->password),
+            "reset" =>0
+        ]);
+        return redirect("/homepage");
+    }
+
+    
 
 
 

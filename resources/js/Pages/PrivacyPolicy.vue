@@ -25,21 +25,21 @@ console.log(props.privacy_policys);
     <Header />
 
     <section class="p-5 md:p-12">
-        <h1 class="text-lg md:text-xl font-semibold text-primaryBackground">Privacy Policy</h1>
+        <h1 class="text-xl font-bold text-primaryBackground dark:text-whiteTextColor">Privacy Policy</h1>
 
         <div class="flex flex-col p-2 md:p-5" v-for="privacy_policy in privacy_policys.data" >
             <div class="flex flex-col md:flex-row md:items-center justify-between">
-                <h1 class="text-xl md:text-3xl font-semibold">{{ privacy_policy.p_title }}</h1>
-                <p class="text-sm md:text-base font-semibold text-primaryBackground">Updated:{{
+                <h1 class="text-xl md:text-3xl font-semibold dark:text-whiteTextColor">{{ privacy_policy.p_title }}</h1>
+                <p class="text-sm md:text-base font-semibold text-primaryBackground dark:text-secondaryBackground">Updated:{{
                 moment(privacy_policy.updated_at).format("YYYY/MM/DD") }}</p>
             </div>
 
             <div class="flex flex-col p-0 md:p-5 space-y-8 my-5">
-                <p>
+                <p class="dark:text-cancelBackground">
                     {{ privacy_policy.p_description }}
                 </p>
                 <div class="w-full flex justify-center">
-                    <div class="bg-black opacity-40 w-96 h-0.5"></div>
+                    <div class="dark:bg-white bg-black opacity-40 w-96 h-0.5"></div>
                 </div>
             </div>
         </div>

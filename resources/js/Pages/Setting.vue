@@ -5,31 +5,35 @@ import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 import { ref } from 'vue';
 
+const reload = ref(0);
+
+const forceRerender = () => {
+    reload.value += 1;
+};
+
 const darkMode = stringToBoolean(localStorage.getItem("darkMode"));
 
 let dark = false;
 let light = false;
 
-if (darkMode){
-    console.log(darkMode);
+if (darkMode) {
     dark = true;
     light = false;
-    console.log(1);
-}else{
-    console.log(darkMode);
+} else {
     light = true;
     dark = false;
-    console.log(2)
 }
 
 function darkOn() {
     html.classList.add("dark");
-    localStorage.setItem("darkMode",true);
+    localStorage.setItem("darkMode", true);
+    forceRerender();
 }
 
 function lightOn() {
     html.classList.remove("dark");
-    localStorage.setItem("darkMode",false);
+    localStorage.setItem("darkMode", false);
+    forceRerender();
 }
 
 
@@ -39,7 +43,7 @@ function lightOn() {
 <template>
 
     <Head title="Setting" />
-    <Header />
+    <Header :key="reload" />
 
     <section class=" p-4 md:p-12">
         <div class="container mx-auto h-screen">
@@ -50,7 +54,7 @@ function lightOn() {
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2 dark:text-white">
 
 
-                    <li class="flex w-full hlinks font-bold my-1">
+                    <li class="flex w-full font-bold my-1">
                         Language
                     </li>
                     <li class="flex w-full  my-1">
@@ -73,12 +77,12 @@ function lightOn() {
                 <ul class="flex  flex-wrap md:flex-nowrap  md:pl-10 pl-1 py-2 dark:text-white">
 
 
-                    <li class="flex w-full hlinks font-bold my-1">
+                    <li class="flex w-full font-bold my-1">
                         Mode
                     </li>
                     <li class="flex w-full  my-1">
-                        <input type="radio" name="mode" id="dark" class="rounded-full mr-1 mx-1 md:mr-3  mt-1 dark" 
-                            @click="darkOn" :checked="dark" >
+                        <input type="radio" name="mode" id="dark" class="rounded-full mr-1 mx-1 md:mr-3  mt-1 dark"
+                            @click="darkOn" :checked="dark">
                         <label for="mode">Dark</label>
                     </li>
 

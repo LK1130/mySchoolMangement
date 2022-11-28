@@ -33,7 +33,7 @@ let oneClasExamRank = []; // one classExam Rank
 let activeIndex = ref(0);
 let count = ref(0); // count for classes join
 let examCount = ref(0); // count for exams
-let percentage = 0;
+
 
 let allRank = {}; // all ranking object
 let allRankPercentage = []; // rall ranking with percentage
@@ -139,7 +139,7 @@ count = props.classes.length;
 examCount = Object.values(props.examRanks).length;
 
 //get exam mark percentage
-percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / examCount * 10);
+// percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / examCount * 10);
 // get all user exam mark percentage
 for (let index = 0; index < props.all_ranks.length; index++) {
     allRank = {
@@ -525,7 +525,7 @@ console.log(oneClasExamRank[1][1][0]);
                                         class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
                                         {{ moment(result.date_submitted).format('MMM D') }}
                                     </td>
-                                    <td class="py-3 w-48 text-left font-bold">{{ result.e_name }}</td>
+                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{ result.e_name }}</td>
                                     <td class="py-3 w-24" :class="{
                                         'text-green-500': (result.mark == 10),
                                         'text-red-500': (result.mark <= 5),

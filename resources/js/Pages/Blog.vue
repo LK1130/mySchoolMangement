@@ -22,7 +22,7 @@ const props = defineProps({
     <Header />
 
     <section class="p-12">
-        <h1 class="text-xl font-bold text-primaryBackground dark:text-white mb-6">BLOG</h1>
+        <h1 class="text-xl font-bold text-primaryBackground dark:text-white mb-6">Blog</h1>
 
         <div class="p-0">
             <div class="flex flex-col md:flex-row px-6 py-10 rounded-xl shadow-xl mb-12 dark:bg-darkSecondaryBackground" v-for="blog in blogs.data"
@@ -30,16 +30,16 @@ const props = defineProps({
                 <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
                     <img :src="blog.b_photo" alt="">
                 </div>
-                <div class="relative w-full dark:text-whiteTextColor">
+                <div class="relative w-full ">
                     <div class="flex flex-row justify-between w-full mb-2">
-                        <h1 class="font-semibold text-xl">{{ blog.b_title }}</h1>
-                        <p class="font-semibold text-sm">{{ moment(blog.created_at, "YYYYMMDD").calendar() }} </p>
+                        <h1 class="font-semibold text-xl dark:text-whiteTextColor">{{ blog.b_title }}</h1>
+                        <p class="font-semibold text-sm dark:text-whiteTextColor">{{ moment(blog.created_at, "YYYYMMDD").calendar() }} </p>
                     </div>
-                    <div class="w-full font-light">
+                    <div class="w-full font-medium opacity-70 dark:text-whiteTextColor">
                         {{ blog.b_description }}
                     </div>
                     <div class="absolute w-full bottom-0 ">
-                        <h2 class="absolute right-0  text-primaryBackground font-bold dark:text-whiteTextColor">
+                        <h2 class="absolute right-0  text-primaryBackground font-bold dark:text-secondaryBackground">
                             <Link :href="route('blog.show', blog.id)">Read More...</Link>
                         </h2>
                     </div>

@@ -47,9 +47,9 @@ const collapse = (id) => {
 
     <section class="p-4 md:p-12 overflow-x-hidden">
         <div class="container mx-auto">
-            <div class="text-primaryBackground font-semibold mb-5 text-lg ">INBOX</div>
+            <div class="text-xl font-bold text-primaryBackground dark:text-whiteTextColor">Inbox</div>
 
-            <div class="space-x-3 m-5 text-center md:text-start mb-10">
+            <div class="space-x-3 m-5 text-center md:text-start mb-10 dark:text-whiteTextColor">
                 <input type="checkbox" name="info" id="info" v-on:change="filter" v-model="selectedItems" value="1"
                     class="p-2 rounded-md text-primaryBackground">
                 <label for="info" class="text-sm md:text-base">Information</label>
@@ -64,22 +64,23 @@ const collapse = (id) => {
             </div>
 
             <!-- Info,DMessage,Alert -->
-            <div class="relative w-full mx-auto   px-5" v-for="message in messages.data" @click="collapse(message.id)">
+            <div class="relative w-full mx-auto  dark:bg-textWhiteColor px-5" v-for="message in messages.data"
+                @click="collapse(message.id)">
                 <div class="relative py-4 md:px-5 md:py-5    border-slate-400 drop-shadow-md flex justify-between items-center mt-5  md:mt-10 
-                    shadow-lg rounded-lg overflow-hidden  " :class="{
+                    shadow-lg rounded-lg overflow-hidden  dark:bg-darkPrimaryBackground dark:text-whiteTextColor" :class="{
                         'info': (message.m_category == 1),
                         'message': (message.m_category == 2),
                         'alert': (message.m_category == 3)
                     }">
-                    <div class="flex w-full  items-center  md:mx-5 mailbox">
+                    <div class="flex w-full  items-center  md:mx-5 mailbox  ">
                         <ion-icon name="mail-open-outline" class="hidden md:block flex text-3xl mx-3"></ion-icon>
                         <div class="flex w-full text-sm md:text-lg font-semibold font-family  mx-5">{{ message.m_title
                         }}</div>
-                        <div class="flex w-auto  text-xs md:text-base font-semibold text-tertiaryBackground mx-5">
+                        <div class="flex w-auto  text-xs md:text-base font-semibold text-tertiaryBackground dark:text-secondaryBackground mx-5">
                             {{ moment(message.created_at).format("YYYY/MM/DD(HH:mm)") }}</div>
                     </div>
                 </div>
-                <div class="transition-all duration-500  bg-white border-slate-400 drop-shadow-lg  rounded-lg" :class="{
+                <div class="transition-all duration-500  bg-white border-slate-400 drop-shadow-lg dark:bg-darkSecondaryBackground dark:text-whiteTextColor rounded-lg" :class="{
                     'slideDown p-5': (message.id == collapseItem),
                     'slideUp': (message.id != collapseItem)
                 }">{{ message.m_description }}</div>

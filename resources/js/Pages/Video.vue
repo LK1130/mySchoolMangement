@@ -41,7 +41,7 @@ const props = defineProps({
             </div>
         </section>
 
-        <section class="bg-primaryBackground ">
+        <section class="bg-primaryBackground dark:bg-darkPrimaryBackground">
             <div class="container py-4 mx-auto">
                 <p class="md:text-4xl  text-lg text-white font-bold md:mt-10 px-3 md:px-0">{{ video.v_name }}</p>
 
@@ -81,19 +81,19 @@ const props = defineProps({
         </section>
         <section>
             <div  class="font-medium md:text-3xl text-lg text-center mt-10" v-if="next.length == 0">This is Last Video</div>
-            <div v-else class="font-semibold md:text-3xl text-xl text-center mt-10 dark:text-white">Next Video</div>
+            <div v-else class="font-semibold md:text-3xl text-xl text-center mt-10 dark:text-whiteTextColor">Next Video</div>
             <div class="p-8 mb-20 flex flex-nowrap overflow-x-auto   gap-10 scrollableVideoList">
-                <div v-for="item in next" class="w-80 flex-col  border-2 dark:bg-white rounded-2xl shadow-xl">
+                <div v-for="item in next" class="w-80 flex-col  border-2 dark:border-0 dark:bg-darkPrimaryBackground rounded-2xl shadow-xl">
 
                     <a :href="route('video.index', item.id)"> <img src="../../../public/img/video.png" alt=""
                             class="rounded-t-xl"></a>
                     <div class="flex-col">
-                        <div class="flex-1 mx-5 font-medium mt-2 text-base">{{ item.v_name }}</div>
+                        <div class="flex-1 mx-5 font-medium mt-2 text-base dark:text-whiteTextColor">{{ item.v_name }}</div>
                         <div class="flex">
-                            <div class="flex-1 mx-5 my-3 opacity-50 text-sm font font-medium ">
+                            <div class="flex-1 mx-5 my-3 opacity-50 text-sm font font-medium dark:text-whiteTextColor">
                                 {{ moment(item.v_date).format("YYYY/MM/DD") }}
                             </div>
-                            <div class=" mx-5 my-3 opacity-50 text-sm font font-medium ">
+                            <div class=" mx-5 my-3 opacity-50 text-sm font font-medium dark:text-whiteTextColor">
                                 02:00:00
                             </div>
 
