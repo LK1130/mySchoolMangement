@@ -9,6 +9,11 @@ use App\Models\TStudentExam;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Inertia\Inertia;
+
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Js;
 use PhpParser\Node\Expr\Cast\Object_;
@@ -16,10 +21,16 @@ use PhpParser\Node\Expr\FuncCall;
 
 class HomeController extends Controller
 {
+   
+   
     public function index()
     {
         
-            $classes = new TStudentClass();
+            if ($this->OTPorHomePage()) {
+            return redirect('otp');
+        } else {
+             
+        $classes = new TStudentClass();
         $exam   = new TStudentExam();
         $attendances = new TStudentAttendance();
 
@@ -120,35 +131,7 @@ class HomeController extends Controller
   
 
 
-       
-        //filter for get only current login user id
-        $examRank = array_filter($allUserRank, function ($rank) {
-            return ($rank->id == Auth::id());
-        });
-
-         //filter for get only current login user id
-         $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
-            
-            return ($rank->uid == Auth::id());
-        });
-   
-        // dd($eachExamRank);
-       
-        $newArray = array_values($eachExamRank);
-        
-
-        for ($i=0; $i < count($newArray); $i++) { 
-               if(!in_array($newArray[$i]->cid,$allClassID)){
-                array_push($allClassID,$newArray[$i]->cid);
-               }
-        }
-
-                $oneClassEachExamRank = array_merge($oneClassEachExamRank, $exam->getExamlistByClassID($classid->class_id));
-                $oneClassRank = array_merge($oneClassRank, $exam->getUserRankById($classid->class_id));
-            }
-
-
-
+    
 
 
 
@@ -215,76 +198,22 @@ class HomeController extends Controller
             'classes' => $totalClass,
             'attendance' => $attendance,
             'examRanks' => $examRank,
-            'rank_mark' => $userRank,
             'all_ranks' => $userRanks,
             'one_class' => $eachClass,
             'exam_percent' =>  $examPercent,
             'overall_rank' => $overallRank,
             'class_rank'  => $oneExamCallRank
 
-            // dd($userRank);
-
-            //filter for get overall rank only current login user id
-            $overallRank = array_filter($oneClassRank, function ($ranking) {
-                return ($ranking->id == Auth::id());
-            });
-
-
-
-
-
-
-            foreach ($totalClass  as $class) {
-                array_push($allClass, $class->id);
-            }
-
-            $classid =  join(',', $allClass);
-
-            $eachClass =   $classes->totalStudents($classid);
-            return inertia("Home", [
-                'classes' => $totalClass,
-                'attendance' => $attendance,
-                'examRanks' => $examRank,
-                'rank_mark' => $userRank,
-                'all_ranks' => $userRanks,
-                'one_class' => $eachClass,
-                'exam_percent' =>  $examPercent,
-                'overall_rank' => $overallRank,
-                'class_rank'  => $oneExamCallRank
-
+          
             ]);
+       
         }
-    }
-SELECT COUNT(t_student_classes.id) as students,m_classes.c_name,COUNT(m_classes.id) as classes ,m_instructors.i_name FROM m_classes
-JOIN t_student_classes ON t_student_classes.class_id = m_classes.id
-JOIN m_instructors ON m_instructors.id = m_classes.instructor_id
-GROUP BY m_classes.id
-
-
-
-
-SELECT
-    COUNT(student.id),
-    COUNT(class.id),
-    c_name,
-    user_id,
-    teacher.i_name
+        }
     
-FROM
-    m_instructors teacher
-JOIN m_classes class ON
-    teacher.id = class.instructor_id
-JOIN t_student_classes student ON
-    class.id = student.class_id
-GROUP BY teacher.id
 
-https://drive.google.com/u/3/uc?id=1LWZF_yph4la3OYwMxHWnQjn-AJrqCo-6&export=download
-
-https://drive.google.com/file/d/1LWZF_yph4la3OYwMxHWnQjn-AJrqCo-6/view
 
     public function changeClass(Request $request)
     {
-
 
 
         $classes = new MClass();
@@ -293,6 +222,34 @@ https://drive.google.com/file/d/1LWZF_yph4la3OYwMxHWnQjn-AJrqCo-6/view
 
         return $class;
     }
+
+
+    public function OTPorHomePage()
+    {
+        $reset =  User::where("del_flg", 0)
+            ->where("id", Auth::id())
+            ->pluck("reset")
+            ->first();
+        return $reset;
+    }
+
+    public function changePassword(Request $request)
+    {
+        //check password 
+        $request->validate([
+            "password" => "required|confirmed|min:8|max:255"
+        ]);
+        //set new password
+        DB::table('users')
+        ->where("id",Auth::id())
+        ->update([
+            "password" => Hash::make($request->password),
+            "reset" =>0
+        ]);
+        return redirect("/homepage");
+    }
+
+    
 
 
 
