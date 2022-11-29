@@ -24,7 +24,7 @@ let allId = [];
 let activeExamClassId = [];
 // active attedance id 
 let attendClassId = [];
-
+let processBar = [];
 let examName = []; // exam name list for only user progress chart
 let examMark = []; // exam name list for only user progress chart
 
@@ -66,9 +66,13 @@ const props = defineProps({
     },
     class_rank: {
         type: Array
+    },
+    processBar : {
+        type : Array
     }
 
 });
+
 
 for (let index = 0; index < props.classes.length; index++) {
     allId.push(props.classes[index].id);
@@ -160,13 +164,18 @@ for (let index = 0; index < allId.length; index++) {
 
 }
 
+
 // array sorting for each class
 examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
 currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
 attendancePercentage = Object.entries(attendancePercentage).sort((a,b) => a[1].id - b[1].id);
 
+// console.log(props.classes[activeIndex].cP);
 
+
+console.log(props.processBar);
+console.log(props.classes);
 //get class join count
 count = props.classes.length;
 examCount = Object.values(props.examRanks).length;
@@ -330,11 +339,18 @@ const seriesV2 = ref([
                                     <div class="flex flex-col space-y-3">
                                         <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
                                         <p class="font-bold text-lg">{{ props.classes[n - 1].c_name }}</p>
-                                        <div class="flex flex-row">
-                                            <div class="w-12 h-2 bg-secondaryBackground rounded-tl-md rounded-bl-md">
+                                        
+                                        <div  class="grid grid-cols-6">
+                                            <div  v-for="result in (Number(props.processBar[n-1].period))" :key="result" class="w-5 h-2 bg-white mx-1"
+                                            
+                                            :class="{
+                                                'rounded-tl-md rounded-bl-md' : ( result == 1),
+                                                'bg-secondaryBackground ' : (Number(props.processBar[n-1].current) >= result),
+                                                'rounded-tr-md rounded-br-md' : ( Number(props.processBar[n-1].period) == result),
+                                                'my-1' : (result > 6)
+                                            }">
                                             </div>
-                                            <div class="w-12 h-2 bg-secondaryBackground mx-2"></div>
-                                            <div class="w-12 h-2 bg-white rounded-tr-md rounded-br-md"></div>
+                                           
                                         </div>
                                     </div>
                                     <div class="relative flex flex-row items-center justify-center">

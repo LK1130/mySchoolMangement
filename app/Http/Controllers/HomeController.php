@@ -7,6 +7,9 @@ use App\Models\TStudentAttendance;
 use App\Models\TStudentClass;
 use App\Models\TStudentExam;
 use App\Models\User;
+use Carbon\Carbon;
+use DateTime;
+use DateTimeZone;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +21,7 @@ use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Js;
 use PhpParser\Node\Expr\Cast\Object_;
 use PhpParser\Node\Expr\FuncCall;
+use SebastianBergmann\Timer\Duration;
 
 class HomeController extends Controller
 {
@@ -37,7 +41,11 @@ class HomeController extends Controller
         $allUserRank = [];
         $allClass = [];
 
+        $currentLiveClassTimeArray = [];
+        $durationClass = [];
+        $processBar = [];
         $oneExamCallRank = [];
+
 
        
         //get ALl classid
@@ -67,8 +75,11 @@ class HomeController extends Controller
         //get Class List
         $totalClass = $classes->totalClass(Auth::id());
         
-
-              
+       
+       
+        
+        
+            
        
         //loop for each examid 
         foreach ($examList as  $examid) {
@@ -78,7 +89,7 @@ class HomeController extends Controller
                 $allUserRank = array_merge($allUserRank, $exam->showRankTable($examid));
             }
 
-            // dd($allUserRank);
+         
 
       
 
@@ -90,51 +101,36 @@ class HomeController extends Controller
             $oneClassEachExamRank = array_merge($oneClassEachExamRank,$exam->getExamlistByClassID($classid->class_id));
             $oneClassRank = array_merge($oneClassRank,$exam->getUserRankById($classid->class_id));
 
+            
+            $start_date= date_create($classid->c_start_date);
+            $end_date =  date_create($classid->c_end_date);
+         
+            
+            $date = Carbon::now();
+            $today = date_create($date);
           
-
-
+            
+            $duration = date_diff($start_date,$end_date);
+            $currentLiveClassTime = date_diff($start_date,$today);
            
+           
+            array_push($durationClass,$duration->format("%m"));
+            array_push($currentLiveClassTimeArray,$currentLiveClassTime->format("%m"));
+            
+            $process = array(
+                'period' => $duration->format("%m"),
+                'current' => $currentLiveClassTime->format("%m")
+            );
+            array_push($processBar,$process);
+       
+
         }
+
+
+      
         
-        //loop for each class id 
-    //    dd($examPercent);
-    //     for ($i=0; $i < count($allId); $i++) { 
-    //         // if(!in_array($activeExamClassId[$i],$allId[$i])){
-    //         //         dd($allId[$i]);
-    //         // }
-    //         if($activeExamClassId[$i] != $allId[$i] ){
-    //             dd($allId[$i]);
-    //             // $nullExam = {
-    //             //     "exam" : 0,
-
-    //             // };
-
-
-    //         }
-    //  }
-
-    //  for ($i=0; $i <count($allClassID) ; $i++) { 
-    //       $temp = [];
-    //       for ($j=0; $j < count($newArray) ; $j++) { 
-    //          if($allClassID[$i] == $newArray[$j]->cid){
-    //              array_push($temp,$newArray[$j]);
-    //          }
-    //       }
-
-    //          array_push($oneExamCallRank,$temp);
-    //  }
-       
+        
       
-
-       
-      
-  
-
-
-    
-
-
-
             //filter for get only current login user id
             $examRank = array_filter($allUserRank, function ($rank) {
                 return ($rank->id == Auth::id());
@@ -169,12 +165,6 @@ class HomeController extends Controller
 
      
 
-        // dd($oneExamCallRank);
-        
-
-
-
-
         //filter for get overall rank only current login user id
         $overallRank = array_filter($oneClassRank,function($ranking) {
             return ($ranking->uuid == Auth::id());
@@ -202,7 +192,8 @@ class HomeController extends Controller
             'one_class' => $eachClass,
             'exam_percent' =>  $examPercent,
             'overall_rank' => $overallRank,
-            'class_rank'  => $oneExamCallRank
+            'class_rank'  => $oneExamCallRank,
+            'processBar' => $processBar
 
           
             ]);

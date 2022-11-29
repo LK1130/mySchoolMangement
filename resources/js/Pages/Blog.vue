@@ -7,11 +7,15 @@ import Pagination from '../Components/Pagination.vue';
 import moment from 'moment';
 
 
+
+
 const props = defineProps({
     blogs: {
         type: Object
     },
 });
+
+
 
 
 </script>

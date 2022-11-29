@@ -87,9 +87,10 @@ if (darkMode){
                     <Link href="/blog" class="hlink-text dark:text-whiteTextColor" aria-current="page">Blog</Link>
                 </li>
                 <li class="flex  md:w-16 lg:w-24  hlink my-1">
-                    <Link href="/video" class="hlink-text dark:text-whiteTextColor" aria-current="page">Video</Link>
+                    <Link href="/recording" class="hlink-text dark:text-whiteTextColor" aria-current="page">Video</Link>
                 </li>
             </ul>
+            
             <div class="w-32 mx-auto ion ">
                 <hr class="dark:border-darkSecondaryBackground">
             </div>
