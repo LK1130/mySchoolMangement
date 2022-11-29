@@ -27,29 +27,30 @@
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <script src="{{ asset('js/profile.js') }}"></script>
+    <script src="{{ asset('js/darkmode.js') }}"></script>
    
     @routes
     @vite('resources/js/app.js')
 </head>
 
-<body class="font-sans antialiased bg-white ">
+<body class="font-sans antialiased bg-white dark:bg-darkBgBackground">
    <div class="h-screen lg:px-24 lg:py-24 md:py-20 md:px-44 px-4 py-24 items-center flex justify-center flex-col-reverse lg:flex-row md:gap-28 gap-16">
             <div class="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
                 <div class="relative">
                     <div class="absolute">
                         <div class="">
-                            <h1 class="my-2 text-gray-800 font-bold text-2xl">
+                            <h1 class="my-2 text-gray-800 font-bold text-2xl dark:text-whiteTextColor">
                                 Looks like you've found the
                                 doorway to the great nothing
                             </h1>
-                            <p class="my-2 text-gray-800">Sorry about that! Please visit our hompage to get where you need to go.</p>
-                            <button class="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-primaryBackground text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50">
+                            <p class="my-2 text-gray-800 dark:text-secondaryBackground">Sorry about that! Please visit our hompage to get where you need to go.</p>
+                            <button class="sm:w-full lg:w-auto my-2 border rounded md py-4 px-8 text-center bg-primaryBackground text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-700 focus:ring-opacity-50 dark:bg-darkSecondaryBackground">
                                 <a href="./homepage">
                                 Take me there!</a></button>
                         </div>
                     </div>
                     <div>
-                        <img src="{{ url('/img/error/404.png') }}" />
+                        <p class="text-9xl opacity-20 dark:text-whiteTextColor">404</p>
                     </div>
                 </div>
             </div>
