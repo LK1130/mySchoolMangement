@@ -39,6 +39,14 @@ let examCount = ref(0); // count for exams
 
 let allRank = {}; // all ranking object
 let allRankPercentage = []; // rall ranking with percentage
+
+
+
+const forceRerender = () => {
+    series.value[0].data = [examMark[activeIndex.value]];
+};
+
+
 const props = defineProps({
     classes: {
         type: Object
@@ -174,8 +182,7 @@ attendancePercentage = Object.entries(attendancePercentage).sort((a,b) => a[1].i
 // console.log(props.classes[activeIndex].cP);
 
 
-console.log(props.processBar);
-console.log(props.classes);
+
 //get class join count
 count = props.classes.length;
 examCount = Object.values(props.examRanks).length;
@@ -205,7 +212,7 @@ for (const key in props.examRanks) {
 
 
 
-const chartOptions = ref({
+let chartOptions = ref({
     chart: {
         toolbar: {
             show: false,
@@ -243,10 +250,11 @@ const chartOptions = ref({
         max: 10
     },
 });
-const series = ref([
+
+let series = ref([
     {
         name: 'series-1',
-        data: examMark
+        data: [examMark[activeIndex.value]]
     }
 ]);
 
@@ -300,7 +308,6 @@ const seriesV2 = ref([
 
 
 
-
 </script>
 
 
@@ -326,7 +333,11 @@ const seriesV2 = ref([
                 <!-- Student's Card -->
                 <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
                     :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2"
-                    @slideChange="(event) => activeIndex = event.activeIndex">
+                    @slideChange="(event) =>
+                    {
+                        activeIndex = event.activeIndex;
+                        forceRerender();
+                    }">
                     <swiper-slide v-for="n in count" :key="n" :virtual-index="n">
 
 
@@ -599,7 +610,7 @@ const seriesV2 = ref([
                 <div class="flex flex-col bg-white  dark:bg-darkBgBackground p-5 rounded-xl xl:w-2/5 h-96">
 
 
-                    <Chart :options="chartOptions" :series="series" class="chart h-full" />
+                    <Chart id="#chart1" :options="chartOptions" :series="series" class="chart h-full" />
 
                 </div>
             </div>
