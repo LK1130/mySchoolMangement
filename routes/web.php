@@ -4,6 +4,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\BlogListController;
 use App\Http\Controllers\GuideController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LectureDownloadController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProfileController;
@@ -74,12 +75,17 @@ Route::middleware(['auth'])->group(function () {
     //Inbox Page
     Route::get('/inbox/{category?}', [MessageController::class, 'index'])->name("inbox.index");
 
+
+    //Download Lecture
+    Route::get('/download/{id?}',[LectureDownloadController::class,'download'])->name("download");
     // Blog page
     Route::get('/blog', [BlogController::class, "index"])->name("blog.index");
     // Blog view
     Route::get('/blogview/{blog}', [BlogController::class, "show"])->name("blog.show");
     // Privacy Policy
     Route::get('/privacypolicy', [PrivacyPolicyController::class, "index"]);
+
+
 
     // Profile
     Route::get('/profile', [ProfileController::class, 'index'])->name("profile.index");

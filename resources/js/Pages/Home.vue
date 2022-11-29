@@ -22,11 +22,13 @@ import { prop } from 'dom7';
 let allId = [];
 // active exam id
 let activeExamClassId = [];
-
+// active attedance id 
+let attendClassId = [];
 
 let examName = []; // exam name list for only user progress chart
 let examMark = []; // exam name list for only user progress chart
 
+let attendancePercentage = []; //attendance percentage for one class
 let examPercentage = [];  //exam percentage for one class
 let currentOverall = []; //current overall score
 let oneClasExamRank = []; // one classExam Rank
@@ -77,18 +79,44 @@ for (let index = 0; index < props.exam_percent.length; index++) {
     activeExamClassId.push(props.exam_percent[index].id);
 
     examPercentage.push(props.exam_percent[index]);
-    console.log();
+   
     currentOverall.push(Object.values(props.overall_rank)[index]);
     oneClasExamRank.push(props.class_rank[index]);
+
 }
 
-console.log(oneClasExamRank);
+for (let index = 0; index < props.attendance.length; index++){
+    attendClassId.push(props.attendance[index].id);
+
+
+    attendancePercentage.push(props.attendance[index]);
+}
+
+
+
 
 
 // push extra array room in exam perctange
 //main function
 
 for (let index = 0; index < allId.length; index++) {
+
+    
+    if(allId.length != attendClassId.length) {
+        if(allId[index] != attendClassId[index] && !attendClassId.includes(allId[index])){
+            attendClassId.push(allId[index]);
+            attendClassId.sort();
+            let active_attendance = {
+                attend : 0,
+                id : allId[index]
+            };
+
+            let handler1 = {};
+           
+            const proxy1 = new Proxy(active_attendance, handler1);
+            attendancePercentage.push(proxy1);
+        }
+    }
     if (allId.length != activeExamClassId.length) {
         if (allId[index] != activeExamClassId[index] && !activeExamClassId.includes(allId[index])) {
             activeExamClassId.push(allId[index]);
@@ -98,6 +126,8 @@ for (let index = 0; index < allId.length; index++) {
                 id: allId[index]
 
             }
+
+
 
             let overall_ranks = {
                 id: allId[index],
@@ -130,9 +160,12 @@ for (let index = 0; index < allId.length; index++) {
 
 }
 
+// array sorting for each class
 examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
 currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
+attendancePercentage = Object.entries(attendancePercentage).sort((a,b) => a[1].id - b[1].id);
+
 
 //get class join count
 count = props.classes.length;
@@ -158,6 +191,8 @@ for (const key in props.examRanks) {
     //get mark only user progress chart
     examMark.push(props.examRanks[key].mark);
 }
+
+
 
 
 
@@ -254,15 +289,8 @@ const seriesV2 = ref([
     }
 ]);
 
-console.log(props.exam_percent);
-
-console.log(props.attendance);
-const sideChange = (event) => {
-    activeIndex = event.activeIndex;
-}
 
 
-console.log(oneClasExamRank[1][1][0]);
 
 </script>
 
@@ -271,7 +299,7 @@ console.log(oneClasExamRank[1][1][0]);
 
     <Head title="Home" />
     <Header />
-    <div>
+    <div v-if="props.classes.length > 1">
         <section class=" p-4 md:p-12 overflow-x-hidden">
             <!-- Title Bar -->
             <div class="flex flex-row items-center justify-between">
@@ -331,8 +359,8 @@ console.log(oneClasExamRank[1][1][0]);
 
                                         <p class="text-sm md:text-base">Attendance > <span
                                                 class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
-                                                        props.attendance.length == 0 ? 0 :
-                                                            Math.floor(props.attendance[activeIndex].attend *
+                                                        attendancePercentage.length == 0 ? 0 :
+                                                            Math.floor(attendancePercentage[activeIndex][1].attend *
                                                                 100)
                                                 }}%</span>
                                         </p>
@@ -442,9 +470,9 @@ console.log(oneClasExamRank[1][1][0]);
         <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-10 my-5 h-full">
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
-                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ props.attendance.length == 0
-                            || props.attendance == undefined
-                            ? 0 : Math.floor(props.attendance[activeIndex].attend * 100)
+                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ attendancePercentage.length == 0
+                          
+                            ? 0 : Math.floor(attendancePercentage[activeIndex][1].attend * 100)
                     }}%</h1>
                     <p class="text-md md:text-xl text-white mt-5">Attendance</p>
                 </div>
@@ -587,6 +615,10 @@ console.log(oneClasExamRank[1][1][0]);
                 </div>
             </div>
         </div>
+    </div>
+
+    <div v-else class="m-5 p-5">
+        Student still doesn't join all classes!!
     </div>
     <Footer />
 

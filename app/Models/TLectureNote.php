@@ -18,4 +18,13 @@ class TLectureNote extends Model
         ->where('t_lecture_notes.del_flg',0)
         ->get();
     }
+
+
+    public function downloadLinkById($id) {
+        return DB::table('t_lecture_notes')
+        ->select('t_lecture_notes.l_storage_link','t_lecture_notes.l_name')
+        ->where('t_lecture_notes.id',$id)
+        ->where('t_lecture_notes.del_flg',0)
+        ->first();
+    }
 }
