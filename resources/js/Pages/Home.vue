@@ -42,9 +42,46 @@ let allRankPercentage = []; // rall ranking with percentage
 
 
 
-const forceRerender = () => {
-    series.value[0].data = [examMark[activeIndex.value]];
+const forceRerender = (activeIndex) => {
+
+    console.log(activeIndex);
+    examMark = [];
+    examName = [];
+    
+    if (oneClasExamRank[activeIndex][1].length > 1 ) {
+        // result in oneClasExamRank[activeIndex][1]
+        
+        for (let index = 0; index < oneClasExamRank[activeIndex][1].length; index++) {
+            examMark.push(oneClasExamRank[activeIndex][1][index].mark);
+            examName.push(oneClasExamRank[activeIndex][1][index].e_name);
+           
+           
+        }
+ 
+        // chartOptions.value[0].xaxis.categories = [examName];
+        chartOptions.value =  {...chartOptions.value, ...{
+            xaxis: {
+                categories: examName.length == 0 ? 'No Exam' : examName 
+            }
+        }};
+        series.value[0].data = examMark.length == 0 ? 0 : examMark;
+
+    } else {
+        examMark.push(oneClasExamRank[activeIndex][1][0].mark);
+        examName.push(oneClasExamRank[activeIndex][1][0].e_name);
+     
+        series.value[0].data = examMark.length == 0 ?  0 : examMark;
+        chartOptions.value =  {...chartOptions.value, ...{
+            xaxis: {
+                categories: examName.length == 0 ? 'No Exam' : examName
+            }
+        }};
+      
+    }
+   
+
 };
+
 
 
 const props = defineProps({
@@ -75,8 +112,8 @@ const props = defineProps({
     class_rank: {
         type: Array
     },
-    processBar : {
-        type : Array
+    processBar: {
+        type: Array
     }
 
 });
@@ -91,13 +128,13 @@ for (let index = 0; index < props.exam_percent.length; index++) {
     activeExamClassId.push(props.exam_percent[index].id);
 
     examPercentage.push(props.exam_percent[index]);
-   
+
     currentOverall.push(Object.values(props.overall_rank)[index]);
     oneClasExamRank.push(props.class_rank[index]);
 
 }
 
-for (let index = 0; index < props.attendance.length; index++){
+for (let index = 0; index < props.attendance.length; index++) {
     attendClassId.push(props.attendance[index].id);
 
 
@@ -113,18 +150,18 @@ for (let index = 0; index < props.attendance.length; index++){
 
 for (let index = 0; index < allId.length; index++) {
 
-    
-    if(allId.length != attendClassId.length) {
-        if(allId[index] != attendClassId[index] && !attendClassId.includes(allId[index])){
+
+    if (allId.length != attendClassId.length) {
+        if (allId[index] != attendClassId[index] && !attendClassId.includes(allId[index])) {
             attendClassId.push(allId[index]);
             attendClassId.sort();
             let active_attendance = {
-                attend : 0,
-                id : allId[index]
+                attend: 0,
+                id: allId[index]
             };
 
             let handler1 = {};
-           
+
             const proxy1 = new Proxy(active_attendance, handler1);
             attendancePercentage.push(proxy1);
         }
@@ -139,8 +176,6 @@ for (let index = 0; index < allId.length; index++) {
 
             }
 
-
-
             let overall_ranks = {
                 id: allId[index],
                 ranks: 0
@@ -153,8 +188,6 @@ for (let index = 0; index < allId.length; index++) {
                 }
             }
 
-
-
             let handler1 = {};
             let handler2 = {};
             let handler3 = {};
@@ -164,8 +197,6 @@ for (let index = 0; index < allId.length; index++) {
             examPercentage.push(proxy1);
             currentOverall.push(proxy2);
             oneClasExamRank.push(proxy3);
-
-
 
         }
     }
@@ -177,10 +208,9 @@ for (let index = 0; index < allId.length; index++) {
 examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
 currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
-attendancePercentage = Object.entries(attendancePercentage).sort((a,b) => a[1].id - b[1].id);
+attendancePercentage = Object.entries(attendancePercentage).sort((a, b) => a[1].id - b[1].id);
 
-// console.log(props.classes[activeIndex].cP);
-
+// console.log(oneClasExamRank);
 
 
 //get class join count
@@ -199,16 +229,27 @@ for (let index = 0; index < props.all_ranks.length; index++) {
     allRankPercentage.push(allRank);
 }
 
+console.log(allRankPercentage);
+console.log(props.all_ranks);
 
-// loop for chart data
-for (const key in props.examRanks) {
-    //get eName only user progress chart
-    examName.push(props.examRanks[key].e_name);
-    //get mark only user progress chart
-    examMark.push(props.examRanks[key].mark);
+if (oneClasExamRank[activeIndex.value][1].length > 1) {
+    // result in oneClasExamRank[activeIndex][1]
+
+    for (let index = 0; index < oneClasExamRank[activeIndex.value][1].length; index++) {
+        examMark.push(oneClasExamRank[activeIndex.value][1][index].mark);
+        examName.push(oneClasExamRank[activeIndex.value][1][index].e_name)
+
+    }
+  
+
+} else {
+         examMark.push(oneClasExamRank[activeIndex.value][1][0].mark);
+         examName.push(oneClasExamRank[activeIndex.value][1][0].e_name);
 }
 
+console.log(examMark);
 
+console.log(examName);
 
 
 
@@ -237,7 +278,7 @@ let chartOptions = ref({
         enabled: true,
     },
     xaxis: {
-        categories: examName,
+        categories: examName.length == 0 ? 'No Exam' : examName,
         title: {
             text: 'Exam'
         },
@@ -251,60 +292,66 @@ let chartOptions = ref({
     },
 });
 
+
+console.log(examMark);
+
 let series = ref([
     {
         name: 'series-1',
-        data: [examMark[activeIndex.value]]
+        data: examMark.length == 0 ? 0 : examMark
     }
 ]);
 
-const chartOptionsV2 = ref({
-    chart: {
-        toolbar: {
-            show: false,
-        },
-        id: 'basic-bar'
-    },
-    xaxis: {
-        categories: examName
-    }
-})
+console.log(chartOptions.value);
+        console.log(series.value[0].data);
 
-const seriesV2 = ref([
+// const chartOptionsV2 = ref({
+//     chart: {
+//         toolbar: {
+//             show: false,
+//         },
+//         id: 'basic-bar'
+//     },
+//     xaxis: {
+//         categories: examName
+//     }
+// })
 
-    {
-        name: 'Choo Pwint Chal',
-        data: examMark
-    },
-    {
-        name: 'Thazin Aung',
-        data: [20, 60, 65, 70, 80, 90, 100, 120]
-    },
-    {
-        name: 'Hein Thant Aung',
-        data: [15, 40, 20, 10, 90, 65, 75, 100]
-    },
-    {
-        name: 'Zan Myint Moe',
-        data: [5, 10, 15, 20, 25, 30, 35, 40]
-    },
-    {
-        name: 'Phwe Phwe',
-        data: [0, 100, 80, 60, 40, 20, 10, 0]
-    },
-    {
-        name: 'Nyein Nyein',
-        data: [0, 20, 100, 30, 10, 120, 25, 90]
-    },
-    {
-        name: 'Su Nwe Win',
-        data: [35, 45, 80, 80, 100, 120, 80, 91]
-    },
-    {
-        name: 'Nyan Win Myo',
-        data: [100, 120, 50, 20, 30, 50, 90, 120]
-    }
-]);
+// const seriesV2 = ref([
+
+//     {
+//         name: 'Choo Pwint Chal',
+//         data: examMark
+//     },
+//     {
+//         name: 'Thazin Aung',
+//         data: [20, 60, 65, 70, 80, 90, 100, 120]
+//     },
+//     {
+//         name: 'Hein Thant Aung',
+//         data: [15, 40, 20, 10, 90, 65, 75, 100]
+//     },
+//     {
+//         name: 'Zan Myint Moe',
+//         data: [5, 10, 15, 20, 25, 30, 35, 40]
+//     },
+//     {
+//         name: 'Phwe Phwe',
+//         data: [0, 100, 80, 60, 40, 20, 10, 0]
+//     },
+//     {
+//         name: 'Nyein Nyein',
+//         data: [0, 20, 100, 30, 10, 120, 25, 90]
+//     },
+//     {
+//         name: 'Su Nwe Win',
+//         data: [35, 45, 80, 80, 100, 120, 80, 91]
+//     },
+//     {
+//         name: 'Nyan Win Myo',
+//         data: [100, 120, 50, 20, 30, 50, 90, 120]
+//     }
+// ]);
 
 
 
@@ -332,11 +379,9 @@ const seriesV2 = ref([
             <div class="flex flex-col md:flex-row lg:flex-row justify-between items-center py-4 w-full ">
                 <!-- Student's Card -->
                 <swiper :slides-per-view="1" :space-between="50" :modules="[Navigation, Pagination]" navigation
-                    :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2"
-                    @slideChange="(event) =>
-                    {
+                    :pagination="{ clickable: true, dynamicBullets: ture }" grab-cursor class="w-1/2" @slideChange="(event) => {
                         activeIndex = event.activeIndex;
-                        forceRerender();
+                        forceRerender(activeIndex);
                     }">
                     <swiper-slide v-for="n in count" :key="n" :virtual-index="n">
 
@@ -350,18 +395,17 @@ const seriesV2 = ref([
                                     <div class="flex flex-col space-y-3">
                                         <h1 class="font-light text-xl">{{ $page.props.user.name }}</h1>
                                         <p class="font-bold text-lg">{{ props.classes[n - 1].c_name }}</p>
-                                        
-                                        <div  class="grid grid-cols-6">
-                                            <div  v-for="result in (Number(props.processBar[n-1].period))" :key="result" class="w-5 h-2 bg-white mx-1"
-                                            
-                                            :class="{
-                                                'rounded-tl-md rounded-bl-md' : ( result == 1),
-                                                'bg-secondaryBackground ' : (Number(props.processBar[n-1].current) >= result),
-                                                'rounded-tr-md rounded-br-md' : ( Number(props.processBar[n-1].period) == result),
-                                                'my-1' : (result > 6)
-                                            }">
+
+                                        <div class="grid grid-cols-6">
+                                            <div v-for="result in (Number(props.processBar[n - 1].period))" :key="result"
+                                                class="w-5 h-2 bg-white mx-1" :class="{
+                                                    'rounded-tl-md rounded-bl-md': (result == 1),
+                                                    'bg-secondaryBackground ': (Number(props.processBar[n - 1].current) >= result),
+                                                    'rounded-tr-md rounded-br-md': (Number(props.processBar[n - 1].period) == result),
+                                                    'my-1': (result > 6)
+                                                }">
                                             </div>
-                                           
+
                                         </div>
                                     </div>
                                     <div class="relative flex flex-row items-center justify-center">
@@ -497,8 +541,9 @@ const seriesV2 = ref([
         <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-10 my-5 h-full">
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
-                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ attendancePercentage.length == 0
-                          
+                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ attendancePercentage.length
+                            == 0
+                    
                             ? 0 : Math.floor(attendancePercentage[activeIndex][1].attend * 100)
                     }}%</h1>
                     <p class="text-md md:text-xl text-white mt-5">Attendance</p>
@@ -580,7 +625,8 @@ const seriesV2 = ref([
                                         class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
                                         {{ moment(result.date_submitted).format('MMM D') }}
                                     </td>
-                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{ result.e_name }}</td>
+                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{ result.e_name
+                                    }}</td>
                                     <td class="py-3 w-24" :class="{
                                         'text-green-500': (result.mark == 10),
                                         'text-red-500': (result.mark <= 5),
@@ -622,13 +668,27 @@ const seriesV2 = ref([
 
             <div
                 class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
-                <div class="pt-10">
+                <!-- <div class="pt-10">
                     <Chart :type="line" :options="chartOptionsV2" :series="seriesV2" :stroke="stroke" class="chartV2" />
-                </div>
+                </div> -->
 
                 <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full lg:w-72 space-y-4">
 
-                    <div v-for="(item, index) in allRankPercentage"
+                    <div v-if="props.all_ranks[activeIndex].length > 1" v-for="(result,index) in props.all_ranks[activeIndex]"
+                        class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
+                        <span
+                            class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">{{
+                                    ++index
+                            }}</span>
+                        <h1 class="w-32 flex font-bold whitespace-nowrap">{{ result.name }}</h1>
+                        <p class="font-semibold text-secondaryBackground">{{ Math.floor(result.exam) }}%</p>
+                    </div>
+                    <div v-else
+                       class="text-3xl text-white">
+                     No Ranking!!!
+                    </div>
+
+                    <!-- <div v-for="(item, index) in props.all_ranks"
                         class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                         <span
                             class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">{{
@@ -636,7 +696,7 @@ const seriesV2 = ref([
                             }}</span>
                         <h1 class="w-32 flex font-bold whitespace-nowrap">{{ item.name }}</h1>
                         <p class="font-semibold text-secondaryBackground">{{ item.percent }}%</p>
-                    </div>
+                    </div> -->
 
 
                 </div>

@@ -19,10 +19,11 @@ class TStudentExam extends Model
     {
 
         
-        return  DB::select(
+        $query = DB::select(
             "SELECT
                 users.id,
                 users.name,
+                m_classes.id As cid,
                 t_student_exams.date_submitted,
                 m_exams.id as examid,
                 m_exams.e_name,
@@ -32,9 +33,14 @@ class TStudentExam extends Model
                 `t_student_exams`
                 JOIN users ON `t_student_exams`.`user_id` = users.id
                 JOIN m_exams ON `t_student_exams`.`exam_id` = m_exams.id
-                WHERE t_student_exams.exam_id = :id",
+                JOIN m_classes ON m_exams.class_id = m_classes.id
+                WHERE t_student_exams.exam_id = :id
+               ",
             [":id" => $exam_id]
         );
+
+        
+        return $query;
     }
 
     /**
@@ -107,18 +113,20 @@ class TStudentExam extends Model
     /**
      * 
      */
-    public function getUserRank()
+    public function getUserRank($id)
     {
         return DB::select(
             "SELECT
             users.id,
             users.name,
-            SUM(t_student_exams.mark) sumMark,
+            (SUM(t_student_exams.mark)/SUM(m_exams.full_mark)) *100 AS exam,
             Rank() OVER(ORDER BY   SUM(t_student_exams.mark) DESC ) rank
         FROM
                 `t_student_exams`
                 JOIN users ON `t_student_exams`.`user_id` = users.id
                 JOIN m_exams ON `t_student_exams`.`exam_id` = m_exams.id
+                JOIN  m_classes ON m_exams.class_id = m_classes.id
+                WHERE m_classes.id = $id
                 GROUP By t_student_exams.user_id
                 ORDER By rank"
         );

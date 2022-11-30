@@ -46,7 +46,9 @@ class HomeController extends Controller
         $processBar = [];
         $oneExamCallRank = [];
 
-
+        
+        //all rank by classid
+        $userRanks = [];
        
         //get ALl classid
         $allClassID = [];
@@ -100,7 +102,7 @@ class HomeController extends Controller
            
             $oneClassEachExamRank = array_merge($oneClassEachExamRank,$exam->getExamlistByClassID($classid->class_id));
             $oneClassRank = array_merge($oneClassRank,$exam->getUserRankById($classid->class_id));
-
+            
             
             $start_date= date_create($classid->c_start_date);
             $end_date =  date_create($classid->c_end_date);
@@ -135,6 +137,8 @@ class HomeController extends Controller
             $examRank = array_filter($allUserRank, function ($rank) {
                 return ($rank->id == Auth::id());
             });
+
+          
 
             //filter for get only current login user id
             $eachExamRank = array_filter($oneClassEachExamRank, function ($rank) {
@@ -174,16 +178,18 @@ class HomeController extends Controller
   
 
             //get all user rank
-            $userRanks = $exam->getUserRank();
+           
 
        foreach($totalClass  as $class){
           array_push($allClass,$class->id);
+          
+          array_push($userRanks, $exam->getUserRank($class->id));
        }
-         
+        
        $classid =  join(',',$allClass);
        
       $eachClass =   $classes->totalStudents($classid);
-    
+   
         return inertia("Home", [
             'classes' => $totalClass,
             'attendance' => $attendance,
@@ -194,7 +200,6 @@ class HomeController extends Controller
             'overall_rank' => $overallRank,
             'class_rank'  => $oneExamCallRank,
             'processBar' => $processBar
-
           
             ]);
        
