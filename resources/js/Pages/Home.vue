@@ -119,6 +119,7 @@ const props = defineProps({
 });
 
 
+
 for (let index = 0; index < props.classes.length; index++) {
     allId.push(props.classes[index].id);
 
@@ -210,6 +211,11 @@ currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
 attendancePercentage = Object.entries(attendancePercentage).sort((a, b) => a[1].id - b[1].id);
 
+console.log(examPercentage[2][1].exam);
+console.log(currentOverall);
+console.log(oneClasExamRank);
+console.log(attendancePercentage);
+
 // console.log(oneClasExamRank);
 
 
@@ -220,17 +226,19 @@ examCount = Object.values(props.examRanks).length;
 //get exam mark percentage
 // percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / examCount * 10);
 // get all user exam mark percentage
-for (let index = 0; index < props.all_ranks.length; index++) {
-    allRank = {
-        name: props.all_ranks[index].name,
-        percent: Math.floor(Object.values(props.all_ranks)[index].sumMark / examCount * 10)
-    }
+// console.log(props.all_ranks);
+// for (let index = 0; index < props.all_ranks.length; index++) {
+//     // console.log()
+//     allRank = {
+//         name: props.all_ranks[index].name,
+//         percent: Math.floor(Object.values(props.all_ranks)[index].sumMark / examCount * 10)
+//     }
+//     console.log(allRank);
+//     // allRankPercentage.push(allRank);
+// }
 
-    allRankPercentage.push(allRank);
-}
-
-console.log(allRankPercentage);
-console.log(props.all_ranks);
+// console.log(allRankPercentage);
+// console.log(props.all_ranks);
 
 if (oneClasExamRank[activeIndex.value][1].length > 1) {
     // result in oneClasExamRank[activeIndex][1]
@@ -305,53 +313,53 @@ let series = ref([
 console.log(chartOptions.value);
         console.log(series.value[0].data);
 
-// const chartOptionsV2 = ref({
-//     chart: {
-//         toolbar: {
-//             show: false,
-//         },
-//         id: 'basic-bar'
-//     },
-//     xaxis: {
-//         categories: examName
-//     }
-// })
+const chartOptionsV2 = ref({
+    chart: {
+        toolbar: {
+            show: false,
+        },
+        id: 'basic-bar'
+    },
+    xaxis: {
+        categories: examName
+    }
+})
 
-// const seriesV2 = ref([
+const seriesV2 = ref([
 
-//     {
-//         name: 'Choo Pwint Chal',
-//         data: examMark
-//     },
-//     {
-//         name: 'Thazin Aung',
-//         data: [20, 60, 65, 70, 80, 90, 100, 120]
-//     },
-//     {
-//         name: 'Hein Thant Aung',
-//         data: [15, 40, 20, 10, 90, 65, 75, 100]
-//     },
-//     {
-//         name: 'Zan Myint Moe',
-//         data: [5, 10, 15, 20, 25, 30, 35, 40]
-//     },
-//     {
-//         name: 'Phwe Phwe',
-//         data: [0, 100, 80, 60, 40, 20, 10, 0]
-//     },
-//     {
-//         name: 'Nyein Nyein',
-//         data: [0, 20, 100, 30, 10, 120, 25, 90]
-//     },
-//     {
-//         name: 'Su Nwe Win',
-//         data: [35, 45, 80, 80, 100, 120, 80, 91]
-//     },
-//     {
-//         name: 'Nyan Win Myo',
-//         data: [100, 120, 50, 20, 30, 50, 90, 120]
-//     }
-// ]);
+    {
+        name: 'Choo Pwint Chal',
+        data: examMark
+    },
+    {
+        name: 'Thazin Aung',
+        data: [20, 60, 65, 70, 80, 90, 100, 120]
+    },
+    {
+        name: 'Hein Thant Aung',
+        data: [15, 40, 20, 10, 90, 65, 75, 100]
+    },
+    {
+        name: 'Zan Myint Moe',
+        data: [5, 10, 15, 20, 25, 30, 35, 40]
+    },
+    {
+        name: 'Phwe Phwe',
+        data: [0, 100, 80, 60, 40, 20, 10, 0]
+    },
+    {
+        name: 'Nyein Nyein',
+        data: [0, 20, 100, 30, 10, 120, 25, 90]
+    },
+    {
+        name: 'Su Nwe Win',
+        data: [35, 45, 80, 80, 100, 120, 80, 91]
+    },
+    {
+        name: 'Nyan Win Myo',
+        data: [100, 120, 50, 20, 30, 50, 90, 120]
+    }
+]);
 
 
 
@@ -570,7 +578,7 @@ console.log(chartOptions.value);
                     <h1 class="text-2xl md:text-4xl font-bold" :class="{
                         'text-green-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam == 100),
                         'text-red-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam <= 50),
-                        'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && props.exam_percent[activeIndex].exam < 100),
+                        'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && examPercentage[activeIndex][1].exam < 100),
                     }">
                         {{ examPercentage.length == 0 ? 0 :
                                 Math.floor(examPercentage[activeIndex][1].exam)
