@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MClass;
 use App\Models\MVideo;
+use App\Models\TStudentClass;
 use Carbon\Carbon;
 use DateTime;
 use DateTimeZone;
@@ -20,17 +22,21 @@ class RecordController extends Controller
     public function index()
     {
 
+        $id = Auth::id();
         $video = new MVideo();
-        $videos  = $video->verified_class(Auth::id());
+        $classes = new TStudentClass();
+        $totalClass = $classes->totalClass($id);
+       
+        $videos  = $video->verified_class($id);
 
-        $count = $video->validVideoCount(Auth::id());
+        $count = $video->validVideoCount($id);
 
         $date = new DateTime("now", new DateTimeZone('Asia/Yangon'));
         $today = $date->format('Y-m-d h:m:s');
 
         $newVideo = $video->today_video(Auth::id(), $today);
         
-        return Inertia::render('Recording', ['videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
+        return Inertia::render('Recording', [ 'classes' => $totalClass,'videos' => $videos, 'count' => $count, 'newvideo' => $newVideo]);
     }
 
 

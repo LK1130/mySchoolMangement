@@ -8,8 +8,12 @@ import Pagination from '../Components/Pagination.vue';
 import { ref } from 'vue'
 import moment from 'moment';
 import axios from 'axios';
+import { prop } from 'dom7';
 
 const props = defineProps({
+    classes : {
+        type : Object
+    },
     videos: {
         type: Object
     },
@@ -21,6 +25,9 @@ const props = defineProps({
     }
 });
 
+console.log(props.newvideo);
+
+console.log(props.videos);
 /**
  * sorting menu
  */
@@ -113,6 +120,7 @@ const searchVideo = () => {
     <Header />
     <!-- Hero Section-->
     <section>
+        <div v-if="props.classes.length > 1">
         <div class="flex w-full h-auto overflow-hidden bg-primaryBackground dark:bg-darkSecondaryBackground md:flex-row flex-col pt-5 md:px-10 px-7">
             <div class="flex-1 ">
                 <span class="text-xl font-semibold text-white">{{ newvideo.c_name }} > </span>
@@ -135,6 +143,11 @@ const searchVideo = () => {
                 }}</div>
             </div>
         </div>
+     </div>
+     
+     <div v-else class="m-5 p-5 text-lg font-bold">
+        Currenly You cant acces videos and you still not join in classes!!
+    </div>
     </section>
 
     <!-- Recroding Video Lists-->

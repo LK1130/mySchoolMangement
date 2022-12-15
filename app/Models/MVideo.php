@@ -66,6 +66,7 @@ class MVideo extends Model
 
     public function today_video($id, $today)
     {
+        
         $newVideo  = DB::table('m_videos')
             ->join('t_student_classes', 'm_videos.class_id', '=', 't_student_classes.class_id')
             ->join('m_classes', 't_student_classes.class_id', '=', 'm_classes.id')
@@ -75,6 +76,8 @@ class MVideo extends Model
             ->where('users.id', $id)
             ->orderBy('m_videos.v_date')
             ->first();
+
+            
         return $newVideo;
     }
 

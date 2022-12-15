@@ -119,11 +119,15 @@ const props = defineProps({
 });
 
 
+console.log(props.attendance);
+
 
 for (let index = 0; index < props.classes.length; index++) {
     allId.push(props.classes[index].id);
 
 }
+
+console.log(allId);
 
 for (let index = 0; index < props.exam_percent.length; index++) {
     activeExamClassId.push(props.exam_percent[index].id);
@@ -139,10 +143,11 @@ for (let index = 0; index < props.attendance.length; index++) {
     attendClassId.push(props.attendance[index].id);
 
 
+
     attendancePercentage.push(props.attendance[index]);
 }
 
-
+console.log(attendancePercentage);
 
 
 
@@ -155,6 +160,7 @@ for (let index = 0; index < allId.length; index++) {
     if (allId.length != attendClassId.length) {
         if (allId[index] != attendClassId[index] && !attendClassId.includes(allId[index])) {
             attendClassId.push(allId[index]);
+            console.log(attendClassId);
             attendClassId.sort();
             let active_attendance = {
                 attend: 0,
@@ -205,13 +211,18 @@ for (let index = 0; index < allId.length; index++) {
 }
 
 
+console.log(examPercentage);
+console.log(currentOverall);
+console.log(oneClasExamRank);
+console.log(attendancePercentage);
+
 // array sorting for each class
 examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
 currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
 attendancePercentage = Object.entries(attendancePercentage).sort((a, b) => a[1].id - b[1].id);
 
-console.log(examPercentage[2][1].exam);
+console.log(examPercentage);
 console.log(currentOverall);
 console.log(oneClasExamRank);
 console.log(attendancePercentage);
@@ -240,7 +251,9 @@ examCount = Object.values(props.examRanks).length;
 // console.log(allRankPercentage);
 // console.log(props.all_ranks);
 
-if (oneClasExamRank[activeIndex.value][1].length > 1) {
+
+if(oneClasExamRank.length != 0 ){
+    if (oneClasExamRank[activeIndex.value][1].length > 1) {
     // result in oneClasExamRank[activeIndex][1]
 
     for (let index = 0; index < oneClasExamRank[activeIndex.value][1].length; index++) {
@@ -254,6 +267,8 @@ if (oneClasExamRank[activeIndex.value][1].length > 1) {
          examMark.push(oneClasExamRank[activeIndex.value][1][0].mark);
          examName.push(oneClasExamRank[activeIndex.value][1][0].e_name);
 }
+}
+
 
 console.log(examMark);
 
@@ -517,7 +532,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold">
 
-                                        {{ props.one_class[activeIndex].counts }}
+                                        {{ props.one_class.length == 0 ? 0 : props.one_class[activeIndex].counts  }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -712,7 +727,7 @@ const seriesV2 = ref([
         </div>
     </div>
 
-    <div v-else class="m-5 p-5">
+    <div v-else class="m-5 p-5 text-lg font-bold">
         Student still doesn't join all classes!!
     </div>
     <Footer />

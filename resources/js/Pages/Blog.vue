@@ -40,7 +40,7 @@ const props = defineProps({
                         <p class="font-semibold text-sm dark:text-whiteTextColor">{{ moment(blog.created_at, "YYYYMMDD").calendar() }} </p>
                     </div>
                     <div class="w-full font-medium opacity-70 dark:text-whiteTextColor">
-                        {{ blog.b_description }}
+                        {{ blog.b_description.substring(0, 350).concat('..... ') }}
                     </div>
                     <div class="absolute w-full bottom-0 ">
                         <h2 class="absolute right-0  text-primaryBackground font-bold dark:text-secondaryBackground">
