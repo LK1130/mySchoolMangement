@@ -45,7 +45,7 @@ console.log(props.guides);
                      :class="(guideStep.step / 2 == 1) ? 'md:flex-row-reverse' : 'md:flex-row'">
                      
                      <div class="text-center flex justify-center mx-auto ">
-                            <img src="img/blog-image.png" class="text-center md:w-72 object-fill"  alt="">
+                            <img :src="guideStep.step_photo" class="text-center md:w-72 object-fill"  alt="">
                         </div>
                         <div class="w-full md:w-1/2 lg:w-4/6 mx-auto my-10 md:my-0 md:p-0 px-10">
                             <div class=" w-16 rounded-lg text-whiteTextColor text-sm text-center"

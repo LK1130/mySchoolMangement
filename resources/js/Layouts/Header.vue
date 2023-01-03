@@ -70,7 +70,7 @@ if (darkMode){
 
                 <img :src="
                     $page.props.user.profile_photo_path
-                        ? '/storage/' + $page.props.user.profile_photo_path
+                        ? $page.props.user.profile_photo_path
                         : '/img/error/avatars-000437232558-yuo0mv-t500x500.jpg'
                 " alt="" class="ml-4 noti-profile-menu rounded-full" @click="menuShow = !menuShow" />
 

@@ -25,7 +25,7 @@ const form = useForm({
     imgName: props.users[0].profile_photo_path, // image: imgSrc.value,
 });
 
-var imgSrc = ref("/storage/" + form.imgName);
+var imgSrc = ref(form.imgName);
 if (form.imgName === null) {
     imgSrc = ref("/img/error/avatars-000437232558-yuo0mv-t500x500.jpg");
 }

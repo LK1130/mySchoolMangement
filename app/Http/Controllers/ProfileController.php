@@ -42,7 +42,8 @@ class ProfileController extends Controller
 
         $img = $request->image;
 
-        $imgName = $img->storePublicly('ProfilePhoto', ['disk' => 'public']);
+        // $imgName = $img->storePublicly('ProfilePhoto', ['disk' => 'public']);
+        $imgName = env("DO_URL")."/".Storage::disk('digitalocean')->put('studentsprofile', $img, 'public');
         // $imgName = $img->store('storage/ProfilePhoto');
         $user->profile_photo_path = $imgName;
         $user->save();
