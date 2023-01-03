@@ -35,7 +35,7 @@ const props = defineProps({
             </div>
             <div class="flex flex-col space-y-2  my-8">
                 <p class="text-base font-semibold opacity-80 dark:text-secondaryBackground">
-                    {{ moment(blog.created_at).format("YYYY/MM/DD (ddd)hh:mm") }}
+                    {{ moment(blog.updated_at).format("YYYY/MM/DD (ddd)hh:mm") }}
                 </p>
             </div>
             <div class="font-extralight space-y-6">
