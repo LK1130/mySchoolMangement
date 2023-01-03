@@ -18,6 +18,7 @@ const props = defineProps({
 
 
 
+
 </script>
         
 <template>
@@ -37,7 +38,7 @@ const props = defineProps({
                 <div class="relative w-full ">
                     <div class="flex flex-row justify-between w-full mb-2">
                         <h1 class="font-semibold text-xl dark:text-whiteTextColor">{{ blog.b_title }}</h1>
-                        <p class="font-semibold text-sm dark:text-whiteTextColor">{{ moment(blog.created_at, "YYYYMMDD").calendar() }} </p>
+                        <p class="font-semibold text-sm dark:text-whiteTextColor">{{ moment(blog.created_at).calendar() }} </p>
                     </div>
                     <div class="w-full font-medium opacity-70 dark:text-whiteTextColor">
                         {{ blog.b_description.substring(0, 350).concat('..... ') }}

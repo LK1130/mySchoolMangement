@@ -187,6 +187,7 @@ class HomeController extends Controller
        }
         
        $classid =  join(',',$allClass);
+
        
        if($classid) $eachClass =   $classes->totalStudents($classid);
        else $eachClass =[];

@@ -7,7 +7,6 @@ import { ref } from "vue";
 let menuShow = ref(false);
 
 const logout = () => {
-    console.log("Ok");
     Inertia.post(route("logout"));
 };
 

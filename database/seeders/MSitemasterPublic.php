@@ -16,7 +16,7 @@ class MSitemasterPublic extends Seeder
     {
         \App\Models\MSitemasterPublic::create([
             "logo" => "logo.png",
-            "sitename" => "My School",
+            "sitename" => "Ex;braiN",
             "favicon" => "logo.png",
             "facebook_link" => "https://www.facebook.com/extbrainedu",
             "youtube_link1" => "https://www.youtube.com/channel/UC5bcizZ7sVgUdFj5qJnExoQ",
