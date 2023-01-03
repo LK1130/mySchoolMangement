@@ -38,7 +38,7 @@
             <div class="xl:pt-24 w-full xl:w-1/2 relative pb-12 lg:pb-0">
                 <div class="relative">
                     <div class="absolute">
-                        <div class="">
+                        <div class="-z-10">
                             <h1 class="my-2 text-gray-800 font-bold text-2xl dark:text-whiteTextColor">
                                 Looks like you've found the
                                 doorway to the great nothing

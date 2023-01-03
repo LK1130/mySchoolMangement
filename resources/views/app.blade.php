@@ -29,14 +29,16 @@
 
     <script src="{{ asset('js/profile.js') }}"></script>
     <script src="{{ asset('js/darkmode.js') }}"></script>
+    
 
     @routes
     @vite('resources/js/app.js')
     @inertiaHead
 </head>
 
-<body class="font-sans antialiased bg-white dark:bg-slate-900 ease-linear duration-500">
+<body class="font-sans antialiased bg-white dark:bg-slate-900 ease-linear duration-500 overflow-x-hidden">
     @inertia
+
 </body>
 
 </html>

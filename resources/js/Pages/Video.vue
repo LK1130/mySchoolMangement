@@ -21,6 +21,7 @@ const props = defineProps({
 });
 
 
+console.log(props.video);
 </script>
 
 <template>
@@ -43,13 +44,13 @@ const props = defineProps({
 
         <section class="bg-primaryBackground dark:bg-darkPrimaryBackground">
             <div class="container py-4 mx-auto">
-                <p class="md:text-4xl  text-lg text-white font-bold md:mt-10 px-3 md:px-0">{{ video.v_name }}</p>
+                <p class="md:text-4xl  text-lg text-white font-bold md:mt-10 px-3 md:px-0">{{  }}</p>
 
                 <div class="md:flex md:flex-row justify-around md:mt-4 mt-2 px-3 md:px-0 ">
                     <div class="container flex justify-center mx-auto space-y-3">
                         <p class="md:text-base  text-xs text-justify md:pr-10 
                             md:pb-10 font-semibold  md:border-r-2  opacity-70 text-white mx-auto ">
-                            {{ video.v_description }}</p>
+                            {{ }}</p>
                     </div>
 
                     <div class="w-2/3 md:w-6/12 md:mx-auto  md:mt-0 mt-10 md:mb-10 mx-auto">

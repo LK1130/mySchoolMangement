@@ -119,10 +119,15 @@ const props = defineProps({
 });
 
 
+console.log(props.attendance);
+
+
 for (let index = 0; index < props.classes.length; index++) {
     allId.push(props.classes[index].id);
 
 }
+
+console.log(allId);
 
 for (let index = 0; index < props.exam_percent.length; index++) {
     activeExamClassId.push(props.exam_percent[index].id);
@@ -138,10 +143,11 @@ for (let index = 0; index < props.attendance.length; index++) {
     attendClassId.push(props.attendance[index].id);
 
 
+
     attendancePercentage.push(props.attendance[index]);
 }
 
-
+console.log(attendancePercentage);
 
 
 
@@ -154,6 +160,7 @@ for (let index = 0; index < allId.length; index++) {
     if (allId.length != attendClassId.length) {
         if (allId[index] != attendClassId[index] && !attendClassId.includes(allId[index])) {
             attendClassId.push(allId[index]);
+            console.log(attendClassId);
             attendClassId.sort();
             let active_attendance = {
                 attend: 0,
@@ -204,11 +211,21 @@ for (let index = 0; index < allId.length; index++) {
 }
 
 
+console.log(examPercentage);
+console.log(currentOverall);
+console.log(oneClasExamRank);
+console.log(attendancePercentage);
+
 // array sorting for each class
 examPercentage = Object.entries(examPercentage).sort((a, b) => a[1].id - b[1].id);
 currentOverall = Object.entries(currentOverall).sort((a, b) => a[1].id - b[1].id);
 oneClasExamRank = Object.entries(oneClasExamRank).sort((a, b) => a[1][0].cid - b[1][0].cid);
 attendancePercentage = Object.entries(attendancePercentage).sort((a, b) => a[1].id - b[1].id);
+
+console.log(examPercentage);
+console.log(currentOverall);
+console.log(oneClasExamRank);
+console.log(attendancePercentage);
 
 // console.log(oneClasExamRank);
 
@@ -220,19 +237,23 @@ examCount = Object.values(props.examRanks).length;
 //get exam mark percentage
 // percentage = Math.floor(Object.values(props.rank_mark)[0].sumMark / examCount * 10);
 // get all user exam mark percentage
-for (let index = 0; index < props.all_ranks.length; index++) {
-    allRank = {
-        name: props.all_ranks[index].name,
-        percent: Math.floor(Object.values(props.all_ranks)[index].sumMark / examCount * 10)
-    }
+// console.log(props.all_ranks);
+// for (let index = 0; index < props.all_ranks.length; index++) {
+//     // console.log()
+//     allRank = {
+//         name: props.all_ranks[index].name,
+//         percent: Math.floor(Object.values(props.all_ranks)[index].sumMark / examCount * 10)
+//     }
+//     console.log(allRank);
+//     // allRankPercentage.push(allRank);
+// }
 
-    allRankPercentage.push(allRank);
-}
+// console.log(allRankPercentage);
+// console.log(props.all_ranks);
 
-console.log(allRankPercentage);
-console.log(props.all_ranks);
 
-if (oneClasExamRank[activeIndex.value][1].length > 1) {
+if(oneClasExamRank.length != 0 ){
+    if (oneClasExamRank[activeIndex.value][1].length > 1) {
     // result in oneClasExamRank[activeIndex][1]
 
     for (let index = 0; index < oneClasExamRank[activeIndex.value][1].length; index++) {
@@ -246,6 +267,8 @@ if (oneClasExamRank[activeIndex.value][1].length > 1) {
          examMark.push(oneClasExamRank[activeIndex.value][1][0].mark);
          examName.push(oneClasExamRank[activeIndex.value][1][0].e_name);
 }
+}
+
 
 console.log(examMark);
 
@@ -305,53 +328,53 @@ let series = ref([
 console.log(chartOptions.value);
         console.log(series.value[0].data);
 
-// const chartOptionsV2 = ref({
-//     chart: {
-//         toolbar: {
-//             show: false,
-//         },
-//         id: 'basic-bar'
-//     },
-//     xaxis: {
-//         categories: examName
-//     }
-// })
+const chartOptionsV2 = ref({
+    chart: {
+        toolbar: {
+            show: false,
+        },
+        id: 'basic-bar'
+    },
+    xaxis: {
+        categories: examName
+    }
+})
 
-// const seriesV2 = ref([
+const seriesV2 = ref([
 
-//     {
-//         name: 'Choo Pwint Chal',
-//         data: examMark
-//     },
-//     {
-//         name: 'Thazin Aung',
-//         data: [20, 60, 65, 70, 80, 90, 100, 120]
-//     },
-//     {
-//         name: 'Hein Thant Aung',
-//         data: [15, 40, 20, 10, 90, 65, 75, 100]
-//     },
-//     {
-//         name: 'Zan Myint Moe',
-//         data: [5, 10, 15, 20, 25, 30, 35, 40]
-//     },
-//     {
-//         name: 'Phwe Phwe',
-//         data: [0, 100, 80, 60, 40, 20, 10, 0]
-//     },
-//     {
-//         name: 'Nyein Nyein',
-//         data: [0, 20, 100, 30, 10, 120, 25, 90]
-//     },
-//     {
-//         name: 'Su Nwe Win',
-//         data: [35, 45, 80, 80, 100, 120, 80, 91]
-//     },
-//     {
-//         name: 'Nyan Win Myo',
-//         data: [100, 120, 50, 20, 30, 50, 90, 120]
-//     }
-// ]);
+    {
+        name: 'Choo Pwint Chal',
+        data: examMark
+    },
+    {
+        name: 'Thazin Aung',
+        data: [20, 60, 65, 70, 80, 90, 100, 120]
+    },
+    {
+        name: 'Hein Thant Aung',
+        data: [15, 40, 20, 10, 90, 65, 75, 100]
+    },
+    {
+        name: 'Zan Myint Moe',
+        data: [5, 10, 15, 20, 25, 30, 35, 40]
+    },
+    {
+        name: 'Phwe Phwe',
+        data: [0, 100, 80, 60, 40, 20, 10, 0]
+    },
+    {
+        name: 'Nyein Nyein',
+        data: [0, 20, 100, 30, 10, 120, 25, 90]
+    },
+    {
+        name: 'Su Nwe Win',
+        data: [35, 45, 80, 80, 100, 120, 80, 91]
+    },
+    {
+        name: 'Nyan Win Myo',
+        data: [100, 120, 50, 20, 30, 50, 90, 120]
+    }
+]);
 
 
 
@@ -506,10 +529,9 @@ console.log(chartOptions.value);
                                     <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
                                         Class Day :
                                     </td>
-                                    <td class="py-2 px-6 font-bold  text-base">
-                                        {{ props.classes[activeIndex].c_start_time }} - {{
-                                        props.classes[activeIndex].c_end_time
-                                        }}
+                                    <td class="py-2 px-6 font-bold">
+
+                                        {{ props.one_class.length == 0 ? 0 : props.one_class[activeIndex].counts  }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -579,7 +601,7 @@ console.log(chartOptions.value);
                     <h1 class="text-2xl md:text-4xl font-bold" :class="{
                         'text-green-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam == 100),
                         'text-red-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam <= 50),
-                        'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && props.exam_percent[activeIndex].exam < 100),
+                        'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && examPercentage[activeIndex][1].exam < 100),
                     }">
                         {{ examPercentage.length == 0 ? 0 :
                                 Math.floor(examPercentage[activeIndex][1].exam)
@@ -712,7 +734,7 @@ console.log(chartOptions.value);
         </div>
     </div>
 
-    <div v-else class="m-5 p-5">
+    <div v-else class="m-5 p-5 text-lg font-bold">
         Student still doesn't join all classes!!
     </div>
     <Footer />

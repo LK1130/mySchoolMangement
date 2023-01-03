@@ -11,11 +11,10 @@ class MContact extends Model
     use HasFactory;
     public function contactUs($request)
     {
-        return DB::table('m_contacts')
-        ->insert([
-            "username" => $request->username,
-            "email" => $request->email,
-            "message" => $request->message
-        ]);
+        $contact = new MContact();
+        $contact->username = $request->username;
+        $contact->email = $request->email;
+        $contact->message = $request->message;
+        $contact->save();
     }
 }
