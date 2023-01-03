@@ -187,8 +187,10 @@ class HomeController extends Controller
        }
         
        $classid =  join(',',$allClass);
+
        
-      $eachClass =   $classes->totalStudents($classid);
+       
+      $eachClass =   $classid ?  $classes->totalStudents($classid) : "";
    
         return inertia("Home", [
             'classes' => $totalClass,

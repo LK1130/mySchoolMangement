@@ -205,13 +205,6 @@ const submit = (e) => {
                             >
                                 <button
                                     type="submit"
-                                    class="text-white bg-cancelBackground hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-darkPrimaryBackground dark:hover:bg-darkSecondaryBackground"
-                                >
-                                    Cancel
-                                </button>
-
-                                <button
-                                    type="submit"
                                     class="text-white md:mx-auto sm:mx-auto mx-auto bg-primaryBackground hover:bg-blue-800 focus:ring-4 focus:outline-none font-medium rounded-lg text-sm w-full sm:w-auto md:px-6 py-2.5 text-center dark:bg-darkPrimaryBackground dark:hover:bg-darkSecondaryBackground"
                                 >
                                     Save

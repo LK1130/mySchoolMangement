@@ -389,7 +389,7 @@ console.log(chartOptions.value);
                         <div class="p-4 md:p-8 lg:w-10/12 xl:w-8/12 md:w-5/6  mx-auto">
 
                             <div
-                                class="flex  flex-col rounded-xl bg-primaryBackground dark:bg-darkPrimaryBackground md:space-y-14 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
+                                class="flex  flex-col rounded-xl bg-primaryBackground dark:bg-darkPrimaryBackground md:space-y-10 space-y-5 text-white md:p-8 p-5 w-full mb-4 md:mb-0 overflow-hidden card">
                                 <div class="flex flex-row justify-between items-center z-10">
 
                                     <div class="flex flex-col space-y-3">
@@ -426,8 +426,7 @@ console.log(chartOptions.value);
                                 </div>
 
                                 <div class="flex flex-row justify-between ">
-                                    <div class="flex flex-col space-y-4 ">
-
+                                    <div class="flex flex-col  ">
                                         <p class="text-sm md:text-base">Attendance > <span
                                                 class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
                                                         attendancePercentage.length == 0 ? 0 :
@@ -454,18 +453,18 @@ console.log(chartOptions.value);
                 </swiper>
                 <!-- Class Info -->
                 <div class="flex flex-col md:pl-10 lg:w-9/12 xl:w-8/12 md:w-1/3 w-auto ">
-                    <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-white">Class info</h1>
+                    <h1 class="text-lg md:text-xl font-bold text-primaryBackground dark:text-white py-3">Class info</h1>
 
                     <div class="relative">
                         <table class="w-full text-sm text-left text-primaryBackground dark:text-white">
                             <tbody>
                                 <tr>
 
-                                    <td scope="row" class="py-2 whitespace-nowrap">
-                                        Start Date
+                                    <td scope="row" class="py-2 whitespace-nowrap font-semibold text-base">
+                                        Start Date : 
                                     </td>
 
-                                    <td class="py-2 px-6 font-bold">
+                                    <td class="py-2 px-6 font-bold  text-base">
 
                                         {{ moment(props.classes[activeIndex].c_start_date).format('YYYY/MM/DD') }}
                                         ({{
@@ -474,52 +473,62 @@ console.log(chartOptions.value);
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td scope="row" class="py-2 whitespace-nowrap">
-                                        Join Date
+                                    <td scope="row" class="py-2 whitespace-nowrap font-semibold text-base">
+                                        Join Date :
                                     </td>
-                                    <td class="py-2 px-6 font-bold">
+                                    <td class="py-2 px-6 font-bold  text-base">
                                         {{ moment(props.classes[activeIndex].start_join).format('YYYY/MM/DD') }} ({{
                                                 moment(props.classes[activeIndex].start_join).format('dddd')
                                         }})
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td scope="row" class="py-2  whitespace-nowrap">
-                                        Period
+                                    <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
+                                        Period :
                                     </td>
-                                    <td class="py-2 px-6 font-bold">
+                                    <td class="py-2 px-6 font-bold  text-base">
                                         {{ (moment(props.classes[activeIndex].end_date).format('MM') -
                                                 moment(props.classes[activeIndex].c_start_date).format('MM')) + 1
-                                        }} months
+                                        }} month(s)
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td scope="row" class="py-2  whitespace-nowrap">
-                                        End Date
+                                    <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
+                                        End Date :
                                     </td>
-                                    <td class="py-2 px-6 font-bold text-red-600">
+                                    <td class="py-2 px-6 font-bold  text-base text-red-600">
                                         {{ moment(props.classes[activeIndex].end_date).format('YYYY/MM/DD') }} ({{
                                                 moment(props.classes[activeIndex].end_date).format('dddd')
                                         }})
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td scope="row" class="py-2  whitespace-nowrap">
-                                        Class in Person
+                                    <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
+                                        Class Day :
                                     </td>
-                                    <td class="py-2 px-6 font-bold">
-
-                                        {{ props.one_class[activeIndex].counts }}
+                                    <td class="py-2 px-6 font-bold  text-base">
+                                        {{ props.classes[activeIndex].c_start_time }} - {{
+                                        props.classes[activeIndex].c_end_time
+                                        }}
                                     </td>
                                 </tr>
                                 <tr>
-                                    <td scope="row" class="py-2  whitespace-nowrap">
-                                        Time
+                                    <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
+                                        Class Time :
                                     </td>
-                                    <td class="py-2 px-6 font-bold">
+                                    <td class="py-2 px-6 font-bold  text-base">
                                         {{ props.classes[activeIndex].c_start_time }} - {{
                                                 props.classes[activeIndex].c_end_time
                                         }}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td scope="row" class="py-2  whitespace-nowrap font-semibold text-base">
+                                        Class in Person :
+                                    </td>
+                                    <td class="py-2 px-6 font-bold  text-base">
+                                
+                                        {{ props.one_class[activeIndex].counts }}
                                     </td>
                                 </tr>
                             </tbody>
@@ -538,7 +547,7 @@ console.log(chartOptions.value);
         </section>
 
         <!-- Rank Section -->
-        <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-10 my-5 h-full">
+        <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-20 my-5 h-full">
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
                     <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ attendancePercentage.length
@@ -663,8 +672,7 @@ console.log(chartOptions.value);
         </div>
 
         <div class="flex flex-col items-center w-full">
-            <h1 class="text-3xl md:text-5xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor">Class Exam Ranking &
-                Mark</h1>
+            <h1 class="text-3xl md:text-4xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor text-primaryBackground">Class Ranking</h1>
 
             <div
                 class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">

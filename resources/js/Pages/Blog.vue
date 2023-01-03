@@ -18,6 +18,7 @@ const props = defineProps({
 
 
 
+
 </script>
         
 <template>
@@ -32,14 +33,14 @@ const props = defineProps({
             <div class="flex flex-col md:flex-row px-6 py-10 rounded-xl shadow-xl mb-12 dark:bg-darkSecondaryBackground" v-for="blog in blogs.data"
                 :key="blog.id">
                 <div class="w-full md:w-1/3 mb-5 md:mb-0 mr-5">
-                    <img :src="blog.b_photo" alt="">
+                    <img :src="'/storage/'+blog.b_photo" alt="">
                 </div>
                 <div class="relative w-full ">
                     <div class="flex flex-row justify-between w-full mb-2">
                         <h1 class="font-semibold text-xl dark:text-whiteTextColor">{{ blog.b_title }}</h1>
                         <p class="font-semibold text-sm dark:text-whiteTextColor">{{ moment(blog.created_at, "YYYYMMDD").calendar() }} </p>
                     </div>
-                    <div class="w-full font-medium opacity-70 dark:text-whiteTextColor">
+                    <div class="w-full font-medium opacity-70 dark:text-whiteTextColor whitespace-pre-line">
                         {{ blog.b_description }}
                     </div>
                     <div class="absolute w-full bottom-0 ">

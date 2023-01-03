@@ -39,7 +39,7 @@ const props = defineProps({
                 </p>
             </div>
             <div class="font-extralight space-y-6">
-                <p class="font-medium text-lg opacity-70 dark:text-whiteTextColor">{{ blog.b_description }}</p>
+                <p class="font-medium text-lg opacity-70 dark:text-whiteTextColor whitespace-pre-line">{{ blog.b_description }}</p>
             </div>
         </div>
     </section>
