@@ -4,6 +4,7 @@ import { Head, Link, useForm } from '@inertiajs/inertia-vue3';
 import Header from '../Layouts/Header.vue';
 import Footer from '../Layouts/Footer.vue';
 import moment from 'moment';
+import { ref } from 'vue';
 
 
 
@@ -13,9 +14,32 @@ const props = defineProps({
     },
 });
 
+const display = ref(false);
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        display.value = true;
+    } else {
+        display.value = false;
+    }
+  });
+};
+
+const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+};
+
+displayButton();
+
 </script>
             
 <template>
+ <button class="py-3 px-3 bg-secondaryBackground dark:bg-whiteTextColor transition-all duration-1000 text-whiteTextColor dark:text-primaryBackground text-5xl rounded-full rotate-90 upKey" v-show="display" @click="toTop">&#171;</button>
 
     <Head title="BlogView" />
     <Header />

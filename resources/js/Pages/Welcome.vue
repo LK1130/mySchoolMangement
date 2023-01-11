@@ -47,7 +47,6 @@ const display = ref(false);
 
 const displayButton = () => {
   window.addEventListener('scroll', () => {
-    // console.log(window.scrollY);
     if (window.scrollY > 100) {
         display.value = true;
     } else {

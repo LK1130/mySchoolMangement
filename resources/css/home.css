@@ -26,3 +26,10 @@
     background: #999;
     border-radius: 5px;
 }
+.upKey{
+    position: sticky;
+    float: right;
+    top: 90%;
+    right: 50px;
+    z-index: 100;
+}

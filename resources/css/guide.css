@@ -1,4 +1,4 @@
-.guide{
+/* .guide{
     font-size: 0.8rem !important;
     font-weight:600;
 }
@@ -24,4 +24,11 @@
    .step2{
     flex-direction: column-reverse;
    }
+} */
+.upKey{
+  position: sticky;
+  float: right;
+  top: 90%;
+  right: 50px;
+  z-index: 100;
 }

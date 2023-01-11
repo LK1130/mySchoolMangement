@@ -47,38 +47,42 @@ const forceRerender = (activeIndex) => {
     console.log(activeIndex);
     examMark = [];
     examName = [];
-    
-    if (oneClasExamRank[activeIndex][1].length > 1 ) {
+
+    if (oneClasExamRank[activeIndex][1].length > 1) {
         // result in oneClasExamRank[activeIndex][1]
-        
+
         for (let index = 0; index < oneClasExamRank[activeIndex][1].length; index++) {
             examMark.push(oneClasExamRank[activeIndex][1][index].mark);
             examName.push(oneClasExamRank[activeIndex][1][index].e_name);
-           
-           
+
+
         }
- 
+
         // chartOptions.value[0].xaxis.categories = [examName];
-        chartOptions.value =  {...chartOptions.value, ...{
-            xaxis: {
-                categories: examName.length == 0 ? 'No Exam' : examName 
+        chartOptions.value = {
+            ...chartOptions.value, ...{
+                xaxis: {
+                    categories: examName.length == 0 ? 'No Exam' : examName
+                }
             }
-        }};
+        };
         series.value[0].data = examMark.length == 0 ? 0 : examMark;
 
     } else {
         examMark.push(oneClasExamRank[activeIndex][1][0].mark);
         examName.push(oneClasExamRank[activeIndex][1][0].e_name);
-     
-        series.value[0].data = examMark.length == 0 ?  0 : examMark;
-        chartOptions.value =  {...chartOptions.value, ...{
-            xaxis: {
-                categories: examName.length == 0 ? 'No Exam' : examName
+
+        series.value[0].data = examMark.length == 0 ? 0 : examMark;
+        chartOptions.value = {
+            ...chartOptions.value, ...{
+                xaxis: {
+                    categories: examName.length == 0 ? 'No Exam' : examName
+                }
             }
-        }};
-      
+        };
+
     }
-   
+
 
 };
 
@@ -252,21 +256,21 @@ examCount = Object.values(props.examRanks).length;
 // console.log(props.all_ranks);
 
 
-if(oneClasExamRank.length != 0 ){
+if (oneClasExamRank.length != 0) {
     if (oneClasExamRank[activeIndex.value][1].length > 1) {
-    // result in oneClasExamRank[activeIndex][1]
+        // result in oneClasExamRank[activeIndex][1]
 
-    for (let index = 0; index < oneClasExamRank[activeIndex.value][1].length; index++) {
-        examMark.push(oneClasExamRank[activeIndex.value][1][index].mark);
-        examName.push(oneClasExamRank[activeIndex.value][1][index].e_name)
+        for (let index = 0; index < oneClasExamRank[activeIndex.value][1].length; index++) {
+            examMark.push(oneClasExamRank[activeIndex.value][1][index].mark);
+            examName.push(oneClasExamRank[activeIndex.value][1][index].e_name)
 
+        }
+
+
+    } else {
+        examMark.push(oneClasExamRank[activeIndex.value][1][0].mark);
+        examName.push(oneClasExamRank[activeIndex.value][1][0].e_name);
     }
-  
-
-} else {
-         examMark.push(oneClasExamRank[activeIndex.value][1][0].mark);
-         examName.push(oneClasExamRank[activeIndex.value][1][0].e_name);
-}
 }
 
 
@@ -326,7 +330,7 @@ let series = ref([
 ]);
 
 console.log(chartOptions.value);
-        console.log(series.value[0].data);
+console.log(series.value[0].data);
 
 const chartOptionsV2 = ref({
     chart: {
@@ -376,16 +380,39 @@ const seriesV2 = ref([
     }
 ]);
 
+const display = ref(false);
 
+const displayButton = () => {
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 100) {
+            display.value = true;
+        } else {
+            display.value = false;
+        }
+    });
+};
+
+const toTop = () => {
+    window.scroll({
+        top: 0,
+        left: 0,
+        behavior: 'smooth'
+    });
+};
+
+displayButton();
 
 </script>
 
 
 <template>
+    <button
+        class="py-3 px-3 bg-secondaryBackground dark:bg-whiteTextColor transition-all duration-1000 text-whiteTextColor dark:text-primaryBackground text-5xl rounded-full rotate-90 upKey"
+        v-show="display" @click="toTop">&#171;</button>
 
     <Head title="Home" />
     <Header />
-    <div v-if="props.classes.length > 1">
+    <div v-if="props.classes.length > 1" class="h-auto">
         <section class=" p-4 md:p-12 overflow-x-hidden">
             <!-- Title Bar -->
             <div class="flex flex-row items-center justify-between">
@@ -420,8 +447,8 @@ const seriesV2 = ref([
                                         <p class="font-bold text-lg">{{ props.classes[n - 1].c_name }}</p>
 
                                         <div class="grid grid-cols-6">
-                                            <div v-for="result in (Number(props.processBar[n - 1].period))" :key="result"
-                                                class="w-5 h-2 bg-white mx-1" :class="{
+                                            <div v-for="result in (Number(props.processBar[n - 1].period))"
+                                                :key="result" class="w-5 h-2 bg-white mx-1" :class="{
                                                     'rounded-tl-md rounded-bl-md': (result == 1),
                                                     'bg-secondaryBackground ': (Number(props.processBar[n - 1].current) >= result),
                                                     'rounded-tr-md rounded-br-md': (Number(props.processBar[n - 1].period) == result),
@@ -441,7 +468,8 @@ const seriesV2 = ref([
 
 
                                         <p class="text-3xl font-bold rank">
-                                            {{ currentOverall.length
+                                            {{
+                                                currentOverall.length
                                                     == 0 ? 0 : currentOverall[activeIndex][1].ranks
                                             }}
                                         </p>
@@ -452,9 +480,9 @@ const seriesV2 = ref([
                                     <div class="flex flex-col  ">
                                         <p class="text-sm md:text-base">Attendance > <span
                                                 class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">{{
-                                                        attendancePercentage.length == 0 ? 0 :
-                                                            Math.floor(attendancePercentage[activeIndex][1].attend *
-                                                                100)
+                                                    attendancePercentage.length == 0 ? 0 :
+                                                        Math.floor(attendancePercentage[activeIndex][1].attend *
+                                                            100)
                                                 }}%</span>
                                         </p>
 
@@ -462,8 +490,8 @@ const seriesV2 = ref([
                                         <p class="text-sm md:text-base">Exam Mark > <span
                                                 class="ml-3 text-sm md:text-base font-bold text-secondaryBackground">
                                                 {{
-                                                        examPercentage.length == 0 ? 0 :
-                                                            Math.floor(examPercentage[activeIndex][1].exam)
+                                                    examPercentage.length == 0 ? 0 :
+                                                        Math.floor(examPercentage[activeIndex][1].exam)
                                                 }}
                                                 %
                                             </span>
@@ -484,14 +512,14 @@ const seriesV2 = ref([
                                 <tr>
 
                                     <td scope="row" class="py-2 whitespace-nowrap font-semibold text-base">
-                                        Start Date : 
+                                        Start Date :
                                     </td>
 
                                     <td class="py-2 px-6 font-bold  text-base">
 
                                         {{ moment(props.classes[activeIndex].c_start_date).format('YYYY/MM/DD') }}
                                         ({{
-                                                moment(props.classes[activeIndex].c_start_date).format('dddd')
+                                            moment(props.classes[activeIndex].c_start_date).format('dddd')
                                         }})
                                     </td>
                                 </tr>
@@ -501,7 +529,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold  text-base">
                                         {{ moment(props.classes[activeIndex].start_join).format('YYYY/MM/DD') }} ({{
-                                                moment(props.classes[activeIndex].start_join).format('dddd')
+                                            moment(props.classes[activeIndex].start_join).format('dddd')
                                         }})
                                     </td>
                                 </tr>
@@ -511,7 +539,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold  text-base">
                                         {{ (moment(props.classes[activeIndex].end_date).format('MM') -
-                                                moment(props.classes[activeIndex].c_start_date).format('MM')) + 1
+    moment(props.classes[activeIndex].c_start_date).format('MM')) + 1
                                         }} month(s)
                                     </td>
                                 </tr>
@@ -521,7 +549,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold  text-base text-red-600">
                                         {{ moment(props.classes[activeIndex].end_date).format('YYYY/MM/DD') }} ({{
-                                                moment(props.classes[activeIndex].end_date).format('dddd')
+                                            moment(props.classes[activeIndex].end_date).format('dddd')
                                         }})
                                     </td>
                                 </tr>
@@ -531,7 +559,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold">
 
-                                        {{ props.one_class.length == 0 ? 0 : props.one_class[activeIndex].counts  }}
+                                        {{ props.one_class.length == 0 ? 0 : props.one_class[activeIndex].counts }}
                                     </td>
                                 </tr>
                                 <tr>
@@ -540,7 +568,7 @@ const seriesV2 = ref([
                                     </td>
                                     <td class="py-2 px-6 font-bold  text-base">
                                         {{ props.classes[activeIndex].c_start_time }} - {{
-                                                props.classes[activeIndex].c_end_time
+                                            props.classes[activeIndex].c_end_time
                                         }}
                                     </td>
                                 </tr>
@@ -549,7 +577,7 @@ const seriesV2 = ref([
                                         Class in Person :
                                     </td>
                                     <td class="py-2 px-6 font-bold  text-base">
-                                
+
                                         {{ props.one_class[activeIndex].counts }}
                                     </td>
                                 </tr>
@@ -572,7 +600,8 @@ const seriesV2 = ref([
         <div class="flex flex-col w-full bg-primaryBackground dark:bg-darkPrimaryBackground py-20 my-5 h-full">
             <div class="flex flex-row justify-around w-full items-center">
                 <div class="flex flex-col items-center w-48">
-                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{ attendancePercentage.length
+                    <h1 class="text-2xl md:text-4xl text-secondaryBackground font-bold">{{
+                        attendancePercentage.length
                             == 0
                     
                             ? 0 : Math.floor(attendancePercentage[activeIndex][1].attend * 100)
@@ -590,7 +619,8 @@ const seriesV2 = ref([
 
 
                         <p class="text-5xl text-white font-bold rank">
-                            {{ currentOverall.length
+                            {{
+                                currentOverall.length
                                     == 0 ? 0 : currentOverall[activeIndex][1].ranks
                             }}
                         </p>
@@ -603,7 +633,8 @@ const seriesV2 = ref([
                         'text-red-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam <= 50),
                         'text-yellow-500': (examPercentage.length == 0 ? 0 : examPercentage[activeIndex][1].exam > 50 && examPercentage[activeIndex][1].exam < 100),
                     }">
-                        {{ examPercentage.length == 0 ? 0 :
+                        {{
+                            examPercentage.length == 0 ? 0 :
                                 Math.floor(examPercentage[activeIndex][1].exam)
                         }}%
                     </h1>
@@ -641,7 +672,8 @@ const seriesV2 = ref([
                                         'text-yellow-500': (result.mark > 5 && result.mark < 10),
                                     }">{{ result.mark }}</td>
 
-                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ result.rank
+                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{
+                                        result.rank
                                     }}</td>
 
                                 </tr>
@@ -656,7 +688,8 @@ const seriesV2 = ref([
                                         class="py-3 w-24 text-left font-light dark:text-whiteTextColor text-xs text-black">
                                         {{ moment(result.date_submitted).format('MMM D') }}
                                     </td>
-                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{ result.e_name
+                                    <td class="py-3 w-48 text-left font-bold dark:text-whiteTextColor">{{
+                                        result.e_name
                                     }}</td>
                                     <td class="py-3 w-24" :class="{
                                         'text-green-500': (result.mark == 10),
@@ -664,7 +697,8 @@ const seriesV2 = ref([
                                         'text-yellow-500': (result.mark > 5 && result.mark < 10),
                                     }">{{ result.mark }}</td>
 
-                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{ result.rank
+                                    <td class="py-3 w-24 text-left text-black dark:text-whiteTextColor">{{
+                                        result.rank
                                     }}</td>
                                 </tr>
 
@@ -694,7 +728,9 @@ const seriesV2 = ref([
         </div>
 
         <div class="flex flex-col items-center w-full">
-            <h1 class="text-3xl md:text-4xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor text-primaryBackground">Class Ranking</h1>
+            <h1
+                class="text-3xl md:text-4xl font-bold drop-shadow-xl my-3 dark:text-whiteTextColor text-primaryBackground">
+                Class Ranking</h1>
 
             <div
                 class="flex flex-col-reverse lg:flex-row flex-reverse justify-center rounded-xl overflow-hidden shadow-2xl my-10">
@@ -704,18 +740,18 @@ const seriesV2 = ref([
 
                 <div class="flex flex-col items-center bg-secondaryBackground py-10 px-3 w-full lg:w-72 space-y-4">
 
-                    <div v-if="props.all_ranks[activeIndex].length > 1" v-for="(result,index) in props.all_ranks[activeIndex]"
+                    <div v-if="props.all_ranks[activeIndex].length > 1"
+                        v-for="(result, index) in props.all_ranks[activeIndex]"
                         class="flex justify-between p-2 items-center bg-white w-full space-x-2 rounded-lg">
                         <span
                             class="flex items-center justify-center bg-primaryBackground text-white w-8 h-8 rounded-full">{{
-                                    ++index
+                            ++index
                             }}</span>
                         <h1 class="w-32 flex font-bold whitespace-nowrap">{{ result.name }}</h1>
                         <p class="font-semibold text-secondaryBackground">{{ Math.floor(result.exam) }}%</p>
                     </div>
-                    <div v-else
-                       class="text-3xl text-white">
-                     No Ranking!!!
+                    <div v-else class="text-3xl text-white">
+                        No Ranking!!!
                     </div>
 
                     <!-- <div v-for="(item, index) in props.all_ranks"
@@ -734,9 +770,10 @@ const seriesV2 = ref([
         </div>
     </div>
 
-    <div v-else class="m-5 p-5 text-lg font-bold">
+    <div v-else class="m-5 p-5 text-lg font-bold h-screen">
         Student still doesn't join all classes!!
     </div>
+
     <Footer />
 
 </template> 

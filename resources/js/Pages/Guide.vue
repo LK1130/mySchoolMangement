@@ -5,6 +5,7 @@ import Header from '../Layouts/Header.vue';
 import SecondaryBtn from '../Components/SecondaryBtn.vue';
 import Footer from '../Layouts/Footer.vue';
 import { stringify } from 'qs';
+import { ref } from 'vue';
 
 let count = 1;
 const props = defineProps({
@@ -12,14 +13,40 @@ const props = defineProps({
         type: Object
     }
 });
-console.log(props.guides);
+// console.log(props.guides);
+
+const display = ref(false);
+
+const displayButton = () => {
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 100) {
+        display.value = true;
+    } else {
+        display.value = false;
+    }
+  });
+};
+
+const toTop = () => {
+    window.scroll({
+      top: 0,
+      left: 0,
+      behavior: 'smooth'
+    });
+};
+
+console.log(props.guides.length);
+
+displayButton();
 </script>
 
 <template>
+    <button class="py-3 px-3 bg-secondaryBackground dark:bg-whiteTextColor transition-all duration-1000 text-whiteTextColor dark:text-primaryBackground text-5xl rounded-full rotate-90 upKey" v-show="display" @click="toTop">&#171;</button>
+
     <Head title='Guide' />
     <Header />
 
-    <section>
+    <section v-if="props.guides.length >= 1" class="h-auto">
         <div class="p-4 md:p-12 mx-auto">
             <div class="flex mb-5">
                 <p class="text-primaryBackground dark:text-whiteTextColor text-xl font-bold">Guide</p>
@@ -64,5 +91,10 @@ console.log(props.guides);
         </div>
     </section>
 
+    <section v-else class="h-screen"></section>
+
     <Footer />
 </template>
+<style>
+@import '../../css/guide.css';
+</style>

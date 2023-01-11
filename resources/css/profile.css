@@ -165,3 +165,10 @@ i.material-icons {
     resize: none;
     border-radius: 12px;
 }
+.upKey{
+    position: sticky;
+    float: right;
+    top: 90%;
+    right: 50px;
+    z-index: 100;
+}
